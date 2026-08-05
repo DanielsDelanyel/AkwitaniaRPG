@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556e4c13ec25d5c46997462320e48119, type: 3}
+  m_Name: Lassi_NeutralGift
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  npcText: "Dzi\u0119ki, ale nie potrzebuj\u0119 tego."
+  options:
+  - text: Jasne, nie ma problemu.
+    nextNode: {fileID: 0}
+    affinityChange: 0

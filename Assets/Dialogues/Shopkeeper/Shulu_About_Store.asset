@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556e4c13ec25d5c46997462320e48119, type: 3}
+  m_Name: Shulu_About_Store
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  npcText: "Jeste\u015B w sklepie Shulu. Mo\u017Cesz tu kupi\u0107 r\xF3\u017Cnego
+    rodzaju wyposa\u017Cenienie oraz ekwipunek."
+  options:
+  - text: Rozumiem
+    nextNode: {fileID: 11400000, guid: c772f9efc830c74409706063231d3201, type: 2}
+    affinityChange: 0

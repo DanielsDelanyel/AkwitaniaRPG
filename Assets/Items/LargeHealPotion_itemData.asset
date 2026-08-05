@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: LargeHealPotion_itemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Olbrzymia Mikstura leczenia
+  icon: {fileID: 3850459649635575903, guid: 65827997542143146beec82484a8f467, type: 3}
+  description: "(w przysz\u0142o\u015Bci +25% zdrowia)"
+  itemType: 1
+  rarity: 2
+  itemPrefab: {fileID: 8992644449882156520, guid: c2bd61d55c6a8d34a9a3f10e62a41fc7, type: 3}
+  isStackable: 1
+  weight: 1
+  price: 5
+  healAmount: 120
+  affinityBonus: 0
+  damageBonus: 0
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0

@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 557a59e1171dd0743a694710aaab7799
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4170713100658577316
+    second: Unarmed_Hurt_without_shadow_0
+  - first:
+      213: 2846959349039177829
+    second: Unarmed_Hurt_without_shadow_1
+  - first:
+      213: -4782701986382984554
+    second: Unarmed_Hurt_without_shadow_2
+  - first:
+      213: -8825277525475103150
+    second: Unarmed_Hurt_without_shadow_3
+  - first:
+      213: 5869758223285682031
+    second: Unarmed_Hurt_without_shadow_4
+  - first:
+      213: -4450856347743232296
+    second: Unarmed_Hurt_without_shadow_5
+  - first:
+      213: 4737428617011109183
+    second: Unarmed_Hurt_without_shadow_6
+  - first:
+      213: 8935710348718826806
+    second: Unarmed_Hurt_without_shadow_7
+  - first:
+      213: 6477731027021159242
+    second: Unarmed_Hurt_without_shadow_8
+  - first:
+      213: 4207192684573145667
+    second: Unarmed_Hurt_without_shadow_9
+  - first:
+      213: 8708022271334816955
+    second: Unarmed_Hurt_without_shadow_10
+  - first:
+      213: -3549158588526875268
+    second: Unarmed_Hurt_without_shadow_11
+  - first:
+      213: 8851036255675470214
+    second: Unarmed_Hurt_without_shadow_12
+  - first:
+      213: -2949636476177573418
+    second: Unarmed_Hurt_without_shadow_13
+  - first:
+      213: 3563510886294015195
+    second: Unarmed_Hurt_without_shadow_14
+  - first:
+      213: 4261703104655981422
+    second: Unarmed_Hurt_without_shadow_15
+  - first:
+      213: -3269925106655420996
+    second: Unarmed_Hurt_without_shadow_16
+  - first:
+      213: -988943923707008743
+    second: Unarmed_Hurt_without_shadow_17
+  - first:
+      213: -6210506714094975252
+    second: Unarmed_Hurt_without_shadow_18
+  - first:
+      213: -647700951507954537
+    second: Unarmed_Hurt_without_shadow_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 211
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af82d8b77951e930800000000000000
+      internalID: 4170713100658577316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 211
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5602571b17e628720800000000000000
+      internalID: 2846959349039177829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 211
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a461b12ed60adb0800000000000000
+      internalID: -4782701986382984554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 211
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e61d159d0568580800000000000000
+      internalID: -8825277525475103150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_4
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 211
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ffe583102957150800000000000000
+      internalID: 5869758223285682031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_5
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 147
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ded87ebbb16b32c0800000000000000
+      internalID: -4450856347743232296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 147
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d97b92a3abeb140800000000000000
+      internalID: 4737428617011109183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_7
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 147
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 635ea2ff735020c70800000000000000
+      internalID: 8935710348718826806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_8
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 147
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4b5f107c0685e950800000000000000
+      internalID: 6477731027021159242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_9
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 147
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34aba99b473f26a30800000000000000
+      internalID: 4207192684573145667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 83
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc1a136e1c19d870800000000000000
+      internalID: 8708022271334816955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_11
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 83
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d2457611bdebec0800000000000000
+      internalID: -3549158588526875268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_12
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 83
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 681d3a9649235da70800000000000000
+      internalID: 8851036255675470214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_13
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 83
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d996e4b049c017d0800000000000000
+      internalID: -2949636476177573418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_14
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 83
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdccac25542247130800000000000000
+      internalID: 3563510886294015195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_15
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 19
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6bf23be46c942b30800000000000000
+      internalID: 4261703104655981422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_16
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 19
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd1ca7b074ee92d0800000000000000
+      internalID: -3269925106655420996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_17
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 19
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919a9a4bdb09642f0800000000000000
+      internalID: -988943923707008743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_18
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 19
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce6c0375c09dfc9a0800000000000000
+      internalID: -6210506714094975252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unarmed_Hurt_without_shadow_19
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 19
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7949fa09a67e207f0800000000000000
+      internalID: -647700951507954537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Unarmed_Hurt_without_shadow_0: 4170713100658577316
+      Unarmed_Hurt_without_shadow_1: 2846959349039177829
+      Unarmed_Hurt_without_shadow_10: 8708022271334816955
+      Unarmed_Hurt_without_shadow_11: -3549158588526875268
+      Unarmed_Hurt_without_shadow_12: 8851036255675470214
+      Unarmed_Hurt_without_shadow_13: -2949636476177573418
+      Unarmed_Hurt_without_shadow_14: 3563510886294015195
+      Unarmed_Hurt_without_shadow_15: 4261703104655981422
+      Unarmed_Hurt_without_shadow_16: -3269925106655420996
+      Unarmed_Hurt_without_shadow_17: -988943923707008743
+      Unarmed_Hurt_without_shadow_18: -6210506714094975252
+      Unarmed_Hurt_without_shadow_19: -647700951507954537
+      Unarmed_Hurt_without_shadow_2: -4782701986382984554
+      Unarmed_Hurt_without_shadow_3: -8825277525475103150
+      Unarmed_Hurt_without_shadow_4: 5869758223285682031
+      Unarmed_Hurt_without_shadow_5: -4450856347743232296
+      Unarmed_Hurt_without_shadow_6: 4737428617011109183
+      Unarmed_Hurt_without_shadow_7: 8935710348718826806
+      Unarmed_Hurt_without_shadow_8: 6477731027021159242
+      Unarmed_Hurt_without_shadow_9: 4207192684573145667
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

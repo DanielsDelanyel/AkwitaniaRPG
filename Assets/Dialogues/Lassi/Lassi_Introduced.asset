@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556e4c13ec25d5c46997462320e48119, type: 3}
+  m_Name: Lassi_Introduced
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  npcText: "Mi\u0142o ci\u0119 pozna\u0107! jestem druidk\u0105 Lassi, znana r\xF3wnie\u017C
+    jako Mangolassi."
+  options:
+  - text: "Jeste\u015B pi\u0119kna..."
+    nextNode: {fileID: 11400000, guid: c191cdbfd7159ed4f80dd5691f5c89eb, type: 2}
+    affinityChange: -10
+  - text: Co to za miejsce...?
+    nextNode: {fileID: 11400000, guid: d98b31cb324c5b745890038d909dd6b7, type: 2}
+    affinityChange: 0
+  - text: "Gdzie mog\u0119 znale\u017A\u0107..."
+    nextNode: {fileID: 11400000, guid: b2ab736b13d0d7f44abc7fd9bf936661, type: 2}
+    affinityChange: 0
+  - text: "Odchodz\u0119..."
+    nextNode: {fileID: 11400000, guid: 468e50de61df2f04c80ecf1a339df434, type: 2}
+    affinityChange: 0

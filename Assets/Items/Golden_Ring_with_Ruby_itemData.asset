@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Golden_Ring_with_Ruby_itemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "Z\u0142oty pier\u015Bcionek z rubinem"
+  icon: {fileID: 1651949316770522588, guid: 47c32258d60a0fb4da071d0ed7ba0f69, type: 3}
+  description: "Pi\u0119kny pier\u015Bcionek z rubinem, niekt\xF3rzy s\u0105 w stanie
+    wiele za niego da\u0107, niekt\xF3rzy mog\u0105 ch\u0119tnie go przyj\u0105\u0107..."
+  itemType: 13
+  rarity: 2
+  itemPrefab: {fileID: 8992644449882156520, guid: b10d7e2767384f44f97b061f9ccd3169, type: 3}
+  isStackable: 0
+  weight: 1
+  price: 120
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 0
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0

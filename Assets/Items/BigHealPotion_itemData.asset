@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: BigHealPotion_itemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "Du\u017Ca Mikstura leczenia"
+  icon: {fileID: 962012437110062875, guid: 6a6d977ebf3a7b64c91c4a156937da4d, type: 3}
+  description: "Pot\u0119\u017Cna porcja leczenia."
+  itemType: 1
+  rarity: 1
+  itemPrefab: {fileID: 8992644449882156520, guid: e3daf743993026b40a3e8d697feb3890, type: 3}
+  isStackable: 1
+  weight: 1
+  price: 5
+  healAmount: 60
+  affinityBonus: 0
+  damageBonus: 0
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0

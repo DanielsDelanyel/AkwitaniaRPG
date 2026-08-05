@@ -1,0 +1,1001 @@
+fileFormatVersion: 2
+guid: 318cb3113f884144e95864c840be8713
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -411599914814426887
+    second: Sword_attack_with_shadow_0
+  - first:
+      213: 8813437849589471059
+    second: Sword_attack_with_shadow_1
+  - first:
+      213: 32857253310916152
+    second: Sword_attack_with_shadow_2
+  - first:
+      213: 4944211274718774539
+    second: Sword_attack_with_shadow_3
+  - first:
+      213: 8220968792299149318
+    second: Sword_attack_with_shadow_4
+  - first:
+      213: -135679846730326277
+    second: Sword_attack_with_shadow_5
+  - first:
+      213: 5570765128136190957
+    second: Sword_attack_with_shadow_6
+  - first:
+      213: -5976034773107441317
+    second: Sword_attack_with_shadow_7
+  - first:
+      213: 1029097054890462623
+    second: Sword_attack_with_shadow_8
+  - first:
+      213: 4252478168082621051
+    second: Sword_attack_with_shadow_9
+  - first:
+      213: 8332137887874416813
+    second: Sword_attack_with_shadow_10
+  - first:
+      213: -2048158578659974165
+    second: Sword_attack_with_shadow_11
+  - first:
+      213: 8198086012308189478
+    second: Sword_attack_with_shadow_12
+  - first:
+      213: -8946196410457779866
+    second: Sword_attack_with_shadow_13
+  - first:
+      213: 4156305458035828044
+    second: Sword_attack_with_shadow_14
+  - first:
+      213: -8270786140599434848
+    second: Sword_attack_with_shadow_15
+  - first:
+      213: -366331641586553265
+    second: Sword_attack_with_shadow_16
+  - first:
+      213: 9130511342870293939
+    second: Sword_attack_with_shadow_17
+  - first:
+      213: 4731797732084502563
+    second: Sword_attack_with_shadow_18
+  - first:
+      213: -4842448282936669495
+    second: Sword_attack_with_shadow_19
+  - first:
+      213: -8700350993947273494
+    second: Sword_attack_with_shadow_20
+  - first:
+      213: -3809768534635172064
+    second: Sword_attack_with_shadow_21
+  - first:
+      213: -2693969302357635502
+    second: Sword_attack_with_shadow_22
+  - first:
+      213: 8482620158513156140
+    second: Sword_attack_with_shadow_23
+  - first:
+      213: 1372887823047164577
+    second: Sword_attack_with_shadow_24
+  - first:
+      213: -1285813939483657552
+    second: Sword_attack_with_shadow_25
+  - first:
+      213: -5986183642047061910
+    second: Sword_attack_with_shadow_26
+  - first:
+      213: -3665650172716393461
+    second: Sword_attack_with_shadow_27
+  - first:
+      213: -9184590286161804523
+    second: Sword_attack_with_shadow_28
+  - first:
+      213: 239606527268619628
+    second: Sword_attack_with_shadow_29
+  - first:
+      213: 2874831566244015092
+    second: Sword_attack_with_shadow_30
+  - first:
+      213: 1220697628704011735
+    second: Sword_attack_with_shadow_31
+  - first:
+      213: -7704217949838960906
+    second: Sword_attack_with_shadow_32
+  - first:
+      213: 7853206921603745359
+    second: Sword_attack_with_shadow_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 208
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f0b7e7ee04b94af0800000000000000
+      internalID: -411599914814426887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 208
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35753c2570f9f4a70800000000000000
+      internalID: 8813437849589471059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 208
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83664ef6f7bb47000800000000000000
+      internalID: 32857253310916152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 203
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b05081475fd5d9440800000000000000
+      internalID: 4944211274718774539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 203
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 608109e5f8fb61270800000000000000
+      internalID: 8220968792299149318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 199
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfe9574f5e7fd1ef0800000000000000
+      internalID: -135679846730326277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_6
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 208
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: debe0bd6e555f4d40800000000000000
+      internalID: 5570765128136190957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_7
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 199
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b518c87490cd01da0800000000000000
+      internalID: -5976034773107441317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_8
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 208
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9d852ca156184e00800000000000000
+      internalID: 1029097054890462623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_9
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 144
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b722baffc56d30b30800000000000000
+      internalID: 4252478168082621051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_10
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 144
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da004527343b1a370800000000000000
+      internalID: 8332137887874416813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_11
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 144
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be3ad43df9a7393e0800000000000000
+      internalID: -2048158578659974165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_12
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 144
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6217ab9fac375c170800000000000000
+      internalID: 8198086012308189478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_13
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 144
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6611acf73c9b8d380800000000000000
+      internalID: -8946196410457779866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_14
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 143
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c452e340bc92ea930800000000000000
+      internalID: 4156305458035828044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_15
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1c85c53d3483d80800000000000000
+      internalID: -8270786140599434848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_16
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 144
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e6f3910578aeaf0800000000000000
+      internalID: -366331641586553265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_17
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 80
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bd6579d0b716be70800000000000000
+      internalID: 9130511342870293939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_18
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 80
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32055e997f8baa140800000000000000
+      internalID: 4731797732084502563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_19
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 80
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca0c5c61fa2cccb0800000000000000
+      internalID: -4842448282936669495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_20
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 80
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae65e801ed4224780800000000000000
+      internalID: -8700350993947273494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_21
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 80
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f2c98e3bbf02bc0800000000000000
+      internalID: -3809768534635172064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_22
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 79
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e8a2951391d9ad0800000000000000
+      internalID: -2693969302357635502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_23
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 80
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c209eb0671258b570800000000000000
+      internalID: 8482620158513156140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_24
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 80
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a28f21833a7d0310800000000000000
+      internalID: 1372887823047164577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_25
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 16
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bab4d9d80fd72ee0800000000000000
+      internalID: -1285813939483657552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_26
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 16
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60e78791bdcceca0800000000000000
+      internalID: -5986183642047061910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_27
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 16
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0cd360e69ef02dc0800000000000000
+      internalID: -3665650172716393461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_28
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 16
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51382d9fbc7c98080800000000000000
+      internalID: -9184590286161804523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_29
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 16
+        width: 36
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6506b7fdd0435300800000000000000
+      internalID: 239606527268619628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_30
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 40
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fbed07f31475e720800000000000000
+      internalID: 2874831566244015092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_31
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 16
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d57019960ac0f010800000000000000
+      internalID: 1220697628704011735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_32
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 16
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f619a3e79e151590800000000000000
+      internalID: -7704217949838960906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_attack_with_shadow_33
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 16
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4684dd46123cfc60800000000000000
+      internalID: 7853206921603745359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sword_attack_with_shadow_0: -411599914814426887
+      Sword_attack_with_shadow_1: 8813437849589471059
+      Sword_attack_with_shadow_10: 8332137887874416813
+      Sword_attack_with_shadow_11: -2048158578659974165
+      Sword_attack_with_shadow_12: 8198086012308189478
+      Sword_attack_with_shadow_13: -8946196410457779866
+      Sword_attack_with_shadow_14: 4156305458035828044
+      Sword_attack_with_shadow_15: -8270786140599434848
+      Sword_attack_with_shadow_16: -366331641586553265
+      Sword_attack_with_shadow_17: 9130511342870293939
+      Sword_attack_with_shadow_18: 4731797732084502563
+      Sword_attack_with_shadow_19: -4842448282936669495
+      Sword_attack_with_shadow_2: 32857253310916152
+      Sword_attack_with_shadow_20: -8700350993947273494
+      Sword_attack_with_shadow_21: -3809768534635172064
+      Sword_attack_with_shadow_22: -2693969302357635502
+      Sword_attack_with_shadow_23: 8482620158513156140
+      Sword_attack_with_shadow_24: 1372887823047164577
+      Sword_attack_with_shadow_25: -1285813939483657552
+      Sword_attack_with_shadow_26: -5986183642047061910
+      Sword_attack_with_shadow_27: -3665650172716393461
+      Sword_attack_with_shadow_28: -9184590286161804523
+      Sword_attack_with_shadow_29: 239606527268619628
+      Sword_attack_with_shadow_3: 4944211274718774539
+      Sword_attack_with_shadow_30: 2874831566244015092
+      Sword_attack_with_shadow_31: 1220697628704011735
+      Sword_attack_with_shadow_32: -7704217949838960906
+      Sword_attack_with_shadow_33: 7853206921603745359
+      Sword_attack_with_shadow_4: 8220968792299149318
+      Sword_attack_with_shadow_5: -135679846730326277
+      Sword_attack_with_shadow_6: 5570765128136190957
+      Sword_attack_with_shadow_7: -5976034773107441317
+      Sword_attack_with_shadow_8: 1029097054890462623
+      Sword_attack_with_shadow_9: 4252478168082621051
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556e4c13ec25d5c46997462320e48119, type: 3}
+  m_Name: Lassi_Start
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  npcText: "Witaj, podr\xF3\u017Cniku. Czego szukasz w tych stronach?"
+  options:
+  - text: "Witaj, pozw\xF3l \u017Ce si\u0119 przedstawi\u0119..."
+    nextNode: {fileID: 11400000, guid: 7d4f4c54bd3b0be44b2dc05687f01947, type: 2}
+    affinityChange: 5
+  - text: "Jeste\u015B pi\u0119kna..."
+    nextNode: {fileID: 11400000, guid: 108d12c1fc2841f4ab574b9bb405ba41, type: 2}
+    affinityChange: -10
+  - text: Co to za miejsce...?
+    nextNode: {fileID: 11400000, guid: 144ef8ee0eb52ee41b7082ed9610ecef, type: 2}
+    affinityChange: 0
+  - text: "Gdzie mog\u0119 znale\u017A\u0107..."
+    nextNode: {fileID: 11400000, guid: 1cd4175539200b349afba76214ae2c78, type: 2}
+    affinityChange: 0
+  - text: "Odchodz\u0119..."
+    nextNode: {fileID: 11400000, guid: 468e50de61df2f04c80ecf1a339df434, type: 2}
+    affinityChange: 0

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556e4c13ec25d5c46997462320e48119, type: 3}
+  m_Name: Lassi_ask_for_place
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueNode
+  npcText: "Jeste\u015Bmy w lesie bez nazwy, chocia\u017C ludzie spoza tych teren\xF3w
+    m\xF3wi\u0105 o tym miejscu Akwitania."
+  options:
+  - text: Rozumiem.
+    nextNode: {fileID: 11400000, guid: 414189ff5f1d52a40a877431853e3da6, type: 2}
+    affinityChange: 0
