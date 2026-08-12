@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Bootstrap.unity
+    guid: 34bc4c7f499c85b47933d26d0573c069
+  - enabled: 1
+    path: Assets/Scenes/World.unity
+    guid: 856c61ba9c30d404fa7bc3652aaa10f3
+  - enabled: 1
+    path: Assets/Scenes/MysteriousCave_interior.unity
+    guid: df9d49e4b6aa7bd4091364df8cefb7af
+  - enabled: 1
+    path: Assets/Scenes/VillageHouse_Interior.unity
+    guid: 2b4131711ddf4a84ba3d313c3331975c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

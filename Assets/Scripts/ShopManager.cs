@@ -8,51 +8,77 @@ public class ShopManager : MonoBehaviour
     public static ShopManager instance;
 
     [Header("Oferta Kupca (Lewa Strona)")]
-    public ShopItemSlot[] shopSlots; // Kwadraty z lewej strony
+    public Transform shopSlotsParent;   // NOWE: przeciagnij tu obiekt "ShopSlots" (opcjonalnie, jako zabezpieczenie)
+    public ShopItemSlot[] shopSlots;    // Kwadraty z lewej strony
     public TextMeshProUGUI pageText;
     private int currentPage = 0;
     private List<ItemData> currentShopItems = new List<ItemData>();
 
-    [Header("Stół Handlowy (Środek)")]
+    [Header("Stol Handlowy (Srodek)")]
     public Image centerIcon;
     public TextMeshProUGUI centerAmountText;
     public TextMeshProUGUI priceText;
     public Button buyButton;
     public Button sellButton;
 
-    [Header("Pieniądze Gracza")]
+    [Header("Pieniadze Gracza")]
     public TextMeshProUGUI playerMoneyText;
 
     private ItemData stagedItem;
     private int stagedAmount;
-    private bool isSelling; // Zmienna mówiąca, czy gracz coś tu położył, czy wybrał towar kupca
+    private bool isSelling; // true = gracz cos polozyl na stol, false = gracz wybral towar kupca
 
-    void Awake() { instance = this; }
+    void Awake()
+    {
+        instance = this;
+        AutoFillSlots();
+    }
+
+    // Jesli zapomnisz przeciagnac slotow w Inspektorze, znajdziemy je same po rodzicu
+    private void AutoFillSlots()
+    {
+        if ((shopSlots == null || shopSlots.Length == 0) && shopSlotsParent != null)
+        {
+            shopSlots = shopSlotsParent.GetComponentsInChildren<ShopItemSlot>(true);
+            Debug.Log($"ShopManager: automatycznie znalazl {shopSlots.Length} slotow kupca.");
+        }
+    }
 
     public void OpenShop(NPCStats npc)
     {
-        // --- DETEKTYW 1: Sprawdzamy, czy kupiec w ogóle ma towar! ---
-        if (npc.shopItems == null || npc.shopItems.Length == 0)
+        gameObject.SetActive(true); // najpierw wlaczamy, potem rysujemy
+        AutoFillSlots();
+
+        if (npc == null)
+        {
+            Debug.LogError("BLAD: OpenShop dostal pustego NPC! Sprawdz, czy DialogueManager zna currentNPC.");
+            currentShopItems = new List<ItemData>();
+        }
+        else if (npc.shopItems == null || npc.shopItems.Length == 0)
         {
             Debug.LogWarning($"UWAGA: Kupiec {npc.npcName} nie ma nic w tablicy ShopItems!");
             currentShopItems = new List<ItemData>();
         }
         else
         {
-            currentShopItems = new List<ItemData>(npc.shopItems);
-            Debug.Log($"Sklep otwarty! Załadowano {currentShopItems.Count} przedmiotów do sprzedaży.");
+            // Odsiewamy puste pola (Element = None) z tablicy w Inspektorze
+            currentShopItems = new List<ItemData>();
+            foreach (ItemData it in npc.shopItems)
+            {
+                if (it != null) currentShopItems.Add(it);
+            }
+            Debug.Log($"Sklep otwarty! Zaladowano {currentShopItems.Count} przedmiotow kupca {npc.npcName}.");
         }
 
         currentPage = 0;
         ClearStage();
         UpdatePage();
         UpdateMoneyText();
-        gameObject.SetActive(true);
     }
 
     public void CloseShop()
     {
-        // Jeśli gracz położył na stół swój przedmiot, ale wyłączył sklep, oddajemy mu go do plecaka!
+        // Jesli gracz polozyl na stol swoj przedmiot, ale wylaczyl sklep, oddajemy mu go do plecaka!
         if (isSelling && stagedItem != null && InventoryUI.instance != null)
         {
             InventoryUI.instance.Add(stagedItem, stagedAmount);
@@ -64,51 +90,54 @@ public class ShopManager : MonoBehaviour
     // --- PAGINACJA ---
     public void UpdatePage()
     {
+        if (shopSlots == null || shopSlots.Length == 0)
+        {
+            Debug.LogError("BLAD: Tablica 'Shop Slots' w ShopManagerze jest PUSTA! Przeciagnij tam 20 slotow (albo obiekt-rodzica w pole 'Shop Slots Parent').");
+            if (pageText != null) pageText.text = "Strona 1 / 1";
+            return;
+        }
+
         int maxPages = Mathf.Max(1, Mathf.CeilToInt((float)currentShopItems.Count / shopSlots.Length));
         if (pageText != null) pageText.text = $"Strona {currentPage + 1} / {maxPages}";
 
         for (int i = 0; i < shopSlots.Length; i++)
         {
-            // --- DETEKTYW 2: Zabezpieczenie przed pustymi miejscami w tablicy ---
             if (shopSlots[i] == null)
             {
-                Debug.LogError($"BŁĄD: Slot nr {i} w tablicy 'Shop Slots' w ShopManagerze jest PUSTY! Sprawdź Inspektor.");
-                continue; // Przeskakujemy zepsuty slot, żeby reszta sklepu mogła się załadować!
+                Debug.LogError($"BLAD: Slot nr {i} w tablicy 'Shop Slots' jest PUSTY! Sprawdz Inspektor.");
+                continue;
             }
 
             int itemIndex = (currentPage * shopSlots.Length) + i;
-            if (itemIndex < currentShopItems.Count)
-            {
-                shopSlots[i].Setup(currentShopItems[itemIndex]);
-            }
-            else
-            {
-                shopSlots[i].Clear();
-            }
+            if (itemIndex < currentShopItems.Count) shopSlots[i].Setup(currentShopItems[itemIndex]);
+            else shopSlots[i].Clear();
         }
     }
 
-    public void NextPage() 
-    { 
+    public void NextPage()
+    {
+        if (shopSlots == null || shopSlots.Length == 0) return;
         int maxPages = Mathf.CeilToInt((float)currentShopItems.Count / shopSlots.Length);
         if (currentPage < maxPages - 1) { currentPage++; UpdatePage(); }
     }
 
-    public void PrevPage() 
-    { 
+    public void PrevPage()
+    {
         if (currentPage > 0) { currentPage--; UpdatePage(); }
     }
 
-    // --- WYKŁADANIE NA STÓŁ ---
+    // --- WYKLADANIE NA STOL ---
     public void StageForBuy(ItemData item)
     {
-        if (isSelling && stagedItem != null) InventoryUI.instance.Add(stagedItem, stagedAmount); // Zwrot z powrotem
+        if (isSelling && stagedItem != null && InventoryUI.instance != null)
+            InventoryUI.instance.Add(stagedItem, stagedAmount); // zwrot poprzedniego towaru gracza
 
         stagedItem = item;
         stagedAmount = 1;
         isSelling = false;
 
         centerIcon.sprite = item.icon;
+        centerIcon.preserveAspect = true;
         centerIcon.enabled = true;
         centerAmountText.text = "";
 
@@ -121,13 +150,15 @@ public class ShopManager : MonoBehaviour
 
     public void StageForSell(ItemData item, int amount)
     {
-        if (isSelling && stagedItem != null) InventoryUI.instance.Add(stagedItem, stagedAmount);
+        if (isSelling && stagedItem != null && InventoryUI.instance != null)
+            InventoryUI.instance.Add(stagedItem, stagedAmount);
 
         stagedItem = item;
         stagedAmount = amount;
         isSelling = true;
 
         centerIcon.sprite = item.icon;
+        centerIcon.preserveAspect = true;
         centerIcon.enabled = true;
         centerAmountText.text = amount > 1 ? amount.ToString() : "";
 
@@ -136,6 +167,27 @@ public class ShopManager : MonoBehaviour
 
         buyButton.interactable = false;
         sellButton.interactable = true;
+    }
+
+    // --- NOWOSC: ZDEJMOWANIE PRZEDMIOTU ZE STOLU ---
+    // Wywolywane klikiem w srodkowe pole PUSTA reka.
+    public void TakeBackFromStage()
+    {
+        if (stagedItem == null) return;
+
+        // Towar kupca po prostu znika ze stolu (nie jest wlasnoscia gracza)
+        if (isSelling && InventoryUI.instance != null && InventoryUI.instance.draggedItem == null)
+        {
+            // Bierzemy wlasny przedmiot z powrotem "na myszke" - mozesz go wlozyc w dowolny slot plecaka
+            InventoryUI.instance.SetDraggedItem(stagedItem, stagedAmount);
+        }
+
+        ClearStage();
+    }
+
+    public bool HasStagedItem()
+    {
+        return stagedItem != null;
     }
 
     public void ClearStage()
@@ -159,11 +211,11 @@ public class ShopManager : MonoBehaviour
             if (PlayerStats.instance.currentMoney >= price)
             {
                 int leftovers = InventoryUI.instance.Add(stagedItem, 1);
-                if (leftovers == 0) // Zmieściło się w plecaku!
+                if (leftovers == 0)
                 {
                     PlayerStats.instance.currentMoney -= price;
                     UpdateMoneyText();
-                    StageForBuy(stagedItem); // Odśwież (zablokuje przycisk, jeśli zabrakło kasy na kolejne)
+                    StageForBuy(stagedItem);
                     InventoryUI.instance.UpdatePlayerInfoUI();
                 }
                 else Debug.Log("Brak miejsca w plecaku!");
@@ -177,16 +229,17 @@ public class ShopManager : MonoBehaviour
         {
             int profit = GetSellPrice(stagedItem) * stagedAmount;
             PlayerStats.instance.currentMoney += profit;
-            
+
             UpdateMoneyText();
-            ClearStage(); // Po sprzedaży stół staje się pusty
+            ClearStage();
             InventoryUI.instance.UpdatePlayerInfoUI();
         }
     }
 
     private void UpdateMoneyText()
     {
-        if (playerMoneyText != null) playerMoneyText.text = PlayerStats.instance.currentMoney.ToString();
+        if (playerMoneyText != null && PlayerStats.instance != null)
+            playerMoneyText.text = PlayerStats.instance.currentMoney.ToString();
     }
 
     // --- MATEMATYKA (CHARYZMA I RABATY) ---
@@ -194,14 +247,13 @@ public class ShopManager : MonoBehaviour
     {
         float discount = PlayerStats.instance != null ? PlayerStats.instance.discount : 0f;
         int finalPrice = Mathf.RoundToInt(item.price * (1f - discount));
-        return Mathf.Max(1, finalPrice); // Zawsze kosztuje minimum 1G
+        return Mathf.Max(1, finalPrice);
     }
 
     private int GetSellPrice(ItemData item)
     {
         float discount = PlayerStats.instance != null ? PlayerStats.instance.discount : 0f;
-        // Gracz sprzedaje za 50% ceny. Rabat (np. 0.3 od Barda) ZWIĘKSZA ten zysk!
         int finalPrice = Mathf.RoundToInt((item.price * 0.5f) * (1f + discount));
-        return Mathf.Max(1, finalPrice); 
+        return Mathf.Max(1, finalPrice);
     }
 }

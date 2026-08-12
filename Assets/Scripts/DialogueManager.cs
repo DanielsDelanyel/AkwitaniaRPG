@@ -9,12 +9,12 @@ public class DialogueManager : MonoBehaviour
     private DialogueNode currentNode;
     private NPCStats currentNPC;
 
-    [Header("Panel Prezentów")]
-    public GameObject giftOverlay; // <-- Zmieniona nazwa. Tutaj przeci¹gniesz swój obiekt 'Gift' (Z³ote pude³ko)
+    [Header("Panel Prezentow")]
+    public GameObject giftOverlay;
 
     public GameObject[] elementsToHide;
 
-    [Header("G³ówne Okno")]
+    [Header("Glowne Okno")]
     public GameObject dialogueWindow;
     public Image portraitImage;
     public TextMeshProUGUI nameText;
@@ -23,10 +23,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Sklep")]
     public GameObject shopPanel;
 
-
     [Header("Opcje Dialogowe")]
-    public GameObject[] optionButtons; // Przeci¹gnij tu wszystkie 4 przyciski opcji
-    public TextMeshProUGUI[] optionTexts; // Przeci¹gnij tu teksty znajduj¹ce siê w tych przyciskach
+    public GameObject[] optionButtons;
+    public TextMeshProUGUI[] optionTexts;
 
     [Header("Przyciski Akcji")]
     public GameObject tradeButton;
@@ -37,7 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this; // Singleton - ³atwy dostêp z ka¿dego innego skryptu!
+        instance = this;
     }
 
     private void DisplayNode(DialogueNode node)
@@ -59,7 +58,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // Ta funkcja jest wywo³ywana przez NPC po klikniêciu
     public void StartDialogue(NPCStats npc, DialogueNode startNode, bool canTrade)
     {
         currentNPC = npc;
@@ -87,7 +85,6 @@ public class DialogueManager : MonoBehaviour
         tradeButton.SetActive(canTrade);
         giftButton.SetActive(true);
 
-        // Wyœwietlamy pierwszy klocek rozmowy
         DisplayNode(startNode);
     }
 
@@ -100,32 +97,22 @@ public class DialogueManager : MonoBehaviour
         if (playerMovement != null) playerMovement.enabled = true;
     }
 
-    // Tymczasowe funkcje dla przycisków, dopóki nie zbudujemy drzewka
     public void OnOptionClicked(int optionIndex)
     {
         if (currentNode == null || optionIndex >= currentNode.options.Length) return;
 
         DialogueOption selectedOption = currentNode.options[optionIndex];
 
-        // 1. Zmiana Sympatii postaci!
         if (selectedOption.affinityChange != 0 && currentNPC != null)
         {
             currentNPC.ModifyAffinity(selectedOption.affinityChange);
-            Debug.Log($"Sympatia Lassi zmienia siê o {selectedOption.affinityChange}. Wynosi teraz: {currentNPC.affinity}");
+            Debug.Log($"Sympatia zmienia sie o {selectedOption.affinityChange}. Wynosi teraz: {currentNPC.affinity}");
         }
 
-        // 2. Skok do kolejnego dialogu lub zamkniêcie okna
-        if (selectedOption.nextNode != null)
-        {
-            DisplayNode(selectedOption.nextNode); // Jeœli jest kolejny krok, ³adujemy go!
-        }
-        else
-        {
-            CloseDialogue(); // Jeœli pole 'nextNode' jest puste, koñczymy rozmowê!
-        }
+        if (selectedOption.nextNode != null) DisplayNode(selectedOption.nextNode);
+        else CloseDialogue();
     }
 
-    // Pozwala skryptowi z³otego pude³ka dowiedzieæ siê, komu dajemy prezent
     public NPCStats GetCurrentNPC()
     {
         return currentNPC;
@@ -137,7 +124,6 @@ public class DialogueManager : MonoBehaviour
         if (giftOverlay != null) giftOverlay.SetActive(true);
         dialogueWindow.SetActive(false);
 
-        // --- NOWOŒÆ: Wy³¹czamy wszystkie elementy z listy ---
         foreach (GameObject obj in elementsToHide)
         {
             if (obj != null) obj.SetActive(false);
@@ -155,80 +141,80 @@ public class DialogueManager : MonoBehaviour
             InventoryUI.instance.ClearDraggedItem();
         }
 
-        if (currentNPC != null)
-        {
-            dialogueWindow.SetActive(true);
-        }
-
-        // --- NOWOŒÆ: W³¹czamy je z powrotem, by zwyk³y ekwipunek dzia³a³ normalnie! ---
-        foreach (GameObject obj in elementsToHide)
-        {
-            if (obj != null) obj.SetActive(true);
-        }
-    }
-
-    // Ta funkcja odpala siê w momencie klikniêcia na z³ote pude³ko z przedmiotem w d³oni
-    public void TriggerGiftReaction(int affinityChange)
-    {
-        CloseGiftPanel(); // Zamykamy plecak z prezentami
-
-        DialogueNode nextNode = null;
-
-        // Wybieramy reakcjê na podstawie punktów. Progi mo¿esz dowolnie modyfikowaæ!
-        if (affinityChange >= 5) nextNode = currentNPC.reactionLove;
-        else if (affinityChange <= -5) nextNode = currentNPC.reactionHate;
-        else nextNode = currentNPC.reactionNeutral;
-
-        if (nextNode != null)
-        {
-            DisplayNode(nextNode); // £adujemy nowy tekst do okna dialogowego!
-        }
-        else
-        {
-            Debug.LogWarning("Brakuje przypisanego wêz³a reakcji u NPC!");
-            CloseDialogue();
-        }
-    }
-
-    // Funkcja wywo³ywana po klikniêciu przycisku z monetami w oknie dialogowym
-    public void OpenShopPanel()
-    {
-        // Pokazujemy przyciemniony ekran z kowalem
-        if (shopPanel != null) shopPanel.SetActive(true);
-
-        // Otwieramy prawdziwy ekwipunek gracza, by mia³ czym handlowaæ
-        if (InventoryUI.instance != null) InventoryUI.instance.inventoryWindow.SetActive(true);
-
-        // Tymczasowo ukrywamy dymek dialogowy
-        dialogueWindow.SetActive(false);
-
-        // Opcjonalnie: ukrywamy statystyki postaci (tak jak przy prezentach)
-        foreach (GameObject obj in elementsToHide)
-        {
-            if (obj != null) obj.SetActive(false);
-        }
-    }
-
-    // Funkcja wywo³ywana przyciskiem wyjœcia w nowym oknie sklepu
-    public void CloseShopPanel()
-    {
-        if (shopPanel != null) shopPanel.SetActive(false);
-        if (InventoryUI.instance != null) InventoryUI.instance.inventoryWindow.SetActive(false);
-
-        // Zabezpieczenie zrzutu z myszki
-        if (InventoryUI.instance != null && InventoryUI.instance.draggedItem != null)
-        {
-            InventoryUI.instance.Add(InventoryUI.instance.draggedItem, InventoryUI.instance.draggedAmount);
-            InventoryUI.instance.ClearDraggedItem();
-        }
-
-        // Przywracamy okno dialogowe i ukryte elementy
         if (currentNPC != null) dialogueWindow.SetActive(true);
 
         foreach (GameObject obj in elementsToHide)
         {
             if (obj != null) obj.SetActive(true);
         }
-        ShopManager.instance.CloseShop();
+    }
+
+    public void TriggerGiftReaction(int affinityChange)
+    {
+        CloseGiftPanel();
+
+        DialogueNode nextNode = null;
+
+        if (affinityChange >= 5) nextNode = currentNPC.reactionLove;
+        else if (affinityChange <= -5) nextNode = currentNPC.reactionHate;
+        else nextNode = currentNPC.reactionNeutral;
+
+        if (nextNode != null)
+        {
+            DisplayNode(nextNode);
+        }
+        else
+        {
+            Debug.LogWarning("Brakuje przypisanego wezla reakcji u NPC!");
+            CloseDialogue();
+        }
+    }
+
+    // --- TU BYL BLAD: panel sie wlaczal, ale nikt nie mowil ShopManagerowi, z kim handlujemy ---
+    public void OpenShopPanel()
+    {
+        if (shopPanel != null) shopPanel.SetActive(true);
+
+        // Aktywacja obiektu odpala Awake() ShopManagera, wiec dopiero teraz instance istnieje
+        if (ShopManager.instance != null)
+        {
+            ShopManager.instance.OpenShop(currentNPC); // <-- KLUCZOWA LINIJKA
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono ShopManagera! Sprawdz, czy skrypt ShopManager wisi na obiekcie ShopPanel.");
+        }
+
+        if (InventoryUI.instance != null) InventoryUI.instance.inventoryWindow.SetActive(true);
+
+        dialogueWindow.SetActive(false);
+
+        foreach (GameObject obj in elementsToHide)
+        {
+            if (obj != null) obj.SetActive(false);
+        }
+    }
+
+    public void CloseShopPanel()
+    {
+        // Najpierw zamykamy sklep - odda gracz owi przedmiot lezacy na stole
+        if (ShopManager.instance != null) ShopManager.instance.CloseShop();
+
+        if (shopPanel != null) shopPanel.SetActive(false);
+
+        if (InventoryUI.instance != null && InventoryUI.instance.draggedItem != null)
+        {
+            InventoryUI.instance.Add(InventoryUI.instance.draggedItem, InventoryUI.instance.draggedAmount);
+            InventoryUI.instance.ClearDraggedItem();
+        }
+
+        if (InventoryUI.instance != null) InventoryUI.instance.inventoryWindow.SetActive(false);
+
+        if (currentNPC != null) dialogueWindow.SetActive(true);
+
+        foreach (GameObject obj in elementsToHide)
+        {
+            if (obj != null) obj.SetActive(true);
+        }
     }
 }

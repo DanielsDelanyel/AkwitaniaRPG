@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Tileset_kraina_4_22
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 519478678, guid: dc2985b1c4ce07d4590950450a55f1b7, type: 3}
+  m_Sprite: {fileID: -1902825486, guid: dc2985b1c4ce07d4590950450a55f1b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
