@@ -32,3 +32,12 @@ MonoBehaviour:
   dexterityBonus: 0
   intellegenceBonus: 0
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []

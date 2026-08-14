@@ -1,17 +1,25 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
     [Header("Dane Przedmiotu")]
     public ItemData itemData;
 
-    [Header("Iloœæ (np. dla strza³)")]
-    public int amount = 1; // Ile sztuk le¿y w tej paczce na trawie
+    [Header("IloÅ›Ä‡ (np. dla strzaï¿½)")]
+    public int amount = 1; // Ile sztuk leï¿½y w tej paczce na trawie
 
     [Header("Ustawienia")]
     public GameObject promptE;
     private bool isPlayerClose = false;
     private GameObject activePrompt;
+
+    void Start()
+    {
+        // NOWE: paczka lezaca na ziemi dostaje wlasny, wylosowany egzemplarz przedmiotu.
+        // Jesli itemData jest juz egzemplarzem (bo gracz wyrzucil miecz z plecaka),
+        // fabryka odda go bez zmian i statystyki zostana zachowane.
+        itemData = ItemFactory.Create(itemData);
+    }
 
     void Update()
     {
@@ -23,25 +31,25 @@ public class ItemPickup : MonoBehaviour
 
     void PickUp()
     {
-        // Add zwraca nam, ile przedmiotów NIE ZMIEŒCI£O SIÊ do plecaka
+        // Add zwraca nam, ile przedmiotï¿½w NIE ZMIEï¿½CIï¿½O SIï¿½ do plecaka
         int leftovers = InventoryUI.instance.Add(itemData, amount);
 
         if (leftovers == 0)
         {
-            // Podnieœliœmy wszystko!
+            // Podnieï¿½liï¿½my wszystko!
             Debug.Log($"Podniesiono: {itemData.itemName} ({amount} szt.)");
             if (activePrompt != null) Destroy(activePrompt);
             Destroy(gameObject); // Niszczymy obiekt na trawie
         }
         else if (leftovers < amount)
         {
-            // Zmieœci³a siê tylko czêœæ
-            Debug.Log($"Plecak pe³ny! Na ziemi zosta³o {leftovers} szt.");
+            // Zmieï¿½ciï¿½a siï¿½ tylko czï¿½ï¿½
+            Debug.Log($"Plecak peÅ‚ny! Na ziemi zostaÅ‚o {leftovers} szt.");
             amount = leftovers; // Redukujemy stos na ziemi do samej resztki
         }
         else
         {
-            Debug.Log("Ca³kowity brak miejsca w plecaku!");
+            Debug.Log("CaÅ‚kowity brak miejsca w plecaku!");
         }
     }
 

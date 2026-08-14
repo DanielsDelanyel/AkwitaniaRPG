@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // Potrzebne do Image
+using UnityEngine.UI;
 using TMPro;
 
 public class InventoryTooltip : MonoBehaviour
@@ -8,58 +8,58 @@ public class InventoryTooltip : MonoBehaviour
 
     [Header("Komponenty UI")]
     public TextMeshProUGUI headerField;   // Nazwa
-    public TextMeshProUGUI contentField;  // Opis
-    public TextMeshProUGUI rarityField;   // Tekst rzadkoœci (np. "Epicki")
-
-    // --- NOWOŒÆ: Obrazek na ikonê rzadkoœci ---
+    public TextMeshProUGUI contentField;  // Opis fabularny
+    public TextMeshProUGUI rarityField;   // Tekst rzadkosci
     public Image rarityIconImage;
-    // -----------------------------------------
-
     public TextMeshProUGUI priceField;
 
-    [Header("Grafiki Rzadkoœci (Przypisz swoje ikonki)")]
-    // --- NOWOŒÆ: Miejsca na Twoje sprite'y ---
+    [Header("NOWE POLA (utworz je w TooltipWindow)")]
+    [Tooltip("Tu trafiaja bonusy: +5 Sila, Przywraca 20 pkt zdrowia itd.")]
+    public TextMeshProUGUI statsField;
+
+    [Tooltip("Opcjonalnie: typ przedmiotu, np. 'Bron jednoreczna'.")]
+    public TextMeshProUGUI typeField;
+
+    [Tooltip("Opcjonalnie: waga przedmiotu.")]
+    public TextMeshProUGUI weightField;
+
+    [Header("Grafiki Rzadkosci")]
     public Sprite commonIcon;
     public Sprite rareIcon;
     public Sprite epicIcon;
     public Sprite legendaryIcon;
-    // ----------------------------------------
-
 
     [Header("Ustawienia")]
     public float offsetX = 15f;
     public float offsetY = -15f;
+
+    [Tooltip("Zaznacz, jesli TooltipWindow ma Vertical Layout Group + Content Size Fitter. " +
+             "Okno bedzie sie wtedy samo kurczyc i rozciagac pod zawartosc.")]
+    public bool autoResize = false;
 
     private RectTransform rectTransform;
 
     void Awake()
     {
         instance = this;
-        // Pobieramy komponent raz, ¿eby nie obci¹¿aæ gry co klatkê
         rectTransform = GetComponent<RectTransform>();
     }
 
     void Start()
     {
-        // Na starcie wy³¹czamy tooltip i ikonkê
         if (rarityIconImage != null) rarityIconImage.enabled = false;
         gameObject.SetActive(false);
     }
 
     void Update()
     {
-        // --- INTELIGENTNE POZYCJONOWANIE W EKRANIE ---
         Vector2 mousePos = Input.mousePosition;
 
-        // Sprawdzamy, w której po³ówce ekranu jest kursor (wynik to 0 albo 1)
         float pivotX = mousePos.x / Screen.width > 0.5f ? 1f : 0f;
         float pivotY = mousePos.y / Screen.height > 0.5f ? 1f : 0f;
 
-        // Zmieniamy punkt zaczepienia (Pivot) ToolTipa w locie!
-        // Jeœli myszka jest przy prawej krawêdzi, okienko rysuje siê w lewo.
         rectTransform.pivot = new Vector2(pivotX, pivotY);
 
-        // Odwracamy te¿ Twoje offsety, ¿eby ToolTip odsuwa³ siê w odpowiedni¹ stronê i nie zas³ania³ myszki
         float currentOffsetX = pivotX == 1f ? -Mathf.Abs(offsetX) : Mathf.Abs(offsetX);
         float currentOffsetY = pivotY == 1f ? -Mathf.Abs(offsetY) : Mathf.Abs(offsetY);
 
@@ -68,58 +68,81 @@ public class InventoryTooltip : MonoBehaviour
 
     public void ShowTooltip(ItemData item)
     {
-        // Ustawiamy teksty
-        headerField.text = item.itemName;
-        contentField.text = item.description;
+        if (item == null) return;
 
+        gameObject.SetActive(true);
+
+        // --- NAZWA (w kolorze rzadkosci - czytelniej niz sama nazwa na bialo) ---
+        if (headerField != null)
+        {
+            headerField.text = item.itemName;
+            headerField.color = GetRarityColor(item.rarity);
+        }
+
+        // --- RZADKOSC ---
         if (rarityField != null)
         {
             rarityField.text = GetRarityName(item.rarity);
             rarityField.color = GetRarityColor(item.rarity);
         }
 
-        // --- NOWOŒÆ: Ustawiamy ikonê rzadkoœci ---
         if (rarityIconImage != null)
         {
-            // Pobieramy odpowiedni obrazek
             Sprite iconToShow = GetRaritySprite(item.rarity);
-
-            if (iconToShow != null)
-            {
-                // Jeœli mamy grafikê, przypisujemy j¹ i w³¹czamy obrazek
-                rarityIconImage.sprite = iconToShow;
-                rarityIconImage.enabled = true;
-            }
-            else
-            {
-                // Jeœli nie przypisa³eœ grafiki dla tej rzadkoœci, ukrywamy obrazek
-                rarityIconImage.enabled = false;
-            }
+            rarityIconImage.sprite = iconToShow;
+            rarityIconImage.enabled = iconToShow != null;
         }
-        // -----------------------------------------
+
+        // --- TYP PRZEDMIOTU ---
+        SetField(typeField, item.GetTypeName());
+
+        // --- STATYSTYKI: TU DZIEJE SIE CALA MAGIA ---
+        // Klucz z healAmount = 0 i zerowymi bonusami -> pole znika calkowicie.
+        // Mikstura z healAmount = 20 -> "Przywraca 20 pkt zdrowia".
+        if (statsField != null)
+        {
+            if (item.HasAnyStats()) SetField(statsField, item.GetStatsDescription());
+            else statsField.gameObject.SetActive(false);
+        }
+
+        // --- OPIS FABULARNY (chowamy, jesli pusty) ---
+        SetField(contentField, item.description);
+
+        // --- WAGA ---
+        if (weightField != null)
+        {
+            if (item.weight > 0f) SetField(weightField, $"Waga: {item.weight}");
+            else weightField.gameObject.SetActive(false);
+        }
+
+        // --- CENA ---
         if (priceField != null)
         {
-            if (item.price > 0)
-            {
-                priceField.text = $"Cena: {item.price} G";
-                priceField.gameObject.SetActive(true);
-            }
-            else
-            {
-                priceField.gameObject.SetActive(false);
-            }
+            if (item.price > 0) SetField(priceField, $"Cena: {item.price} G");
+            else priceField.gameObject.SetActive(false);
         }
-        gameObject.SetActive(true);
+
+        // Przeliczenie wysokosci okna, gdy czesc pol zniknela
+        if (autoResize)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+    }
+
+    // Wpisuje tekst i wlacza pole; pusty tekst = pole znika, zeby nie zostawialo dziury
+    private void SetField(TextMeshProUGUI field, string text)
+    {
+        if (field == null) return;
+
+        bool hasText = !string.IsNullOrWhiteSpace(text);
+        field.gameObject.SetActive(hasText);
+        if (hasText) field.text = text;
     }
 
     public void HideTooltip()
     {
         gameObject.SetActive(false);
-        // Wy³¹czamy ikonkê przy chowaniu
         if (rarityIconImage != null) rarityIconImage.enabled = false;
     }
 
-    // Pomocnicza funkcja do nazw
     string GetRarityName(ItemRarity rarity)
     {
         switch (rarity)
@@ -132,20 +155,18 @@ public class InventoryTooltip : MonoBehaviour
         }
     }
 
-    // Pomocnicza funkcja do kolorów
     Color GetRarityColor(ItemRarity rarity)
     {
         switch (rarity)
         {
             case ItemRarity.Common: return Color.white;
             case ItemRarity.Rare: return Color.cyan;
-            case ItemRarity.Epic: return new Color(0.6f, 0f, 1f); // Fioletowy
+            case ItemRarity.Epic: return new Color(0.6f, 0f, 1f);
             case ItemRarity.Legendary: return Color.yellow;
             default: return Color.white;
         }
     }
 
-    // --- NOWOŒÆ: Pomocnicza funkcja do grafik ---
     Sprite GetRaritySprite(ItemRarity rarity)
     {
         switch (rarity)

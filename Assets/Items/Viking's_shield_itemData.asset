@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Viking's_shield_itemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Tarcza wikinga
+  icon: {fileID: 3920480664274822880, guid: 7dbfcf6b92dfa284cbe175415975edba, type: 3}
+  description: "Porz\u0105dna tarcza, nie jednemu uratowa\u0142a sk\xF3r\u0119."
+  itemType: 7
+  rarity: 0
+  itemPrefab: {fileID: 8992644449882156520, guid: 52e338066ff31524aaf722deac3786b6, type: 3}
+  isStackable: 0
+  weight: 2
+  price: 32
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 0
+  magicDamageBonus: 0
+  defenseBonus: 6
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: -1
+  intellegenceBonus: 0
+  charismaBonus: 0

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Fine Hood_itemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "Porz\u0105dny kaptur"
+  icon: {fileID: -4141087876316161580, guid: ed3444f3e4d4d2145a3a60069651f95f, type: 3}
+  description: "Stworzony przez profesjonalist\xF3w dla profesjonalist\xF3w. Dobrze
+    ukrywa..."
+  itemType: 8
+  rarity: 1
+  itemPrefab: {fileID: 8992644449882156520, guid: 432c5f0e957d51b43b3a667be5c03aba, type: 3}
+  isStackable: 0
+  weight: 0.3
+  price: 166
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 2
+  magicDamageBonus: 0
+  defenseBonus: 2
+  magicDefenseBonus: 0
+  vitalityBonus: 1
+  strengthBonus: 3
+  dexterityBonus: 6
+  intellegenceBonus: 0
+  charismaBonus: 0

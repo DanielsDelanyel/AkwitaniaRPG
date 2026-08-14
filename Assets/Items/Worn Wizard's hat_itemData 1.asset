@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Worn Wizard's hat_itemData 1
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Czarodziejski kapelusz
+  icon: {fileID: 3920480664274822880, guid: 7dbfcf6b92dfa284cbe175415975edba, type: 3}
+  description: "Ka\u017Cdy kojarzy czarodziej\xF3w, mag\xF3w w\u0142a\u015Bnie z
+    tymi czapkami. Nie nosz\u0105 ich jednak bez powodu, potrafi\u0105 skupia\u0107
+    energi\u0119 magiczn\u0105 z otoczenia i sci\u0105ga\u0107 j\u0105 na nosz\u0105cego.
+    Ten wygl\u0105da na taki, kt\xF3ry mia\u0142 ju\u017C niejednego w\u0142a\u015Bciciela... "
+  itemType: 8
+  rarity: 1
+  itemPrefab: {fileID: 8992644449882156520, guid: e93bc0941a1d14f4cad9ee40b4b5169c, type: 3}
+  isStackable: 0
+  weight: 0.2
+  price: 120
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: -1
+  magicDamageBonus: 0
+  defenseBonus: 1
+  magicDefenseBonus: 0
+  vitalityBonus: 1
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 5
+  charismaBonus: 0

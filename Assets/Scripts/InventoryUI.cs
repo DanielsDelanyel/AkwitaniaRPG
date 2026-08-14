@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +23,7 @@ public class InventoryUI : MonoBehaviour
     public InventorySlot offhandSlot;
     public InventorySlot ring1Slot;
     public InventorySlot ring2Slot;
-    public InventorySlot necklaceSlot; 
+    public InventorySlot necklaceSlot;
     public InventorySlot ammoSlot;
 
     [Header("Drag & Drop")]
@@ -58,10 +58,10 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
         {
-            // --- NOWOŒÆ: Zabezpieczenie dla prezentów ---
+            // --- NOWOï¿½ï¿½: Zabezpieczenie dla prezentï¿½w ---
             if (DialogueManager.instance != null && DialogueManager.instance.giftOverlay != null && DialogueManager.instance.giftOverlay.activeSelf)
             {
-                // Jeœli jesteœmy w trybie wrêczania prezentu, zamykamy okno przez DialogueManager
+                // Jeï¿½li jesteï¿½my w trybie wrï¿½czania prezentu, zamykamy okno przez DialogueManager
                 DialogueManager.instance.CloseGiftPanel();
             }
             else
@@ -91,8 +91,8 @@ public class InventoryUI : MonoBehaviour
             if (ContextMenuUI.instance != null) ContextMenuUI.instance.CloseMenu();
             if (draggedItem != null)
             {
-                int leftovers = Add(draggedItem, draggedAmount); // Próbujemy zrzuciæ to co mamy na myszce
-                if (leftovers > 0) ThrowItem(draggedItem); // Brak miejsca? Wyrzucamy na ziemiê!
+                int leftovers = Add(draggedItem, draggedAmount); // Prï¿½bujemy zrzuciï¿½ to co mamy na myszce
+                if (leftovers > 0) ThrowItem(draggedItem); // Brak miejsca? Wyrzucamy na ziemiï¿½!
                 ClearDraggedItem();
             }
         }
@@ -159,7 +159,7 @@ public class InventoryUI : MonoBehaviour
 
         bool isTwoHanded = false;
 
-        // Sprawdzamy czy g³ówna broñ jest 2H lub £ukiem
+        // Sprawdzamy czy gï¿½ï¿½wna broï¿½ jest 2H lub ï¿½ukiem
         if (weaponSlot.item != null)
         {
             if (weaponSlot.item.itemType == ItemType.Weapon2h || weaponSlot.item.itemType == ItemType.Bow)
@@ -170,26 +170,26 @@ public class InventoryUI : MonoBehaviour
 
         if (isTwoHanded)
         {
-            // Jeœli trzymamy ³uk/2H, a w drugiej rêce coœ jest (np. tarcza) -> Zdejmujemy to!
+            // Jeï¿½li trzymamy ï¿½uk/2H, a w drugiej rï¿½ce coï¿½ jest (np. tarcza) -> Zdejmujemy to!
             if (offhandSlot.item != null)
             {
                 ItemData itemToMove = offhandSlot.item;
-                offhandSlot.ClearSlot(); // Czyœcimy drug¹ rêkê
+                offhandSlot.ClearSlot(); // Czyï¿½cimy drugï¿½ rï¿½kï¿½
 
-                // Próbujemy wrzuciæ tarczê do plecaka
+                // Prï¿½bujemy wrzuciï¿½ tarczï¿½ do plecaka
                 if (Add(itemToMove) > 0)
                 {
-                    // Jeœli plecak jest pe³ny (coœ zosta³o z Add), wyrzucamy na ziemiê
+                    // Jeï¿½li plecak jest peï¿½ny (coï¿½ zostaï¿½o z Add), wyrzucamy na ziemiï¿½
                     ThrowItem(itemToMove);
                 }
             }
 
-            // Blokujemy i przyciemniamy slot drugiej rêki
+            // Blokujemy i przyciemniamy slot drugiej rï¿½ki
             offhandSlot.SetBlocked(true);
         }
         else
         {
-            // Jeœli mamy woln¹ rêkê lub broñ 1H, odblokowujemy slot na tarcze
+            // Jeï¿½li mamy wolnï¿½ rï¿½kï¿½ lub broï¿½ 1H, odblokowujemy slot na tarcze
             offhandSlot.SetBlocked(false);
         }
     }
@@ -200,7 +200,7 @@ public class InventoryUI : MonoBehaviour
 
         if (item.isStackable)
         {
-            // Faza 1: Uzupe³niamy ju¿ istniej¹ce stosy tego przedmiotu
+            // Faza 1: Uzupeï¿½niamy juï¿½ istniejï¿½ce stosy tego przedmiotu
             foreach (var slot in slots)
             {
                 if (slot.item == item && slot.amount < maxStack)
@@ -208,14 +208,14 @@ public class InventoryUI : MonoBehaviour
                     int spaceLeft = maxStack - slot.amount;
                     if (spaceLeft >= amountToAdd)
                     {
-                        // Ca³oœæ mieœci siê w tym slocie
+                        // Caï¿½oï¿½ï¿½ mieï¿½ci siï¿½ w tym slocie
                         slot.amount += amountToAdd;
                         slot.UpdateSlotUI();
                         return 0;
                     }
                     else
                     {
-                        // Zape³niamy ten slot do oporu i szukamy miejsca dla reszty!
+                        // Zapeï¿½niamy ten slot do oporu i szukamy miejsca dla reszty!
                         slot.amount = maxStack;
                         slot.UpdateSlotUI();
                         amountToAdd -= spaceLeft;
@@ -224,7 +224,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        // Faza 2: Szukamy pustych slotów na to, co nam jeszcze zosta³o
+        // Faza 2: Szukamy pustych slotï¿½w na to, co nam jeszcze zostaï¿½o
         while (amountToAdd > 0)
         {
             bool foundEmpty = false;
@@ -233,20 +233,20 @@ public class InventoryUI : MonoBehaviour
                 if (slots[i].item == null) // Pusty slot!
                 {
                     foundEmpty = true;
-                    // Bierzemy maksymalnie 100 (lub 1 jeœli to niereplikowalny miecz)
+                    // Bierzemy maksymalnie 100 (lub 1 jeï¿½li to niereplikowalny miecz)
                     int amountToPlace = item.isStackable ? Mathf.Min(amountToAdd, maxStack) : 1;
 
                     slots[i].AddItem(item, amountToPlace);
                     amountToAdd -= amountToPlace;
-                    break; // Przerywamy pêtlê "for" i znowu krêcimy "while", ¿eby znaleŸæ kolejny pusty slot
+                    break; // Przerywamy pï¿½tlï¿½ "for" i znowu krï¿½cimy "while", ï¿½eby znaleï¿½ï¿½ kolejny pusty slot
                 }
             }
 
-            // Jeœli przeszukaliœmy wszystkie okienka i nie ma pustych -> koniec miejsca
+            // Jeï¿½li przeszukaliï¿½my wszystkie okienka i nie ma pustych -> koniec miejsca
             if (!foundEmpty) break;
         }
 
-        return amountToAdd; // Zwracamy to, na co ostatecznie zabrak³o plecaka
+        return amountToAdd; // Zwracamy to, na co ostatecznie zabrakï¿½o plecaka
     }
 
     public bool ConsumeAmmo()
@@ -288,10 +288,15 @@ public class InventoryUI : MonoBehaviour
             Vector3 spawnPos = playerMovement.transform.position + new Vector3(0f, -0.5f, 0f);
             GameObject droppedItem = Instantiate(item.itemPrefab, spawnPos, Quaternion.identity);
 
+            // WAZNE: przekazujemy KONKRETNY egzemplarz z jego wylosowanymi statystykami.
+            // Bez tego wyrzucony miecz zgubilby swoje bonusy przy ponownym podniesieniu!
+            ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
+            if (pickup != null) pickup.itemData = item;
+
             Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                // Nadajemy przedmiotowi lekki, losowy "œlizg" po trawie
+                // Nadajemy przedmiotowi lekki, losowy "ï¿½lizg" po trawie
                 Vector2 randomSlide = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
                 rb.linearVelocity = randomSlide * 2f;
             }
@@ -306,18 +311,18 @@ public class InventoryUI : MonoBehaviour
         {
             PlayerStats ps = PlayerStats.instance;
 
-            // 1. Aktualizacja osobnych okienek (Imiê i Z³oto)
+            // 1. Aktualizacja osobnych okienek (Imiï¿½ i Zï¿½oto)
             if (playerNameText != null) playerNameText.text = ps.playerName;
             if (playerMoneyText != null) playerMoneyText.text = ps.currentMoney.ToString();
 
-            // 2. Aktualizacja g³ównego okna ze statystykami
+            // 2. Aktualizacja gï¿½ï¿½wnego okna ze statystykami
             if (statsText != null)
             {
-                string info = $"Si³a: {ps.GetTotal(ps.baseSTR, ps.equipSTR)}\n" +
+                string info = $"Siï¿½a: {ps.GetTotal(ps.baseSTR, ps.equipSTR)}\n" +
                               $"Inteligencja: {ps.GetTotal(ps.baseINT, ps.equipINT)}\n" +
-                              $"Zrêcznoœæ: {ps.GetTotal(ps.baseZR, ps.equipZR)}\n" +
+                              $"Zrï¿½cznoï¿½ï¿½: {ps.GetTotal(ps.baseZR, ps.equipZR)}\n" +
                               $"Charyzma: {ps.GetTotal(ps.baseCHAR, ps.equipCHAR)}\n\n" +
-                              $"Obra¿enia: {ps.GetTotal(ps.baseDmg, ps.equipDmg)}\n" +
+                              $"Obraï¿½enia: {ps.GetTotal(ps.baseDmg, ps.equipDmg)}\n" +
                               $"Obrona: {ps.GetTotal(ps.baseDef, ps.equipDef)}\n" +
                               $"Obrona Magiczna: {ps.GetTotal(ps.baseMagicDef, ps.equipMagicDef)}";
 
@@ -326,7 +331,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // --- NOWOŒÆ: Szybkie u¿ywanie przedmiotów z prawego przycisku ---
+    // --- NOWOï¿½ï¿½: Szybkie uï¿½ywanie przedmiotï¿½w z prawego przycisku ---
     public void UseItem(InventorySlot slot)
     {
         ItemData item = slot.item;
@@ -334,24 +339,24 @@ public class InventoryUI : MonoBehaviour
         // 1. KONSUMPCJA (Jedzenie, mikstury)
         if (item.itemType == ItemType.Consumable)
         {
-            // Tutaj leczymy gracza! (Odwo³anie do Twojego PlayerStats)
+            // Tutaj leczymy gracza! (Odwoï¿½anie do Twojego PlayerStats)
             if (PlayerStats.instance != null && item.healAmount > 0)
             {
                 PlayerStats.instance.currentHealth += item.healAmount;
-                // Upewniamy siê, ¿e zdrowie nie przekracza maksa
+                // Upewniamy siï¿½, ï¿½e zdrowie nie przekracza maksa
                 if (PlayerStats.instance.currentHealth > PlayerStats.instance.GetMaxHealth())
                     PlayerStats.instance.currentHealth = PlayerStats.instance.GetMaxHealth();
 
                 Debug.Log($"Skonsumowano: {item.itemName}. Odzyskano {item.healAmount} HP.");
             }
 
-            // Zabieramy jedn¹ sztukê ze stosu
+            // Zabieramy jednï¿½ sztukï¿½ ze stosu
             slot.amount--;
             if (slot.amount <= 0) slot.ClearSlot();
             else slot.UpdateSlotUI();
         }
 
-        // 2. SZYBKIE ZAK£ADANIE EKWIPUNKU (Zbroje, bronie)
+        // 2. SZYBKIE ZAKï¿½ADANIE EKWIPUNKU (Zbroje, bronie)
         else
         {
             InventorySlot targetSlot = null;
@@ -367,25 +372,25 @@ public class InventoryUI : MonoBehaviour
                 case ItemType.Legs: targetSlot = legsSlot; break;
                 case ItemType.Boots: targetSlot = bootsSlot; break;
                 case ItemType.Second_Hand: targetSlot = offhandSlot; break;
-                case ItemType.Ring: targetSlot = ring1Slot; break; // Domyœlnie zak³adamy na palec nr 1
+                case ItemType.Ring: targetSlot = ring1Slot; break; // Domyï¿½lnie zakï¿½adamy na palec nr 1
                 case ItemType.Necklace: targetSlot = necklaceSlot; break;
                 case ItemType.Ammo: targetSlot = ammoSlot; break;
             }
 
-            // Jeœli znaleŸliœmy miejsce i nie jest zablokowane (np. przez broñ 2H)
+            // Jeï¿½li znaleï¿½liï¿½my miejsce i nie jest zablokowane (np. przez broï¿½ 2H)
             if (targetSlot != null && !targetSlot.isBlocked)
             {
                 ItemData tempItem = targetSlot.item;
                 int tempAmount = targetSlot.amount;
 
-                // Wk³adamy nowy przedmiot na postaæ
+                // Wkï¿½adamy nowy przedmiot na postaï¿½
                 targetSlot.AddItem(item, slot.amount);
 
-                // Jeœli postaæ mia³a ju¿ coœ na sobie, wraca to do plecaka (do tego samego slota!)
+                // Jeï¿½li postaï¿½ miaï¿½a juï¿½ coï¿½ na sobie, wraca to do plecaka (do tego samego slota!)
                 if (tempItem != null) slot.AddItem(tempItem, tempAmount);
                 else slot.ClearSlot();
 
-                // Obliczamy statystyki i odœwie¿amy wygl¹d postaci na mapie
+                // Obliczamy statystyki i odï¿½wieï¿½amy wyglï¿½d postaci na mapie
                 OnEquipmentChanged();
             }
         }

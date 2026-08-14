@@ -6888,9 +6888,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 124
+        y: 119
         width: 22
-        height: 15
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6910,9 +6910,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 165
-        y: 124
+        y: 120
         width: 26
-        height: 17
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6932,9 +6932,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 197
-        y: 125
-        width: 22
-        height: 8
+        y: 121
+        width: 26
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6950,57 +6950,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 15_Ready_to_use_Treasure_Chests_Spritesheet_269
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 132
-        width: 21
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c8438cd806c9c63f0800000000000000
-      internalID: -906177486498810740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 15_Ready_to_use_Treasure_Chests_Spritesheet_270
-      rect:
-        serializedVersion: 2
-        x: 235
-        y: 130
-        width: 21
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f15e60ff5d6271b90800000000000000
-      internalID: -7271300372817844961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: 15_Ready_to_use_Treasure_Chests_Spritesheet_271
       rect:
         serializedVersion: 2
-        x: 261
-        y: 119
-        width: 27
-        height: 17
+        x: 262
+        y: 120
+        width: 25
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7019,10 +6975,10 @@ TextureImporter:
       name: 15_Ready_to_use_Treasure_Chests_Spritesheet_272
       rect:
         serializedVersion: 2
-        x: 293
-        y: 119
-        width: 27
-        height: 16
+        x: 294
+        y: 120
+        width: 25
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7041,10 +6997,10 @@ TextureImporter:
       name: 15_Ready_to_use_Treasure_Chests_Spritesheet_273
       rect:
         serializedVersion: 2
-        x: 325
-        y: 120
-        width: 27
-        height: 17
+        x: 326
+        y: 121
+        width: 25
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7066,7 +7022,7 @@ TextureImporter:
         x: 98
         y: 119
         width: 28
-        height: 11
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7086,9 +7042,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 229
-        y: 122
-        width: 22
-        height: 8
+        y: 121
+        width: 26
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

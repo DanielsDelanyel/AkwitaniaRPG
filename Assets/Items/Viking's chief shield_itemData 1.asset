@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Viking's chief shield_itemData 1
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "Tarcza wodza wiking\xF3w"
+  icon: {fileID: -2532586451823301808, guid: 0861c69d9decaa944816ccb84f61fd1a, type: 3}
+  description: "Tarcza wodza, lepiej wykonana i lepsz\u0105 technik\u0105 pozwala
+    na zmaksymalizowanie pot\u0119cia\u0142u wyposa\u017Cenia. "
+  itemType: 7
+  rarity: 1
+  itemPrefab: {fileID: 8992644449882156520, guid: bd36b40e10ba5d24794fb0455c05b7bf, type: 3}
+  isStackable: 0
+  weight: 1.5
+  price: 90
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 1
+  magicDamageBonus: 0
+  defenseBonus: 8
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 1
+  dexterityBonus: 1
+  intellegenceBonus: 0
+  charismaBonus: 0

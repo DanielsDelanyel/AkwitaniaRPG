@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerCombat : MonoBehaviour
 {
     [Header("Ustawienia strzelania")]
-    public Transform firePoint; // Miejsce, z którego wylatuje strza³a (np. puste cia³ko przed graczem)
-    public GameObject arrowPrefab; // Prefab Twojej lec¹cej strza³y
+    public Transform firePoint; // Miejsce, z ktï¿½rego wylatuje strzaï¿½a (np. puste ciaï¿½ko przed graczem)
+    public GameObject arrowPrefab; // Prefab Twojej lecï¿½cej strzaï¿½y
 
-    [Header("Ustawienia Walki Wrêcz")]
-    public GameObject meleeSlashPrefab; // Prefab ciêcia mieczem
+    [Header("Ustawienia Walki Wrï¿½cz")]
+    public GameObject meleeSlashPrefab; // Prefab ciï¿½cia mieczem
 
-    public float fireCooldown = 1f; // Czas oczekiwania miêdzy strza³ami (1 sekunda)
+    public float fireCooldown = 1f; // Czas oczekiwania miï¿½dzy strzaï¿½ami (1 sekunda)
 
-    private float nextFireTime = 0f; // Pamiêta, kiedy bêdzie mo¿na oddaæ kolejny atak
+    private float nextFireTime = 0f; // Pamiï¿½ta, kiedy bï¿½dzie moï¿½na oddaï¿½ kolejny atak
 
     private PlayerEquipment equipment;
     private PlayerStats stats;
@@ -27,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        // Sprawdzamy czy klikniêto ORAZ czy min¹³ ju¿ czas cooldownu
+        // Sprawdzamy czy klikniï¿½to ORAZ czy minï¿½ï¿½ juï¿½ czas cooldownu
         if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -40,20 +40,20 @@ public class PlayerCombat : MonoBehaviour
         ItemData weapon = equipment.currentWeapon;
         if (weapon == null) return;
 
-        // Jeœli £uk
+        // Jeï¿½li ï¿½uk
         if (weapon.itemType == ItemType.Bow)
         {
-            // POBIERAMY ZA£O¯ON¥ STRZA£Ê
+            // POBIERAMY ZAï¿½Oï¿½ONï¿½ STRZAï¿½ï¿½
             ItemData ammo = equipment.currentAmmo;
 
-            // Sprawdzamy czy cokolwiek le¿y w ko³czanie
+            // Sprawdzamy czy cokolwiek leï¿½y w koï¿½czanie
             if (ammo != null && ammo.itemType == ItemType.Ammo)
             {
                 if (InventoryUI.instance.ConsumeAmmo())
                 {
                     float angle = GetAngleToMouse();
 
-                    // WYSY£AMY PREFAB KONKRETNEJ STRZA£Y!
+                    // WYSYï¿½AMY PREFAB KONKRETNEJ STRZAï¿½Y!
                     Shoot(angle, ammo.itemPrefab);
 
                     nextFireTime = Time.time + 1f;
@@ -61,10 +61,10 @@ public class PlayerCombat : MonoBehaviour
             }
             else
             {
-                Debug.Log("Za³ó¿ strza³y do ko³czanu!");
+                Debug.Log("Zaï¿½ï¿½ strzaï¿½y do koï¿½czanu!");
             }
         }
-        // Jeœli Broñ Bia³a
+        // Jeï¿½li Broï¿½ Biaï¿½a
         else if (weapon.itemType == ItemType.Weapon1h || weapon.itemType == ItemType.Weapon2h)
         {
             float angle = GetAngleToMouse();
@@ -72,34 +72,34 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    // Dodaliœmy nowy argument: GameObject specificArrowPrefab
+    // Dodaliï¿½my nowy argument: GameObject specificArrowPrefab
     void Shoot(float baseAngle, GameObject specificArrowPrefab)
     {
         float arrowAngle = baseAngle - 45f;
         Quaternion rotation = Quaternion.Euler(0, 0, arrowAngle);
 
-        // Zamiast ogólnego 'arrowPrefab', u¿ywamy tego z ekwipunku!
+        // Zamiast ogï¿½lnego 'arrowPrefab', uï¿½ywamy tego z ekwipunku!
         Instantiate(specificArrowPrefab, firePoint.position, rotation);
     }
     void PerformMeleeAttack(ItemData weapon, float angle)
     {
-        // 1. OBLICZANIE OBRA¯EÑ (Si³a + Obra¿enia Broni)
+        // 1. OBLICZANIE OBRAï¿½Eï¿½ (Siï¿½a + Obraï¿½enia Broni)
         int totalStrength = stats.GetTotal(stats.baseSTR, stats.equipSTR);
 
-        // Zliczamy sumê i mno¿ymy przez mno¿nik klasy (np. x1.2 dla Maga)
-        float rawDamage = (totalStrength + weapon.damageBonus) * stats.damageMultiplier;
+        // Zliczamy sumï¿½ i mnoï¿½ymy przez mnoï¿½nik klasy (np. x1.2 dla Maga)
+        float rawDamage = (totalStrength + weapon.GetDamageBonus()) * stats.GetTotalDamageMultiplier();
 
-        // Zaokr¹glamy do pe³nych liczb (int), ¿eby UI ³adnie wyœwietla³o cyferki
+        // Zaokrï¿½glamy do peï¿½nych liczb (int), ï¿½eby UI ï¿½adnie wyï¿½wietlaï¿½o cyferki
         int finalDamage = Mathf.RoundToInt(rawDamage);
 
-        // 2. MATEMATYKA PRÊDKOŒCI (Nasz wzór!)
+        // 2. MATEMATYKA PRï¿½DKOï¿½CI (Nasz wzï¿½r!)
         int totalDexterity = stats.GetTotal(stats.baseZR, stats.equipZR);
         float denominator = Mathf.Max(5f, (totalStrength + totalDexterity) * 0.25f);
         float rawDuration = weapon.weight / denominator;
 
         float swingDuration = Mathf.Clamp(rawDuration, 0.2f, 2.2f);
 
-        // 3. TWORZENIE CIÊCIA
+        // 3. TWORZENIE CIï¿½CIA
         GameObject slashObj = Instantiate(meleeSlashPrefab, firePoint.position, Quaternion.identity);
         slashObj.transform.SetParent(this.transform);
 
@@ -109,11 +109,11 @@ public class PlayerCombat : MonoBehaviour
         nextFireTime = Time.time + swingDuration;
     }
 
-    // Pomocnicza funkcja licz¹ca k¹t kursora
+    // Pomocnicza funkcja liczï¿½ca kï¿½t kursora
 
     void Shoot(float baseAngle)
     {
-        float arrowAngle = baseAngle - 45f; // Korekta graficzna dla strza³y
+        float arrowAngle = baseAngle - 45f; // Korekta graficzna dla strzaï¿½y
         Quaternion rotation = Quaternion.Euler(0, 0, arrowAngle);
         Instantiate(arrowPrefab, firePoint.position, rotation);
     }

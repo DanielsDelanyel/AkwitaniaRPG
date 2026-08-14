@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Ifrit's heart_itemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Serce Ifryta
+  icon: {fileID: -4052842101772191210, guid: 8a1e724e1419b2945828f0ef2ffd85c5, type: 3}
+  description: "Pono\u0107 ka\u017Cdy szanuj\u0105cy si\u0119 mag ognia musi kiedy\u015B
+    przej\u015B\u0107 pr\xF3b\u0119 pokonania \u017Cywio\u0142aka ognia - ifryta"
+  itemType: 7
+  rarity: 2
+  itemPrefab: {fileID: 8992644449882156520, guid: 8475f5a8cb3150c4f844fff9d220c885, type: 3}
+  isStackable: 0
+  weight: 0.5
+  price: 600
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 16
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 1
+  strengthBonus: -2
+  dexterityBonus: 0
+  intellegenceBonus: 10
+  charismaBonus: 0

@@ -210,7 +210,11 @@ public class ShopManager : MonoBehaviour
             int price = GetBuyPrice(stagedItem);
             if (PlayerStats.instance.currentMoney >= price)
             {
-                int leftovers = InventoryUI.instance.Add(stagedItem, 1);
+                // NOWE: kazda kupiona sztuka to osobny egzemplarz z wlasnym rzutem koscmi.
+                // Kupno dwoch takich samych mieczy da dwa rozne wyniki losowania.
+                ItemData purchased = ItemFactory.Create(stagedItem);
+
+                int leftovers = InventoryUI.instance.Add(purchased, 1);
                 if (leftovers == 0)
                 {
                     PlayerStats.instance.currentMoney -= price;

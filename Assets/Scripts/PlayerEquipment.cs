@@ -25,11 +25,11 @@ public class PlayerEquipment : MonoBehaviour
 
     public void UpdateEquipment(ItemData weapon, ItemData helmet, ItemData armor, ItemData legs, ItemData boots, ItemData shield, ItemData ring1, ItemData ring2, ItemData necklace, ItemData ammo)
     {
-        // 1. Zapamiêtujemy broñ (Dla PlayerMovement i logów)
-        this.currentWeapon = weapon; 
-        this.currentAmmo = ammo; 
+        if (stats == null) stats = GetComponent<PlayerStats>();
 
-        // 2. Ustawiamy Wygl¹d
+        this.currentWeapon = weapon;
+        this.currentAmmo = ammo;
+
         SetRenderer(weaponRenderer, weapon);
         SetRenderer(helmetRenderer, helmet);
         SetRenderer(chestRenderer, armor);
@@ -40,8 +40,10 @@ public class PlayerEquipment : MonoBehaviour
         SetRenderer(ring2Renderer, ring2);
         SetRenderer(necklaceRenderer, necklace);
 
-        stats.equipDmg = 0;         
-        stats.equipMagicDmg = 0;    
+        // --- Zerowanie przed przeliczeniem ---
+        stats.equipDmg = 0;
+        stats.equipMagicDmg = 0;
+        stats.equipDmgPercent = 0f;   // NOWE
 
         stats.equipSTR = 0;
         stats.equipWIT = 0;
@@ -52,16 +54,18 @@ public class PlayerEquipment : MonoBehaviour
         stats.equipDef = 0;
         stats.equipMagicDef = 0;
 
-        // 4. Sumujemy bonusy
+        // --- Sumowanie ---
         AddBonuses(weapon);
         AddBonuses(helmet);
         AddBonuses(armor);
         AddBonuses(legs);
         AddBonuses(boots);
         AddBonuses(shield);
+        AddBonuses(ring1);      // pierscienie i naszyjnik tez licza sie do statystyk!
+        AddBonuses(ring2);
+        AddBonuses(necklace);
         AddBonuses(ammo);
 
-        // 5. Przeliczamy
         stats.RecalculateStats();
     }
 
@@ -85,16 +89,22 @@ public class PlayerEquipment : MonoBehaviour
     {
         if (item == null) return;
 
-        stats.equipSTR += item.strengthBonus;
-        stats.equipWIT += item.vitalityBonus;
-        stats.equipZR += item.dexterityBonus;
-        stats.equipINT += item.intellegenceBonus; 
-        stats.equipCHAR += item.charismaBonus;
+        // UWAGA: uzywamy GETTEROW, nie surowych pol!
+        // Dzieki temu wchodza tu tez wartosci wylosowane dla tego egzemplarza.
+        stats.equipSTR += item.GetStrengthBonus();
+        stats.equipWIT += item.GetVitalityBonus();
+        stats.equipZR += item.GetDexterityBonus();
+        stats.equipINT += item.GetIntelligenceBonus();
+        stats.equipCHAR += item.GetCharismaBonus();
 
-        stats.equipDmg += item.damageBonus;            
-        stats.equipMagicDmg += item.magicDamageBonus;   
+        stats.equipDmg += item.GetDamageBonus();
+        stats.equipMagicDmg += item.GetMagicDamageBonus();
 
-        stats.equipDef += item.defenseBonus;
-        stats.equipMagicDef += item.magicDefenseBonus;
+        stats.equipDef += item.GetDefenseBonus();
+        stats.equipMagicDef += item.GetMagicDefenseBonus();
+
+        // NOWE: procenty z kilku przedmiotow sumuja sie
+        // (miecz +30% i pierscien +10% dadza razem +40%)
+        stats.equipDmgPercent += item.GetDamagePercent();
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public enum CharacterClass
 {
@@ -75,6 +75,10 @@ public class PlayerStats : MonoBehaviour
     public int equipMagicDmg = 0;
     public int equipDef = 0;
     public int equipMagicDef = 0;
+
+    [Tooltip("Suma procentowych bonusow do obrazen ze wszystkich zalozonych przedmiotow. " +
+             "30 oznacza +30%. Liczone automatycznie przez PlayerEquipment.")]
+    public float equipDmgPercent = 0f;
 
     // ---------------------------------------------------------------
     // WZORY NA ZASOBY - tu ustawiasz balans gry.
@@ -168,6 +172,14 @@ public class PlayerStats : MonoBehaviour
         return baseStat + equipStat;
     }
 
+    // NOWE: pelny mnoznik obrazen = bonus klasy * bonus z ekwipunku.
+    // Barbarzynca (x1.5) z mieczem +40% zadaje 1.5 * 1.4 = x2.1 obrazen.
+    // Uzywaj tego wszedzie zamiast samego damageMultiplier!
+    public float GetTotalDamageMultiplier()
+    {
+        return damageMultiplier * (1f + equipDmgPercent / 100f);
+    }
+
     // Zuzycie staminy (np. przez dash). Zwraca false, jesli zabraklo si.
     public bool UseStamina(float amount)
     {
@@ -220,8 +232,8 @@ public class PlayerStats : MonoBehaviour
         maxMana = GetMaxMana();
         maxStamina = GetMaxStamina();
 
-        totalDamage = Mathf.RoundToInt(GetTotal(baseDmg, equipDmg) * damageMultiplier);
-        totalMagicDamage = Mathf.RoundToInt(GetTotal(baseMagicDmg, equipMagicDmg) * damageMultiplier);
+        totalDamage = Mathf.RoundToInt(GetTotal(baseDmg, equipDmg) * GetTotalDamageMultiplier());
+        totalMagicDamage = Mathf.RoundToInt(GetTotal(baseMagicDmg, equipMagicDmg) * GetTotalDamageMultiplier());
         defense = Mathf.RoundToInt(GetTotal(baseDef, equipDef) * defenseMultiplier);
         magicDefense = GetTotal(baseMagicDef, equipMagicDef);
 
@@ -386,29 +398,29 @@ public class PlayerStats : MonoBehaviour
         switch (currentProfession)
         {
             case CharacterClass.Traveler:
-                return "<color=#FFD700>W£ÓCZÊGA</color>\n\n+10% do prêdkoœci poruszania siê.";
+                return "<color=#FFD700>Wï¿½ï¿½CZï¿½GA</color>\n\n+10% do prï¿½dkoï¿½ci poruszania siï¿½.";
             case CharacterClass.Hunter:
-                return "<color=#FFD700>£OWCA</color>\n\n+40% szansy na cios krytyczny.\n+10% do zadawanych obra¿eñ.";
+                return "<color=#FFD700>ï¿½OWCA</color>\n\n+40% szansy na cios krytyczny.\n+10% do zadawanych obraï¿½eï¿½.";
             case CharacterClass.Mage:
-                return "<color=#FFD700>MAG</color>\n\n+7.5% szansy na cios krytyczny.\n+20% do zadawanych obra¿eñ.";
+                return "<color=#FFD700>MAG</color>\n\n+7.5% szansy na cios krytyczny.\n+20% do zadawanych obraï¿½eï¿½.";
             case CharacterClass.Barbarian:
-                return "<color=#FFD700>BARBARZYÑCA</color>\n\n+50% do zadawanych obra¿eñ.";
+                return "<color=#FFD700>BARBARZYï¿½CA</color>\n\n+50% do zadawanych obraï¿½eï¿½.";
             case CharacterClass.Juggernaut:
-                return "<color=#FFD700>OBROÑCA</color>\n\n+50% do ca³kowitego pancerza.";
+                return "<color=#FFD700>OBROï¿½CA</color>\n\n+50% do caï¿½kowitego pancerza.";
             case CharacterClass.Bard:
-                return "<color=#FFD700>BARD</color>\n\n+75% szansy na perswazjê w dialogach.\n-30% cen we wszystkich sklepach.";
+                return "<color=#FFD700>BARD</color>\n\n+75% szansy na perswazjï¿½ w dialogach.\n-30% cen we wszystkich sklepach.";
             case CharacterClass.Assassin:
-                return "<color=#FFD700>SKRYTOBÓJCA</color>\n\n+20% szansy na cios krytyczny.\nObra¿enia krytyczne mno¿one x3.";
+                return "<color=#FFD700>SKRYTOBï¿½JCA</color>\n\n+20% szansy na cios krytyczny.\nObraï¿½enia krytyczne mnoï¿½one x3.";
             case CharacterClass.Paladin:
-                return "<color=#FFD700>PALADYN</color>\n\n+20% do zadawanych obra¿eñ.\n+5% Maksymalnego Zdrowia i Many.";
+                return "<color=#FFD700>PALADYN</color>\n\n+20% do zadawanych obraï¿½eï¿½.\n+5% Maksymalnego Zdrowia i Many.";
             case CharacterClass.Nekromancer:
-                return "<color=#FFD700>NEKROMANTA</color>\n\n+10% Maksymalnego Zdrowia i Many.\n-20% do zadawanych obra¿eñ.";
+                return "<color=#FFD700>NEKROMANTA</color>\n\n+10% Maksymalnego Zdrowia i Many.\n-20% do zadawanych obraï¿½eï¿½.";
             case CharacterClass.Ilusionist:
-                return "<color=#FFD700>ILUZJONISTA</color>\n\n+20% Maksymalnej Many.\n-20% Maksymalnego Zdrowia.\n-20% do zadawanych obra¿eñ.\n+30% szansy na perswazjê.\n-15% cen w sklepach.";
+                return "<color=#FFD700>ILUZJONISTA</color>\n\n+20% Maksymalnej Many.\n-20% Maksymalnego Zdrowia.\n-20% do zadawanych obraï¿½eï¿½.\n+30% szansy na perswazjï¿½.\n-15% cen w sklepach.";
             case CharacterClass.Monk:
-                return "<color=#FFD700>MNICH</color>\n\n+20% do prêdkoœci poruszania siê.\n+7.5% szansy na cios krytyczny.\n+5% Maksymalnej Many.\n-5% Maksymalnego Zdrowia.\n-10% do zadawanych obra¿eñ.";
+                return "<color=#FFD700>MNICH</color>\n\n+20% do prï¿½dkoï¿½ci poruszania siï¿½.\n+7.5% szansy na cios krytyczny.\n+5% Maksymalnej Many.\n-5% Maksymalnego Zdrowia.\n-10% do zadawanych obraï¿½eï¿½.";
             default:
-                return "Brak dodatkowych bonusów.";
+                return "Brak dodatkowych bonusï¿½w.";
         }
     }
 }
