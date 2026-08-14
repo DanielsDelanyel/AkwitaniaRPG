@@ -53,10 +53,13 @@ public class PlayerCombat : MonoBehaviour
                 {
                     float angle = GetAngleToMouse();
 
-                    // WYSY�AMY PREFAB KONKRETNEJ STRZA�Y!
+                    // WYSYLAMY PREFAB KONKRETNEJ STRZALY!
                     Shoot(angle, ammo.itemPrefab);
 
-                    nextFireTime = Time.time + 1f;
+                    // NOWE: odglos napietej cieciwy, brany z danych LUKU
+                    SoundManager.Play(weapon.swingSounds, weapon.soundVolume);
+
+                    nextFireTime = Time.time + fireCooldown;
                 }
             }
             else

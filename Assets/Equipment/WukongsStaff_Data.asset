@@ -21,6 +21,17 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: 079d4c59158217b43892edb7bcf78e54, type: 3}
   isStackable: 0
   weight: 0.4
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds:
+  - {fileID: 8300000, guid: e484d15bca3263f4c85892a29b955e0f, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 6a5c0f70f3a933242a26392e39461a56, type: 3}
+  soundVolume: 0.3
   price: 2500
   healAmount: 0
   affinityBonus: 0
@@ -33,3 +44,12 @@ MonoBehaviour:
   dexterityBonus: 8
   intellegenceBonus: 8
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []

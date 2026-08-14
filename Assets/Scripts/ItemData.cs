@@ -118,6 +118,42 @@ public class ItemData : ScriptableObject
     public bool isStackable = false;
     public float weight = 10f;
 
+    // ===============================================================
+    // KSZTALT CIOSU - kazda bron macha inaczej
+    // ===============================================================
+    [Header("Walka Wrecz (ksztalt ciosu)")]
+    [Tooltip("Jak daleko od gracza jest srodek ostrza. Noz ~0.55, miecz ~0.85, kij ~1.4")]
+    public float weaponReach = 0.85f;
+
+    [Tooltip("Dlugosc hitboxa WZDLUZ ostrza (w jednostkach swiata). Noz ~0.35, miecz ~0.7, kij ~1.3")]
+    public float weaponLength = 0.7f;
+
+    [Tooltip("Grubosc hitboxa w poprzek. Zwykle 0.2 - 0.35.")]
+    public float weaponWidth = 0.28f;
+
+    [Tooltip("Szerokosc luku ciecia w stopniach. Noz ~50, miecz ~65, kij ~110 (zamach nad glowa).")]
+    public float swingArc = 65f;
+
+    [Tooltip("Skala grafiki broni podczas ciecia.")]
+    public float weaponVisualScale = 0.8f;
+
+    [Tooltip("Obrot grafiki, by ostrze celowalo w kierunku ciosu. " +
+             "Ikony rysowane po skosie potrzebuja zwykle -45 lub -55.")]
+    public float weaponSpriteAngle = -55f;
+
+    // ===============================================================
+    // DZWIEKI
+    // ===============================================================
+    [Header("Dzwieki")]
+    [Tooltip("Swist przy machnieciu (lub napiecie cieciwy dla luku). " +
+             "Wrzuc kilka wariantow - gra wylosuje, by nie bylo monotonnie.")]
+    public AudioClip[] swingSounds;
+
+    [Tooltip("Odglos trafienia w cel.")]
+    public AudioClip[] hitSounds;
+
+    [Range(0f, 1f)] public float soundVolume = 0.8f;
+
     [Header("Ekonomia")]
     public int price = 10;
 
