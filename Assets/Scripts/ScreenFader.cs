@@ -9,43 +9,58 @@ public class ScreenFader : MonoBehaviour
 {
     private CanvasGroup group;
 
+    // Pobiera CanvasGroup na zadanie.
+    // Awake() NIE odpala sie na obiekcie wylaczonym w Hierarchii, wiec 'group'
+    // bywalo puste i SetBlack() rzucalo NullReferenceException.
+    private CanvasGroup Group
+    {
+        get
+        {
+            if (group == null)
+            {
+                group = GetComponent<CanvasGroup>();
+                if (group == null) group = gameObject.AddComponent<CanvasGroup>();
+            }
+            return group;
+        }
+    }
+
     void Awake()
     {
-        group = GetComponent<CanvasGroup>();
-        group.blocksRaycasts = false;
-        group.interactable = false;
-        group.alpha = 0f;
+        Group.blocksRaycasts = false;
+        Group.interactable = false;
+        Group.alpha = 0f;
     }
 
     public void SetBlack()
     {
-        group.alpha = 1f;
-        group.blocksRaycasts = true;
+        Group.alpha = 1f;
+        Group.blocksRaycasts = true;
     }
 
     public void SetClear()
     {
-        group.alpha = 0f;
-        group.blocksRaycasts = false;
+        Group.alpha = 0f;
+        Group.blocksRaycasts = false;
     }
 
     public IEnumerator FadeOut(float duration)
     {
-        group.blocksRaycasts = true; // blokujemy klikanie w trakcie przejscia
-        yield return Fade(group.alpha, 1f, duration);
+        Group.blocksRaycasts = true; // blokujemy klikanie w trakcie przejscia
+        yield return Fade(Group.alpha, 1f, duration);
     }
 
     public IEnumerator FadeIn(float duration)
     {
-        yield return Fade(group.alpha, 0f, duration);
-        group.blocksRaycasts = false;
+        yield return Fade(Group.alpha, 0f, duration);
+        Group.blocksRaycasts = false;
     }
 
     private IEnumerator Fade(float from, float to, float duration)
     {
         if (duration <= 0f)
         {
-            group.alpha = to;
+            Group.alpha = to;
             yield break;
         }
 
@@ -54,10 +69,10 @@ public class ScreenFader : MonoBehaviour
         {
             // unscaledDeltaTime - dziala nawet przy zatrzymanym czasie (pauza)
             t += Time.unscaledDeltaTime / duration;
-            group.alpha = Mathf.Lerp(from, to, Mathf.Clamp01(t));
+            Group.alpha = Mathf.Lerp(from, to, Mathf.Clamp01(t));
             yield return null;
         }
 
-        group.alpha = to;
+        Group.alpha = to;
     }
 }

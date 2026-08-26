@@ -134,11 +134,13 @@ public class LocationEntrance : MonoBehaviour
 
     private bool PlayerHasKey()
     {
-        if (InventoryUI.instance == null) return false;
+        if (InventoryUI.instance == null || requiredKey == null) return false;
 
         foreach (ItemData item in InventoryUI.instance.GetAllItems())
         {
-            if (item == requiredKey) return true;
+            // IsSameKindAs zamiast '==' - klucz z wylosowanym bonusem
+            // to inna instancja, ale wciaz TEN SAM klucz.
+            if (item != null && item.IsSameKindAs(requiredKey)) return true;
         }
         return false;
     }

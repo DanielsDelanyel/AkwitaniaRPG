@@ -16,48 +16,53 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public ItemType allowedType2;
     public ItemType allowedType3;
 
-    [Header("Blokada Slotu (np. na broñ 2H)")]
+    [Header("Blokada Slotu (np. na bron 2H)")]
     public bool isBlocked = false;
     private Image slotBackground;
     private Color normalColor;
-    private Color blockedColor = new Color(0.2f, 0.2f, 0.2f, 1f); // Ciemnoszary, "wy³¹czony" kolor
+    private Color blockedColor = new Color(0.2f, 0.2f, 0.2f, 1f);
 
     void Awake()
     {
-        // Pobieramy t³o slota, by móc je przyciemniaæ
         slotBackground = GetComponent<Image>();
-        if (slotBackground != null)
-        {
-            normalColor = slotBackground.color;
-        }
+        if (slotBackground != null) normalColor = slotBackground.color;
     }
 
     void Start()
     {
-        if (iconDisplay == null || iconDisplay.gameObject.activeInHierarchy == false)
+        if (iconDisplay == null)
         {
-            iconDisplay = transform.Find("Icon").GetComponent<Image>();
+            Transform iconTransform = transform.Find("Icon");
+            if (iconTransform != null) iconDisplay = iconTransform.GetComponent<Image>();
+
+            if (iconDisplay == null)
+            {
+                Debug.LogError($"Slot '{name}' nie ma przypisanego Icon Display ani dziecka o nazwie 'Icon'!");
+                return;
+            }
         }
+
         if (item == null) ClearSlot();
     }
 
-    // Funkcja blokuj¹ca/odblokowuj¹ca slot
     public void SetBlocked(bool blocked)
     {
         isBlocked = blocked;
         if (slotBackground != null)
-        {
             slotBackground.color = blocked ? blockedColor : normalColor;
-        }
     }
 
     public void AddItem(ItemData newItem, int newAmount = 1)
     {
         item = newItem;
         amount = newAmount;
-        iconDisplay.sprite = item.icon;
-        iconDisplay.preserveAspect = true;
-        iconDisplay.enabled = true;
+
+        if (iconDisplay != null)
+        {
+            iconDisplay.sprite = item != null ? item.icon : null;
+            iconDisplay.preserveAspect = true;
+            iconDisplay.enabled = item != null;
+        }
         UpdateSlotUI();
     }
 
@@ -65,25 +70,27 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         item = null;
         amount = 0;
-        iconDisplay.sprite = null;
-        if (iconDisplay != null) iconDisplay.enabled = false;
+
+        if (iconDisplay != null)
+        {
+            iconDisplay.sprite = null;
+            iconDisplay.enabled = false;
+        }
         UpdateSlotUI();
     }
 
-    // NOWA FUNKCJA: Odœwie¿a napis w prawym dolnym rogu
     public void UpdateSlotUI()
     {
-        if (amountText != null)
+        if (amountText == null) return;
+
+        if (item != null && amount > 1)
         {
-            if (item != null && amount > 1)
-            {
-                amountText.text = amount.ToString();
-                amountText.gameObject.SetActive(true);
-            }
-            else
-            {
-                amountText.gameObject.SetActive(false);
-            }
+            amountText.text = amount.ToString();
+            amountText.gameObject.SetActive(true);
+        }
+        else
+        {
+            amountText.gameObject.SetActive(false);
         }
     }
 
@@ -91,77 +98,76 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (isBlocked) return;
 
-        // --- NOWOŒÆ: PRAWY PRZYCISK MYSZY (Otwiera menu) ---
-        if (eventData.button == PointerEventData.InputButton.Right)
+        // --- PRAWY PRZYCISK: menu kontekstowe ---
+        // UWAGA: eventData bywa NULL, bo jeden slot potrafi wolac ten kod
+        // na drugim (przekierowanie broni 2H). Bez tej ochrony gra sie wywalala.
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
-            // Otwieramy menu tylko, jeœli w slocie coœ jest i jesteœmy w plecaku (a nie na slocie zbroi)
-            if (item != null && isBackpackSlot)
+            if (item != null && isBackpackSlot && ContextMenuUI.instance != null)
             {
+                if (InventoryTooltip.instance != null) InventoryTooltip.instance.HideTooltip();
                 ContextMenuUI.instance.OpenMenu(this, Input.mousePosition);
             }
-            return; // Przerywamy kod, ¿eby nie podnieœæ przedmiotu!
+            return;
         }
 
-        ItemData mouseItem = InventoryUI.instance.draggedItem;
-        int mouseAmount = InventoryUI.instance.draggedAmount; // Pamiêtamy iloœæ na myszce!
+        // Klikniêcie lewym zamyka otwarte menu
+        if (ContextMenuUI.instance != null && ContextMenuUI.instance.IsOpen)
+            ContextMenuUI.instance.CloseMenu();
 
-        // --- INTELIGENTNE PRZEKIEROWANIE BRONI 2H I £UKU ---
+        if (InventoryUI.instance == null) return;
+
+        ItemData mouseItem = InventoryUI.instance.draggedItem;
+        int mouseAmount = InventoryUI.instance.draggedAmount;
+
+        // --- PRZEKIEROWANIE BRONI 2H I LUKU DO GLOWNEJ REKI ---
         if (allowedType1 == ItemType.Second_Hand && mouseItem != null)
         {
             if (mouseItem.itemType == ItemType.Weapon2h || mouseItem.itemType == ItemType.Bow)
             {
-                InventoryUI.instance.weaponSlot.OnPointerClick(null);
+                if (InventoryUI.instance.weaponSlot != null)
+                    InventoryUI.instance.weaponSlot.OnPointerClick(null);
                 return;
             }
         }
 
-        // SCENARIUSZ A: Podnoszenie (Nic na myszce)
+        // SCENARIUSZ A: podnoszenie (pusta reka)
         if (mouseItem == null)
         {
             if (item != null)
             {
-                InventoryUI.instance.SetDraggedItem(item, amount); // Podnosimy z iloœci¹!
+                InventoryUI.instance.SetDraggedItem(item, amount);
                 ClearSlot();
             }
         }
-        // SCENARIUSZ B: K³adzenie / Zamiana / £¥CZENIE STOSÓW (Coœ na myszce)
+        // SCENARIUSZ B: kladzenie / zamiana / laczenie stosow
         else
         {
             if (CheckIfItemFits(mouseItem))
             {
                 ItemData itemInSlot = item;
-                int amountInSlot = amount; // Zapamiêtujemy iloœæ w slocie 
+                int amountInSlot = amount;
 
-                // --- NOWOŒÆ: RÊCZNE £¥CZENIE STOSÓW (STACKOWANIE) ---
-                // Jeœli w slocie jest ten sam przedmiot co na myszce i mo¿na go stackowaæ:
                 if (itemInSlot == mouseItem && mouseItem.isStackable)
                 {
-                    int maxStack = 100; // Limit stosu (taki sam jak w InventoryUI)
+                    int maxStack = InventoryUI.instance.maxStackSize;
                     int totalAmount = amountInSlot + mouseAmount;
 
                     if (totalAmount <= maxStack)
                     {
-                        // Jeœli suma zmieœci siê w slocie, wk³adamy wszystko i czyœcimy myszkê
                         AddItem(mouseItem, totalAmount);
                         InventoryUI.instance.ClearDraggedItem();
                     }
                     else
                     {
-                        // Jeœli suma przekracza limit, wype³niamy slot do pe³na (100)
                         AddItem(mouseItem, maxStack);
-
-                        // Obliczamy resztê i zostawiamy j¹ "przyklejon¹" do myszki!
-                        int leftovers = totalAmount - maxStack;
-                        InventoryUI.instance.SetDraggedItem(mouseItem, leftovers);
+                        InventoryUI.instance.SetDraggedItem(mouseItem, totalAmount - maxStack);
                     }
                 }
-                // ZWYK£A ZAMIANA (Przedmioty s¹ ró¿ne LUB nie da siê ich stackowaæ)
                 else
                 {
-                    // K³adziemy myszkê do slota z w³aœciw¹ iloœci¹
                     AddItem(mouseItem, mouseAmount);
 
-                    // Jeœli coœ tu by³o, weŸ to na myszkê z w³aœciw¹ iloœci¹
                     if (itemInSlot != null) InventoryUI.instance.SetDraggedItem(itemInSlot, amountInSlot);
                     else InventoryUI.instance.ClearDraggedItem();
                 }
@@ -172,13 +178,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             }
         }
 
-        if (isBackpackSlot == false)
-        {
-            InventoryUI.instance.OnEquipmentChanged();
-        }
+        if (!isBackpackSlot) InventoryUI.instance.OnEquipmentChanged();
     }
+
     bool CheckIfItemFits(ItemData itemToCheck)
     {
+        if (itemToCheck == null) return false;
         if (isBackpackSlot) return true;
         if (itemToCheck.itemType == allowedType1) return true;
         if (itemToCheck.itemType == allowedType2) return true;
@@ -188,14 +193,19 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (item != null && InventoryUI.instance.draggedItem == null)
-        {
+        if (item == null) return;
+        if (InventoryUI.instance == null || InventoryUI.instance.draggedItem != null) return;
+
+        // Nie zaslaniamy otwartego menu kontekstowego
+        if (ContextMenuUI.instance != null && ContextMenuUI.instance.IsOpen) return;
+
+        if (InventoryTooltip.instance != null)
             InventoryTooltip.instance.ShowTooltip(item);
-        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        InventoryTooltip.instance.HideTooltip();
+        if (InventoryTooltip.instance != null)
+            InventoryTooltip.instance.HideTooltip();
     }
 }

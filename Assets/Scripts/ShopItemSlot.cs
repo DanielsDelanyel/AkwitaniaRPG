@@ -7,31 +7,62 @@ public class ShopItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     public Image iconDisplay;
     private ItemData currentItem;
 
+    void Awake()
+    {
+        // Gdyby ktos zapomnial przeciagnac ikony w Inspektorze
+        if (iconDisplay == null)
+        {
+            Transform icon = transform.Find("Icon");
+            if (icon != null) iconDisplay = icon.GetComponent<Image>();
+            if (iconDisplay == null) iconDisplay = GetComponentInChildren<Image>(true);
+        }
+    }
+
     public void Setup(ItemData item)
     {
         currentItem = item;
+
+        if (iconDisplay == null)
+        {
+            Debug.LogError($"ShopItemSlot '{name}' nie ma przypisanego Icon Display!");
+            return;
+        }
+
+        if (item == null) { Clear(); return; }
+
         iconDisplay.sprite = item.icon;
-
-        // 1. W³¹czamy sam komponent rysuj¹cy
+        iconDisplay.preserveAspect = true;
         iconDisplay.enabled = true;
-
-        // 2. Wymuszamy fizyczne w³¹czenie obiektu w hierarchii (ZABEZPIECZENIE)
         iconDisplay.gameObject.SetActive(true);
-
-        // 3. Upewniamy siê, ¿e kolor nie jest czarny ani przezroczysty (ZABEZPIECZENIE)
         iconDisplay.color = Color.white;
     }
 
     public void Clear()
     {
         currentItem = null;
+
+        if (iconDisplay == null) return;
+
         iconDisplay.sprite = null;
         iconDisplay.enabled = false;
+
+        // SYMETRIA: Setup wlacza obiekt, wiec Clear tez musi go zostawic
+        // wlaczonego - inaczej kolejne Setup nie mialoby czego wlaczyc,
+        // gdyby ktos w miedzyczasie ruszyl hierarchie.
+        iconDisplay.gameObject.SetActive(true);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (currentItem != null) ShopManager.instance.StageForBuy(currentItem);
+        if (currentItem == null) return;
+
+        if (ShopManager.instance == null)
+        {
+            Debug.LogError("ShopItemSlot: brak ShopManagera!");
+            return;
+        }
+
+        ShopManager.instance.StageForBuy(currentItem);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

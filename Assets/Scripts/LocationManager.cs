@@ -56,9 +56,42 @@ public class LocationManager : MonoBehaviour
         // inaczej dwie lokacje beda narysowane jedna na drugiej.
         yield return CleanupStrayScenes();
 
-        // KROK 2: normalne wejscie do pierwszej lokacji
-        if (!string.IsNullOrEmpty(startingLocation))
-            yield return LoadRoutine(startingLocation, startingSpawnId, true);
+        // KROK 2: wejscie do gry.
+        // Jesli gracz wybral "Wczytaj gre", idziemy do lokacji Z ZAPISU,
+        // a nie do domyslnej sceny startowej.
+        string targetLocation = startingLocation;
+        string targetSpawn = startingSpawnId;
+        bool loadingSave = false;
+
+        if (GameSession.IsLoadingSave && SaveManager.LoadFromDisk(GameSession.SaveSlot))
+        {
+            SaveData save = SaveManager.PendingLoad;
+
+            if (save != null && !string.IsNullOrEmpty(save.player.locationScene))
+            {
+                targetLocation = save.player.locationScene;
+                targetSpawn = "";   // pozycje ustawi SaveManager, nie punkt odrodzenia
+                loadingSave = true;
+            }
+        }
+
+        GameSession.IsLoadingSave = false;
+
+        if (!string.IsNullOrEmpty(targetLocation))
+            yield return LoadRoutine(targetLocation, targetSpawn, true);
+
+        // KROK 3: dane gracza nakladamy DOPIERO, gdy lokacja stoi
+        if (loadingSave)
+        {
+            yield return null;   // jedna klatka na obudzenie obiektow sceny
+            SaveManager.ApplyPendingLoad();
+        }
+        else
+        {
+            SaveManager.ResetSession();
+        }
+
+        SaveManager.StartSession();
     }
 
     private IEnumerator CleanupStrayScenes()
@@ -150,6 +183,29 @@ public class LocationManager : MonoBehaviour
         IsTransitioning = false;
     }
 
+    // ===============================================================
+    // SPRZATANIE PRZY POWROCIE DO MENU GLOWNEGO
+    // Ten obiekt ma DontDestroyOnLoad, wiec NIE zniknie sam przy zmianie
+    // sceny. Bez tego druga rozgrywka wystartowalaby ze starym menedzerem
+    // i wskaznikiem na nieistniejaca juz lokacje.
+    // ===============================================================
+    public IEnumerator Shutdown()
+    {
+        StopAllCoroutines();
+
+        if (!string.IsNullOrEmpty(CurrentLocation))
+        {
+            Scene loc = SceneManager.GetSceneByName(CurrentLocation);
+            if (loc.isLoaded) yield return SceneManager.UnloadSceneAsync(loc);
+        }
+
+        CurrentLocation = null;
+        IsTransitioning = false;
+        instance = null;
+
+        Destroy(gameObject);
+    }
+
     private void PlacePlayer(string spawnId)
     {
         Transform p = GetPlayer();
@@ -158,6 +214,9 @@ public class LocationManager : MonoBehaviour
             Debug.LogError("Nie znaleziono gracza! Czy Player jest w scenie Bootstrap?");
             return;
         }
+
+        // Pusty spawnId = pozycje ustawi zapis gry, nie szukamy punktu
+        if (string.IsNullOrEmpty(spawnId)) return;
 
         LocationSpawnPoint target = LocationSpawnPoint.Find(spawnId);
         if (target == null)
@@ -216,11 +275,12 @@ public class LocationManager : MonoBehaviour
 
     private void SetPlayerFrozen(bool frozen)
     {
+        // Przez UILock, a nie recznie - inaczej koniec przejscia miedzy lokacjami
+        // odblokowalby ruch nawet wtedy, gdy otwarty jest ekwipunek.
+        UILock.Set("Transition", frozen);
+
         Transform p = GetPlayer();
         if (p == null) return;
-
-        TopDownMovement move = p.GetComponent<TopDownMovement>();
-        if (move != null) move.enabled = !frozen;
 
         Rigidbody2D rb = p.GetComponent<Rigidbody2D>();
         if (rb != null && frozen) rb.linearVelocity = Vector2.zero;

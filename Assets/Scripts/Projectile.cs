@@ -4,8 +4,12 @@ public class Projectile : MonoBehaviour
 {
     [Header("Lot")]
     public float speed = 15f;
-    public int damage = 10;
     public float lifeTime = 3f;
+
+    [Header("Obrazenia (wartosc awaryjna)")]
+    [Tooltip("Uzywane TYLKO, gdy strzelec nie poda wlasnych obrazen przez Setup(). " +
+             "Dzieki temu jeden prefab strzaly dziala dla slabego i mocnego luku.")]
+    public int damage = 10;
 
     [Header("Dzwieki")]
     [Tooltip("Odglos trafienia w cel (gluchy odglos strzaly w cialo).")]
@@ -20,6 +24,14 @@ public class Projectile : MonoBehaviour
     public GameObject hitEffectPrefab;
 
     private Rigidbody2D rb;
+
+    // Wywolywane przez PlayerCombat - przekazuje obrazenia policzone
+    // ze Zrecznosci gracza i statystyk luku.
+    // Gdy nikt tego nie wywola, zostaje wartosc z prefabu.
+    public void SetDamage(int dmg)
+    {
+        damage = Mathf.Max(1, dmg);
+    }
 
     void Start()
     {

@@ -42,9 +42,33 @@ MonoBehaviour:
     weight: 20
     guaranteed: 1
     guaranteedChance: 1
-  - item: {fileID: 11400000, guid: 88ada7caecda70d478f2bb5941b8d9d8, type: 2}
+  - item: {fileID: 11400000, guid: 26eb66b354d2db44a928059194fce442, type: 2}
     minAmount: 1
     maxAmount: 1
-    weight: 20
-    guaranteed: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7
+  - item: {fileID: 11400000, guid: f1abe3cd095b8ca4ab9457ad74bca5a2, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7
+  - item: {fileID: 11400000, guid: 5dd42bb3ab1b2ed45974119f4c338402, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7
+  - item: {fileID: 11400000, guid: a04b6557463a11d44b042cbc5558a171, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7
+  - item: {fileID: 11400000, guid: b5a6d1ac1ced8b349968673214d338f9, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
     guaranteedChance: 0.7

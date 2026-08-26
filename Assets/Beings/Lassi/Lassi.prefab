@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 926621889092889679}
   - component: {fileID: 7946614632396470169}
   - component: {fileID: 2458260003527638493}
+  - component: {fileID: 964639224927940176}
   m_Layer: 7
   m_Name: Lassi
   m_TagString: Untagged
@@ -375,6 +376,7 @@ MonoBehaviour:
   profession: Druid
   level: 1
   money: 50
+  shopItems: []
   baseSTR: 5
   baseWIT: 5
   baseINT: 5
@@ -408,3 +410,16 @@ MonoBehaviour:
   bubbleSpriteRenderer: {fileID: 3411207190650844474}
   bubbleHeight: 0.15
   bubbleOffset: 0.12
+--- !u!114 &964639224927940176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639447589204126795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f624c665e937d4e83c47658fc0b9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniqueId
+  id: 447b466646ea4058

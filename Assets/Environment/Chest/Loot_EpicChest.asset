@@ -48,3 +48,57 @@ MonoBehaviour:
     weight: 20
     guaranteed: 1
     guaranteedChance: 0.7
+  - item: {fileID: 11400000, guid: 8441a38e65fc19541bd34bd451ce3b88, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: 87aa792088325b9449c10c6d46e4972d, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: 7e0d70b270349b944b07522e392619e4, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: f080f79cf0d460c4ea334b50e143827b, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: d1a45c447d1e1924595f9ae35d82c36c, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: f080f79cf0d460c4ea334b50e143827b, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: ef801eed789d4284bba31baf50ff006c, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: ef801eed789d4284bba31baf50ff006c, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805
+  - item: {fileID: 11400000, guid: ef801eed789d4284bba31baf50ff006c, type: 2}
+    minAmount: 1
+    maxAmount: 1
+    weight: 10
+    guaranteed: 0
+    guaranteedChance: 0.7002805

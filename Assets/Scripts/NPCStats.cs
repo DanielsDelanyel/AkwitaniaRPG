@@ -1,16 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class GiftPreference
 {
     public ItemData item;
-    public int affinityModifier; // Ile punktów dodaje/odejmuje ten konkretny prezent
+    public int affinityModifier; // Ile punktï¿½w dodaje/odejmuje ten konkretny prezent
 }
 
-// Definiujemy mo¿liwe statusy relacji
+// Definiujemy moï¿½liwe statusy relacji
 public enum RelationshipStatus
 {
-    Wrog,           // Poni¿ej -50
+    Wrog,           // Poniï¿½ej -50
     Nieznajomy,     // Od -49 do 9
     Znajomy,        // Od 10 do 49
     Przyjaciel,     // Od 50 do 89
@@ -23,7 +24,7 @@ public class NPCStats : MonoBehaviour
     public string npcName = "Lassi";
     public Sprite portrait;
 
-    // U¿ywamy stringa, a nie Enuma, ¿ebyœ móg³ wpisaæ tu DOWOLN¥ profesjê (nawet tak¹, która mechanicznie nie istnieje, np. "Zielarka", "¯ebrak")
+    // Uï¿½ywamy stringa, a nie Enuma, ï¿½ebyï¿½ mï¿½gï¿½ wpisaï¿½ tu DOWOLNï¿½ profesjï¿½ (nawet takï¿½, ktï¿½ra mechanicznie nie istnieje, np. "Zielarka", "ï¿½ebrak")
     public string profession = "Brak";
 
     [Header("Poziom i Ekonomia")]
@@ -31,7 +32,7 @@ public class NPCStats : MonoBehaviour
     public int money = 50;
 
     [Header("Sklep")]
-    public ItemData[] shopItems; // Co ten kupiec ma na sprzeda¿?
+    public ItemData[] shopItems; // Co ten kupiec ma na sprzedaï¿½?
 
     [Header("Statystyki Bazowe")]
     public int baseSTR = 5;
@@ -47,31 +48,131 @@ public class NPCStats : MonoBehaviour
     // Zmienna widoczna w Inspektorze (tylko do odczytu), aktualizowana automatycznie
     public RelationshipStatus currentStatus = RelationshipStatus.Nieznajomy;
 
-    [Header("Preferencje Prezentów")]
-    // Zmiana sympatii dla przedmiotów, których NIE MA na liœcie (np. 0, bo NPC jest obojêtny na losowe œmieci)
+    [Header("Preferencje Prezentï¿½w")]
+    // Zmiana sympatii dla przedmiotï¿½w, ktï¿½rych NIE MA na liï¿½cie (np. 0, bo NPC jest obojï¿½tny na losowe ï¿½mieci)
     public int defaultGiftAffinity = 0;
-    // Pe³na lista gustów (kochane i znienawidzone przedmioty)
+    // Peï¿½na lista gustï¿½w (kochane i znienawidzone przedmioty)
     public GiftPreference[] giftPreferences;
 
     [Header("Reakcje na prezenty")]
     public DialogueNode reactionLove;    // Zachwyt (np. Truskawka: >= 10 pkt)
-    public DialogueNode reactionNeutral; // Obojêtnoœæ (np. Ciastko: od -9 do 9 pkt)
-    public DialogueNode reactionHate;    // Odraza (np. Pierœcionek: <= -10 pkt)
+    public DialogueNode reactionNeutral; // Obojï¿½tnoï¿½ï¿½ (np. Ciastko: od -9 do 9 pkt)
+    public DialogueNode reactionHate;    // Odraza (np. Pierï¿½cionek: <= -10 pkt)
+
+    // ===============================================================
+    // ZAPAS SKLEPU
+    // Egzemplarze losujemy RAZ i zapamietujemy, zeby gracz nie mogl
+    // zamykac i otwierac sklepu w kolko az do wymarzonego rzutu.
+    // ===============================================================
+    [System.NonSerialized] private List<ItemData> rolledStock;
+
+    public List<ItemData> GetShopStock()
+    {
+        if (rolledStock != null) return rolledStock;
+
+        rolledStock = new List<ItemData>();
+        if (shopItems == null) return rolledStock;
+
+        foreach (ItemData template in shopItems)
+        {
+            if (template == null) continue;
+
+            // ItemFactory odda oryginal, jesli nie ma czego losowac
+            rolledStock.Add(ItemFactory.Create(template));
+        }
+
+        return rolledStock;
+    }
+
+    // Wolaj po uplywie dnia w grze, by kupiec odswiezyl towar
+    public void RefreshShopStock()
+    {
+        rolledStock = null;
+    }
+
+    // Kupiec traci sprzedany egzemplarz z polki
+    public void RemoveFromStock(ItemData soldItem)
+    {
+        if (rolledStock != null && soldItem != null) rolledStock.Remove(soldItem);
+    }
+
+    // ===============================================================
+    // ZAPIS STANU
+    // ===============================================================
+    private UniqueId uniqueId;
+    private string SaveId
+    {
+        get { return uniqueId != null ? uniqueId.Id : null; }
+    }
+
+    // Wywoluje SaveManager tuz przed zapisem gry
+    public void StoreStateToWorld()
+    {
+        if (uniqueId == null) uniqueId = GetComponent<UniqueId>();
+        if (uniqueId == null) return;
+
+        SavedNpc data = WorldState.GetOrCreateNpc(SaveId);
+        data.affinity = affinity;
+
+        // Zapas towaru zapisujemy TYLKO, jesli kupiec go juz wylosowal.
+        // Inaczej nie odroznilibysmy pustej polki od nieodwiedzonego sklepu.
+        data.hasStock = rolledStock != null;
+        data.shopStock.Clear();
+
+        if (rolledStock == null) return;
+
+        foreach (ItemData item in rolledStock)
+        {
+            SavedItem entry = SaveManager.CaptureItem(item, 1);
+            if (entry != null) data.shopStock.Add(entry);
+        }
+    }
+
+    // Odtwarza sympatie i zapas z wczytanego zapisu
+    private void RestoreStateFromWorld()
+    {
+        uniqueId = GetComponent<UniqueId>();
+
+        if (uniqueId == null)
+        {
+            Debug.LogWarning($"NPC '{npcName}' nie ma komponentu UniqueId - " +
+                             "jego sympatia i zapas towaru nie beda zapisywane.");
+            return;
+        }
+
+        SavedNpc data = WorldState.GetNpc(SaveId);
+        if (data == null) return;   // pierwsze spotkanie
+
+        affinity = Mathf.Clamp(data.affinity, -100, 100);
+
+        if (!data.hasStock) return;
+
+        // Odtwarzamy dokladnie te egzemplarze, ktore zostaly na polce
+        rolledStock = new List<ItemData>();
+
+        foreach (SavedItem entry in data.shopStock)
+        {
+            ItemData item = SaveManager.RestoreItem(entry);
+            if (item != null) rolledStock.Add(item);
+        }
+    }
 
     void Start()
     {
-        // Upewniamy siê, ¿e status na starcie zgadza siê z suwakiem
+        RestoreStateFromWorld();
+
+        // Upewniamy siï¿½, ï¿½e status na starcie zgadza siï¿½ z suwakiem
         UpdateRelationshipStatus();
     }
 
-    // --- FUNKCJE DLA PRZYSZ£EGO SYSTEMU DIALOGÓW ---
+    // --- FUNKCJE DLA PRZYSZï¿½EGO SYSTEMU DIALOGï¿½W ---
 
-    // Tê funkcjê bêdziemy wywo³ywaæ, gdy gracz powie coœ mi³ego lub chamskiego w oknie dialogowym
+    // Tï¿½ funkcjï¿½ bï¿½dziemy wywoï¿½ywaï¿½, gdy gracz powie coï¿½ miï¿½ego lub chamskiego w oknie dialogowym
     public void ModifyAffinity(int amount)
     {
         affinity += amount;
 
-        // Zabezpieczenie, ¿eby sympatia nie przekroczy³a skrajnych wartoœci
+        // Zabezpieczenie, ï¿½eby sympatia nie przekroczyï¿½a skrajnych wartoï¿½ci
         affinity = Mathf.Clamp(affinity, -100, 100);
 
         UpdateRelationshipStatus();
@@ -79,11 +180,17 @@ public class NPCStats : MonoBehaviour
 
 public int ReceiveGift(ItemData gift)
     {
-        int finalAffinityChange = defaultGiftAffinity; 
+        if (gift == null) return 0;
+
+        int finalAffinityChange = defaultGiftAffinity;
+        if (giftPreferences == null) giftPreferences = new GiftPreference[0];
 
         foreach (GiftPreference pref in giftPreferences)
         {
-            if (pref.item == gift)
+            // POPRAWKA: 'pref.item == gift' nie dzialalo dla przedmiotow
+            // z losowanymi statystykami - gracz wreczal KOPIE, a lista
+            // gustow trzyma ORYGINALY. IsSameKindAs porownuje rodzaj.
+            if (pref.item != null && pref.item.IsSameKindAs(gift))
             {
                 finalAffinityChange = pref.affinityModifier;
                 break; 
@@ -96,7 +203,7 @@ public int ReceiveGift(ItemData gift)
         return finalAffinityChange; // <--- Zwracamy wynik!
     }
 
-    // Automatycznie przypisuje status (np. "Wrog" lub "Przyjaciel") na podstawie punktów
+    // Automatycznie przypisuje status (np. "Wrog" lub "Przyjaciel") na podstawie punktï¿½w
     private void UpdateRelationshipStatus()
     {
         if (affinity <= -50) currentStatus = RelationshipStatus.Wrog;

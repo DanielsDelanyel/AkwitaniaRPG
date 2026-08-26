@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: Worn Wizard's hat_itemData 1
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Czarodziejski kapelusz
-  icon: {fileID: 3920480664274822880, guid: 7dbfcf6b92dfa284cbe175415975edba, type: 3}
+  itemName: "U\u017Cywany czarodziejski kapelusz"
+  icon: {fileID: -2944282707417726712, guid: 7371b578bc4b09c4b9cb7ff1ff5af805, type: 3}
   description: "Ka\u017Cdy kojarzy czarodziej\xF3w, mag\xF3w w\u0142a\u015Bnie z
     tymi czapkami. Nie nosz\u0105 ich jednak bez powodu, potrafi\u0105 skupia\u0107
     energi\u0119 magiczn\u0105 z otoczenia i sci\u0105ga\u0107 j\u0105 na nosz\u0105cego.
@@ -23,6 +23,15 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: e93bc0941a1d14f4cad9ee40b4b5169c, type: 3}
   isStackable: 0
   weight: 0.2
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
   price: 120
   healAmount: 0
   affinityBonus: 0
@@ -35,3 +44,14 @@ MonoBehaviour:
   dexterityBonus: 0
   intellegenceBonus: 5
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

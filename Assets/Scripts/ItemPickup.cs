@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
     [Header("Dane Przedmiotu")]
     public ItemData itemData;
 
-    [Header("Ilość (np. dla strza�)")]
+    [Header("Ilo�� (np. dla strza�)")]
     public int amount = 1; // Ile sztuk le�y w tej paczce na trawie
 
     [Header("Ustawienia")]
@@ -13,8 +13,25 @@ public class ItemPickup : MonoBehaviour
     private bool isPlayerClose = false;
     private GameObject activePrompt;
 
+    // Tylko przedmioty ROZSTAWIONE W EDYTORZE maja UniqueId.
+    // Te wypadajace ze skrzyn i przeciwnikow go nie maja i nie sa zapisywane.
+    private UniqueId uniqueId;
+    private string SaveId
+    {
+        get { return uniqueId != null ? "pickup_" + uniqueId.Id : null; }
+    }
+
     void Start()
     {
+        uniqueId = GetComponent<UniqueId>();
+
+        // Gracz zabral juz ten przedmiot w poprzedniej sesji
+        if (uniqueId != null && WorldState.HasFlag(SaveId))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         // NOWE: paczka lezaca na ziemi dostaje wlasny, wylosowany egzemplarz przedmiotu.
         // Jesli itemData jest juz egzemplarzem (bo gracz wyrzucil miecz z plecaka),
         // fabryka odda go bez zmian i statystyki zostana zachowane.
@@ -38,18 +55,21 @@ public class ItemPickup : MonoBehaviour
         {
             // Podnie�li�my wszystko!
             Debug.Log($"Podniesiono: {itemData.itemName} ({amount} szt.)");
+
+            // Rozstawiony w edytorze - zapamietujemy, ze juz go nie ma
+            if (uniqueId != null) WorldState.SetFlag(SaveId);
             if (activePrompt != null) Destroy(activePrompt);
             Destroy(gameObject); // Niszczymy obiekt na trawie
         }
         else if (leftovers < amount)
         {
             // Zmie�ci�a si� tylko cz��
-            Debug.Log($"Plecak pełny! Na ziemi zostało {leftovers} szt.");
+            Debug.Log($"Plecak pe�ny! Na ziemi zosta�o {leftovers} szt.");
             amount = leftovers; // Redukujemy stos na ziemi do samej resztki
         }
         else
         {
-            Debug.Log("Całkowity brak miejsca w plecaku!");
+            Debug.Log("Ca�kowity brak miejsca w plecaku!");
         }
     }
 

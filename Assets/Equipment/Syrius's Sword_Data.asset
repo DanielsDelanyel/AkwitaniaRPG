@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Syrius's Sword_Data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Miecz Syriusza
+  icon: {fileID: 21300000, guid: bc05e09965587a14bb1532e45eec9cce, type: 3}
+  description: "S\u0142ynny Syriusz z \"Siedmiu mistycznych szermierzy\" opracowa\u0142
+    specyficzn\u0105 technik\u0119 walki faluj\u0105cym ostrzem. Wymaga wprawy aby
+    wykorzysta\u0107 pe\u0142ny potencja\u0142... "
+  itemType: 4
+  rarity: 3
+  itemPrefab: {fileID: 8992644449882156520, guid: 3a813f824dd3c2d4ca408c3d3395a551, type: 3}
+  isStackable: 0
+  weight: 1.2
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
+  price: 1000
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 0
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 1
+    fixedValue: 0
+    minValue: -30
+    maxValue: 100
+    roundToWhole: 1
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses:
+  - stat: 2
+    minValue: -5
+    maxValue: 8
+    hasRolled: 0
+    rolledValue: 0
+  - stat: 4
+    minValue: 1
+    maxValue: 3
+    hasRolled: 0
+    rolledValue: 0
+  - stat: 5
+    minValue: 1
+    maxValue: 5
+    hasRolled: 0
+    rolledValue: 0
+  - stat: 6
+    minValue: -1
+    maxValue: 15
+    hasRolled: 0
+    rolledValue: 0
+  - stat: 7
+    minValue: 1
+    maxValue: 6
+    hasRolled: 0
+    rolledValue: 0
+  - stat: 8
+    minValue: 0
+    maxValue: 3
+    hasRolled: 0
+    rolledValue: 0
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

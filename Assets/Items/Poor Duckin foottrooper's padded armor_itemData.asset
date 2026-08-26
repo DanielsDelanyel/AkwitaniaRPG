@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poor Duckin foottrooper's padded armor_itemData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Przeszywanica Biednej ... Piechoty
-  icon: {fileID: -4141087876316161580, guid: ed3444f3e4d4d2145a3a60069651f95f, type: 3}
+  icon: {fileID: -8605982823558514810, guid: 4660f3aa60c6d4240b0057347d59b15a, type: 3}
   description: "Jako element uzupe\u0142nienia zbroi p\u0142ytowej jest \u015Bwietnym
     rozwi\u0105zaniem. Szkoda tylko \u017Ce wi\u0119kszo\u015B\u0107 brygady Biednej
     ... Piechoty by\u0142o w to wyposa\u017Cone, z my\u015Bl\u0105 o ochronie nosz\u0105cego..."
@@ -22,6 +22,15 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: c6a723f7994562843b10b740105aa00a, type: 3}
   isStackable: 0
   weight: 1.6
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
   price: 20
   healAmount: 0
   affinityBonus: 0
@@ -34,3 +43,14 @@ MonoBehaviour:
   dexterityBonus: 0
   intellegenceBonus: 0
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

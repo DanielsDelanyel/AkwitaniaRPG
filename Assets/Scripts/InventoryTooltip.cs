@@ -2,25 +2,38 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class InventoryTooltip : MonoBehaviour
 {
-    public static InventoryTooltip instance;
+    // ===============================================================
+    // ODPORNY SINGLETON
+    // Jesli obiekt byl wylaczony w Hierarchii, Awake() nigdy sie nie odpalil
+    // i 'instance' bylo null -> najechanie myszka wywalalo gre.
+    // Teraz w razie potrzeby odnajdujemy siebie sami, takze wsrod wylaczonych.
+    // ===============================================================
+    private static InventoryTooltip _instance;
+    public static InventoryTooltip instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<InventoryTooltip>(FindObjectsInactive.Include);
+                if (_instance != null && !_instance.gameObject.activeSelf)
+                    _instance.gameObject.SetActive(true);
+            }
+            return _instance;
+        }
+    }
 
     [Header("Komponenty UI")]
-    public TextMeshProUGUI headerField;   // Nazwa
-    public TextMeshProUGUI contentField;  // Opis fabularny
-    public TextMeshProUGUI rarityField;   // Tekst rzadkosci
+    public TextMeshProUGUI headerField;
+    public TextMeshProUGUI contentField;
+    public TextMeshProUGUI rarityField;
     public Image rarityIconImage;
     public TextMeshProUGUI priceField;
-
-    [Header("NOWE POLA (utworz je w TooltipWindow)")]
-    [Tooltip("Tu trafiaja bonusy: +5 Sila, Przywraca 20 pkt zdrowia itd.")]
     public TextMeshProUGUI statsField;
-
-    [Tooltip("Opcjonalnie: typ przedmiotu, np. 'Bron jednoreczna'.")]
     public TextMeshProUGUI typeField;
-
-    [Tooltip("Opcjonalnie: waga przedmiotu.")]
     public TextMeshProUGUI weightField;
 
     [Header("Grafiki Rzadkosci")]
@@ -33,28 +46,48 @@ public class InventoryTooltip : MonoBehaviour
     public float offsetX = 15f;
     public float offsetY = -15f;
 
-    [Tooltip("Zaznacz, jesli TooltipWindow ma Vertical Layout Group + Content Size Fitter. " +
-             "Okno bedzie sie wtedy samo kurczyc i rozciagac pod zawartosc.")]
+    [Tooltip("Zaznacz, jesli okno ma Vertical Layout Group + Content Size Fitter.")]
     public bool autoResize = false;
 
     private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
+
+    // Tryb "Szczegoly" - okno stoi w miejscu, dopoki gracz go nie zamknie
+    private bool isPinned;
+    public bool IsPinned { get { return isPinned; } }
 
     void Awake()
     {
-        instance = this;
+        _instance = this;
         rectTransform = GetComponent<RectTransform>();
-    }
 
-    void Start()
-    {
-        if (rarityIconImage != null) rarityIconImage.enabled = false;
-        gameObject.SetActive(false);
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+        SetVisible(false);
     }
 
     void Update()
     {
+        // Przypiete okno nie ucieka za myszka
+        if (isPinned)
+        {
+            // Escape obsluguje UIEscapeHandler - tu reagujemy tylko na klikniecie,
+            // zeby jedno nacisniecie klawisza nie zamknelo dwoch okien naraz.
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) HideTooltip();
+            return;
+        }
+
+        if (canvasGroup == null || canvasGroup.alpha <= 0f) return; // ukryty - nie liczymy pozycji
+
+        FollowMouse();
+    }
+
+    private void FollowMouse()
+    {
         Vector2 mousePos = Input.mousePosition;
 
+        // Przy prawej krawedzi ekranu okno rysuje sie w lewo, przy gornej - w dol
         float pivotX = mousePos.x / Screen.width > 0.5f ? 1f : 0f;
         float pivotY = mousePos.y / Screen.height > 0.5f ? 1f : 0f;
 
@@ -66,20 +99,53 @@ public class InventoryTooltip : MonoBehaviour
         transform.position = mousePos + new Vector2(currentOffsetX, currentOffsetY);
     }
 
+    // Chowanie przez przezroczystosc, NIE przez SetActive - obiekt musi zyc,
+    // inaczej singleton znowu przestanie dzialac.
+    private void SetVisible(bool visible)
+    {
+        if (canvasGroup == null) return;
+
+        canvasGroup.alpha = visible ? 1f : 0f;
+        canvasGroup.blocksRaycasts = false; // tooltip NIGDY nie lapie klikniec
+        canvasGroup.interactable = false;
+    }
+
     public void ShowTooltip(ItemData item)
+    {
+        if (isPinned) return; // przypiete szczegoly maja pierwszenstwo
+        Fill(item);
+        SetVisible(true);
+    }
+
+    // Wolane przez "Szczegoly" w menu kontekstowym
+    public void ShowPinned(ItemData item, Vector2 screenPosition)
+    {
+        Fill(item);
+        SetVisible(true);
+
+        isPinned = true;
+        rectTransform.pivot = new Vector2(0f, 1f);
+        transform.position = ClampToScreen(screenPosition);
+    }
+
+    private Vector3 ClampToScreen(Vector2 pos)
+    {
+        Vector2 size = rectTransform.sizeDelta;
+        float x = Mathf.Clamp(pos.x, 0f, Mathf.Max(0f, Screen.width - size.x));
+        float y = Mathf.Clamp(pos.y, Mathf.Min(size.y, Screen.height), Screen.height);
+        return new Vector3(x, y, 0f);
+    }
+
+    private void Fill(ItemData item)
     {
         if (item == null) return;
 
-        gameObject.SetActive(true);
-
-        // --- NAZWA (w kolorze rzadkosci - czytelniej niz sama nazwa na bialo) ---
         if (headerField != null)
         {
             headerField.text = item.itemName;
             headerField.color = GetRarityColor(item.rarity);
         }
 
-        // --- RZADKOSC ---
         if (rarityField != null)
         {
             rarityField.text = GetRarityName(item.rarity);
@@ -93,41 +159,33 @@ public class InventoryTooltip : MonoBehaviour
             rarityIconImage.enabled = iconToShow != null;
         }
 
-        // --- TYP PRZEDMIOTU ---
         SetField(typeField, item.GetTypeName());
 
-        // --- STATYSTYKI: TU DZIEJE SIE CALA MAGIA ---
-        // Klucz z healAmount = 0 i zerowymi bonusami -> pole znika calkowicie.
-        // Mikstura z healAmount = 20 -> "Przywraca 20 pkt zdrowia".
         if (statsField != null)
         {
             if (item.HasAnyStats()) SetField(statsField, item.GetStatsDescription());
             else statsField.gameObject.SetActive(false);
         }
 
-        // --- OPIS FABULARNY (chowamy, jesli pusty) ---
         SetField(contentField, item.description);
 
-        // --- WAGA ---
         if (weightField != null)
         {
             if (item.weight > 0f) SetField(weightField, $"Waga: {item.weight}");
             else weightField.gameObject.SetActive(false);
         }
 
-        // --- CENA ---
         if (priceField != null)
         {
-            if (item.price > 0) SetField(priceField, $"Cena: {item.price} G");
+            // GetEffectivePrice() zamiast price - udany egzemplarz jest wart wiecej
+            if (item.price > 0) SetField(priceField, $"Cena: {item.GetEffectivePrice()} G");
             else priceField.gameObject.SetActive(false);
         }
 
-        // Przeliczenie wysokosci okna, gdy czesc pol zniknela
-        if (autoResize)
+        if (autoResize && rectTransform != null)
             LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
     }
 
-    // Wpisuje tekst i wlacza pole; pusty tekst = pole znika, zeby nie zostawialo dziury
     private void SetField(TextMeshProUGUI field, string text)
     {
         if (field == null) return;
@@ -139,8 +197,16 @@ public class InventoryTooltip : MonoBehaviour
 
     public void HideTooltip()
     {
-        gameObject.SetActive(false);
+        isPinned = false;
+        SetVisible(false);
         if (rarityIconImage != null) rarityIconImage.enabled = false;
+    }
+
+    // Uzywane przy zamykaniu ekwipunku - chowa takze przypiete okno
+    public void ForceHide()
+    {
+        isPinned = false;
+        SetVisible(false);
     }
 
     string GetRarityName(ItemRarity rarity)

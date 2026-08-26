@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public enum CharacterClass
 {
@@ -119,6 +119,16 @@ public class PlayerStats : MonoBehaviour
     public delegate void OnHealthChanged();
     public OnHealthChanged onHealthChangedCallback;
 
+    // ===============================================================
+    // SMIERC
+    // Zamiast samego Debug.Log - prawdziwy stan i zdarzenie,
+    // na ktore reaguje ekran smierci.
+    // ===============================================================
+    public bool IsDead { get; private set; }
+
+    // Podpina sie do tego DeathScreenUI
+    public System.Action onPlayerDied;
+
     void Awake()
     {
         instance = this;
@@ -203,6 +213,7 @@ public class PlayerStats : MonoBehaviour
     // --- WALKA ---
     public void TakeDamage(int damage, bool isCrit, Vector2 hitDirection)
     {
+        if (IsDead) return;              // trup nie obrywa drugi raz
         if (invincibilityTimer > 0f) return;
 
         int totalDefense = Mathf.RoundToInt(GetTotal(baseDef, equipDef) * defenseMultiplier);
@@ -219,7 +230,44 @@ public class PlayerStats : MonoBehaviour
         }
 
         if (onHealthChangedCallback != null) onHealthChangedCallback.Invoke();
-        if (currentHealth <= 0) Debug.Log("Gracz umiera!");
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Die();
+        }
+    }
+
+    // Wywolywane przy zejsciu zdrowia do zera. Samo nie zatrzymuje gry -
+    // od tego jest DeathScreenUI, ktory slucha tego zdarzenia.
+    public void Die()
+    {
+        if (IsDead) return;
+        IsDead = true;
+
+        currentHealth = 0;
+        invincibilityTimer = 0f;
+
+        Debug.Log($"{playerName} ginie.");
+
+        if (onPlayerDied != null) onPlayerDied.Invoke();
+    }
+
+    // Przywraca gracza do zycia po klikniecie "Ratuj"
+    public void Revive(float healthPercent)
+    {
+        IsDead = false;
+
+        int target = Mathf.RoundToInt(GetMaxHealth() * Mathf.Clamp01(healthPercent));
+        currentHealth = Mathf.Max(1, target);
+
+        currentMana = GetMaxMana();
+        currentStamina = GetMaxStamina();
+
+        // Chwila nietykalnosci, zeby gracz nie zginal od razu po odrodzeniu
+        GrantInvincibility(2f);
+
+        if (onHealthChangedCallback != null) onHealthChangedCallback.Invoke();
     }
 
     // --- PRZELICZANIE ---

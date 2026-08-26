@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 6077226898938842913}
   - component: {fileID: 4746771483755268590}
   - component: {fileID: 3942159664768767844}
+  - component: {fileID: 7231708758783375607}
   m_Layer: 0
   m_Name: CommonChest
   m_TagString: Untagged
@@ -287,5 +288,32 @@ MonoBehaviour:
   popDistanceMax: 1.4
   popDuration: 0.55
   landOffsetY: 0
-  openSound: {fileID: 0}
+  openSounds: []
+  openSound: {fileID: 8300000, guid: ad79ae468a4bfd04bb1ddc2758f3be48, type: 3}
+  commonSounds: []
+  rareSounds: []
+  epicSounds: []
+  legendarySounds: []
+  lootPopSounds:
+  - {fileID: 8300000, guid: 427d02dce94ccc44cab04f8618b3f754, type: 3}
+  - {fileID: 8300000, guid: d6cc7d6512dae524ebe3e6090f3c5db0, type: 3}
+  - {fileID: 8300000, guid: ddf2fd7bdb7ece44485d10714eb4d669, type: 3}
+  lootLandSounds: []
+  emptyChestSounds: []
+  tooFarSounds:
+  - {fileID: 8300000, guid: 17e3d97634fe3874687582b1c2f0d6fd, type: 3}
   openVolume: 0.7
+  lootVolume: 0.5
+--- !u!114 &7231708758783375607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375620785245571667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f624c665e937d4e83c47658fc0b9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniqueId
+  id: dd

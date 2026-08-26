@@ -4,7 +4,14 @@ using UnityEngine.UI;
 
 public class StatsUI : MonoBehaviour
 {
-    [Header("Zarz¹dzanie Oknem")]
+    // Singleton, zeby UIEscapeHandler mogl zamknac to okno
+    public static StatsUI instance;
+
+    public bool IsOpen { get { return statsWindow != null && statsWindow.activeSelf; } }
+
+    void Awake() { instance = this; }
+
+    [Header("Zarzï¿½dzanie Oknem")]
     public GameObject statsWindow; // <--- Referencja do graficznego okna
     public TopDownMovement playerMovement; // <--- Do zatrzymywania gracza
 
@@ -13,14 +20,14 @@ public class StatsUI : MonoBehaviour
     public GameObject professionTooltipWindow;
     public TextMeshProUGUI professionTooltipText;
 
-    [Header("Teksty Wartoœci")]
+    [Header("Teksty Wartoï¿½ci")]
     public TextMeshProUGUI strText;
     public TextMeshProUGUI dexText;
     public TextMeshProUGUI vitText;
     public TextMeshProUGUI intText;
     public TextMeshProUGUI charText;
 
-    [Header("Ogólne Informacje")]
+    [Header("Ogï¿½lne Informacje")]
     public TextMeshProUGUI availablePointsText;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI professionText;
@@ -34,7 +41,7 @@ public class StatsUI : MonoBehaviour
 
     public Image expBar;
 
-    // Odœwie¿a UI, jeœli okno by³o w³¹czone z poziomu Inspektora
+    // Odï¿½wieï¿½a UI, jeï¿½li okno byï¿½o wï¿½ï¿½czone z poziomu Inspektora
     void OnEnable()
     {
         if (statsWindow != null && statsWindow.activeSelf)
@@ -45,35 +52,63 @@ public class StatsUI : MonoBehaviour
 
     void Update()
     {
-        // --- NOWOŒÆ: Zabezpieczenie przed otwieraniem okien w trakcie rozmowy ---
-        if (DialogueManager.instance != null && DialogueManager.instance.dialogueWindow.activeSelf)
-            return; // Przerwij czytanie klawiszy, jeœli dialog jest otwarty!
+        // UWAGA: Escape NIE jest tu obslugiwany - zajmuje sie nim UIEscapeHandler.
+        if (Input.GetKeyDown(KeyCode.V)) TryToggleStatsWindow();
 
-        if (Input.GetKeyDown(KeyCode.V)) ToggleStatsWindow();
-        else if (Input.GetKeyDown(KeyCode.Escape) && statsWindow.activeSelf) ToggleStatsWindow();
-
-        //Tooltip pod¹¿a za myszk¹
+        //Tooltip podï¿½ï¿½a za myszkï¿½
         if (professionTooltipWindow != null && professionTooltipWindow.activeSelf)
         {
             professionTooltipWindow.transform.position = Input.mousePosition + new Vector3(150f, 44f, 0f);
         }
     }
 
+    // Klawisz "V" - nie otwiera okna w trakcie rozmowy ani zakupow
+    public void TryToggleStatsWindow()
+    {
+        if (!IsOpen && IsBlockedByAnotherWindow())
+        {
+            Debug.Log("Nie mozna teraz otworzyc okna statystyk.");
+            return;
+        }
+
+        ToggleStatsWindow();
+    }
+
+    private bool IsBlockedByAnotherWindow()
+    {
+        if (PauseMenuUI.instance != null && PauseMenuUI.instance.IsOpen) return true;
+        if (DeathScreenUI.instance != null && DeathScreenUI.instance.IsShowing) return true;
+
+        if (DialogueManager.instance != null)
+        {
+            if (DialogueManager.instance.IsDialogueOpen) return true;
+            if (DialogueManager.instance.IsShopOpen) return true;
+            if (DialogueManager.instance.IsGiftPanelOpen) return true;
+        }
+
+        if (InventoryUI.instance != null && InventoryUI.instance.IsOpen) return true;
+
+        return false;
+    }
+
+    // Dla UIEscapeHandler - zamyka, ale nigdy nie otwiera
+    public void CloseStatsWindow()
+    {
+        if (IsOpen) ToggleStatsWindow();
+    }
+
     public void ToggleStatsWindow()
     {
-        // Zamieniamy stan na przeciwny (w³¹czone -> wy³¹czone i na odwrót)
+        // Zamieniamy stan na przeciwny (wï¿½ï¿½czone -> wyï¿½ï¿½czone i na odwrï¿½t)
         bool isActive = !statsWindow.activeSelf;
         statsWindow.SetActive(isActive);
 
-        // Odœwie¿amy liczby przy otwieraniu okna
+        // Odï¿½wieï¿½amy liczby przy otwieraniu okna
         if (isActive) UpdateUI();
         else HideProfessionTooltip();
-        // Zatrzymujemy gracza, gdy czyta statystyki (tak jak w Inventory)
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = !isActive;
-            if (isActive) playerMovement.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        }
+        // Blokada ruchu przez UILock - ruch wroci dopiero, gdy zamkna sie
+        // WSZYSTKIE okna, ktore go blokuja (np. trwajaca rozmowa).
+        UILock.Set("Stats", isActive);
     }
 
     public void UpdateUI()
@@ -83,7 +118,7 @@ public class StatsUI : MonoBehaviour
         PlayerStats stats = PlayerStats.instance;
         expBar.fillAmount = (float)stats.currentExp / stats.expToNextLevel; 
         if (playerNameText != null) playerNameText.text = stats.playerName;
-        // 1. Aktualizacja tekstów
+        // 1. Aktualizacja tekstï¿½w
         strText.text = stats.baseSTR.ToString();
         dexText.text = stats.baseZR.ToString();
         vitText.text = stats.baseWIT.ToString();
@@ -111,7 +146,7 @@ public class StatsUI : MonoBehaviour
             }
         }
 
-        // 2. Blokowanie przycisków
+        // 2. Blokowanie przyciskï¿½w
         bool hasPoints = stats.attributePoints > 0;
         strButton.interactable = hasPoints;
         dexButton.interactable = hasPoints;
@@ -120,7 +155,7 @@ public class StatsUI : MonoBehaviour
         charButton.interactable = hasPoints;
     }
 
-    // --- FUNKCJE DLA PRZYCISKÓW ---
+    // --- FUNKCJE DLA PRZYCISKï¿½W ---
     public void IncreaseSTR() { TryIncreaseStat(ref PlayerStats.instance.baseSTR); }
     public void IncreaseDEX() { TryIncreaseStat(ref PlayerStats.instance.baseZR); }
     public void IncreaseVIT() { TryIncreaseStat(ref PlayerStats.instance.baseWIT); }

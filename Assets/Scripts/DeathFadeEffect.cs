@@ -68,6 +68,12 @@ public class DeathFadeEffect : MonoBehaviour
         CreatureAI ai = GetComponent<CreatureAI>();
         if (ai != null) ai.enabled = false;
 
+        BanditAI bandit = GetComponent<BanditAI>();
+        if (bandit != null) bandit.enabled = false;
+
+        ArcherAI archer = GetComponent<ArcherAI>();
+        if (archer != null) archer.enabled = false;
+
         CreatureWander wander = GetComponent<CreatureWander>();
         if (wander != null) wander.enabled = false;
 

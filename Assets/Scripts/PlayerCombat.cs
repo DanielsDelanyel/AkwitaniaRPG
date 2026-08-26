@@ -54,7 +54,7 @@ public class PlayerCombat : MonoBehaviour
                     float angle = GetAngleToMouse();
 
                     // WYSYLAMY PREFAB KONKRETNEJ STRZALY!
-                    Shoot(angle, ammo.itemPrefab);
+                    Shoot(angle, ammo.itemPrefab, weapon, ammo);
 
                     // NOWE: odglos napietej cieciwy, brany z danych LUKU
                     SoundManager.Play(weapon.swingSounds, weapon.soundVolume);
@@ -75,14 +75,30 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    // Dodali�my nowy argument: GameObject specificArrowPrefab
-    void Shoot(float baseAngle, GameObject specificArrowPrefab)
+    // Wystrzal z podaniem obrazen policzonych ze statystyk gracza
+    void Shoot(float baseAngle, GameObject specificArrowPrefab, ItemData bow, ItemData ammo)
     {
         float arrowAngle = baseAngle - 45f;
         Quaternion rotation = Quaternion.Euler(0, 0, arrowAngle);
 
-        // Zamiast og�lnego 'arrowPrefab', u�ywamy tego z ekwipunku!
-        Instantiate(specificArrowPrefab, firePoint.position, rotation);
+        GameObject arrow = Instantiate(specificArrowPrefab, firePoint.position, rotation);
+
+        // NOWE: strzala dostaje obrazenia od gracza.
+        // Wczesniej brala je ze sztywnego pola w prefabie, wiec ani Zrecznosc,
+        // ani statystyki luku nie mialy zadnego wplywu na sile strzalu.
+        Projectile projectile = arrow.GetComponent<Projectile>();
+        if (projectile != null) projectile.SetDamage(CalculateArrowDamage(bow, ammo));
+    }
+
+    // Zrecznosc + bonus z luku + bonus z samej strzaly, razy mnoznik klasy
+    int CalculateArrowDamage(ItemData bow, ItemData ammo)
+    {
+        int dexterity = stats.GetTotal(stats.baseZR, stats.equipZR);
+        int bowBonus = bow != null ? bow.GetDamageBonus() : 0;
+        int ammoBonus = ammo != null ? ammo.GetDamageBonus() : 0;
+
+        float raw = (dexterity + bowBonus + ammoBonus) * stats.GetTotalDamageMultiplier();
+        return Mathf.Max(1, Mathf.RoundToInt(raw));
     }
     void PerformMeleeAttack(ItemData weapon, float angle)
     {

@@ -39,6 +39,14 @@ public class DialogueManager : MonoBehaviour
         instance = this;
     }
 
+    // ===============================================================
+    // STAN OKIEN - czyta to UIEscapeHandler oraz InventoryUI i StatsUI,
+    // zeby nie otwierac swoich okien w trakcie rozmowy.
+    // ===============================================================
+    public bool IsDialogueOpen { get { return dialogueWindow != null && dialogueWindow.activeSelf; } }
+    public bool IsGiftPanelOpen { get { return giftOverlay != null && giftOverlay.activeSelf; } }
+    public bool IsShopOpen { get { return shopPanel != null && shopPanel.activeSelf; } }
+
     private void DisplayNode(DialogueNode node)
     {
         currentNode = node;
@@ -63,11 +71,9 @@ public class DialogueManager : MonoBehaviour
         currentNPC = npc;
         dialogueWindow.SetActive(true);
 
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = false;
-            playerMovement.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        }
+        // Rozmowa zaklada wlasna blokade ruchu. Zdejmie ja dopiero CloseDialogue,
+        // wiec otwarcie i zamkniecie plecaka w miedzyczasie jej nie skasuje.
+        UILock.Set("Dialogue", true);
 
         string npcName = npc != null ? npc.npcName : "Nieznajomy";
         nameText.text = npcName;
@@ -90,11 +96,11 @@ public class DialogueManager : MonoBehaviour
 
     public void CloseDialogue()
     {
-        dialogueWindow.SetActive(false);
+        if (dialogueWindow != null) dialogueWindow.SetActive(false);
         currentNode = null;
         currentNPC = null;
 
-        if (playerMovement != null) playerMovement.enabled = true;
+        UILock.Set("Dialogue", false);
     }
 
     public void OnOptionClicked(int optionIndex)
@@ -173,17 +179,27 @@ public class DialogueManager : MonoBehaviour
     // --- TU BYL BLAD: panel sie wlaczal, ale nikt nie mowil ShopManagerowi, z kim handlujemy ---
     public void OpenShopPanel()
     {
-        if (shopPanel != null) shopPanel.SetActive(true);
+        // ShopManager sam sie odnajduje, nawet gdy jego obiekt jest wylaczony
+        ShopManager shop = ShopManager.instance;
 
-        // Aktywacja obiektu odpala Awake() ShopManagera, wiec dopiero teraz instance istnieje
-        if (ShopManager.instance != null)
+        if (shop == null)
         {
-            ShopManager.instance.OpenShop(currentNPC); // <-- KLUCZOWA LINIJKA
+            Debug.LogError("Nie znaleziono ShopManagera w scenie! " +
+                           "Sprawdz, czy skrypt ShopManager wisi na obiekcie ShopPanel.");
+            return;
         }
-        else
+
+        // TU BYL CICHY BLAD: gdy pole 'Shop Panel' bylo puste, kod po prostu
+        // pomijal aktywacje i szedl dalej, a potem dziwil sie brakiem menedzera.
+        if (shopPanel == null)
         {
-            Debug.LogError("Nie znaleziono ShopManagera! Sprawdz, czy skrypt ShopManager wisi na obiekcie ShopPanel.");
+            Debug.LogWarning("DialogueManager: pole 'Shop Panel' jest puste! " +
+                             "Uzywam obiektu ShopManagera. Uzupelnij te referencje w Inspektorze.");
+            shopPanel = shop.gameObject;
         }
+
+        shopPanel.SetActive(true);
+        shop.OpenShop(currentNPC);
 
         if (InventoryUI.instance != null) InventoryUI.instance.inventoryWindow.SetActive(true);
 

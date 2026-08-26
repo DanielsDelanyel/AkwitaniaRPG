@@ -1,0 +1,975 @@
+fileFormatVersion: 2
+guid: 9a106a664279de34c8673f311ade2b3e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2133802207458900038
+    second: Tezcatlipoca_spritesheet_0
+  - first:
+      213: -2955825259349538254
+    second: Tezcatlipoca_spritesheet_1
+  - first:
+      213: 4329699127931007574
+    second: Tezcatlipoca_spritesheet_2
+  - first:
+      213: -2204296968694904561
+    second: Tezcatlipoca_spritesheet_3
+  - first:
+      213: -878325141637290455
+    second: Tezcatlipoca_spritesheet_4
+  - first:
+      213: 8803286891751500759
+    second: Tezcatlipoca_spritesheet_5
+  - first:
+      213: -6274032836783745356
+    second: Tezcatlipoca_spritesheet_6
+  - first:
+      213: -1993515423828940919
+    second: Tezcatlipoca_spritesheet_7
+  - first:
+      213: -7383331287558616802
+    second: Tezcatlipoca_spritesheet_8
+  - first:
+      213: -8618853756286181620
+    second: Tezcatlipoca_spritesheet_9
+  - first:
+      213: -8755621369976991256
+    second: Tezcatlipoca_spritesheet_10
+  - first:
+      213: -1864618104250197814
+    second: Tezcatlipoca_spritesheet_11
+  - first:
+      213: -7374728491767656256
+    second: Tezcatlipoca_spritesheet_12
+  - first:
+      213: -8795418706374668741
+    second: Tezcatlipoca_spritesheet_13
+  - first:
+      213: 4531397688327054017
+    second: Tezcatlipoca_spritesheet_14
+  - first:
+      213: 571203817577836624
+    second: Tezcatlipoca_spritesheet_15
+  - first:
+      213: 7778614067490409573
+    second: Tezcatlipoca_spritesheet_16
+  - first:
+      213: 5488267248778341695
+    second: Tezcatlipoca_spritesheet_17
+  - first:
+      213: -8927502698585461027
+    second: Tezcatlipoca_spritesheet_18
+  - first:
+      213: -5711780516054081646
+    second: Tezcatlipoca_spritesheet_19
+  - first:
+      213: -7016195546222955114
+    second: Tezcatlipoca_spritesheet_20
+  - first:
+      213: -1876051526301562920
+    second: Tezcatlipoca_spritesheet_21
+  - first:
+      213: -5285662103494647350
+    second: Tezcatlipoca_spritesheet_22
+  - first:
+      213: -744291544923878453
+    second: Tezcatlipoca_spritesheet_23
+  - first:
+      213: 5331379388416432126
+    second: Tezcatlipoca_spritesheet_24
+  - first:
+      213: -7282058505230220734
+    second: Tezcatlipoca_spritesheet_25
+  - first:
+      213: 6653216877121347716
+    second: Tezcatlipoca_spritesheet_26
+  - first:
+      213: -2719449349121093565
+    second: Tezcatlipoca_spritesheet_27
+  - first:
+      213: -5679820856505640054
+    second: Tezcatlipoca_spritesheet_28
+  - first:
+      213: -2389307843133490504
+    second: Tezcatlipoca_spritesheet_29
+  - first:
+      213: 4823634038974760077
+    second: Tezcatlipoca_spritesheet_30
+  - first:
+      213: -9055647295270320374
+    second: Tezcatlipoca_spritesheet_31
+  - first:
+      213: 6110276428220201839
+    second: Tezcatlipoca_spritesheet_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 255
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab7c77b92363362e0800000000000000
+      internalID: -2133802207458900038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 255
+        width: 105
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23a0856569ccaf6d0800000000000000
+      internalID: -2955825259349538254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 255
+        width: 106
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65275a8ca6e261c30800000000000000
+      internalID: 4329699127931007574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 255
+        width: 110
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f094879f593c861e0800000000000000
+      internalID: -2204296968694904561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 255
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9262a6fefef8fc3f0800000000000000
+      internalID: -878325141637290455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 255
+        width: 105
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db63b649ce8b2a70800000000000000
+      internalID: 8803286891751500759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 255
+        width: 106
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b65e5e40682ee8a0800000000000000
+      internalID: -6274032836783745356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 255
+        width: 110
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 987e96cb84c9554e0800000000000000
+      internalID: -1993515423828940919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 255
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e198a020053298990800000000000000
+      internalID: -7383331287558616802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 255
+        width: 105
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f558d5c2ea36880800000000000000
+      internalID: -8618853756286181620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 255
+        width: 106
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1d3b6d0c8cd7680800000000000000
+      internalID: -8755621369976991256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 127
+        width: 110
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8976e96bb8f16e0800000000000000
+      internalID: -1864618104250197814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 127
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c09c3d7283b7a990800000000000000
+      internalID: -7374728491767656256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 127
+        width: 111
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e46b3694560f580800000000000000
+      internalID: -8795418706374668741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 127
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c2a2cc6032c2ee30800000000000000
+      internalID: 4531397688327054017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 127
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 050f21188d25de700800000000000000
+      internalID: 571203817577836624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 127
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56c4f91184033fb60800000000000000
+      internalID: 7778614067490409573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 127
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3de7d31cfd3a2c40800000000000000
+      internalID: 5488267248778341695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 127
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddee87778932b1480800000000000000
+      internalID: -8927502698585461027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 127
+        width: 111
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f599902edabb0b0800000000000000
+      internalID: -5711780516054081646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 127
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695f3b8f25771ae90800000000000000
+      internalID: -7016195546222955114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 127
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d7477a931de6f5e0800000000000000
+      internalID: -1876051526301562920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 105
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac1257e425e85a6b0800000000000000
+      internalID: -5285662103494647350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 106
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb4c7788cebba5f0800000000000000
+      internalID: -744291544923878453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 110
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef796619e4ddcf940800000000000000
+      internalID: 5331379388416432126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 0
+        width: 107
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 242042a1f5ee0fa90800000000000000
+      internalID: -7282058505230220734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 0
+        width: 105
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480a37edf79f45c50800000000000000
+      internalID: 6653216877121347716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 0
+        width: 106
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34058f8a933924ad0800000000000000
+      internalID: -2719449349121093565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 0
+        width: 110
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b502426093d21b0800000000000000
+      internalID: -5679820856505640054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 0
+        width: 107
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba39fefc2977ded0800000000000000
+      internalID: -2389307843133490504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 0
+        width: 105
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84c29b0a9df0f240800000000000000
+      internalID: 4823634038974760077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 0
+        width: 106
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a078f2a83c0e35280800000000000000
+      internalID: -9055647295270320374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tezcatlipoca_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 0
+        width: 110
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6bf18fa9001cc450800000000000000
+      internalID: 6110276428220201839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tezcatlipoca_spritesheet_0: -2133802207458900038
+      Tezcatlipoca_spritesheet_1: -2955825259349538254
+      Tezcatlipoca_spritesheet_10: -8755621369976991256
+      Tezcatlipoca_spritesheet_11: -1864618104250197814
+      Tezcatlipoca_spritesheet_12: -7374728491767656256
+      Tezcatlipoca_spritesheet_13: -8795418706374668741
+      Tezcatlipoca_spritesheet_14: 4531397688327054017
+      Tezcatlipoca_spritesheet_15: 571203817577836624
+      Tezcatlipoca_spritesheet_16: 7778614067490409573
+      Tezcatlipoca_spritesheet_17: 5488267248778341695
+      Tezcatlipoca_spritesheet_18: -8927502698585461027
+      Tezcatlipoca_spritesheet_19: -5711780516054081646
+      Tezcatlipoca_spritesheet_2: 4329699127931007574
+      Tezcatlipoca_spritesheet_20: -7016195546222955114
+      Tezcatlipoca_spritesheet_21: -1876051526301562920
+      Tezcatlipoca_spritesheet_22: -5285662103494647350
+      Tezcatlipoca_spritesheet_23: -744291544923878453
+      Tezcatlipoca_spritesheet_24: 5331379388416432126
+      Tezcatlipoca_spritesheet_25: -7282058505230220734
+      Tezcatlipoca_spritesheet_26: 6653216877121347716
+      Tezcatlipoca_spritesheet_27: -2719449349121093565
+      Tezcatlipoca_spritesheet_28: -5679820856505640054
+      Tezcatlipoca_spritesheet_29: -2389307843133490504
+      Tezcatlipoca_spritesheet_3: -2204296968694904561
+      Tezcatlipoca_spritesheet_30: 4823634038974760077
+      Tezcatlipoca_spritesheet_31: -9055647295270320374
+      Tezcatlipoca_spritesheet_32: 6110276428220201839
+      Tezcatlipoca_spritesheet_4: -878325141637290455
+      Tezcatlipoca_spritesheet_5: 8803286891751500759
+      Tezcatlipoca_spritesheet_6: -6274032836783745356
+      Tezcatlipoca_spritesheet_7: -1993515423828940919
+      Tezcatlipoca_spritesheet_8: -7383331287558616802
+      Tezcatlipoca_spritesheet_9: -8618853756286181620
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

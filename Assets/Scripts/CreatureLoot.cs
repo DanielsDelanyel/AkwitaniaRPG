@@ -39,6 +39,15 @@ public class CreatureLoot : MonoBehaviour
     [Tooltip("O ile nizej od srodka stworzenia ma wyladowac lup (0 = ten sam poziom Y).")]
     public float landOffsetY = 0f;
 
+    [Header("Dzwieki")]
+    [Tooltip("Plop w momencie, gdy przedmiot wypada z przeciwnika.")]
+    public AudioClip[] lootPopSounds;
+
+    [Tooltip("Stukniecie, gdy przedmiot spadnie na ziemie.")]
+    public AudioClip[] lootLandSounds;
+
+    [Range(0f, 1f)] public float lootVolume = 0.5f;
+
     [Header("Zloto")]
     [Tooltip("Dodatkowe zloto ponad moneyReward z Creature. 0 = brak.")]
     public int bonusMoneyMin = 0;
@@ -153,6 +162,11 @@ public class CreatureLoot : MonoBehaviour
             deathPos.z);
 
         LootArcMotion motion = obj.AddComponent<LootArcMotion>();
+        motion.landSounds = lootLandSounds;
+        motion.landVolume = lootVolume * 0.8f;
+
         motion.Launch(start, landing, popHeight, popDuration);
+
+        SoundManager.Play(lootPopSounds, lootVolume);
     }
 }

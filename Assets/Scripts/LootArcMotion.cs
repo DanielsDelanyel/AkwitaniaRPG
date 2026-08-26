@@ -19,6 +19,12 @@ public class LootArcMotion : MonoBehaviour
     public float spinDegrees = 0f;     // ustaw np. 180, jesli przedmiot ma sie obracac w locie
     public float landSquash = 0.15f;   // lekkie "plasniecie" przy ladowaniu
 
+    [Header("Dzwiek ladowania")]
+    [Tooltip("Stukniecie w momencie upadku na ziemie. Ustawiane przez skrzynie " +
+             "albo CreatureLoot - nie trzeba wypelniac recznie.")]
+    public AudioClip[] landSounds;
+    [Range(0f, 1f)] public float landVolume = 0.4f;
+
     public void Launch(Vector3 from, Vector3 to, float height, float time)
     {
         startPos = from;
@@ -74,6 +80,9 @@ public class LootArcMotion : MonoBehaviour
         isFlying = false;
         transform.position = endPos;
         transform.rotation = Quaternion.identity;
+
+        // Stukniecie o ziemie - domyka efekt "wyskoczenia" ze skrzyni
+        SoundManager.Play(landSounds, landVolume);
 
         // Przywracamy wszystko, czym byl przedmiot przed lotem
         if (rb != null)

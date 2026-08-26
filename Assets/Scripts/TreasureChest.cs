@@ -52,14 +52,55 @@ public class TreasureChest : MonoBehaviour
     [Tooltip("O ile nizej od srodka skrzyni ladunek ma wyladowac (0 = dokladnie ten sam Y).")]
     public float landOffsetY = 0f;
 
-    [Header("Dzwiek (opcjonalnie)")]
+    // ===============================================================
+    // DZWIEKI
+    // Kazda tablica moze miec kilka wariantow - SoundManager wylosuje jeden
+    // i lekko zmieni wysokosc tonu, zeby dziesiata skrzynia nie brzmiala
+    // identycznie jak pierwsza.
+    // ===============================================================
+    [Header("Dzwiek: Otwieranie")]
+    [Tooltip("Skrzypniecie wieka - gra od razu po kliknieciu.")]
+    public AudioClip[] openSounds;
+
+    [Tooltip("Stare pojedyncze pole. Uzywane, gdy tablica powyzej jest pusta.")]
     public AudioClip openSound;
+
+    [Header("Dzwiek: Fanfara Rzadkosci")]
+    [Tooltip("Gra razem z promieniami. Zostaw puste, jesli nie chcesz fanfary.")]
+    public AudioClip[] commonSounds;
+    public AudioClip[] rareSounds;
+    public AudioClip[] epicSounds;
+    public AudioClip[] legendarySounds;
+
+    [Header("Dzwiek: Lup")]
+    [Tooltip("Plop przy kazdym wylatujacym przedmiocie.")]
+    public AudioClip[] lootPopSounds;
+
+    [Tooltip("Stukniecie, gdy przedmiot spadnie juz na ziemie.")]
+    public AudioClip[] lootLandSounds;
+
+    [Tooltip("Gra, gdy skrzynia okazala sie pusta.")]
+    public AudioClip[] emptyChestSounds;
+
+    [Header("Dzwiek: Odmowa")]
+    [Tooltip("Gra, gdy gracz klika skrzynie ze zbyt daleka.")]
+    public AudioClip[] tooFarSounds;
+
+    [Header("Glosnosc")]
     [Range(0f, 1f)] public float openVolume = 0.7f;
+    [Range(0f, 1f)] public float lootVolume = 0.5f;
 
     private SpriteRenderer sr;
     private Transform playerTransform;
     private bool isPlayerClose;
     private bool isOpened;
+
+    // Identyfikator dla zapisu - bez niego skrzynia zawsze bedzie pelna
+    private UniqueId uniqueId;
+    private string SaveId
+    {
+        get { return uniqueId != null ? "chest_" + uniqueId.Id : null; }
+    }
 
     void Awake()
     {
@@ -68,6 +109,20 @@ public class TreasureChest : MonoBehaviour
 
     void Start()
     {
+        uniqueId = GetComponent<UniqueId>();
+
+        if (uniqueId == null)
+        {
+            Debug.LogWarning($"Skrzynia '{name}' nie ma komponentu UniqueId - " +
+                             "po wczytaniu zapisu bedzie znowu pelna.");
+        }
+        // Byla juz otwarta w tej rozgrywce? Pokazujemy ja jako pusta.
+        else if (WorldState.HasFlag(SaveId))
+        {
+            RestoreAsOpened();
+            return;
+        }
+
         if (glowRenderer != null)
         {
             if (tintGlowByRarity)
@@ -77,6 +132,25 @@ public class TreasureChest : MonoBehaviour
                 glowRenderer.color = c;
             }
             glowRenderer.gameObject.SetActive(false);
+        }
+    }
+
+    // Skrzynia otwarta w poprzedniej sesji - zero animacji, zero lupu
+    private void RestoreAsOpened()
+    {
+        isOpened = true;
+
+        if (glowRenderer != null) glowRenderer.gameObject.SetActive(false);
+
+        // Ostatnia klatka animacji = wieko juz podniesione
+        if (openFrames != null && openFrames.Length > 0)
+        {
+            Sprite last = openFrames[openFrames.Length - 1];
+            if (last != null && sr != null) sr.sprite = last;
+        }
+        else if (animator != null && !string.IsNullOrEmpty(openTrigger))
+        {
+            animator.SetTrigger(openTrigger);
         }
     }
 
@@ -137,6 +211,7 @@ public class TreasureChest : MonoBehaviour
         if (!isPlayerClose)
         {
             Debug.Log("Musisz podejsc blizej do skrzyni!");
+            SoundManager.Play(tooFarSounds, openVolume);
             return;
         }
 
@@ -148,11 +223,16 @@ public class TreasureChest : MonoBehaviour
         if (isOpened) return;
         isOpened = true;
 
+        // Zapamietujemy, ze ta konkretna skrzynia zostala oprozniona
+        WorldState.SetFlag(SaveId);
+
         // Gasimy poswiate - skrzynia jest juz "zuzyta"
         if (glowRenderer != null) glowRenderer.gameObject.SetActive(false);
 
-        if (openSound != null)
-            AudioSource.PlayClipAtPoint(openSound, transform.position, openVolume);
+        // ZMIANA: SoundManager zamiast AudioSource.PlayClipAtPoint.
+        // Tamta metoda tworzyla dzwiek PRZESTRZENNY w punkcie skrzyni - przy
+        // kamerze wiszacej wysoko nad mapa bywal on prawie niesłyszalny.
+        PlayOpenSound();
 
         // Animacja: Animator ma pierwszenstwo, w przeciwnym razie lecimy klatkami
         if (animator != null && !string.IsNullOrEmpty(openTrigger))
@@ -190,6 +270,9 @@ public class TreasureChest : MonoBehaviour
             rays.Play(rarity);
         }
 
+        // Fanfara pasujaca do rzadkosci - legendarna skrzynia moze miec wlasny motyw
+        SoundManager.Play(GetRaritySounds(), openVolume);
+
         if (lootTable == null)
         {
             Debug.LogWarning($"Skrzynia '{name}' nie ma przypisanej Loot Table!");
@@ -201,6 +284,7 @@ public class TreasureChest : MonoBehaviour
         if (loot.Count == 0)
         {
             Debug.Log($"Skrzynia '{name}' okazala sie pusta.");
+            SoundManager.Play(emptyChestSounds, openVolume);
             yield break;
         }
 
@@ -243,7 +327,42 @@ public class TreasureChest : MonoBehaviour
             transform.position.z);
 
         LootArcMotion motion = obj.AddComponent<LootArcMotion>();
+
+        // Dzwiek ladowania przekazujemy PRZED Launch, zeby zdazyl przed upadkiem
+        motion.landSounds = lootLandSounds;
+        motion.landVolume = lootVolume * 0.8f;
+
         motion.Launch(start, landing, popHeight, popDuration);
+
+        // A ten gra od razu - przedmiot wlasnie wyskoczyl ze skrzyni
+        SoundManager.Play(lootPopSounds, lootVolume);
+    }
+
+    // ===============================================================
+    // POMOCNICZE DZWIEKI
+    // ===============================================================
+    private void PlayOpenSound()
+    {
+        // Tablica ma pierwszenstwo; pojedyncze pole to wersja zapasowa
+        if (openSounds != null && openSounds.Length > 0)
+        {
+            SoundManager.Play(openSounds, openVolume);
+            return;
+        }
+
+        if (openSound != null) SoundManager.Play(openSound, openVolume);
+    }
+
+    private AudioClip[] GetRaritySounds()
+    {
+        switch (rarity)
+        {
+            case ItemRarity.Common: return commonSounds;
+            case ItemRarity.Rare: return rareSounds;
+            case ItemRarity.Epic: return epicSounds;
+            case ItemRarity.Legendary: return legendarySounds;
+            default: return null;
+        }
     }
 
     // Zasieg widoczny w edytorze po zaznaczeniu skrzyni

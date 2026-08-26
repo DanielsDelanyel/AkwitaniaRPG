@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &136429730254097330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5083995120874557099}
+  - component: {fileID: 8636825040651320143}
+  m_Layer: 0
+  m_Name: SampleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5083995120874557099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136429730254097330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.02, y: -22.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8636825040651320143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136429730254097330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f298f79dcb479c45a1ae40cc8dde78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnZone
+  zoneName: Expo
+  creatures:
+  - prefab: {fileID: 5718671199705022294, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+    weight: 20
+    maxOfThisType: 6
+    aliveCount: 0
+  - prefab: {fileID: 3877143294159532487, guid: 52268f7f042fcd2408215fea51cd6644, type: 3}
+    weight: 50
+    maxOfThisType: 20
+    aliveCount: 0
+  shape: 0
+  radius: 10
+  rectSize: {x: 10, y: 6}
+  maxAlive: 10
+  initialSpawnCount: 3
+  spawnBatchSize: 1
+  firstSpawnDelay: 0.5
+  respawnDelayMin: 4
+  respawnDelayMax: 9
+  onlyWhenPlayerNear: 1
+  activationRange: 22
+  minDistanceFromPlayer: 4
+  despawnWhenPlayerFar: 0
+  despawnRange: 40
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  spawnClearRadius: 0.4
+  positionAttempts: 12
+  overrideLevel: 0
+  levelMin: 1
+  levelMax: 1
+  healthBonusPerLevel: 15
+  expBonusPerLevel: 20
+  spawnEffectPrefab: {fileID: 0}
+  spawnSounds: []
+  spawnVolume: 0.4
+  alwaysShowGizmo: 1
+  zoneColor: {r: 1, g: 0.4, b: 0.1, a: 0.9}

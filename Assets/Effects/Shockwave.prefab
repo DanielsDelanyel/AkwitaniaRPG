@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7950657636137060704
+--- !u!1 &6928593181765060164
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5264972024671994579}
-  - component: {fileID: 1098035997166444581}
-  - component: {fileID: 4030042730579389878}
+  - component: {fileID: 7770500572446947780}
+  - component: {fileID: 3320678050019661983}
   m_Layer: 0
-  m_Name: Shockwave
+  m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5264972024671994579
+--- !u!4 &7770500572446947780
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7950657636137060704}
+  m_GameObject: {fileID: 6928593181765060164}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.885, y: -4.113, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1098035997166444581
+  m_Father: {fileID: 5264972024671994579}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!212 &3320678050019661983
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7950657636137060704}
+  m_GameObject: {fileID: 6928593181765060164}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1982548019
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 862771ac32623de4192dc80dd800201b, type: 3}
@@ -92,6 +91,39 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &7950657636137060704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5264972024671994579}
+  - component: {fileID: 4030042730579389878}
+  m_Layer: 0
+  m_Name: Shockwave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5264972024671994579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950657636137060704}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7770500572446947780}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4030042730579389878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,15 +136,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07548ef01a6328044b401d1a0d4a1de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shockwave
+  graphicsTransform: {fileID: 7770500572446947780}
+  waveRenderer: {fileID: 3320678050019661983}
+  spriteAngleOffset: 180
+  spriteScaleStart: 1
+  spriteScaleEnd: 1.4
   startRadius: 0.2
   maxRadius: 3.5
   expandTime: 0.45
+  arcDegrees: 150
   damage: 15
   waveThickness: 0.6
   knockbackForce: 0
-  waveRenderer: {fileID: 1098035997166444581}
-  spriteUnitSize: 1
   startAlpha: 0.9
   endAlpha: 0
   waveColor: {r: 0.7971698, g: 0.9743262, b: 1, a: 1}
   lingerTime: 0.1
+  logDirection: 0

@@ -1,0 +1,301 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &362721885324004009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 535833855801288858}
+  - component: {fileID: 5317741499911952426}
+  - component: {fileID: 5755357703391477519}
+  - component: {fileID: 2585002555103187449}
+  - component: {fileID: 8508530257252768378}
+  - component: {fileID: 361969786992056346}
+  - component: {fileID: 2966998417548975874}
+  - component: {fileID: 7873689994039277551}
+  m_Layer: 0
+  m_Name: BanditMeele1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &535833855801288858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -36.062, y: -6.909, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5317741499911952426
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: -1079774721
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: 8f6ac71bf2226524babbcbb772dc5ad0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 0.9166667}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!61 &5755357703391477519
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.06905174, y: -0.017303407}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2857143, y: 1.1785715}
+    newSize: {x: 1, y: 0.9166667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.57395554, y: 1.1439646}
+  m_EdgeRadius: 0
+--- !u!50 &2585002555103187449
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 75
+  m_LinearDamping: 5
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &8508530257252768378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0393c1fcb1e14f94784bc466ae39a27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creature
+  creatureName: Bandyta
+  disposition: 2
+  level: 5
+  expReward: 65
+  moneyReward: 15
+  baseSTR: 4
+  baseWIT: 4
+  baseINT: 2
+  baseZR: 6
+  baseCHAR: 3
+  baseDmg: 7
+  baseMagicDmg: 0
+  baseDef: 4
+  baseMagicDef: 0
+  maxHealth: 150
+  currentHealth: 120
+  healthPerVitality: 10
+  damagePopupPrefab: {fileID: 1464719777984505996, guid: 98351c0e9b91d6547a142ea64a720327, type: 3}
+  destroyOnDeath: 1
+  destroyDelay: 0
+--- !u!114 &361969786992056346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b84914eb375c347934472a90ec9524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureWander
+  moveSpeed: 1.5
+  minWanderTime: 0.5
+  maxWanderTime: 3
+  minIdleTime: 1
+  maxIdleTime: 2.5
+--- !u!114 &2966998417548975874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065d51f04bebaa1409c5bcffe995fd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BanditAI
+  weapon: {fileID: 11400000, guid: 05fc2d81f79e9474e9b695f5237017d3, type: 2}
+  slashPrefab: {fileID: 1238736654222790429, guid: ad5654dfe4f1bab4b8c5058eea0746e1, type: 3}
+  attackOrigin: {fileID: 0}
+  weaponRenderer: {fileID: 2494110562593359745, guid: 09ac7fd328266e74f875ebd40632bf7f, type: 3}
+  damageMultiplier: 1
+  knockbackForce: 2
+  aggroRange: 8
+  deaggroRange: 14
+  chaseSpeed: 3.2
+  returnSpeed: 2.5
+  attackRange: 1.4
+  windUpTime: 0.45
+  attackCooldown: 1.8
+  swingFollowThrough: 0.861
+  postAttackDelay: 0.35
+  retreatSpeed: 10
+  retreatDuration: 0.6
+  circleTimeMin: 0.8
+  circleTimeMax: 2
+  circleSpeed: 2.8
+  circleDistance: 2.8
+  circleDirectionChangeChance: 0.5
+  speedParam: Speed
+  moveXParam: MoveX
+  moveYParam: MoveY
+  attackTrigger: Attack
+  spriteRenderer: {fileID: 0}
+  spriteFacesRight: 1
+  flipDeadzone: 0.05
+  currentState: 0
+--- !u!114 &7873689994039277551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362721885324004009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53af481e29b55e943886289326bd1b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CreatureLoot
+  mode: 0
+  lootTable: {fileID: 11400000, guid: 0b4068734492ff943a7a8ff831f3f97a, type: 2}
+  alwaysDrop:
+  - item: {fileID: 11400000, guid: 88ada7caecda70d478f2bb5941b8d9d8, type: 2}
+    minAmount: 1
+    maxAmount: 2
+    weight: 10
+    guaranteed: 1
+    guaranteedChance: 0.5
+  chestPrefab: {fileID: 0}
+  chestOffset: {x: 0, y: 0}
+  genericPickupPrefab: {fileID: 0}
+  spawnOffset: {x: 0, y: 0.3}
+  popHeight: 1.1
+  popDistanceMin: 0.6
+  popDistanceMax: 1.8
+  popDuration: 0.55
+  landOffsetY: 0
+  lootPopSounds:
+  - {fileID: 8300000, guid: 427d02dce94ccc44cab04f8618b3f754, type: 3}
+  - {fileID: 8300000, guid: d6cc7d6512dae524ebe3e6090f3c5db0, type: 3}
+  - {fileID: 8300000, guid: ddf2fd7bdb7ece44485d10714eb4d669, type: 3}
+  lootLandSounds: []
+  lootVolume: 0.5
+  bonusMoneyMin: 0
+  bonusMoneyMax: 0

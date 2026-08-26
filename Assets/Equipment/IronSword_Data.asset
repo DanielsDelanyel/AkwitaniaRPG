@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: IronSword_Data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "\u017Belazny miecz"
+  icon: {fileID: 21300000, guid: f339fc0988252a44597d0df2ef75d89e, type: 3}
+  description: "Sprawdza si\u0119 w prostych atakach."
+  itemType: 4
+  rarity: 0
+  itemPrefab: {fileID: 8992644449882156520, guid: 09ac7fd328266e74f875ebd40632bf7f, type: 3}
+  isStackable: 0
+  weight: 2
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
+  price: 10
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 5
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 1
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0
+  pricePerRolledPoint: 0

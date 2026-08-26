@@ -5,7 +5,21 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
-    public static ShopManager instance;
+    // ODPORNY SINGLETON.
+    // Awake() nie odpala sie na obiekcie wylaczonym w Hierarchii, a ShopPanel
+    // startuje wylaczony. Jesli ktos zapomni przypisac go w DialogueManagerze,
+    // odnajdujemy sie sami - takze wsrod obiektow nieaktywnych.
+    private static ShopManager _instance;
+    public static ShopManager instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindFirstObjectByType<ShopManager>(FindObjectsInactive.Include);
+
+            return _instance;
+        }
+    }
 
     [Header("Oferta Kupca (Lewa Strona)")]
     public Transform shopSlotsParent;   // NOWE: przeciagnij tu obiekt "ShopSlots" (opcjonalnie, jako zabezpieczenie)
@@ -24,30 +38,60 @@ public class ShopManager : MonoBehaviour
     [Header("Pieniadze Gracza")]
     public TextMeshProUGUI playerMoneyText;
 
+    private NPCStats currentMerchant;
     private ItemData stagedItem;
     private int stagedAmount;
     private bool isSelling; // true = gracz cos polozyl na stol, false = gracz wybral towar kupca
 
     void Awake()
     {
-        instance = this;
+        _instance = this;
         AutoFillSlots();
     }
 
-    // Jesli zapomnisz przeciagnac slotow w Inspektorze, znajdziemy je same po rodzicu
+    // Znajduje sloty sam, gdy tablica jest pusta ALBO ma dziury.
+    // Niekompletna tablica (czesc pozycji "None") zalewala konsole bledami.
     private void AutoFillSlots()
     {
-        if ((shopSlots == null || shopSlots.Length == 0) && shopSlotsParent != null)
+        if (!NeedsAutoFill()) return;
+
+        // 1. Najpierw probujemy wskazanego rodzica
+        Transform searchRoot = shopSlotsParent;
+
+        // 2. Jesli go nie ma - szukamy wsrod wlasnych dzieci
+        if (searchRoot == null) searchRoot = transform;
+
+        ShopItemSlot[] found = searchRoot.GetComponentsInChildren<ShopItemSlot>(true);
+
+        if (found.Length == 0)
         {
-            shopSlots = shopSlotsParent.GetComponentsInChildren<ShopItemSlot>(true);
-            Debug.Log($"ShopManager: automatycznie znalazl {shopSlots.Length} slotow kupca.");
+            Debug.LogError("ShopManager: nie znalazlem ZADNEGO ShopItemSlot! " +
+                           "Przeciagnij obiekt 'ShopSlots' w pole 'Shop Slots Parent'.");
+            return;
         }
+
+        shopSlots = found;
+        Debug.Log($"ShopManager: automatycznie znalazl {shopSlots.Length} slotow kupca.");
+    }
+
+    private bool NeedsAutoFill()
+    {
+        if (shopSlots == null || shopSlots.Length == 0) return true;
+
+        // Dziura w tablicy = ktos zmienil rozmiar i nie dokonczyl
+        foreach (ShopItemSlot slot in shopSlots)
+        {
+            if (slot == null) return true;
+        }
+
+        return false;
     }
 
     public void OpenShop(NPCStats npc)
     {
         gameObject.SetActive(true); // najpierw wlaczamy, potem rysujemy
         AutoFillSlots();
+        currentMerchant = npc;
 
         if (npc == null)
         {
@@ -61,12 +105,10 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            // Odsiewamy puste pola (Element = None) z tablicy w Inspektorze
-            currentShopItems = new List<ItemData>();
-            foreach (ItemData it in npc.shopItems)
-            {
-                if (it != null) currentShopItems.Add(it);
-            }
+            // ZMIANA: bierzemy GOTOWE EGZEMPLARZE z NPC, a nie surowe szablony.
+            // Dzieki temu tooltip w sklepie pokazuje dokladnie te statystyki,
+            // ktore gracz dostanie po zakupie - koniec kupowania kota w worku.
+            currentShopItems = new List<ItemData>(npc.GetShopStock());
             Debug.Log($"Sklep otwarty! Zaladowano {currentShopItems.Count} przedmiotow kupca {npc.npcName}.");
         }
 
@@ -210,8 +252,8 @@ public class ShopManager : MonoBehaviour
             int price = GetBuyPrice(stagedItem);
             if (PlayerStats.instance.currentMoney >= price)
             {
-                // NOWE: kazda kupiona sztuka to osobny egzemplarz z wlasnym rzutem koscmi.
-                // Kupno dwoch takich samych mieczy da dwa rozne wyniki losowania.
+                // Egzemplarz zostal wylosowany juz przy otwarciu sklepu,
+                // wiec ItemFactory odda go bez zmian - gracz dostaje to, co widzial.
                 ItemData purchased = ItemFactory.Create(stagedItem);
 
                 int leftovers = InventoryUI.instance.Add(purchased, 1);
@@ -219,7 +261,21 @@ public class ShopManager : MonoBehaviour
                 {
                     PlayerStats.instance.currentMoney -= price;
                     UpdateMoneyText();
-                    StageForBuy(stagedItem);
+
+                    // Unikatowy egzemplarz schodzi z polki - nie da sie kupic
+                    // dwoch identycznych mieczy z tym samym rzutem.
+                    if (purchased != null && purchased.isRuntimeInstance)
+                    {
+                        if (currentMerchant != null) currentMerchant.RemoveFromStock(stagedItem);
+                        currentShopItems.Remove(stagedItem);
+                        ClearStage();
+                        UpdatePage();
+                    }
+                    else
+                    {
+                        StageForBuy(stagedItem); // zwykly towar zostaje na polce
+                    }
+
                     InventoryUI.instance.UpdatePlayerInfoUI();
                 }
                 else Debug.Log("Brak miejsca w plecaku!");
@@ -249,15 +305,21 @@ public class ShopManager : MonoBehaviour
     // --- MATEMATYKA (CHARYZMA I RABATY) ---
     private int GetBuyPrice(ItemData item)
     {
+        if (item == null) return 1;
         float discount = PlayerStats.instance != null ? PlayerStats.instance.discount : 0f;
-        int finalPrice = Mathf.RoundToInt(item.price * (1f - discount));
+        // GetEffectivePrice() uwzglednia jakosc TEGO egzemplarza,
+        // wiec miecz z +39% kosztuje wiecej niz zwykly.
+        int finalPrice = Mathf.RoundToInt(item.GetEffectivePrice() * (1f - discount));
         return Mathf.Max(1, finalPrice);
     }
 
     private int GetSellPrice(ItemData item)
     {
+        if (item == null) return 1;
         float discount = PlayerStats.instance != null ? PlayerStats.instance.discount : 0f;
-        int finalPrice = Mathf.RoundToInt((item.price * 0.5f) * (1f + discount));
+        // Udany rzut podnosi tez kwote sprzedazy - dobry lup oplaca sie
+        // nawet wtedy, gdy gracz go nie zaloz.
+        int finalPrice = Mathf.RoundToInt((item.GetEffectivePrice() * 0.5f) * (1f + discount));
         return Mathf.Max(1, finalPrice);
     }
 }

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: EnemyArrow_Data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: EnemyArrow_Data
+  itemName: "Strza\u0142a"
+  icon: {fileID: 21300000, guid: 8847fe147f5f0994aa00311ff4a1e9d6, type: 3}
+  description: "Zwyk\u0142a strza\u0142a\n(Obra\u017Cenia: 5)"
+  itemType: 12
+  rarity: 0
+  itemPrefab: {fileID: 3930145972775893165, guid: b247ded698cd0834b802a047ca01824c, type: 3}
+  isStackable: 1
+  weight: 1
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
+  price: 5
+  healAmount: 0
+  affinityBonus: 0
+  damageBonus: 5
+  magicDamageBonus: 0
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

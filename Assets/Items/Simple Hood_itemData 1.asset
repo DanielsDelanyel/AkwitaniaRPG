@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Simple Hood_itemData 1
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Zwyk\u0142y kaptur"
-  icon: {fileID: -4141087876316161580, guid: ed3444f3e4d4d2145a3a60069651f95f, type: 3}
+  icon: {fileID: -8298193803470728370, guid: b3c97b591bd97a545a24d652ab6ca2bc, type: 3}
   description: "...Na g\u0142ow\u0119 nie pada...Cho\u0107 czasami przecieka...Ale
     ma te\u017C swoje plusy, mo\u017Cna si\u0119 lepiej kamuflowa\u0107."
   itemType: 8
@@ -21,6 +21,15 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: 871ad6cfd883c094ea98a3d4f1a57f29, type: 3}
   isStackable: 0
   weight: 0.8
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
   price: 33
   healAmount: 0
   affinityBonus: 0
@@ -33,3 +42,14 @@ MonoBehaviour:
   dexterityBonus: 3
   intellegenceBonus: 0
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

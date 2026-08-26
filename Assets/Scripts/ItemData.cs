@@ -56,6 +56,16 @@ public class RandomizableStat
         hasRolled = false;
         rolledValue = 0f;
     }
+
+    // --- ZAPIS GRY: odczyt i odtworzenie wyniku rzutu ---
+    public bool HasRolled { get { return hasRolled; } }
+    public float RolledValue { get { return rolledValue; } }
+
+    public void ForceRoll(float value)
+    {
+        rolledValue = value;
+        hasRolled = true;
+    }
 }
 
 // ===================================================================
@@ -101,11 +111,25 @@ public class RandomizableBonus
         hasRolled = false;
         rolledValue = 0;
     }
+
+    // --- ZAPIS GRY ---
+    public bool HasRolled { get { return hasRolled; } }
+
+    public void ForceRoll(int value)
+    {
+        rolledValue = value;
+        hasRolled = true;
+    }
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Ekwipunek/Przedmiot")]
 public class ItemData : ScriptableObject
 {
+    [Tooltip("Unikalny identyfikator uzywany przez ZAPIS GRY. " +
+             "Zostaw puste - wypelni sie sam nazwa pliku. " +
+             "Po pierwszym zapisie NIE zmieniaj go, bo stare zapisy przestana widziec ten przedmiot.")]
+    public string itemId = "";
+
     public string itemName = "Nowy Przedmiot";
     public Sprite icon;
     [TextArea] public string description = "Opis przedmiotu...";
@@ -267,6 +291,48 @@ public class ItemData : ScriptableObject
     }
 
     // ===============================================================
+    // JAKOSC EGZEMPLARZA I CENA
+    // Miecz z wylosowanym +39% jest obiektywnie lepszy od zwyklego,
+    // wiec powinien byc tez wart wiecej u kupca.
+    // ===============================================================
+
+    // Suma wszystkich wylosowanych dodatkow (bez wartosci bazowych)
+    public int GetTotalRolledPoints()
+    {
+        if (randomBonuses == null) return 0;
+
+        int sum = 0;
+        foreach (RandomizableBonus b in randomBonuses)
+        {
+            if (b != null) sum += b.Value;
+        }
+        return sum;
+    }
+
+    [Header("Wycena Jakosci")]
+    [Tooltip("Ile procent ceny dodaje 1% bonusu do obrazen. 0.5 = +40% obrazen podnosi cene o 20%.")]
+    public float pricePerDamagePercent = 0.5f;
+
+    [Tooltip("Ile procent ceny dodaje 1 punkt wylosowanej statystyki.")]
+    public float pricePerRolledPoint = 3f;
+
+    // 1.0 = zwykly egzemplarz, 1.4 = wyjatkowo udany
+    public float GetQualityMultiplier()
+    {
+        float quality = 1f;
+        quality += (GetDamagePercent() / 100f) * pricePerDamagePercent;
+        quality += GetTotalRolledPoints() * (pricePerRolledPoint / 100f);
+
+        return Mathf.Max(0.1f, quality); // nawet fatalny egzemplarz jest cos wart
+    }
+
+    // Cena TEGO egzemplarza, a nie samego szablonu
+    public int GetEffectivePrice()
+    {
+        return Mathf.Max(1, Mathf.RoundToInt(price * GetQualityMultiplier()));
+    }
+
+    // ===============================================================
     // OPIS DLA TOOLTIPA
     // ===============================================================
     private const string COLOR_GOOD = "#7CFF8A";
@@ -344,6 +410,29 @@ public class ItemData : ScriptableObject
             default: return "";
         }
     }
+
+    // ===============================================================
+    // IDENTYFIKACJA DLA ZAPISU GRY
+    // ===============================================================
+    public string GetId()
+    {
+        return string.IsNullOrEmpty(itemId) ? name : itemId;
+    }
+
+    // Kopia w pamieci zapisuje sie jako SWOJ SZABLON - przy wczytaniu
+    // odtworzymy egzemplarz na nowo z zapamietanych rzutow.
+    public string GetTemplateId()
+    {
+        return sourceTemplate != null ? sourceTemplate.GetId() : GetId();
+    }
+
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        // Puste pole wypelniamy nazwa pliku - raz, przy pierwszym otwarciu
+        if (string.IsNullOrEmpty(itemId)) itemId = name;
+    }
+#endif
 
     // Czy to ten sam RODZAJ przedmiotu? Kopia i oryginal to wciaz "ten sam miecz".
     // Przydaje sie np. przy sprawdzaniu klucza do drzwi albo gustow NPC.

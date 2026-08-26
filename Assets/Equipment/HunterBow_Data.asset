@@ -12,23 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: HunterBow_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: HunterBow_Data
   itemName: "\u0141uk \u0141owcy"
   icon: {fileID: 21300000, guid: 403e32444d9237c41b7dd35b236a2c6b, type: 3}
-  description: "Miecz o niemo\u017Cliwie wielkiej mocy, kt\xF3rego istnienie jest
-    do dzi\u015B podwa\u017Cane...\n\n(Obra\u017Cenia: ???)"
+  description: "Spr\u0119\u017Cysty \u0142uk kompozytowy, \u015Bwietnie wykonany,
+    ka\u017Cdy \u0142owca z pewno\u015Bci\u0105 doceni lekko\u015B i niezawodno\u015B\u0107
+    tego \u0142uku"
   itemType: 6
   rarity: 2
   itemPrefab: {fileID: 3814528456279849700, guid: 8dc375248f725c1458ced36664f04196, type: 3}
   isStackable: 0
-  weight: 1.8
+  weight: 1
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
   price: 375
   healAmount: 0
-  damageBonus: 999
-  magicDamageBonus: 99
-  defenseBonus: 99
-  magicDefenseBonus: 99
-  vitalityBonus: 99
-  strengthBonus: 99
-  dexterityBonus: 99
-  intellegenceBonus: 99
-  charismaBonus: 99
+  affinityBonus: 0
+  damageBonus: 15
+  magicDamageBonus: 0
+  defenseBonus: 1
+  magicDefenseBonus: 0
+  vitalityBonus: 1
+  strengthBonus: 1
+  dexterityBonus: 4
+  intellegenceBonus: 1
+  charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

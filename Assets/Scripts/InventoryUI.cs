@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
 
     [Header("UI")]
     public GameObject inventoryWindow;
+    [Tooltip("NIE jest juz wylaczane przez SetActive - tooltip chowa sie sam przez CanvasGroup.")]
     public GameObject tooltipWindow;
     public Transform backpackArea;
 
@@ -38,6 +39,9 @@ public class InventoryUI : MonoBehaviour
     public TextMeshProUGUI playerNameText;
     public TextMeshProUGUI playerMoneyText;
 
+    [Header("Ustawienia")]
+    public int maxStackSize = 100;
+
     InventorySlot[] slots;
 
     public TextMeshProUGUI statsText;
@@ -46,30 +50,29 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
-        playerNameText.text = "Maniek";
-        slots = backpackArea.GetComponentsInChildren<InventorySlot>();
+        if (backpackArea != null) slots = backpackArea.GetComponentsInChildren<InventorySlot>(true);
+        else slots = new InventorySlot[0];
+
         if (dragImage != null) dragImage.enabled = false;
         foreach (var slot in slots) slot.ClearSlot();
-        inventoryWindow.SetActive(false);
-        if (tooltipWindow != null) tooltipWindow.SetActive(false);
+
+        if (inventoryWindow != null) inventoryWindow.SetActive(false);
+
+        // Tooltip chowamy przez jego wlasna metode - obiekt ma zostac WLACZONY,
+        // inaczej jego Awake sie nie odpali i singleton bedzie pusty.
+        if (InventoryTooltip.instance != null) InventoryTooltip.instance.ForceHide();
+
+        UpdatePlayerInfoUI();
     }
+
+    // Czy okno ekwipunku jest otwarte?
+    public bool IsOpen { get { return inventoryWindow != null && inventoryWindow.activeSelf; } }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            // --- NOWO��: Zabezpieczenie dla prezent�w ---
-            if (DialogueManager.instance != null && DialogueManager.instance.giftOverlay != null && DialogueManager.instance.giftOverlay.activeSelf)
-            {
-                // Je�li jeste�my w trybie wr�czania prezentu, zamykamy okno przez DialogueManager
-                DialogueManager.instance.CloseGiftPanel();
-            }
-            else
-            {
-                // Normalne otwieranie/zamykanie ekwipunku
-                ToggleInventory();
-            }
-        }
+        // UWAGA: Escape NIE jest tu obslugiwany. Zajmuje sie nim UIEscapeHandler,
+        // zeby jedno nacisniecie nie zamykalo jednego okna i nie otwieralo drugiego.
+        if (Input.GetKeyDown(KeyCode.I)) TryToggleInventory();
 
         if (draggedItem != null && dragImage != null)
         {
@@ -77,53 +80,119 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    // Klawisz "I" - otwiera tylko wtedy, gdy nic wazniejszego nie jest otwarte
+    public void TryToggleInventory()
+    {
+        if (!IsOpen && IsBlockedByAnotherWindow())
+        {
+            Debug.Log("Nie mozna teraz otworzyc ekwipunku.");
+            return;
+        }
+
+        ToggleInventory();
+    }
+
+    // Rozmowa, sklep i prezenty maja pierwszenstwo przed plecakiem
+    private bool IsBlockedByAnotherWindow()
+    {
+        // Pauza zaslania wszystko - pod nia nie otwieramy plecaka
+        if (PauseMenuUI.instance != null && PauseMenuUI.instance.IsOpen) return true;
+
+        // Martwy gracz nie grzebie w plecaku
+        if (DeathScreenUI.instance != null && DeathScreenUI.instance.IsShowing) return true;
+
+        if (DialogueManager.instance == null) return false;
+
+        return DialogueManager.instance.IsDialogueOpen
+            || DialogueManager.instance.IsShopOpen
+            || DialogueManager.instance.IsGiftPanelOpen;
+    }
+
+    // Wygodne dla UIEscapeHandler - zamyka, ale nigdy nie otwiera
+    public void CloseInventory()
+    {
+        if (IsOpen) ToggleInventory();
+    }
+
     public void ToggleInventory()
     {
-        bool isActive = !inventoryWindow.activeSelf;
+        if (inventoryWindow == null) return;
 
+        bool isActive = !inventoryWindow.activeSelf;
         inventoryWindow.SetActive(isActive);
 
         if (isActive) UpdatePlayerInfoUI();
 
         if (!isActive)
         {
-            if (tooltipWindow != null) tooltipWindow.SetActive(false);
+            if (InventoryTooltip.instance != null) InventoryTooltip.instance.ForceHide();
             if (ContextMenuUI.instance != null) ContextMenuUI.instance.CloseMenu();
+
             if (draggedItem != null)
             {
-                int leftovers = Add(draggedItem, draggedAmount); // Pr�bujemy zrzuci� to co mamy na myszce
-                if (leftovers > 0) ThrowItem(draggedItem); // Brak miejsca? Wyrzucamy na ziemi�!
+                int leftovers = Add(draggedItem, draggedAmount);
+                if (leftovers > 0) ThrowItem(draggedItem);
                 ClearDraggedItem();
             }
         }
 
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = !isActive;
-            if (isActive) playerMovement.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        }
+        // TU BYL BLAD: zamkniecie ekwipunku wlaczalo ruch bezwarunkowo,
+        // kasujac blokade zalozona przez trwajaca rozmowe. UILock pilnuje,
+        // by ruch wrocil dopiero, gdy zniknie OSTATNI powod blokady.
+        UILock.Set("Inventory", isActive);
     }
 
     public void CloseInventoryForTrade()
     {
-        if (playerMovement != null) playerMovement.enabled = true;
+        UILock.Set("Inventory", false);
+    }
+
+    // ===============================================================
+    // DOSTEP DLA ZAPISU GRY
+    // Kolejnosc slotow wyposazenia MUSI byc stala - zapis zapamietuje
+    // pozycje w tej tablicy, wiec przestawienie ich zepsulo by stare zapisy.
+    // ===============================================================
+    public InventorySlot[] GetBackpackSlots()
+    {
+        return slots;
+    }
+
+    public InventorySlot[] GetEquipmentSlots()
+    {
+        return new InventorySlot[]
+        {
+            weaponSlot,    // 0
+            helmetSlot,    // 1
+            armorSlot,     // 2
+            legsSlot,      // 3
+            bootsSlot,     // 4
+            offhandSlot,   // 5
+            ring1Slot,     // 6
+            ring2Slot,     // 7
+            necklaceSlot,  // 8
+            ammoSlot       // 9
+        };
     }
 
     public List<ItemData> GetAllItems()
     {
         List<ItemData> items = new List<ItemData>();
+        if (slots == null) return items;
+
         foreach (var slot in slots)
         {
-            if (slot.item != null) items.Add(slot.item);
+            if (slot != null && slot.item != null) items.Add(slot.item);
         }
         return items;
     }
 
     public void RemoveItem(ItemData itemToRemove)
     {
+        if (slots == null) return;
+
         foreach (var slot in slots)
         {
-            if (slot.item == itemToRemove)
+            if (slot != null && slot.item == itemToRemove)
             {
                 slot.ClearSlot();
                 break;
@@ -131,9 +200,58 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    // ===============================================================
+    // NOWE: PODZIAL STOSU
+    // Bierze polowe stosu "na kursor", reszte zostawia w slocie.
+    // ===============================================================
+    public void SplitStack(InventorySlot slot)
+    {
+        if (slot == null || slot.item == null) return;
+
+        if (draggedItem != null)
+        {
+            Debug.Log("Najpierw odloz to, co trzymasz na kursorze.");
+            return;
+        }
+
+        if (!slot.item.isStackable || slot.amount < 2)
+        {
+            Debug.Log("Tego przedmiotu nie da sie podzielic.");
+            return;
+        }
+
+        int taken = slot.amount / 2;      // przy nieparzystej liczbie wieksza czesc zostaje w slocie
+        int left = slot.amount - taken;
+
+        ItemData item = slot.item;
+
+        slot.amount = left;
+        slot.UpdateSlotUI();
+
+        SetDraggedItem(item, taken);
+    }
+
+    // ===============================================================
+    // NOWE: WYRZUCANIE ZE SLOTU
+    // ===============================================================
+    public void DropFromSlot(InventorySlot slot)
+    {
+        if (slot == null || slot.item == null) return;
+
+        ItemData item = slot.item;
+        int amount = slot.amount;
+
+        slot.ClearSlot();
+        ThrowItemStack(item, amount);
+
+        if (!slot.isBackpackSlot) OnEquipmentChanged();
+    }
+
     public void OnEquipmentChanged()
     {
         HandleTwoHandedWeapons();
+
+        if (playerMovement == null) return;
 
         PlayerEquipment playerEq = playerMovement.GetComponent<PlayerEquipment>();
         if (playerEq != null)
@@ -159,63 +277,54 @@ public class InventoryUI : MonoBehaviour
 
         bool isTwoHanded = false;
 
-        // Sprawdzamy czy g��wna bro� jest 2H lub �ukiem
         if (weaponSlot.item != null)
         {
             if (weaponSlot.item.itemType == ItemType.Weapon2h || weaponSlot.item.itemType == ItemType.Bow)
-            {
                 isTwoHanded = true;
-            }
         }
 
         if (isTwoHanded)
         {
-            // Je�li trzymamy �uk/2H, a w drugiej r�ce co� jest (np. tarcza) -> Zdejmujemy to!
             if (offhandSlot.item != null)
             {
                 ItemData itemToMove = offhandSlot.item;
-                offhandSlot.ClearSlot(); // Czy�cimy drug� r�k�
+                int amountToMove = offhandSlot.amount;
+                offhandSlot.ClearSlot();
 
-                // Pr�bujemy wrzuci� tarcz� do plecaka
-                if (Add(itemToMove) > 0)
-                {
-                    // Je�li plecak jest pe�ny (co� zosta�o z Add), wyrzucamy na ziemi�
-                    ThrowItem(itemToMove);
-                }
+                if (Add(itemToMove, amountToMove) > 0) ThrowItem(itemToMove);
             }
 
-            // Blokujemy i przyciemniamy slot drugiej r�ki
             offhandSlot.SetBlocked(true);
         }
         else
         {
-            // Je�li mamy woln� r�k� lub bro� 1H, odblokowujemy slot na tarcze
             offhandSlot.SetBlocked(false);
         }
     }
 
     public int Add(ItemData item, int amountToAdd = 1)
     {
-        int maxStack = 100; // Limit stosu
+        if (item == null || slots == null) return amountToAdd;
+
+        int maxStack = maxStackSize;
 
         if (item.isStackable)
         {
-            // Faza 1: Uzupe�niamy ju� istniej�ce stosy tego przedmiotu
             foreach (var slot in slots)
             {
+                if (slot == null) continue;
+
                 if (slot.item == item && slot.amount < maxStack)
                 {
                     int spaceLeft = maxStack - slot.amount;
                     if (spaceLeft >= amountToAdd)
                     {
-                        // Ca�o�� mie�ci si� w tym slocie
                         slot.amount += amountToAdd;
                         slot.UpdateSlotUI();
                         return 0;
                     }
                     else
                     {
-                        // Zape�niamy ten slot do oporu i szukamy miejsca dla reszty!
                         slot.amount = maxStack;
                         slot.UpdateSlotUI();
                         amountToAdd -= spaceLeft;
@@ -224,34 +333,30 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        // Faza 2: Szukamy pustych slot�w na to, co nam jeszcze zosta�o
         while (amountToAdd > 0)
         {
             bool foundEmpty = false;
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i].item == null) // Pusty slot!
+                if (slots[i] != null && slots[i].item == null)
                 {
                     foundEmpty = true;
-                    // Bierzemy maksymalnie 100 (lub 1 je�li to niereplikowalny miecz)
                     int amountToPlace = item.isStackable ? Mathf.Min(amountToAdd, maxStack) : 1;
 
                     slots[i].AddItem(item, amountToPlace);
                     amountToAdd -= amountToPlace;
-                    break; // Przerywamy p�tl� "for" i znowu kr�cimy "while", �eby znale�� kolejny pusty slot
+                    break;
                 }
             }
 
-            // Je�li przeszukali�my wszystkie okienka i nie ma pustych -> koniec miejsca
             if (!foundEmpty) break;
         }
 
-        return amountToAdd; // Zwracamy to, na co ostatecznie zabrak�o plecaka
+        return amountToAdd;
     }
 
     public bool ConsumeAmmo()
     {
-        // Sprawdzamy slot amunicji
         if (ammoSlot != null && ammoSlot.item != null && ammoSlot.item.itemType == ItemType.Ammo)
         {
             ammoSlot.amount--;
@@ -265,134 +370,147 @@ public class InventoryUI : MonoBehaviour
 
     public void SetDraggedItem(ItemData item, int amount)
     {
+        if (item == null) { ClearDraggedItem(); return; }
+
         draggedItem = item;
         draggedAmount = amount;
-        dragImage.sprite = item.icon;
-        dragImage.preserveAspect = true;
-        dragImage.enabled = true;
+
+        if (dragImage != null)
+        {
+            dragImage.sprite = item.icon;
+            dragImage.preserveAspect = true;
+            dragImage.enabled = true;
+        }
     }
 
     public void ClearDraggedItem()
     {
         draggedItem = null;
         draggedAmount = 0;
-        dragImage.enabled = false;
+        if (dragImage != null) dragImage.enabled = false;
     }
 
     public void ThrowItem(ItemData item)
     {
-        if (item == null) return;
-        if (item.itemPrefab != null && playerMovement != null)
-        {
-            // Upuszczamy nieco pod nogami gracza
-            Vector3 spawnPos = playerMovement.transform.position + new Vector3(0f, -0.5f, 0f);
-            GameObject droppedItem = Instantiate(item.itemPrefab, spawnPos, Quaternion.identity);
-
-            // WAZNE: przekazujemy KONKRETNY egzemplarz z jego wylosowanymi statystykami.
-            // Bez tego wyrzucony miecz zgubilby swoje bonusy przy ponownym podniesieniu!
-            ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
-            if (pickup != null) pickup.itemData = item;
-
-            Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                // Nadajemy przedmiotowi lekki, losowy "�lizg" po trawie
-                Vector2 randomSlide = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-                rb.linearVelocity = randomSlide * 2f;
-            }
-        }
+        ThrowItemStack(item, Mathf.Max(1, draggedAmount));
         ClearDraggedItem();
         OnEquipmentChanged();
     }
 
-    public void UpdatePlayerInfoUI()
+    // Wyrzuca konkretna ilosc, zachowujac wylosowane statystyki egzemplarza
+    public void ThrowItemStack(ItemData item, int amount)
     {
-        if (PlayerStats.instance != null)
+        if (item == null) return;
+        if (item.itemPrefab == null || playerMovement == null)
         {
-            PlayerStats ps = PlayerStats.instance;
+            Debug.LogWarning($"'{item.itemName}' nie ma Item Prefab - nie da sie go wyrzucic.");
+            return;
+        }
 
-            // 1. Aktualizacja osobnych okienek (Imi� i Z�oto)
-            if (playerNameText != null) playerNameText.text = ps.playerName;
-            if (playerMoneyText != null) playerMoneyText.text = ps.currentMoney.ToString();
+        Vector3 spawnPos = playerMovement.transform.position + new Vector3(0f, -0.5f, 0f);
+        GameObject droppedItem = Instantiate(item.itemPrefab, spawnPos, Quaternion.identity);
 
-            // 2. Aktualizacja g��wnego okna ze statystykami
-            if (statsText != null)
-            {
-                string info = $"Si�a: {ps.GetTotal(ps.baseSTR, ps.equipSTR)}\n" +
-                              $"Inteligencja: {ps.GetTotal(ps.baseINT, ps.equipINT)}\n" +
-                              $"Zr�czno��: {ps.GetTotal(ps.baseZR, ps.equipZR)}\n" +
-                              $"Charyzma: {ps.GetTotal(ps.baseCHAR, ps.equipCHAR)}\n\n" +
-                              $"Obra�enia: {ps.GetTotal(ps.baseDmg, ps.equipDmg)}\n" +
-                              $"Obrona: {ps.GetTotal(ps.baseDef, ps.equipDef)}\n" +
-                              $"Obrona Magiczna: {ps.GetTotal(ps.baseMagicDef, ps.equipMagicDef)}";
+        ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
+        if (pickup != null)
+        {
+            pickup.itemData = item;
+            pickup.amount = Mathf.Max(1, amount);
+        }
 
-                statsText.text = info;
-            }
+        Rigidbody2D rb = droppedItem.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            Vector2 randomSlide = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            rb.linearVelocity = randomSlide * 2f;
         }
     }
 
-    // --- NOWO��: Szybkie u�ywanie przedmiot�w z prawego przycisku ---
+    public void UpdatePlayerInfoUI()
+    {
+        if (PlayerStats.instance == null) return;
+
+        PlayerStats ps = PlayerStats.instance;
+
+        if (playerNameText != null) playerNameText.text = ps.playerName;
+        if (playerMoneyText != null) playerMoneyText.text = ps.currentMoney.ToString();
+
+        if (statsText != null)
+        {
+            string info = $"Sila: {ps.GetTotal(ps.baseSTR, ps.equipSTR)}\n" +
+                          $"Inteligencja: {ps.GetTotal(ps.baseINT, ps.equipINT)}\n" +
+                          $"Zrecznosc: {ps.GetTotal(ps.baseZR, ps.equipZR)}\n" +
+                          $"Charyzma: {ps.GetTotal(ps.baseCHAR, ps.equipCHAR)}\n\n" +
+                          $"Obrazenia: {ps.GetTotal(ps.baseDmg, ps.equipDmg)}\n" +
+                          $"Obrona: {ps.GetTotal(ps.baseDef, ps.equipDef)}\n" +
+                          $"Obrona Magiczna: {ps.GetTotal(ps.baseMagicDef, ps.equipMagicDef)}";
+
+            statsText.text = info;
+        }
+    }
+
     public void UseItem(InventorySlot slot)
     {
+        // ZABEZPIECZENIE: przycisk w Inspektorze potrafil wolac to z pustym slotem
+        if (slot == null || slot.item == null) return;
+
         ItemData item = slot.item;
 
-        // 1. KONSUMPCJA (Jedzenie, mikstury)
         if (item.itemType == ItemType.Consumable)
         {
-            // Tutaj leczymy gracza! (Odwo�anie do Twojego PlayerStats)
-            if (PlayerStats.instance != null && item.healAmount > 0)
+            // POPRAWKA: GetHealAmount() zamiast healAmount -
+            // inaczej wylosowany bonus leczenia byl ignorowany
+            int heal = item.GetHealAmount();
+
+            if (PlayerStats.instance != null && heal > 0)
             {
-                PlayerStats.instance.currentHealth += item.healAmount;
-                // Upewniamy si�, �e zdrowie nie przekracza maksa
+                PlayerStats.instance.currentHealth += heal;
+
                 if (PlayerStats.instance.currentHealth > PlayerStats.instance.GetMaxHealth())
                     PlayerStats.instance.currentHealth = PlayerStats.instance.GetMaxHealth();
 
-                Debug.Log($"Skonsumowano: {item.itemName}. Odzyskano {item.healAmount} HP.");
+                Debug.Log($"Skonsumowano: {item.itemName}. Odzyskano {heal} HP.");
             }
 
-            // Zabieramy jedn� sztuk� ze stosu
             slot.amount--;
             if (slot.amount <= 0) slot.ClearSlot();
             else slot.UpdateSlotUI();
+
+            return;
         }
 
-        // 2. SZYBKIE ZAK�ADANIE EKWIPUNKU (Zbroje, bronie)
-        else
+        // --- ZAKLADANIE EKWIPUNKU ---
+        InventorySlot targetSlot = null;
+
+        switch (item.itemType)
         {
-            InventorySlot targetSlot = null;
+            case ItemType.Weapon1h:
+            case ItemType.Weapon2h:
+            case ItemType.Bow: targetSlot = weaponSlot; break;
+            case ItemType.Helmet: targetSlot = helmetSlot; break;
+            case ItemType.Armor: targetSlot = armorSlot; break;
+            case ItemType.Legs: targetSlot = legsSlot; break;
+            case ItemType.Boots: targetSlot = bootsSlot; break;
+            case ItemType.Second_Hand: targetSlot = offhandSlot; break;
+            case ItemType.Ring:
+                // Wolny palec ma pierwszenstwo przed zamiana
+                targetSlot = (ring1Slot != null && ring1Slot.item == null) ? ring1Slot : ring2Slot;
+                if (targetSlot == null) targetSlot = ring1Slot;
+                break;
+            case ItemType.Necklace: targetSlot = necklaceSlot; break;
+            case ItemType.Ammo: targetSlot = ammoSlot; break;
+        }
 
-            // Szukamy odpowiedniego okienka zbroi na podstawie typu przedmiotu
-            switch (item.itemType)
-            {
-                case ItemType.Weapon1h:
-                case ItemType.Weapon2h:
-                case ItemType.Bow: targetSlot = weaponSlot; break;
-                case ItemType.Helmet: targetSlot = helmetSlot; break;
-                case ItemType.Armor: targetSlot = armorSlot; break;
-                case ItemType.Legs: targetSlot = legsSlot; break;
-                case ItemType.Boots: targetSlot = bootsSlot; break;
-                case ItemType.Second_Hand: targetSlot = offhandSlot; break;
-                case ItemType.Ring: targetSlot = ring1Slot; break; // Domy�lnie zak�adamy na palec nr 1
-                case ItemType.Necklace: targetSlot = necklaceSlot; break;
-                case ItemType.Ammo: targetSlot = ammoSlot; break;
-            }
+        if (targetSlot != null && !targetSlot.isBlocked)
+        {
+            ItemData tempItem = targetSlot.item;
+            int tempAmount = targetSlot.amount;
 
-            // Je�li znale�li�my miejsce i nie jest zablokowane (np. przez bro� 2H)
-            if (targetSlot != null && !targetSlot.isBlocked)
-            {
-                ItemData tempItem = targetSlot.item;
-                int tempAmount = targetSlot.amount;
+            targetSlot.AddItem(item, slot.amount);
 
-                // Wk�adamy nowy przedmiot na posta�
-                targetSlot.AddItem(item, slot.amount);
+            if (tempItem != null) slot.AddItem(tempItem, tempAmount);
+            else slot.ClearSlot();
 
-                // Je�li posta� mia�a ju� co� na sobie, wraca to do plecaka (do tego samego slota!)
-                if (tempItem != null) slot.AddItem(tempItem, tempAmount);
-                else slot.ClearSlot();
-
-                // Obliczamy statystyki i od�wie�amy wygl�d postaci na mapie
-                OnEquipmentChanged();
-            }
+            OnEquipmentChanged();
         }
     }
 }

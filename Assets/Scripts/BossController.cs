@@ -45,7 +45,10 @@ public class BossController : MonoBehaviour
     [Tooltip("Przerwa po ataku, zanim boss zrobi cokolwiek innego.")]
     public float recoverTime = 1.1f;
     public float attackCooldown = 2.5f;
-    public Vector2 shockwaveOffset = new Vector2(0f, -0.2f);
+    [Tooltip("Przesuniecie fali w PIONIE, np. do stop bossa. " +
+             "Celowo nie ma tu osi X - przesuniecie w bok wyrwaloby os obrotu " +
+             "spod Aztekowca i sierp orbitowalby wokol pustego miejsca.")]
+    public float shockwaveHeightOffset = -0.2f;
 
     [Header("Animator (opcjonalne - zostaw puste, jesli nie masz)")]
     public string speedParam = "Speed";
@@ -53,6 +56,24 @@ public class BossController : MonoBehaviour
     public string moveYParam = "MoveY";
     public string attackTrigger = "Attack";
     public string dashTrigger = "";
+
+    // ===============================================================
+    // ODWRACANIE GRAFIKI
+    // Uzywamy flipX na SpriteRenderze, a NIE ujemnej skali obiektu.
+    // Ujemna skala odwrocilaby tez dzieci: collidery, pasek zycia,
+    // punkt tworzenia fali - i wszystko wyladowaloby po zlej stronie.
+    // ===============================================================
+    [Header("Odwracanie Grafiki")]
+    [Tooltip("Zostaw puste - skrypt znajdzie SpriteRenderer sam.")]
+    public SpriteRenderer spriteRenderer;
+
+    [Tooltip("Zaznacz, jesli posta w pliku graficznym patrzy w PRAWO. " +
+             "Odznacz, jesli patrzy w LEWO. Jesli boss odwraca sie odwrotnie - zmien to pole.")]
+    public bool spriteFacesRight = false;
+
+    [Tooltip("Martwa strefa. Gdy gracz stoi dokladnie nad lub pod bossem, " +
+             "drobne ruchy nie beda powodowaly migotania grafiki.")]
+    public float flipDeadzone = 0.05f;
 
     [Header("Efekty (opcjonalne)")]
     public GameObject dashEffectPrefab;
@@ -76,11 +97,20 @@ public class BossController : MonoBehaviour
     private Vector2 dashDirection;
     private float dashTimeLeft;
 
+    // Nazwy parametrow, ktore Animator FAKTYCZNIE posiada.
+    // Bez tego kazda klatka wypluwala blad "Parameter 'Speed' does not exist".
+    private readonly System.Collections.Generic.HashSet<string> animParams
+        = new System.Collections.Generic.HashSet<string>();
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         creature = GetComponent<Creature>();
+
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        CacheAnimatorParams();
 
         homePosition = transform.position;
 
@@ -163,6 +193,7 @@ public class BossController : MonoBehaviour
                 break;
 
             case State.Recover:
+                LookAt(player.position); // nie spuszcza gracza z oczu
                 if (stateTimer <= 0f) SetState(State.Approach);
                 break;
 
@@ -175,6 +206,34 @@ public class BossController : MonoBehaviour
         }
 
         UpdateAnimator();
+        UpdateSpriteFlip();
+    }
+
+    // Obraca grafike w strone, w ktora boss aktualnie patrzy
+    private void CacheAnimatorParams()
+    {
+        animParams.Clear();
+        if (anim == null || anim.runtimeAnimatorController == null) return;
+
+        foreach (AnimatorControllerParameter p in anim.parameters) animParams.Add(p.name);
+    }
+
+    // Ustawia parametr TYLKO, jesli Animator go zna
+    private bool HasParam(string name)
+    {
+        return !string.IsNullOrEmpty(name) && animParams.Contains(name);
+    }
+
+    private void UpdateSpriteFlip()
+    {
+        if (spriteRenderer == null) return;
+
+        // Gdy gracz stoi niemal dokladnie nad lub pod bossem, skladowa X
+        // skacze wokol zera - bez tej strefy grafika by migotala.
+        if (Mathf.Abs(facingDirection.x) < flipDeadzone) return;
+
+        bool lookingRight = facingDirection.x > 0f;
+        spriteRenderer.flipX = spriteFacesRight ? !lookingRight : lookingRight;
     }
 
     void FixedUpdate()
@@ -198,7 +257,7 @@ public class BossController : MonoBehaviour
                 rb.MovePosition(rb.position + toHome * returnSpeed * Time.fixedDeltaTime);
                 break;
 
-            // WindUp, Attack, Recover, Sleeping = boss stoi w miejscu
+                // WindUp, Attack, Recover, Sleeping = boss stoi w miejscu
         }
     }
 
@@ -238,7 +297,7 @@ public class BossController : MonoBehaviour
                 dashTimeLeft = dashDistance / Mathf.Max(0.1f, dashSpeed);
                 stateTimer = dashTelegraphTime; // najpierw telegraf, potem lot
 
-                if (anim != null && !string.IsNullOrEmpty(dashTrigger)) anim.SetTrigger(dashTrigger);
+                if (anim != null && HasParam(dashTrigger)) anim.SetTrigger(dashTrigger);
                 if (dashEffectPrefab != null) Instantiate(dashEffectPrefab, transform.position, Quaternion.identity);
                 break;
 
@@ -266,7 +325,7 @@ public class BossController : MonoBehaviour
 
     private void FireShockwave()
     {
-        if (anim != null && !string.IsNullOrEmpty(attackTrigger)) anim.SetTrigger(attackTrigger);
+        if (anim != null && HasParam(attackTrigger)) anim.SetTrigger(attackTrigger);
 
         if (shockwavePrefab == null)
         {
@@ -274,7 +333,28 @@ public class BossController : MonoBehaviour
             return;
         }
 
-        Instantiate(shockwavePrefab, transform.position + (Vector3)shockwaveOffset, Quaternion.identity);
+        // KIERUNEK ATAKU: prosto w gracza, a jesli go nie ma - tam, gdzie boss patrzy
+        Vector2 attackDir = facingDirection;
+        if (player != null)
+        {
+            Vector2 toPlayer = (Vector2)player.position - (Vector2)transform.position;
+            if (toPlayer.sqrMagnitude > 0.0001f) attackDir = toPlayer.normalized;
+        }
+
+        // WAZNE: fala powstaje DOKLADNIE na bossie, bo to on jest osia obrotu.
+        // Odsuniecie sierpa zalatwia dziecko 'Graphics' wewnatrz prefabu.
+        Vector3 offset = new Vector3(0f, shockwaveHeightOffset, 0f);
+
+        GameObject waveObj = Instantiate(
+            shockwavePrefab,
+            transform.position + offset,
+            Quaternion.identity);
+
+        // TU BYL BRAK: fala nigdy nie dostawala kierunku, wiec sierp
+        // zawsze wisial po tej samej stronie niezaleznie od pozycji gracza.
+        Shockwave wave = waveObj.GetComponent<Shockwave>();
+        if (wave != null) wave.Setup(attackDir);
+        else Debug.LogWarning($"{name}: prefab fali nie ma komponentu Shockwave!");
     }
 
     private void LookAt(Vector3 target)
@@ -291,9 +371,9 @@ public class BossController : MonoBehaviour
         if (currentState == State.Approach || currentState == State.Returning) speedValue = 1f;
         if (currentState == State.Dash && stateTimer <= 0f) speedValue = 2f;
 
-        if (!string.IsNullOrEmpty(speedParam)) anim.SetFloat(speedParam, speedValue);
-        if (!string.IsNullOrEmpty(moveXParam)) anim.SetFloat(moveXParam, facingDirection.x);
-        if (!string.IsNullOrEmpty(moveYParam)) anim.SetFloat(moveYParam, facingDirection.y);
+        if (HasParam(speedParam)) anim.SetFloat(speedParam, speedValue);
+        if (HasParam(moveXParam)) anim.SetFloat(moveXParam, facingDirection.x);
+        if (HasParam(moveYParam)) anim.SetFloat(moveYParam, facingDirection.y);
     }
 
     void OnDrawGizmosSelected()
