@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: GodsSword_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: GodsSword_Data
   itemName: Boski Miecz
   icon: {fileID: 21300000, guid: 43b2f7165a5a113429477be54dffbb52, type: 3}
   description: "Miecz o niemo\u017Cliwie wielkiej mocy, kt\xF3rego istnienie jest
@@ -21,8 +22,22 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: 409970f1230d08d4d97119b77ba657e6, type: 3}
   isStackable: 0
   weight: 3.5
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
+  pickupSounds:
+  - {fileID: 8300000, guid: 9890014b7cdd203498f903b53127ac05, type: 3}
   price: 99999
   healAmount: 0
+  healthRegenPerSecond: 0
+  manaRegenPerSecond: 0
+  affinityBonus: 0
   damageBonus: 999
   magicDamageBonus: 99
   defenseBonus: 99
@@ -32,3 +47,14 @@ MonoBehaviour:
   dexterityBonus: 99
   intellegenceBonus: 99
   charismaBonus: 99
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

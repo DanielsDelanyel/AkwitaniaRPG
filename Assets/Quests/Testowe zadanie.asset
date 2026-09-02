@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e561d34197d86ee43866c3f9201cc734, type: 3}
+  m_Name: Testowe zadanie
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  questId: 0
+  title: Zadanie testowe
+  description: "Je\u015Bli to czytasz, to znaczy \u017Ce dzia\u0142a"
+  turnInNpcId: 447b466646ea4058
+  objectives:
+  - description: dej mnie no truskawki blet
+    type: 4
+    targetId: Strawberry(gift)_itemData
+    deliverToNpcId: 447b466646ea4058
+    requiredAmount: 1
+    hidden: 0
+  sequentialObjectives: 0
+  reward:
+    experience: 500
+    gold: 100
+    items:
+    - {fileID: 11400000, guid: 9371f925ed6e1204e8e7fa709346062e, type: 2}
+    itemAmounts: 
+    affinityChange: 5
+  consumeQuestItems: 1
+  requiredQuests: []
+  requiredLevel: 0
+  isMainQuest: 0

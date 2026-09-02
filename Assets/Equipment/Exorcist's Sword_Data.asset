@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: Exorcist's Sword_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: Exorcist's Sword_Data
   itemName: Miecz egzorcysty
   icon: {fileID: 21300000, guid: 03fe21d45222bb747a81c3664a42e256, type: 3}
   description: "Nosi na sobie znamiona u\u017Cytkowania, mimo wszystko bro\u0144
@@ -22,8 +23,29 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: d87a2fe1f58059444a38ac3a6ecc5d5c, type: 3}
   isStackable: 0
   weight: 1.7
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  spellPrefab: {fileID: 0}
+  spellRange: 4.5
+  spellCooldown: 0.6
+  swingSounds:
+  - {fileID: 8300000, guid: 17b4978df59baba429dfb573bab0c190, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 53f70babaea940e459fff58c56010238, type: 3}
+  - {fileID: 8300000, guid: b4d7b66fc6ab9c142a565a9969b231f9, type: 3}
+  - {fileID: 8300000, guid: 8ed2ac21837d9264a958c9ee142bd877, type: 3}
+  - {fileID: 8300000, guid: d8aa8e7605d88fa45b56282d4a8c4e62, type: 3}
+  soundVolume: 0.8
+  pickupSounds:
+  - {fileID: 8300000, guid: 9890014b7cdd203498f903b53127ac05, type: 3}
   price: 1000
   healAmount: 0
+  healthRegenPerSecond: 0
+  manaRegenPerSecond: 0
   affinityBonus: 0
   damageBonus: 0
   magicDamageBonus: 0
@@ -73,3 +95,5 @@ MonoBehaviour:
     maxValue: 1
     hasRolled: 0
     rolledValue: 0
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

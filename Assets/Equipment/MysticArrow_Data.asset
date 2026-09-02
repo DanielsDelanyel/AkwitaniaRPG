@@ -12,16 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: MysticArrow_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: MysticArrow_Data
   itemName: "Mistyczna strza\u0142a"
   icon: {fileID: 21300000, guid: 6bcdd2212194128439dd030c8ef04f03, type: 3}
-  description: "Strza\u0142a z mgie\u0142...\n(Obra\u017Cenia: 25)"
+  description: "Strza\u0142a z mgie\u0142...\n"
   itemType: 12
   rarity: 2
   itemPrefab: {fileID: 3930145972775893165, guid: 5f67936ffc05d4d428a1089e9fa5f105, type: 3}
   isStackable: 1
-  weight: 1
+  weight: 0.3
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  spellPrefab: {fileID: 0}
+  spellRange: 4.5
+  spellCooldown: 0.6
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
+  pickupSounds: []
   price: 125
   healAmount: 0
+  healthRegenPerSecond: 0
+  manaRegenPerSecond: 0
+  affinityBonus: 0
   damageBonus: 25
   magicDamageBonus: 0
   defenseBonus: 0
@@ -31,3 +48,14 @@ MonoBehaviour:
   dexterityBonus: 0
   intellegenceBonus: 0
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

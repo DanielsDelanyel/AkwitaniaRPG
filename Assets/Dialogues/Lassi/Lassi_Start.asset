@@ -17,15 +17,56 @@ MonoBehaviour:
   - text: "Witaj, pozw\xF3l \u017Ce si\u0119 przedstawi\u0119..."
     nextNode: {fileID: 11400000, guid: 7d4f4c54bd3b0be44b2dc05687f01947, type: 2}
     affinityChange: 5
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1
   - text: "Jeste\u015B pi\u0119kna..."
     nextNode: {fileID: 11400000, guid: 108d12c1fc2841f4ab574b9bb405ba41, type: 2}
     affinityChange: -10
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1
   - text: Co to za miejsce...?
     nextNode: {fileID: 11400000, guid: 144ef8ee0eb52ee41b7082ed9610ecef, type: 2}
     affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1
   - text: "Gdzie mog\u0119 znale\u017A\u0107..."
     nextNode: {fileID: 11400000, guid: 1cd4175539200b349afba76214ae2c78, type: 2}
     affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1
+  - text: "S\u0142ysza\u0142em, \u017Ce masz dla mnie zlecenie, co to takiego?"
+    nextNode: {fileID: 11400000, guid: c0462e488dbe59b4db2ac6bb04b9f847, type: 2}
+    affinityChange: 0
+    questToStart: {fileID: 11400000, guid: bb123e49c59c1634a9ba2b2488a78631, type: 2}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 11400000, guid: bb123e49c59c1634a9ba2b2488a78631, type: 2}
+    requiredState: 0
+  - text: W sprawie tego zadania...
+    nextNode: {fileID: 11400000, guid: 91b524df17f7adb44a564bfbf81643da, type: 2}
+    affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 11400000, guid: bb123e49c59c1634a9ba2b2488a78631, type: 2}
+    requiredState: 2
+  - text: W sprawie tego zadania...
+    nextNode: {fileID: 11400000, guid: 91b524df17f7adb44a564bfbf81643da, type: 2}
+    affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 11400000, guid: bb123e49c59c1634a9ba2b2488a78631, type: 2}
+    requiredState: 1
   - text: "Odchodz\u0119..."
     nextNode: {fileID: 11400000, guid: 468e50de61df2f04c80ecf1a339df434, type: 2}
     affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1

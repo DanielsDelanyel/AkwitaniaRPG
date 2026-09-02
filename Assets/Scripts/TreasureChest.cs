@@ -226,6 +226,9 @@ public class TreasureChest : MonoBehaviour
         // Zapamietujemy, ze ta konkretna skrzynia zostala oprozniona
         WorldState.SetFlag(SaveId);
 
+        // Zadania typu "otworz skrzynie w jaskini"
+        if (uniqueId != null) QuestManager.ReportChestOpened(uniqueId.Id);
+
         // Gasimy poswiate - skrzynia jest juz "zuzyta"
         if (glowRenderer != null) glowRenderer.gameObject.SetActive(false);
 

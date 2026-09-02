@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1541192915304382971}
   - component: {fileID: 31127902601663390}
   - component: {fileID: -1911531380538560383}
-  - component: {fileID: 3484478778158250226}
+  - component: {fileID: 8755806233480618008}
   m_Layer: 0
   m_Name: FlyingMysticArrow
   m_TagString: Untagged
@@ -173,7 +173,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3484478778158250226
+--- !u!114 &8755806233480618008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,9 +182,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3930145972775893165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d9efea53209eb45ba20ead703a2742, type: 3}
+  m_Script: {fileID: 11500000, guid: 830910fff0fcb3848944b0c3e5c074fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 10
-  damage: 25
-  lifeTime: 4
+  speed: 20
+  lifeTime: 3
+  damage: 10
+  hitSounds: []
+  missSounds: []
+  soundVolume: 0.8
+  hitEffectPrefab: {fileID: 0}

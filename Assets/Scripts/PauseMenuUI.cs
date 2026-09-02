@@ -336,6 +336,7 @@ public class PauseMenuUI : MonoBehaviour
         {
             WorldState.Clear();
             RespawnPoint.Clear();
+            QuestManager.Clear();
         }
 
         // 3. TU BYL BLAD: wolalismy Close(), ktore wylacza PauseRoot.

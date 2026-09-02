@@ -23,6 +23,11 @@ public class SoundManager : MonoBehaviour
     [Tooltip("Zakres losowej wysokosci tonu. 1 = bez zmian.")]
     public Vector2 pitchRange = new Vector2(0.92f, 1.08f);
 
+    [Header("Podnoszenie Przedmiotow")]
+    [Tooltip("Dzwiek uzywany, gdy dany ItemData NIE MA wlasnego 'Pickup Sounds' ustawionego. " +
+             "Wrzuc kilka wariantow - patrz PlayPickupSound() ponizej.")]
+    public AudioClip[] defaultPickupSounds;
+
     private AudioSource[] pool;
     private int nextIndex;
 
@@ -61,6 +66,20 @@ public class SoundManager : MonoBehaviour
 
         AudioClip clip = clips[Random.Range(0, clips.Length)];
         Play(clip, volume);
+    }
+
+    // NOWE: dzwiek podniesienia przedmiotu z ziemi. Jesli przedmiot ma wlasny
+    // ItemData.pickupSounds (np. specjalny "cling!" dla klejnotow), uzywamy go -
+    // w przeciwnym razie spada na uniwersalny Default Pickup Sounds powyzej.
+    public static void PlayPickupSound(ItemData item)
+    {
+        if (instance == null) return;
+
+        AudioClip[] clips = (item != null && item.pickupSounds != null && item.pickupSounds.Length > 0)
+            ? item.pickupSounds
+            : instance.defaultPickupSounds;
+
+        Play(clips);
     }
 
     // --- WLASCIWE ODTWARZANIE ---

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -41,6 +42,11 @@ public class InventoryTooltip : MonoBehaviour
     public Sprite rareIcon;
     public Sprite epicIcon;
     public Sprite legendaryIcon;
+
+    [Header("Kolory Stanu Umiejetnosci (panel Umiejetnosci - klawisz G)")]
+    public Color skillLockedColor = new Color(0.6f, 0.6f, 0.6f, 1f);
+    public Color skillAvailableColor = new Color(1f, 0.85f, 0.2f, 1f);
+    public Color skillUnlockedColor = new Color(0.3f, 1f, 0.4f, 1f);
 
     [Header("Ustawienia")]
     public float offsetX = 15f;
@@ -242,6 +248,120 @@ public class InventoryTooltip : MonoBehaviour
             case ItemRarity.Epic: return epicIcon;
             case ItemRarity.Legendary: return legendaryIcon;
             default: return null;
+        }
+    }
+
+    // ===============================================================
+    // WARIANT DLA UMIEJETNOSCI (panel Umiejetnosci - klawisz G)
+    // Uzywa tych samych pol UI co ekwipunek, tylko wypelnia je inaczej -
+    // dzieki temu nie trzeba budowac osobnego okienka tooltipa.
+    // ===============================================================
+    public void ShowTooltip(SkillData skill, bool unlocked, bool canUnlock)
+    {
+        if (isPinned) return; // przypiete szczegoly (ekwipunek) maja pierwszenstwo
+        Fill(skill, unlocked, canUnlock);
+        SetVisible(true);
+    }
+
+    private void Fill(SkillData skill, bool unlocked, bool canUnlock)
+    {
+        if (skill == null) return;
+
+        Color statusColor = unlocked ? skillUnlockedColor : (canUnlock ? skillAvailableColor : skillLockedColor);
+
+        if (headerField != null)
+        {
+            headerField.text = skill.skillName;
+            headerField.color = statusColor;
+        }
+
+        if (rarityField != null)
+        {
+            rarityField.text = unlocked ? "Odblokowana" : (canUnlock ? "Mozna odblokowac" : "Zablokowana");
+            rarityField.color = statusColor;
+        }
+
+        // Pole rarityIcon przy umiejetnosciach pokazuje po prostu ikone umiejetnosci.
+        if (rarityIconImage != null)
+        {
+            rarityIconImage.sprite = skill.icon;
+            rarityIconImage.enabled = skill.icon != null;
+        }
+
+        SetField(typeField, $"{GetProfessionLabel(skill.profession)} - {GetEffectLabel(skill.effectType)}");
+        SetField(statsField, BuildSkillStatsText(skill));
+        SetField(contentField, skill.description);
+
+        if (weightField != null) weightField.gameObject.SetActive(false);
+
+        if (priceField != null) SetField(priceField, $"Koszt: {skill.cost} pkt umiejetnosci");
+
+        if (autoResize && rectTransform != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+    }
+
+    private string BuildSkillStatsText(SkillData skill)
+    {
+        List<string> parts = new List<string>();
+
+        if (skill.manaCostPercent > 0f) parts.Add($"Koszt many: {skill.manaCostPercent:0.#}% maks. many");
+        else if (skill.manaCost > 0f) parts.Add($"Koszt many: {skill.manaCost}");
+
+        if (skill.healthCostPercent > 0f) parts.Add($"Koszt zdrowia: {skill.healthCostPercent:0.#}% maks. zdrowia");
+
+        if (skill.cooldown > 0f) parts.Add($"Odnowienie: {skill.cooldown:0.#}s");
+
+        if (skill.effectType == SkillEffectType.Summon)
+        {
+            parts.Add($"Przyzywa: {skill.baseSummonCount}-{skill.maxSummonCount} stworzen " +
+                      "(ilosc i sila zaleza od Witalnosci i Inteligencji)");
+        }
+
+        if (skill.effectType == SkillEffectType.Active)
+        {
+            parts.Add($"Obrazenia: {skill.baseDamage}+ (rosna z Inteligencja i Zrecznoscia)");
+            parts.Add($"Czas trwania: {skill.baseDuration:0.#}s+ (rosnie z Inteligencja i Zrecznoscia)");
+        }
+
+        if (skill.requiredSkills != null && skill.requiredSkills.Length > 0)
+        {
+            List<string> reqNames = new List<string>();
+            foreach (SkillData req in skill.requiredSkills)
+            {
+                if (req != null) reqNames.Add(req.skillName);
+            }
+            if (reqNames.Count > 0) parts.Add("Wymaga: " + string.Join(", ", reqNames));
+        }
+
+        return string.Join("\n", parts);
+    }
+
+    private string GetProfessionLabel(CharacterClass profession)
+    {
+        switch (profession)
+        {
+            case CharacterClass.Nekromancer: return "Nekromanta";
+            case CharacterClass.Hunter: return "Lowca";
+            case CharacterClass.Mage: return "Mag";
+            case CharacterClass.Barbarian: return "Barbarzynca";
+            case CharacterClass.Juggernaut: return "Obronca";
+            case CharacterClass.Bard: return "Bard";
+            case CharacterClass.Assassin: return "Skrytobojca";
+            case CharacterClass.Paladin: return "Paladyn";
+            case CharacterClass.Ilusionist: return "Iluzjonista";
+            case CharacterClass.Monk: return "Mnich";
+            default: return "Wloczega";
+        }
+    }
+
+    private string GetEffectLabel(SkillEffectType effectType)
+    {
+        switch (effectType)
+        {
+            case SkillEffectType.Summon: return "Przyzwanie";
+            case SkillEffectType.Passive: return "Pasywna";
+            case SkillEffectType.Active: return "Aktywna";
+            default: return "";
         }
     }
 }

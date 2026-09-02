@@ -6,7 +6,8 @@ using UnityEngine;
 // ZAPIS I WCZYTYWANIE GRY.
 //
 // Zapisuje: pozycje i lokacje gracza, jego statystyki, zloto, doswiadczenie,
-// caly plecak i wyposazenie - razem z wylosowanymi statystykami przedmiotow.
+// caly plecak i wyposazenie - razem z wylosowanymi statystykami przedmiotow,
+// oraz punkty i odblokowane umiejetnosci.
 public static class SaveManager
 {
     public const int CURRENT_VERSION = 1;
@@ -134,6 +135,14 @@ public static class SaveManager
 
         data.worldFlags = WorldState.GetFlagsForSave();
         data.npcs = WorldState.GetNpcsForSave();
+        data.quests = QuestManager.GetAllForSave();
+
+        // --- UMIEJETNOSCI ---
+        if (PlayerSkills.instance != null)
+        {
+            data.skills.skillPoints = PlayerSkills.instance.skillPoints;
+            data.skills.unlockedSkillIds = PlayerSkills.instance.GetUnlockedForSave();
+        }
 
         return data;
     }
@@ -225,6 +234,7 @@ public static class SaveManager
             // Skrzynie i NPC sprawdzaja WorldState w swoim Start(), wiec dane
             // musza tam byc, zanim obiekty sie obudza.
             WorldState.LoadFrom(data.worldFlags, data.npcs);
+            QuestManager.LoadFrom(data.quests);
 
             return true;
         }
@@ -246,6 +256,13 @@ public static class SaveManager
         ApplyPlayer(data.player);
         ApplyInventory(data);
 
+        // Umiejetnosci nakladamy tu, obok reszty postepu gracza - nie zaleza
+        // od kolejnosci ladowania lokacji tak jak WorldState/QuestManager.
+        if (PlayerSkills.instance != null)
+        {
+            PlayerSkills.instance.LoadFrom(data.skills.skillPoints, data.skills.unlockedSkillIds);
+        }
+
         // Statystyki koncowe przeliczamy DOPIERO po zalozeniu ekwipunku,
         // inaczej maksymalne zycie nie uwzglednialoby bonusow z przedmiotow.
         if (InventoryUI.instance != null) InventoryUI.instance.OnEquipmentChanged();
@@ -260,6 +277,9 @@ public static class SaveManager
         }
 
         if (InventoryUI.instance != null) InventoryUI.instance.UpdatePlayerInfoUI();
+
+        // Cele typu "miej X w plecaku" sprawdzamy PO odtworzeniu ekwipunku
+        QuestManager.RefreshInventoryObjectives();
 
         Debug.Log($"Wczytano zapis z {data.savedAt}.");
     }
@@ -397,9 +417,12 @@ public static class SaveManager
         sessionStartTime = Time.realtimeSinceStartup;
         PendingLoad = null;
 
-        // Nowa gra zaczyna od pelnych skrzyn i NPC bez wspomnien
+        // Nowa gra zaczyna od pelnych skrzyn, NPC bez wspomnien, pustego dziennika
+        // i bez odblokowanych umiejetnosci.
         WorldState.Clear();
         RespawnPoint.Clear();
+        QuestManager.Clear();
+        if (PlayerSkills.instance != null) PlayerSkills.instance.ClearAll();
     }
 
     // Krotki opis zapisu - do pokazania na przycisku "Wczytaj gre"

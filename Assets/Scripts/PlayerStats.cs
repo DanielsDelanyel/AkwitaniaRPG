@@ -80,6 +80,15 @@ public class PlayerStats : MonoBehaviour
              "30 oznacza +30%. Liczone automatycznie przez PlayerEquipment.")]
     public float equipDmgPercent = 0f;
 
+    [Tooltip("Suma pasywnej regeneracji zdrowia/many na sekunde ze WSZYSTKICH zalozonych przedmiotow " +
+             "(ItemData.healthRegenPerSecond / manaRegenPerSecond). Liczone automatycznie przez PlayerEquipment.")]
+    public float equipHealthRegenPerSecond = 0f;
+    public float equipManaRegenPerSecond = 0f;
+
+    // Reszta ulamkowa regeneracji zdrowia (currentHealth jest int-em, wiec np. 2.5 pkt/s
+    // trzeba zbierac klatka po klatce, zanim da sie doliczyc pelny punkt).
+    private float healthRegenAccumulator = 0f;
+
     // ---------------------------------------------------------------
     // WZORY NA ZASOBY - tu ustawiasz balans gry.
     // Zdrowie rosnie z Witalnosci, Mana z Inteligencji, Stamina ze Zrecznosci.
@@ -119,6 +128,11 @@ public class PlayerStats : MonoBehaviour
     public delegate void OnHealthChanged();
     public OnHealthChanged onHealthChangedCallback;
 
+    // NOWE: odpalane RAZ NA KAZDY zdobyty poziom (nie raz na cala paczke expa).
+    // Parametr to poziom, ktory gracz WLASNIE osiagnal. Dzieki temu np. PlayerSkills
+    // moze doliczac punkty umiejetnosci "co 2 poziomy" tez przy duzych skokach expa.
+    public System.Action<int> onLevelUp;
+
     // ===============================================================
     // SMIERC
     // Zamiast samego Debug.Log - prawdziwy stan i zdarzenie,
@@ -153,6 +167,29 @@ public class PlayerStats : MonoBehaviour
         {
             currentStamina += staminaRegen * Time.deltaTime;
             if (currentStamina > maxStam) currentStamina = maxStam;
+        }
+
+        // NOWE: pasywna regeneracja z ekwipunku (pierscienie, naszyjniki itp.) - nie dziala po smierci.
+        if (!IsDead)
+        {
+            if (equipManaRegenPerSecond > 0f && currentMana < GetMaxMana())
+            {
+                currentMana = Mathf.Min(GetMaxMana(), currentMana + equipManaRegenPerSecond * Time.deltaTime);
+            }
+
+            if (equipHealthRegenPerSecond > 0f && currentHealth < GetMaxHealth())
+            {
+                // currentHealth jest intem - zbieramy ulamki, zeby np. 2.5 pkt/s faktycznie dawalo
+                // punkt co 0.4s, a nie zero-po-zaokragleniu w kazdej klatce.
+                healthRegenAccumulator += equipHealthRegenPerSecond * Time.deltaTime;
+                int wholePoints = Mathf.FloorToInt(healthRegenAccumulator);
+                if (wholePoints > 0)
+                {
+                    healthRegenAccumulator -= wholePoints;
+                    currentHealth = Mathf.Min(GetMaxHealth(), currentHealth + wholePoints);
+                    if (onHealthChangedCallback != null) onHealthChangedCallback.Invoke();
+                }
+            }
         }
     }
 
@@ -429,6 +466,11 @@ public class PlayerStats : MonoBehaviour
             attributePoints += 2;
             expToNextLevel = Mathf.RoundToInt(expToNextLevel * levelScaling);
             leveledUp = true;
+
+            // NOWE: powiadamiamy o KAZDYM pojedynczym poziomie z osobna (nie raz na koncu
+            // calej petli), zeby np. PlayerSkills mogl poprawnie doliczac punkty umiejetnosci
+            // "co 2 poziomy" nawet przy duzym, jednorazowym zastrzyku expa.
+            onLevelUp?.Invoke(level);
         }
 
         if (leveledUp)
@@ -446,29 +488,29 @@ public class PlayerStats : MonoBehaviour
         switch (currentProfession)
         {
             case CharacterClass.Traveler:
-                return "<color=#FFD700>W��CZ�GA</color>\n\n+10% do pr�dko�ci poruszania si�.";
+                return "<color=#FFD700>WLOCZEGA</color>\n\n+10% do predkosci poruszania sie.";
             case CharacterClass.Hunter:
-                return "<color=#FFD700>�OWCA</color>\n\n+40% szansy na cios krytyczny.\n+10% do zadawanych obra�e�.";
+                return "<color=#FFD700>LOWCA</color>\n\n+40% szansy na cios krytyczny.\n+10% do zadawanych obrazen.";
             case CharacterClass.Mage:
-                return "<color=#FFD700>MAG</color>\n\n+7.5% szansy na cios krytyczny.\n+20% do zadawanych obra�e�.";
+                return "<color=#FFD700>MAG</color>\n\n+7.5% szansy na cios krytyczny.\n+20% do zadawanych obrazen.";
             case CharacterClass.Barbarian:
-                return "<color=#FFD700>BARBARZY�CA</color>\n\n+50% do zadawanych obra�e�.";
+                return "<color=#FFD700>BARBARZYNCA</color>\n\n+50% do zadawanych obrazen.";
             case CharacterClass.Juggernaut:
-                return "<color=#FFD700>OBRO�CA</color>\n\n+50% do ca�kowitego pancerza.";
+                return "<color=#FFD700>OBRONCA</color>\n\n+50% do calkowitego pancerza.";
             case CharacterClass.Bard:
-                return "<color=#FFD700>BARD</color>\n\n+75% szansy na perswazj� w dialogach.\n-30% cen we wszystkich sklepach.";
+                return "<color=#FFD700>BARD</color>\n\n+75% szansy na perswazje w dialogach.\n-30% cen we wszystkich sklepach.";
             case CharacterClass.Assassin:
-                return "<color=#FFD700>SKRYTOB�JCA</color>\n\n+20% szansy na cios krytyczny.\nObra�enia krytyczne mno�one x3.";
+                return "<color=#FFD700>SKRYTOBOJCA</color>\n\n+20% szansy na cios krytyczny.\nObrazenia krytyczne mnozone x3.";
             case CharacterClass.Paladin:
-                return "<color=#FFD700>PALADYN</color>\n\n+20% do zadawanych obra�e�.\n+5% Maksymalnego Zdrowia i Many.";
+                return "<color=#FFD700>PALADYN</color>\n\n+20% do zadawanych obrazen.\n+5% Maksymalnego Zdrowia i Many.";
             case CharacterClass.Nekromancer:
-                return "<color=#FFD700>NEKROMANTA</color>\n\n+10% Maksymalnego Zdrowia i Many.\n-20% do zadawanych obra�e�.";
+                return "<color=#FFD700>NEKROMANTA</color>\n\n+10% Maksymalnego Zdrowia i Many.\n-20% do zadawanych obrazen.";
             case CharacterClass.Ilusionist:
-                return "<color=#FFD700>ILUZJONISTA</color>\n\n+20% Maksymalnej Many.\n-20% Maksymalnego Zdrowia.\n-20% do zadawanych obra�e�.\n+30% szansy na perswazj�.\n-15% cen w sklepach.";
+                return "<color=#FFD700>ILUZJONISTA</color>\n\n+20% Maksymalnej Many.\n-20% Maksymalnego Zdrowia.\n-20% do zadawanych obrazen.\n+30% szansy na perswazje.\n-15% cen w sklepach.";
             case CharacterClass.Monk:
-                return "<color=#FFD700>MNICH</color>\n\n+20% do pr�dko�ci poruszania si�.\n+7.5% szansy na cios krytyczny.\n+5% Maksymalnej Many.\n-5% Maksymalnego Zdrowia.\n-10% do zadawanych obra�e�.";
+                return "<color=#FFD700>MNICH</color>\n\n+20% do predkosci poruszania sie.\n+7.5% szansy na cios krytyczny.\n+5% Maksymalnej Many.\n-5% Maksymalnego Zdrowia.\n-10% do zadawanych obrazen.";
             default:
-                return "Brak dodatkowych bonus�w.";
+                return "Brak dodatkowych bonusow.";
         }
     }
 }

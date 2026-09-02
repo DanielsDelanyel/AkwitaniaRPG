@@ -16,6 +16,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public ItemType allowedType2;
     public ItemType allowedType3;
 
+    [Tooltip("NOWE: dla slotow ktore musza przyjmowac wiecej niz 3 typy (np. slot broni: " +
+             "Weapon1h/Weapon2h/Bow juz zajmuja allowedType1-3, wiec Wand1h/Wand2h dopisz tutaj). " +
+             "Zostaw puste, jesli 3 pola powyzej wystarczaja - nie trzeba nic tu zmieniac.")]
+    public ItemType[] additionalAllowedTypes;
+
     [Header("Blokada Slotu (np. na bron 2H)")]
     public bool isBlocked = false;
     private Image slotBackground;
@@ -103,7 +108,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // na drugim (przekierowanie broni 2H). Bez tej ochrony gra sie wywalala.
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
-            if (item != null && isBackpackSlot && ContextMenuUI.instance != null)
+            // NOWE: menu kontekstowe teraz otwiera sie takze na slotach EKWIPUNKU,
+            // nie tylko w plecaku (ConfigureButtons samo dobiera odpowiednie przyciski
+            // - dla zalozonego przedmiotu "Zaloz" zamienia sie na "Zdejmij").
+            if (item != null && ContextMenuUI.instance != null)
             {
                 if (InventoryTooltip.instance != null) InventoryTooltip.instance.HideTooltip();
                 ContextMenuUI.instance.OpenMenu(this, Input.mousePosition);
@@ -111,7 +119,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return;
         }
 
-        // Klikniêcie lewym zamyka otwarte menu
+        // KlikniÄ™cie lewym zamyka otwarte menu
         if (ContextMenuUI.instance != null && ContextMenuUI.instance.IsOpen)
             ContextMenuUI.instance.CloseMenu();
 
@@ -120,10 +128,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         ItemData mouseItem = InventoryUI.instance.draggedItem;
         int mouseAmount = InventoryUI.instance.draggedAmount;
 
-        // --- PRZEKIEROWANIE BRONI 2H I LUKU DO GLOWNEJ REKI ---
+        // --- PRZEKIEROWANIE BRONI 2H, LUKU I ROZDZKI 2H DO GLOWNEJ REKI ---
         if (allowedType1 == ItemType.Second_Hand && mouseItem != null)
         {
-            if (mouseItem.itemType == ItemType.Weapon2h || mouseItem.itemType == ItemType.Bow)
+            if (mouseItem.itemType == ItemType.Weapon2h || mouseItem.itemType == ItemType.Bow
+                || mouseItem.itemType == ItemType.Wand2h)
             {
                 if (InventoryUI.instance.weaponSlot != null)
                     InventoryUI.instance.weaponSlot.OnPointerClick(null);
@@ -188,6 +197,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (itemToCheck.itemType == allowedType1) return true;
         if (itemToCheck.itemType == allowedType2) return true;
         if (itemToCheck.itemType == allowedType3) return true;
+
+        if (additionalAllowedTypes != null)
+        {
+            foreach (ItemType t in additionalAllowedTypes)
+            {
+                if (itemToCheck.itemType == t) return true;
+            }
+        }
+
         return false;
     }
 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5355073573976589515}
   - component: {fileID: 700123142735357240}
   - component: {fileID: 7239432417866271731}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: BanditRange2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +154,8 @@ MonoBehaviour:
   currentHealth: 100
   healthPerVitality: 10
   damagePopupPrefab: {fileID: 1464719777984505996, guid: 98351c0e9b91d6547a142ea64a720327, type: 3}
+  hitFlashMaterial: {fileID: 2100000, guid: fea1c5d53aae0a34a9b1056ea343c952, type: 2}
+  hitFlashPhaseDuration: 0.05
   destroyOnDeath: 1
   destroyDelay: 0
 --- !u!114 &-5355073573976589515
@@ -274,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8394689229367088702}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,8 +5,8 @@ public class ItemPickup : MonoBehaviour
     [Header("Dane Przedmiotu")]
     public ItemData itemData;
 
-    [Header("Ilo�� (np. dla strza�)")]
-    public int amount = 1; // Ile sztuk le�y w tej paczce na trawie
+    [Header("Ilosc (np. dla strzal)")]
+    public int amount = 1; // Ile sztuk lezy w tej paczce na trawie
 
     [Header("Ustawienia")]
     public GameObject promptE;
@@ -48,13 +48,14 @@ public class ItemPickup : MonoBehaviour
 
     void PickUp()
     {
-        // Add zwraca nam, ile przedmiot�w NIE ZMIE�CI�O SI� do plecaka
+        // Add zwraca nam, ile przedmiotow NIE ZMIESCILO SIE do plecaka
         int leftovers = InventoryUI.instance.Add(itemData, amount);
 
         if (leftovers == 0)
         {
-            // Podnie�li�my wszystko!
+            // Podnieslismy wszystko!
             Debug.Log($"Podniesiono: {itemData.itemName} ({amount} szt.)");
+            SoundManager.PlayPickupSound(itemData);
 
             // Rozstawiony w edytorze - zapamietujemy, ze juz go nie ma
             if (uniqueId != null) WorldState.SetFlag(SaveId);
@@ -63,13 +64,14 @@ public class ItemPickup : MonoBehaviour
         }
         else if (leftovers < amount)
         {
-            // Zmie�ci�a si� tylko cz��
-            Debug.Log($"Plecak pe�ny! Na ziemi zosta�o {leftovers} szt.");
+            // Zmiescila sie tylko czesc - i tak cos trafilo do plecaka, wiec dzwiek gra.
+            Debug.Log($"Plecak pelny! Na ziemi zostalo {leftovers} szt.");
+            SoundManager.PlayPickupSound(itemData);
             amount = leftovers; // Redukujemy stos na ziemi do samej resztki
         }
         else
         {
-            Debug.Log("Ca�kowity brak miejsca w plecaku!");
+            Debug.Log("Calkowity brak miejsca w plecaku!");
         }
     }
 

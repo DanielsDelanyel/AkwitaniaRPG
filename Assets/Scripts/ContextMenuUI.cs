@@ -26,11 +26,11 @@ public class ContextMenuUI : MonoBehaviour
     public GameObject menuPanel;
 
     [Header("Przyciski - wszystkie opcjonalne")]
-    [Tooltip("Uzyj / Zjedz / Zaloz - etykieta zmienia sie sama.")]
+    [Tooltip("Uzyj / Zjedz / Zaloz / Zdejmij - etykieta zmienia sie sama.")]
     public Button useButton;
     public TextMeshProUGUI useButtonText;
 
-    [Tooltip("Dzieli stos na pol i bierze polowe na kursor.")]
+    [Tooltip("Otwiera okienko z suwakiem do wyboru ilosci (SplitAmountUI).")]
     public Button splitButton;
     public TextMeshProUGUI splitButtonText;
 
@@ -137,34 +137,42 @@ public class ContextMenuUI : MonoBehaviour
 
     private void ConfigureButtons(InventorySlot slot, ItemData item)
     {
-        // --- UZYJ: etykieta zalezna od tego, co trzymamy ---
+        // --- UZYJ / ZDEJMIJ: etykieta zalezna od tego, co trzymamy i GDZIE lezy ---
         bool canUse = true;
         string useLabel;
 
-        switch (item.itemType)
+        if (!slot.isBackpackSlot)
         {
-            case ItemType.Consumable:
-                useLabel = "Zjedz / Wypij";
-                break;
-            case ItemType.General:
-            case ItemType.Gift:
-                useLabel = "Uzyj";
-                canUse = false; // nie ma czego zakladac ani zjadac
-                break;
-            default:
-                useLabel = "Zaloz";
-                break;
+            // NOWE: menu otwarte na slocie EKWIPUNKU - przedmiot jest juz zalozony,
+            // wiec "Zaloz" nie ma tu sensu. Zamiast tego zdejmujemy go do plecaka.
+            useLabel = "Zdejmij";
+            canUse = true;
+        }
+        else
+        {
+            switch (item.itemType)
+            {
+                case ItemType.Consumable:
+                    useLabel = "Zjedz / Wypij";
+                    break;
+                case ItemType.General:
+                case ItemType.Gift:
+                    useLabel = "Uzyj";
+                    canUse = false; // nie ma czego zakladac ani zjadac
+                    break;
+                default:
+                    useLabel = "Zaloz";
+                    break;
+            }
         }
 
         SetButton(useButton, useButtonText, canUse, useLabel);
 
-        // --- PODZIEL: tylko stosy wieksze niz 1, i tylko z pusta reka ---
+        // --- PODZIEL: tylko stosy wieksze niz 1, w plecaku, i tylko z pusta reka ---
         bool handsFree = InventoryUI.instance == null || InventoryUI.instance.draggedItem == null;
         bool canSplit = slot.isBackpackSlot && item.isStackable && slot.amount > 1 && handsFree;
 
-        int half = slot.amount / 2;
-        SetButton(splitButton, splitButtonText, canSplit,
-                  canSplit ? $"Podziel ({half})" : "Podziel");
+        SetButton(splitButton, splitButtonText, canSplit, "Podziel");
 
         // --- SZCZEGOLY: zawsze dostepne ---
         SetButton(detailsButton, detailsButtonText, true, "Szczegoly");
@@ -227,8 +235,18 @@ public class ContextMenuUI : MonoBehaviour
 
     public void OnSplitClicked()
     {
-        if (currentSlot != null && InventoryUI.instance != null)
+        // NOWE: zamiast od razu dzielic na pol, otwieramy okienko z suwakiem
+        // (SplitAmountUI), zeby gracz sam wybral ile sztuk odlaczyc.
+        // Awaryjnie (gdyby SplitAmountUI nie bylo jeszcze podpiete w scenie)
+        // spadamy do starego zachowania "polowa na kursor".
+        if (currentSlot != null && SplitAmountUI.instance != null)
+        {
+            SplitAmountUI.instance.Open(currentSlot);
+        }
+        else if (currentSlot != null && InventoryUI.instance != null)
+        {
             InventoryUI.instance.SplitStack(currentSlot);
+        }
 
         CloseMenu();
     }

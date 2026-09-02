@@ -207,6 +207,15 @@ public class InventoryUI : MonoBehaviour
     public void SplitStack(InventorySlot slot)
     {
         if (slot == null || slot.item == null) return;
+        SplitStackAmount(slot, slot.amount / 2); // przy nieparzystej liczbie wieksza czesc zostaje w slocie
+    }
+
+    // NOWE: jak SplitStack, ale z DOWOLNA iloscia (wybierana suwakiem w SplitAmountUI)
+    // zamiast sztywnej polowy. amount jest przycinane do bezpiecznego zakresu
+    // [1, slot.amount - 1], zeby w oryginalnym slocie zawsze zostala co najmniej 1 sztuka.
+    public void SplitStackAmount(InventorySlot slot, int amount)
+    {
+        if (slot == null || slot.item == null) return;
 
         if (draggedItem != null)
         {
@@ -220,7 +229,7 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
-        int taken = slot.amount / 2;      // przy nieparzystej liczbie wieksza czesc zostaje w slocie
+        int taken = Mathf.Clamp(amount, 1, slot.amount - 1);
         int left = slot.amount - taken;
 
         ItemData item = slot.item;
@@ -279,7 +288,8 @@ public class InventoryUI : MonoBehaviour
 
         if (weaponSlot.item != null)
         {
-            if (weaponSlot.item.itemType == ItemType.Weapon2h || weaponSlot.item.itemType == ItemType.Bow)
+            if (weaponSlot.item.itemType == ItemType.Weapon2h || weaponSlot.item.itemType == ItemType.Bow
+                || weaponSlot.item.itemType == ItemType.Wand2h)
                 isTwoHanded = true;
         }
 
@@ -351,6 +361,9 @@ public class InventoryUI : MonoBehaviour
 
             if (!foundEmpty) break;
         }
+
+        // Zadania typu "zbierz 5 truskawek" sprawdzaja plecak po kazdej zmianie
+        QuestManager.RefreshInventoryObjectives();
 
         return amountToAdd;
     }
@@ -453,6 +466,28 @@ public class InventoryUI : MonoBehaviour
         // ZABEZPIECZENIE: przycisk w Inspektorze potrafil wolac to z pustym slotem
         if (slot == null || slot.item == null) return;
 
+        // NOWE: menu kontekstowe otwarte na slocie EKWIPUNKU wysyla tu przycisk
+        // "Zdejmij" (patrz ContextMenuUI.ConfigureButtons) - przedmiot jest juz
+        // zalozony, wiec zamiast probowac go "zalozyc jeszcze raz" po prostu
+        // wracamy nim do plecaka.
+        if (!slot.isBackpackSlot)
+        {
+            ItemData equippedItem = slot.item;
+            int equippedAmount = slot.amount;
+
+            int leftovers = Add(equippedItem, equippedAmount);
+            if (leftovers > 0)
+            {
+                // Plecak pelny - zostawiamy przedmiot tam, gdzie byl, zamiast go gubic
+                Debug.Log("Brak miejsca w plecaku - nie mozna zdjac przedmiotu.");
+                return;
+            }
+
+            slot.ClearSlot();
+            OnEquipmentChanged();
+            return;
+        }
+
         ItemData item = slot.item;
 
         if (item.itemType == ItemType.Consumable)
@@ -485,7 +520,9 @@ public class InventoryUI : MonoBehaviour
         {
             case ItemType.Weapon1h:
             case ItemType.Weapon2h:
-            case ItemType.Bow: targetSlot = weaponSlot; break;
+            case ItemType.Bow:
+            case ItemType.Wand1h:
+            case ItemType.Wand2h: targetSlot = weaponSlot; break;
             case ItemType.Helmet: targetSlot = helmetSlot; break;
             case ItemType.Armor: targetSlot = armorSlot; break;
             case ItemType.Legs: targetSlot = legsSlot; break;

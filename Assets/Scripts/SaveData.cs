@@ -82,6 +82,16 @@ public class SavedNpc
     public List<SavedItem> shopStock = new List<SavedItem>();
 }
 
+// NOWE: punkty umiejetnosci i odblokowane wezly drzewka.
+[Serializable]
+public class SavedSkills
+{
+    public int skillPoints;
+
+    [Tooltip("ID umiejetnosci (SkillData.GetId()), ktore gracz ma juz odblokowane.")]
+    public List<string> unlockedSkillIds = new List<string>();
+}
+
 [Serializable]
 public class SaveData
 {
@@ -104,4 +114,10 @@ public class SaveData
 
     [Tooltip("Sympatia i zapas towaru u postaci niezaleznych.")]
     public List<SavedNpc> npcs = new List<SavedNpc>();
+
+    [Tooltip("Postep wszystkich znanych zadan.")]
+    public List<QuestProgress> quests = new List<QuestProgress>();
+
+    [Tooltip("Punkty umiejetnosci i odblokowane wezly drzewka.")]
+    public SavedSkills skills = new SavedSkills();
 }

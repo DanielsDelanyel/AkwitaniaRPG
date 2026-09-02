@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: QuaterStaff_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: QuaterStaff_Data
   itemName: "D\u0142ugi Kij"
   icon: {fileID: 21300000, guid: 6c4e8422cd1854f48a98c80a2191420c, type: 3}
   description: "W odpowiednich r\u0119kach mo\u017Ce zdzia\u0142a\u0107 niesamowite
@@ -21,19 +22,25 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: 079d4c59158217b43892edb7bcf78e54, type: 3}
   isStackable: 0
   weight: 1.2
-  weaponReach: 0.85
+  weaponReach: 1.4
   weaponLength: 0.7
   weaponWidth: 0.28
   swingArc: 65
   weaponVisualScale: 0.8
   weaponSpriteAngle: -55
+  spellPrefab: {fileID: 0}
+  spellRange: 4.5
+  spellCooldown: 0.6
   swingSounds:
   - {fileID: 8300000, guid: 17b4978df59baba429dfb573bab0c190, type: 3}
   hitSounds:
   - {fileID: 8300000, guid: 6a5c0f70f3a933242a26392e39461a56, type: 3}
   soundVolume: 0.3
+  pickupSounds: []
   price: 30
   healAmount: 0
+  healthRegenPerSecond: 0
+  manaRegenPerSecond: 0
   affinityBonus: 0
   damageBonus: 3
   magicDamageBonus: 0
@@ -53,3 +60,5 @@ MonoBehaviour:
     hasRolled: 0
     rolledValue: 0
   randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

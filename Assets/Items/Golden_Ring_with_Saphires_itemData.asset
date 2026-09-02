@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
   m_Name: Golden_Ring_with_Saphires_itemData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: Golden_Ring_with_Saphires_itemData
   itemName: "Z\u0142oty pier\u015Bcionek z szafirami"
-  icon: {fileID: 1651949316770522588, guid: 47c32258d60a0fb4da071d0ed7ba0f69, type: 3}
+  icon: {fileID: 8501595491136640749, guid: 643ece717f5f0c34dabe83cd72a1dc7e, type: 3}
   description: "Magiczny pier\u015Bcie\u0144 od kt\xF3rego bije mro\u017Ana aura.
     Obr\u0105czka jest nieco oszroniona, nosz\u0105c to b\u0119dzie odczuwalne zimno,
     kt\xF3re inspiruje mag\xF3w i uspokaja umys\u0142..."
@@ -22,8 +23,19 @@ MonoBehaviour:
   itemPrefab: {fileID: 8992644449882156520, guid: 7dc263e8c3475d047acb330a472154d0, type: 3}
   isStackable: 0
   weight: 0.1
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
   price: 320
   healAmount: 0
+  healthRegenPerSecond: 0
+  manaRegenPerSecond: 2
   affinityBonus: 0
   damageBonus: 2
   magicDamageBonus: 0
@@ -34,3 +46,14 @@ MonoBehaviour:
   dexterityBonus: 1
   intellegenceBonus: 5
   charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 0
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

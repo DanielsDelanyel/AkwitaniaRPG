@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9207cdff13e50ab458a4ddeef730bb63, type: 3}
+  m_Name: WindMill
+  m_EditorClassIdentifier: Assembly-CSharp::SkillData
+  skillId: WindMill
+  skillName: "Wietrzny M\u0142yniec"
+  icon: {fileID: 21300000, guid: 22741bb3d501f5a41a18c1d8d9306c3d, type: 3}
+  description: "Tworzy wir powietrza, kt\xF3ry n\u0119ka oponent\xF3w..."
+  profession: 9
+  requiredSkills: []
+  cost: 1
+  effectType: 2
+  manaCost: 20
+  manaCostPercent: 0
+  healthCostPercent: 0
+  cooldown: 1
+  summonPrefab: {fileID: 0}
+  baseSummonCount: 1
+  statPointsPerExtraSummon: 5
+  maxSummonCount: 8
+  summonHealthPercentPerVitality: 5
+  summonDamagePercentPerIntelligence: 5
+  activeEffectPrefab: {fileID: 8519218279544994, guid: 4d008b8415f0f0445b7105dbc3623e32, type: 3}
+  baseDamage: 9
+  damagePercentPerIntelligence: 3
+  damagePercentPerDexterity: 3
+  baseDuration: 4
+  durationPercentPerIntelligence: 2
+  durationPercentPerDexterity: 2
+  effectSpeed: 4

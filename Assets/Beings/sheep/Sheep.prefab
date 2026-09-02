@@ -124,6 +124,12 @@ MonoBehaviour:
   baseMagicDef: 0
   maxHealth: 15
   currentHealth: 15
+  healthPerVitality: 10
+  damagePopupPrefab: {fileID: 1464719777984505996, guid: 98351c0e9b91d6547a142ea64a720327, type: 3}
+  hitFlashMaterial: {fileID: 2100000, guid: fea1c5d53aae0a34a9b1056ea343c952, type: 2}
+  hitFlashPhaseDuration: 0.05
+  destroyOnDeath: 1
+  destroyDelay: 0
 --- !u!114 &4397423278870369800
 MonoBehaviour:
   m_ObjectHideFlags: 0

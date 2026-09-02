@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum Disposition
@@ -41,6 +42,33 @@ public class Creature : MonoBehaviour
     public GameObject damagePopupPrefab;
 
     // ===============================================================
+    // NOWE: miganie przy trafieniu (biel -> czern -> biel -> powrot do normy)
+    // Dziala dla KAZDEGO stworzenia (Creature, CreatureAI, BossController itd.),
+    // bo TakeDamage() jest wspolne dla wszystkich.
+    //
+    // UWAGA TECHNICZNA: domyslny material sprite'ow (Sprite-Lit-Default/Sprites-Default)
+    // tylko MNOZY kolor tekstury przez SpriteRenderer.color - ustawienie tego koloru
+    // na bialy WIZUALNIE NIC NIE ZMIENIA (mnozenie przez 1 = bez zmian), dziala
+    // tylko czern (mnozenie przez 0). Dlatego prawdziwy "flash na bialo" wymaga
+    // osobnego shadera, ktory podmienia kolor zamiast go mnozyc - patrz
+    // SpriteHitFlash.shader (dolaczony obok) i komentarz przy Hit Flash Material.
+    // ===============================================================
+    [Header("Miganie przy Trafieniu")]
+    [Tooltip("Material korzystajacy z shadera 'Custom/SpriteHitFlash' (plik SpriteHitFlash.shader). " +
+             "Jeden wspolny material wystarczy dla wszystkich stworzen - kazde miganie i tak " +
+             "tworzy sobie wlasna, tymczasowa kopie, wiec kilka trafionych naraz nie miesza sie " +
+             "ze soba. Zostaw puste, zeby CALKOWICIE wylaczyc miganie.")]
+    public Material hitFlashMaterial;
+
+    [Tooltip("Ile sekund trwa KAZDA z trzech faz (bialy/czarny/bialy). Cale miganie trwa 3x tyle - " +
+             "przy domyslnych 0.05s to 0.15s, czyli bardzo szybko.")]
+    public float hitFlashPhaseDuration = 0.05f;
+
+    private SpriteRenderer[] flashRenderers;
+    private Material[] flashOriginalMaterials;
+    private Coroutine hitFlashRoutine;
+
+    // ===============================================================
     // NOWE: obsluga smierci
     // ===============================================================
     [Header("Smierc")]
@@ -63,6 +91,15 @@ public class Creature : MonoBehaviour
     {
         if (maxHealth <= 0) maxHealth = baseWIT * healthPerVitality;
         currentHealth = maxHealth;
+
+        // Zbieramy WSZYSTKIE SpriteRenderery (np. osobna grafika + akcesoria),
+        // zeby miganie objelo cala postac, a nie tylko jeden fragment.
+        flashRenderers = GetComponentsInChildren<SpriteRenderer>();
+        flashOriginalMaterials = new Material[flashRenderers.Length];
+        for (int i = 0; i < flashRenderers.Length; i++)
+        {
+            flashOriginalMaterials[i] = flashRenderers[i].sharedMaterial;
+        }
     }
 
     public void TakeDamage(int damage, bool isCrit, Vector2 hitDirection)
@@ -73,6 +110,8 @@ public class Creature : MonoBehaviour
         if (finalDamage < 1) finalDamage = 1;
 
         currentHealth -= finalDamage;
+
+        PlayHitFlash();
 
         if (damagePopupPrefab != null)
         {
@@ -93,6 +132,50 @@ public class Creature : MonoBehaviour
         }
     }
 
+    // Bialy -> czarny -> bialy -> powrot do oryginalnego materialu. Restartuje sie
+    // od zera przy kazdym kolejnym trafieniu (StopCoroutine), zeby szybkie combo
+    // ciosow nie nakladalo na siebie kilku rownoleglych sekwencji migania.
+    private void PlayHitFlash()
+    {
+        if (hitFlashMaterial == null) return; // miganie wylaczone - nikt nie podpial materialu
+        if (flashRenderers == null || flashRenderers.Length == 0) return;
+
+        if (hitFlashRoutine != null) StopCoroutine(hitFlashRoutine);
+        hitFlashRoutine = StartCoroutine(HitFlashSequence());
+    }
+
+    private IEnumerator HitFlashSequence()
+    {
+        // Swieza kopia materialu NA POTRZEBY TEGO JEDNEGO migniecia - dzieki temu
+        // dwa stworzenia trafione w tej samej klatce nie nadpisuja sobie nawzajem
+        // koloru na WSPOLNYM shared materiale.
+        Material[] flashInstances = new Material[flashRenderers.Length];
+        for (int i = 0; i < flashRenderers.Length; i++)
+        {
+            if (flashRenderers[i] == null) continue;
+            flashInstances[i] = new Material(hitFlashMaterial);
+            flashRenderers[i].material = flashInstances[i];
+        }
+
+        Color[] sequence = { Color.white, Color.black, Color.white };
+        foreach (Color flashColor in sequence)
+        {
+            foreach (Material mat in flashInstances)
+            {
+                if (mat != null) mat.SetColor("_FlashColor", flashColor);
+            }
+            yield return new WaitForSeconds(hitFlashPhaseDuration);
+        }
+
+        for (int i = 0; i < flashRenderers.Length; i++)
+        {
+            if (flashRenderers[i] != null) flashRenderers[i].sharedMaterial = flashOriginalMaterials[i];
+            if (flashInstances[i] != null) Destroy(flashInstances[i]);
+        }
+
+        hitFlashRoutine = null;
+    }
+
     protected virtual void Die()
     {
         if (IsDead) return;
@@ -105,6 +188,10 @@ public class Creature : MonoBehaviour
             PlayerStats.instance.currentMoney += moneyReward;
             PlayerStats.instance.AddExp(expReward);
         }
+
+        // Zadania dowiaduja sie o zabiciu ZANIM obiekt zniknie -
+        // menedzer potrzebuje jeszcze odczytac creatureName i UniqueId.
+        QuestManager.ReportKill(this);
 
         // WAZNE: lup wypada TERAZ, zanim obiekt zniknie
         if (onDeath != null) onDeath.Invoke(this);

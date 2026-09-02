@@ -93,7 +93,15 @@ public class UIEscapeHandler : MonoBehaviour
             return;
         }
 
-        // 6. Ekwipunek
+        // 6. Dziennik zadan
+        if (QuestLogUI.instance != null && QuestLogUI.instance.IsOpen)
+        {
+            QuestLogUI.instance.CloseQuestLog();
+            Log("dziennik zadan");
+            return;
+        }
+
+        // 7. Ekwipunek
         if (InventoryUI.instance != null && InventoryUI.instance.IsOpen)
         {
             InventoryUI.instance.CloseInventory();
@@ -101,7 +109,15 @@ public class UIEscapeHandler : MonoBehaviour
             return;
         }
 
-        // 7. Rozmowa - zamykana na koncu, bo jest "pod" pozostalymi oknami
+        // 7.5. Pasek umiejetnosci (przypisywanie skilli pod klawisze)
+        if (SkillBarUI.instance != null && SkillBarUI.instance.IsOpen)
+        {
+            SkillBarUI.instance.ClosePanel();
+            Log("pasek umiejetnosci");
+            return;
+        }
+
+        // 8. Rozmowa - zamykana na koncu, bo jest "pod" pozostalymi oknami
         if (escapeClosesDialogue && DialogueManager.instance != null
             && DialogueManager.instance.IsDialogueOpen)
         {
@@ -110,7 +126,7 @@ public class UIEscapeHandler : MonoBehaviour
             return;
         }
 
-        // 8. Nic nie bylo otwarte - DOPIERO teraz otwieramy menu pauzy.
+        // 9. Nic nie bylo otwarte - DOPIERO teraz otwieramy menu pauzy.
         // Dzieki temu Escape najpierw zamyka to, co masz przed oczami.
         if (PauseMenuUI.instance != null)
         {

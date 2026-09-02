@@ -54,6 +54,11 @@ public class PlayerEquipment : MonoBehaviour
         stats.equipDef = 0;
         stats.equipMagicDef = 0;
 
+        // NOWE: zerowanie pasywnej regeneracji z ekwipunku - bez tego stary bonus
+        // z poprzednio zalozonego przedmiotu nigdy by nie znikal po zdjeciu.
+        stats.equipHealthRegenPerSecond = 0f;
+        stats.equipManaRegenPerSecond = 0f;
+
         // --- Sumowanie ---
         AddBonuses(weapon);
         AddBonuses(helmet);
@@ -106,5 +111,11 @@ public class PlayerEquipment : MonoBehaviour
         // NOWE: procenty z kilku przedmiotow sumuja sie
         // (miecz +30% i pierscien +10% dadza razem +40%)
         stats.equipDmgPercent += item.GetDamagePercent();
+
+        // NOWE: pasywna regeneracja - to bylo dodane w ItemData/PlayerStats,
+        // ale nigdy nie sumowane tutaj, wiec zalozony przedmiot nie dawal
+        // zadnego realnego efektu mimo poprawnego opisu w tooltipie.
+        stats.equipHealthRegenPerSecond += item.healthRegenPerSecond;
+        stats.equipManaRegenPerSecond += item.manaRegenPerSecond;
     }
 }

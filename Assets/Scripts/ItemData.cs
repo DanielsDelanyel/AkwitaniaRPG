@@ -166,6 +166,23 @@ public class ItemData : ScriptableObject
     public float weaponSpriteAngle = -55f;
 
     // ===============================================================
+    // ROZDZKA (atak magiczny) - inny mechanicznie niz walka wrecz i luk:
+    // zamiast machniecia albo strzaly, tworzy WLASNY efekt (iskry, chmura trucizny...).
+    // Kazdy rodzaj efektu ma wlasny skrypt (np. FireSparkProjectile, PoisonCloudSpell),
+    // ktory implementuje WandSpell - ItemData tylko mowi, KTORY prefab odpalic.
+    // ===============================================================
+    [Header("Rozdzka (Atak Magiczny)")]
+    [Tooltip("Prefab efektu zaklecia (musi miec komponent implementujacy WandSpell, " +
+             "np. FireSparkProjectile albo PoisonCloudSpell).")]
+    public GameObject spellPrefab;
+
+    [Tooltip("Maksymalny zasieg zaklecia. Iskry: dystans lotu. Chmura: jak daleko od gracza sie pojawia.")]
+    public float spellRange = 4.5f;
+
+    [Tooltip("Czas odnowienia miedzy kolejnymi rzutami tej rozdzki (sekundy).")]
+    public float spellCooldown = 0.6f;
+
+    // ===============================================================
     // DZWIEKI
     // ===============================================================
     [Header("Dzwieki")]
@@ -178,11 +195,26 @@ public class ItemData : ScriptableObject
 
     [Range(0f, 1f)] public float soundVolume = 0.8f;
 
+    [Tooltip("Dzwiek podniesienia TEGO KONKRETNEGO przedmiotu z ziemi. Zostaw puste, zeby uzyc " +
+             "domyslnego dzwieku podniesienia ustawionego w SoundManager (Default Pickup Sounds).")]
+    public AudioClip[] pickupSounds;
+
     [Header("Ekonomia")]
     public int price = 10;
 
     [Header("Konsumpcja")]
     public int healAmount = 0;
+
+    // ===============================================================
+    // NOWE: PASYWNA REGENERACJA (dziala caly czas, dopoki przedmiot jest ZALOZONY -
+    // pierscien, naszyjnik, zbroja itp. NIE dotyczy konsumpcji jednorazowej powyzej).
+    // ===============================================================
+    [Header("Regeneracja Pasywna (podczas noszenia)")]
+    [Tooltip("Ile punktow ZDROWIA na SEKUNDE przywraca noszenie tego przedmiotu. 0 = brak.")]
+    public float healthRegenPerSecond = 0f;
+
+    [Tooltip("Ile punktow MANY na SEKUNDE przywraca noszenie tego przedmiotu. 0 = brak.")]
+    public float manaRegenPerSecond = 0f;
 
     [Header("Relacje (Prezenty)")]
     public int affinityBonus = 0;
@@ -342,6 +374,7 @@ public class ItemData : ScriptableObject
     public bool HasAnyStats()
     {
         return GetHealAmount() != 0
+            || healthRegenPerSecond != 0f || manaRegenPerSecond != 0f
             || GetDamageBonus() != 0 || GetMagicDamageBonus() != 0
             || GetDefenseBonus() != 0 || GetMagicDefenseBonus() != 0
             || GetVitalityBonus() != 0 || GetStrengthBonus() != 0
@@ -357,6 +390,12 @@ public class ItemData : ScriptableObject
         int heal = GetHealAmount();
         if (heal != 0)
             sb.Append($"<color={COLOR_USE}>Przywraca {Mathf.Abs(heal)} pkt zdrowia</color>\n");
+
+        if (healthRegenPerSecond != 0f)
+            sb.Append($"<color={COLOR_USE}>Regeneruje {healthRegenPerSecond:0.#} pkt zdrowia / sek.</color>\n");
+
+        if (manaRegenPerSecond != 0f)
+            sb.Append($"<color={COLOR_USE}>Regeneruje {manaRegenPerSecond:0.#} pkt many / sek.</color>\n");
 
         // Procentowy bonus - wyroznia sie, bo to mnoznik, a nie dodawanie
         float pct = GetDamagePercent();
@@ -400,6 +439,8 @@ public class ItemData : ScriptableObject
             case ItemType.Weapon1h: return "Bron jednoreczna";
             case ItemType.Weapon2h: return "Bron dwureczna";
             case ItemType.Bow: return "Luk";
+            case ItemType.Wand1h: return "Rozdzka jednoreczna";
+            case ItemType.Wand2h: return "Rozdzka dwureczna";
             case ItemType.Second_Hand: return "Druga reka";
             case ItemType.Helmet: return "Helm";
             case ItemType.Armor: return "Zbroja";
@@ -445,6 +486,10 @@ public class ItemData : ScriptableObject
     }
 }
 
+// UWAGA: Unity zapisuje wartosc tego enuma jako LICZBE (kolejnosc pozycji), nie nazwe.
+// Dlatego NOWE wpisy dopisuj zawsze NA KONCU listy - wstawienie czegos w srodku
+// przesuwa numery wszystkich pozycji PO nim, przez co juz zapisane przedmioty
+// (np. istniejace helmy/zbroje) potrafia po ponownym otwarciu pokazywac ZLY typ.
 public enum ItemType
 {
     General,
@@ -460,7 +505,9 @@ public enum ItemType
     Legs,
     Boots,
     Ammo,
-    Gift
+    Gift,
+    Wand1h,
+    Wand2h
 }
 
 public enum ItemRarity

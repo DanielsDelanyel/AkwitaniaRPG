@@ -176,6 +176,11 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         Creature creature = collision.GetComponentInParent<Creature>();
         if (creature == null || creature.IsDead) return;
+
+        // NOWE: wlasne przyzwane stworzenia (np. Szkielety) sa niewrazliwe
+        // na uderzenia swojego wlasciciela.
+        if (creature.GetComponent<SummonedCreature>() != null) return;
+
         if (alreadyHit.Contains(creature)) return;
 
         alreadyHit.Add(creature);

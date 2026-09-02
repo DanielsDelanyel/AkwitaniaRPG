@@ -50,7 +50,11 @@ public class Projectile : MonoBehaviour
         // GetComponentInParent - trafienie w dziecko z colliderem tez sie liczy
         Creature creature = collision.GetComponentInParent<Creature>();
 
-        if (creature != null && !creature.IsDead)
+        // NOWE: strzala przelatuje przez wlasne przyzwane stworzenia (np. Szkielety),
+        // zamiast je ranic - sprawdzamy to PRZED normalnym trafieniem.
+        bool isFriendlySummon = creature != null && creature.GetComponent<SummonedCreature>() != null;
+
+        if (creature != null && !creature.IsDead && !isFriendlySummon)
         {
             bool isCrit = Random.Range(0f, 100f) < PlayerStats.instance.critChance;
 

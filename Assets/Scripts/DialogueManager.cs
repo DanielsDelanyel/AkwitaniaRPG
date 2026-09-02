@@ -47,21 +47,40 @@ public class DialogueManager : MonoBehaviour
     public bool IsGiftPanelOpen { get { return giftOverlay != null && giftOverlay.activeSelf; } }
     public bool IsShopOpen { get { return shopPanel != null && shopPanel.activeSelf; } }
 
+    // Mapowanie: przycisk nr X -> ktora opcja w wezle.
+    // Potrzebne, bo czesc opcji moze byc UKRYTA przez warunki zadan,
+    // wiec numery przyciskow nie odpowiadaja juz indeksom w tablicy.
+    private readonly System.Collections.Generic.List<int> visibleOptions
+        = new System.Collections.Generic.List<int>();
+
     private void DisplayNode(DialogueNode node)
     {
         currentNode = node;
         greetingText.text = node.npcText;
 
-        for (int i = 0; i < optionButtons.Length; i++)
+        // 1. Zbieramy opcje, ktore spelniaja swoje warunki
+        visibleOptions.Clear();
+
+        if (node.options != null)
         {
-            if (i < node.options.Length)
+            for (int i = 0; i < node.options.Length; i++)
             {
-                optionButtons[i].SetActive(true);
-                optionTexts[i].text = (i + 1) + ". " + node.options[i].text;
+                if (node.options[i] != null && node.options[i].IsVisible())
+                    visibleOptions.Add(i);
+            }
+        }
+
+        // 2. Rozdajemy je po przyciskach
+        for (int b = 0; b < optionButtons.Length; b++)
+        {
+            if (b < visibleOptions.Count)
+            {
+                optionButtons[b].SetActive(true);
+                optionTexts[b].text = (b + 1) + ". " + node.options[visibleOptions[b]].text;
             }
             else
             {
-                optionButtons[i].SetActive(false);
+                optionButtons[b].SetActive(false);
             }
         }
     }
@@ -91,6 +110,10 @@ public class DialogueManager : MonoBehaviour
         tradeButton.SetActive(canTrade);
         giftButton.SetActive(true);
 
+        // ZADANIA: rozmowa moze byc celem sama w sobie, a takze
+        // momentem dostarczenia przedmiotu tej postaci.
+        ReportQuestTalk(npc);
+
         DisplayNode(startNode);
     }
 
@@ -103,11 +126,23 @@ public class DialogueManager : MonoBehaviour
         UILock.Set("Dialogue", false);
     }
 
-    public void OnOptionClicked(int optionIndex)
+    // UWAGA: parametr to numer PRZYCISKU, nie pozycja w tablicy opcji.
+    public void OnOptionClicked(int buttonIndex)
     {
-        if (currentNode == null || optionIndex >= currentNode.options.Length) return;
+        if (currentNode == null) return;
+        if (buttonIndex < 0 || buttonIndex >= visibleOptions.Count) return;
+
+        int optionIndex = visibleOptions[buttonIndex];
+        if (optionIndex >= currentNode.options.Length) return;
 
         DialogueOption selectedOption = currentNode.options[optionIndex];
+
+        // --- ZADANIA ---
+        if (selectedOption.questToStart != null)
+            QuestManager.StartQuest(selectedOption.questToStart);
+
+        if (selectedOption.questToComplete != null)
+            QuestManager.CompleteQuest(selectedOption.questToComplete);
 
         if (selectedOption.affinityChange != 0 && currentNPC != null)
         {
@@ -117,6 +152,18 @@ public class DialogueManager : MonoBehaviour
 
         if (selectedOption.nextNode != null) DisplayNode(selectedOption.nextNode);
         else CloseDialogue();
+    }
+
+    // Zglasza zadaniom, ze gracz rozmawia z ta postacia
+    private void ReportQuestTalk(NPCStats npc)
+    {
+        if (npc == null) return;
+
+        UniqueId uid = npc.GetComponent<UniqueId>();
+        if (uid == null) return;
+
+        QuestManager.ReportTalk(uid.Id);
+        QuestManager.ReportDelivery(uid.Id);
     }
 
     public NPCStats GetCurrentNPC()

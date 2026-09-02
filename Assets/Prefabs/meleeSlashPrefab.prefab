@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 174653308926466901}
-  - component: {fileID: 4885598643863687447}
+  - component: {fileID: 1697142591767155991}
   - component: {fileID: 279220355413605490}
   m_Layer: 6
   m_Name: meleeSlashPrefab
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 2740736856313785081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4885598643863687447
+--- !u!114 &1697142591767155991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1238736654222790429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ee89552d2e9f048aacd7d199351fdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 897f0803961e70a49ab2463504c0984c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMeleeAttack
   spriteRenderer: {fileID: 3927173818412328724}

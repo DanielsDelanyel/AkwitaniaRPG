@@ -172,6 +172,9 @@ public class LocationManager : MonoBehaviour
         SceneManager.SetActiveScene(loaded);
         CurrentLocation = locationScene;
 
+        // Zadania typu "dotrzyj do jaskini"
+        QuestManager.ReportLocation(locationScene);
+
         // 4. Stawiamy gracza na wlasciwym punkcie
         yield return null; // jedna klatka, by obiekty sceny zdazyly sie obudzic
         PlacePlayer(spawnId);
@@ -237,7 +240,7 @@ public class LocationManager : MonoBehaviour
         }
         p.position = pos;
 
-        // Kamera ma przeskoczyc natychmiast, a nie plynnie lecieæ przez pol mapy
+        // Kamera ma przeskoczyc natychmiast, a nie plynnie lecieÄ‡ przez pol mapy
         SnapCamera(pos);
     }
 
