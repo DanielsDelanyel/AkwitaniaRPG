@@ -827,6 +827,14 @@ PrefabInstance:
       propertyPath: damagePopupPrefab
       value: 
       objectReference: {fileID: 1464719777984505996, guid: 98351c0e9b91d6547a142ea64a720327, type: 3}
+    - target: {fileID: 2024345926499991211, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+      propertyPath: onHitStatus.statusType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024345926499991211, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+      propertyPath: onHitStatus.chancePercent
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5718671199705022294, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
       propertyPath: m_Name
       value: Boar (1)
@@ -6451,6 +6459,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3318515002409954317, guid: c4f6ab5ac8362a64b9546c09292c88d5, type: 3}
+      propertyPath: m_Radius
+      value: 1.1213206
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318515002409954317, guid: c4f6ab5ac8362a64b9546c09292c88d5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8992644449882156520, guid: c4f6ab5ac8362a64b9546c09292c88d5, type: 3}
       propertyPath: m_Name
       value: Novice's_Fire_Wand
@@ -9357,11 +9373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 679448989051690192, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.33
+      value: -16.7
       objectReference: {fileID: 0}
     - target: {fileID: 679448989051690192, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.61
+      value: -12.34
       objectReference: {fileID: 0}
     - target: {fileID: 679448989051690192, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9407,6 +9423,14 @@ PrefabInstance:
       propertyPath: damagePopupPrefab
       value: 
       objectReference: {fileID: 1464719777984505996, guid: 98351c0e9b91d6547a142ea64a720327, type: 3}
+    - target: {fileID: 2024345926499991211, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+      propertyPath: onHitStatus.statusType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024345926499991211, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+      propertyPath: onHitStatus.chancePercent
+      value: 11.9
+      objectReference: {fileID: 0}
     - target: {fileID: 5718671199705022294, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
       propertyPath: m_Name
       value: Boar (2)
@@ -12968,6 +12992,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 918859034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1349683044
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.654
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.438
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031368244601935421, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992644449882156520, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+      propertyPath: m_Name
+      value: Adept's_Strange_Wand
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
 --- !u!1001 &1354727979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14419,7 +14508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852248913475085404, guid: 52268f7f042fcd2408215fea51cd6644, type: 3}
       propertyPath: maxHealth
-      value: 9999999
+      value: 999999
       objectReference: {fileID: 0}
     - target: {fileID: 7852248913475085404, guid: 52268f7f042fcd2408215fea51cd6644, type: 3}
       propertyPath: moneyReward
@@ -14439,7 +14528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852248913475085404, guid: 52268f7f042fcd2408215fea51cd6644, type: 3}
       propertyPath: currentHealth
-      value: 9999999
+      value: 999999
       objectReference: {fileID: 0}
     - target: {fileID: 7852248913475085404, guid: 52268f7f042fcd2408215fea51cd6644, type: 3}
       propertyPath: damagePopupPrefab
@@ -20477,7 +20566,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1eb8796cb073ff84c99b21ceac99bcf3, type: 2}
+  - {fileID: 2100000, guid: aa3c2440882a367439e116fe98688cc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108609,6 +108698,14 @@ PrefabInstance:
       propertyPath: damagePopupPrefab
       value: 
       objectReference: {fileID: 1464719777984505996, guid: 98351c0e9b91d6547a142ea64a720327, type: 3}
+    - target: {fileID: 2024345926499991211, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+      propertyPath: onHitStatus.statusType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024345926499991211, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
+      propertyPath: onHitStatus.chancePercent
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5718671199705022294, guid: 4205226bf6be69c45b4669e0f94271bd, type: 3}
       propertyPath: m_Name
       value: Boar
@@ -108940,6 +109037,7 @@ SceneRoots:
   - {fileID: 3414310196308442335}
   - {fileID: 7622604429955790898}
   - {fileID: 785575634121578869}
+  - {fileID: 1349683044}
   - {fileID: 625259773}
   - {fileID: 1122078033}
   - {fileID: 905168949}

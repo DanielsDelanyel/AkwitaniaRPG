@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public enum Disposition
@@ -8,7 +7,9 @@ public enum Disposition
     Aggressive  // Agresywny (atakuje gracza, gdy tylko go zobaczy)
 }
 
-public class Creature : MonoBehaviour
+// IDamageable: pozwala StatusEffectController (tiki zatrucia/podpalenia/krwawienia)
+// zadawac obrazenia identycznie jak graczowi (PlayerStats) - patrz IDamageable.cs.
+public class Creature : MonoBehaviour, IDamageable
 {
     [Header("Identyfikacja")]
     public string creatureName = "Owieczka";
@@ -42,31 +43,19 @@ public class Creature : MonoBehaviour
     public GameObject damagePopupPrefab;
 
     // ===============================================================
-    // NOWE: miganie przy trafieniu (biel -> czern -> biel -> powrot do normy)
-    // Dziala dla KAZDEGO stworzenia (Creature, CreatureAI, BossController itd.),
-    // bo TakeDamage() jest wspolne dla wszystkich.
-    //
-    // UWAGA TECHNICZNA: domyslny material sprite'ow (Sprite-Lit-Default/Sprites-Default)
-    // tylko MNOZY kolor tekstury przez SpriteRenderer.color - ustawienie tego koloru
-    // na bialy WIZUALNIE NIC NIE ZMIENIA (mnozenie przez 1 = bez zmian), dziala
-    // tylko czern (mnozenie przez 0). Dlatego prawdziwy "flash na bialo" wymaga
-    // osobnego shadera, ktory podmienia kolor zamiast go mnozyc - patrz
-    // SpriteHitFlash.shader (dolaczony obok) i komentarz przy Hit Flash Material.
+    // NOWE: EFEKT DODATKOWY PRZY TRAFIENIU (zwykly atak tego stworzenia,
+    // np. szarza dzika). Bazowo 0% - podnies chancePercent na prefabie
+    // "specjalnego" przeciwnika, zeby np. jego cios czasem zatruwal
+    // albo ogluszal. Patrz OnHitStatusData.cs.
     // ===============================================================
-    [Header("Miganie przy Trafieniu")]
-    [Tooltip("Material korzystajacy z shadera 'Custom/SpriteHitFlash' (plik SpriteHitFlash.shader). " +
-             "Jeden wspolny material wystarczy dla wszystkich stworzen - kazde miganie i tak " +
-             "tworzy sobie wlasna, tymczasowa kopie, wiec kilka trafionych naraz nie miesza sie " +
-             "ze soba. Zostaw puste, zeby CALKOWICIE wylaczyc miganie.")]
-    public Material hitFlashMaterial;
+    [Header("Efekt Dodatkowy przy Trafieniu (0% = brak)")]
+    public OnHitStatusData onHitStatus = new OnHitStatusData();
 
-    [Tooltip("Ile sekund trwa KAZDA z trzech faz (bialy/czarny/bialy). Cale miganie trwa 3x tyle - " +
-             "przy domyslnych 0.05s to 0.15s, czyli bardzo szybko.")]
-    public float hitFlashPhaseDuration = 0.05f;
-
-    private SpriteRenderer[] flashRenderers;
-    private Material[] flashOriginalMaterials;
-    private Coroutine hitFlashRoutine;
+    // Miganie przy trafieniu (kolor zalezny od typu obrazen) zostalo wydzielone
+    // do OSOBNEGO komponentu - patrz HitFlashController.cs. Dodaj go obok tego
+    // skryptu (Add Component -> Hit Flash Controller) i przypisz mu Twoj
+    // dotychczasowy material (Hit Flash Material) - to on teraz o tym decyduje.
+    private HitFlashController hitFlash;
 
     // ===============================================================
     // NOWE: obsluga smierci
@@ -92,17 +81,10 @@ public class Creature : MonoBehaviour
         if (maxHealth <= 0) maxHealth = baseWIT * healthPerVitality;
         currentHealth = maxHealth;
 
-        // Zbieramy WSZYSTKIE SpriteRenderery (np. osobna grafika + akcesoria),
-        // zeby miganie objelo cala postac, a nie tylko jeden fragment.
-        flashRenderers = GetComponentsInChildren<SpriteRenderer>();
-        flashOriginalMaterials = new Material[flashRenderers.Length];
-        for (int i = 0; i < flashRenderers.Length; i++)
-        {
-            flashOriginalMaterials[i] = flashRenderers[i].sharedMaterial;
-        }
+        hitFlash = GetComponent<HitFlashController>();
     }
 
-    public void TakeDamage(int damage, bool isCrit, Vector2 hitDirection)
+    public void TakeDamage(int damage, bool isCrit, Vector2 hitDirection, HitFlashColor flashColor = HitFlashColor.Normal)
     {
         if (IsDead) return; // trup nie krwawi dwa razy
 
@@ -111,7 +93,7 @@ public class Creature : MonoBehaviour
 
         currentHealth -= finalDamage;
 
-        PlayHitFlash();
+        if (hitFlash != null) hitFlash.Play(flashColor);
 
         if (damagePopupPrefab != null)
         {
@@ -130,50 +112,6 @@ public class Creature : MonoBehaviour
         {
             if (disposition == Disposition.Neutral) disposition = Disposition.Aggressive;
         }
-    }
-
-    // Bialy -> czarny -> bialy -> powrot do oryginalnego materialu. Restartuje sie
-    // od zera przy kazdym kolejnym trafieniu (StopCoroutine), zeby szybkie combo
-    // ciosow nie nakladalo na siebie kilku rownoleglych sekwencji migania.
-    private void PlayHitFlash()
-    {
-        if (hitFlashMaterial == null) return; // miganie wylaczone - nikt nie podpial materialu
-        if (flashRenderers == null || flashRenderers.Length == 0) return;
-
-        if (hitFlashRoutine != null) StopCoroutine(hitFlashRoutine);
-        hitFlashRoutine = StartCoroutine(HitFlashSequence());
-    }
-
-    private IEnumerator HitFlashSequence()
-    {
-        // Swieza kopia materialu NA POTRZEBY TEGO JEDNEGO migniecia - dzieki temu
-        // dwa stworzenia trafione w tej samej klatce nie nadpisuja sobie nawzajem
-        // koloru na WSPOLNYM shared materiale.
-        Material[] flashInstances = new Material[flashRenderers.Length];
-        for (int i = 0; i < flashRenderers.Length; i++)
-        {
-            if (flashRenderers[i] == null) continue;
-            flashInstances[i] = new Material(hitFlashMaterial);
-            flashRenderers[i].material = flashInstances[i];
-        }
-
-        Color[] sequence = { Color.white, Color.black, Color.white };
-        foreach (Color flashColor in sequence)
-        {
-            foreach (Material mat in flashInstances)
-            {
-                if (mat != null) mat.SetColor("_FlashColor", flashColor);
-            }
-            yield return new WaitForSeconds(hitFlashPhaseDuration);
-        }
-
-        for (int i = 0; i < flashRenderers.Length; i++)
-        {
-            if (flashRenderers[i] != null) flashRenderers[i].sharedMaterial = flashOriginalMaterials[i];
-            if (flashInstances[i] != null) Destroy(flashInstances[i]);
-        }
-
-        hitFlashRoutine = null;
     }
 
     protected virtual void Die()

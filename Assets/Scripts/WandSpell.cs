@@ -17,4 +17,13 @@ public abstract class WandSpell : MonoBehaviour
     //                   (patrz Sprite Angle Offset w FireSparkProjectile) - dzieki temu
     //                   rotacja obiektu nigdy nie miesza sie z jego gameplayowym kierunkiem.
     public abstract void Setup(int damage, float maxRange, float aimAngleDegrees);
+
+    // NOWE: kto rzucil to zaklecie - PlayerCombat.PerformWandAttack() wywoluje to
+    // zaraz po Setup(). Zaklecia, ktore "lapia" cele bardzo szeroko (np. cala
+    // rosnaca chmura, a nie tylko pierwszy trafiony wrog - patrz PoisonCloudSpell)
+    // powinny to wykorzystac, zeby NIE trafiac wlasnego rzucajacego. Domyslna,
+    // pusta implementacja - zaklecia, ktore i tak nigdy nie mogą trafic wlasnego
+    // rzucajacego (np. FireSparkProjectile dziala tylko na Creature, a gracz go
+    // nie ma), moga to po prostu zignorowac.
+    public virtual void SetCaster(Transform casterTransform) { }
 }

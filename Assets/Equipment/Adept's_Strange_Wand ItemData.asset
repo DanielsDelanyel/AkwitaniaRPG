@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926aaa2ab3fb832429d431f9ebb0117a, type: 3}
+  m_Name: Adept's_Strange_Wand ItemData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: Adept's_Strange_Wand
+  itemName: "Straszna R\xF3\u017Cd\u017Cka Adepta"
+  icon: {fileID: 21300000, guid: 910d58a42d8bdc841ad34d9d1ca5c99d, type: 3}
+  description: "Adepci szkol\u0105 si\u0119 u\u017Cywaj\u0105c takich r\xF3\u017Cd\u017Cek"
+  itemType: 14
+  rarity: 1
+  itemPrefab: {fileID: 8992644449882156520, guid: 2c2e00e23cc73d24799645701b9f6c0a, type: 3}
+  isStackable: 0
+  weight: 0.65
+  weaponReach: 0.85
+  weaponLength: 0.7
+  weaponWidth: 0.28
+  swingArc: 65
+  weaponVisualScale: 0.8
+  weaponSpriteAngle: -55
+  spellPrefab: {fileID: 3356897663661355906, guid: 3cdb99aeed88eab45a314a99d38ecea3, type: 3}
+  spellRange: 3
+  spellCooldown: 1
+  swingSounds: []
+  hitSounds: []
+  soundVolume: 0.8
+  pickupSounds: []
+  price: 60
+  healAmount: 0
+  healthRegenPerSecond: 0
+  manaRegenPerSecond: 0
+  affinityBonus: 0
+  damageBonus: 8
+  magicDamageBonus: 8
+  defenseBonus: 0
+  magicDefenseBonus: 0
+  vitalityBonus: 0
+  strengthBonus: 0
+  dexterityBonus: 0
+  intellegenceBonus: 0
+  charismaBonus: 0
+  damageBonusPercent:
+    useRandomRange: 0
+    fixedValue: 0
+    minValue: -10
+    maxValue: 40
+    roundToWhole: 1
+    hasRolled: 0
+    rolledValue: 0
+  randomBonuses: []
+  onHitStatus:
+    chancePercent: 25
+    statusType: 0
+    tickDamage: 3
+    tickInterval: 0.5
+    slowMultiplier: 0.5
+    duration: 3
+  pricePerDamagePercent: 0.5
+  pricePerRolledPoint: 3

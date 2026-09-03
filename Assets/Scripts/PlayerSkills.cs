@@ -37,6 +37,10 @@ public class PlayerSkills : MonoBehaviour
     // w trakcie gry (patrz identyczna poprawka w PlayerCombat.GetAngleToMouse).
     private Camera mainCam;
 
+    // NOWE: ogluszenie blokuje rzucanie umiejetnosci - opcjonalne, dziala nawet
+    // bez podpietego StatusEffectController (po prostu nigdy nie bedzie IsStunned).
+    private StatusEffectController statusEffects;
+
     [Header("DEBUG - test bez panelu UI (Faza 4 jeszcze nie istnieje)")]
     [Tooltip("Podepnij tu SkillData Przyzwania Nieumarlych, zeby przetestowac cala " +
              "sciezke bez budowania jeszcze panelu (G). Usun/wylacz, gdy panel bedzie gotowy.")]
@@ -47,6 +51,7 @@ public class PlayerSkills : MonoBehaviour
     void Awake()
     {
         instance = this;
+        statusEffects = GetComponent<StatusEffectController>();
     }
 
     void OnEnable()
@@ -129,6 +134,12 @@ public class PlayerSkills : MonoBehaviour
     public bool TryCastSkill(SkillData skill)
     {
         if (skill == null) return false;
+
+        if (statusEffects != null && statusEffects.IsStunned)
+        {
+            Debug.Log("Ogluszony - nie mozna teraz rzucac umiejetnosci.");
+            return false;
+        }
 
         if (!IsUnlocked(skill))
         {

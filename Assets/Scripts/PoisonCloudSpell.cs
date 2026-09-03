@@ -1,63 +1,117 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// CHMURA TRUJACEGO GAZU - rozdzka nekromanty. W odroznieniu od iskier (fala LECACA,
-// przebijajaca wszystko) to STATYCZNY obszar: pojawia sie w miejscu wyznaczonym przez
-// zasieg rzutu i zostaje tam przez pewien czas, zadajac obrazenia w regularnych odstepach
-// kazdemu, kto stoi w srodku - w tym takze graczowi, jesli sam w nia wejdzie.
+// CHMURA TRUJACEGO GAZU - rozdzka nekromanty.
 //
-// UWAGA: to pierwsza wersja - zanim bedziesz stroil promien/czas trwania/obrazenia na tik,
-// polecam najpierw dokonczyc iskry ognia. Numery ponizej sa punktem startowym, nie balansem.
+// LECI w strone kursora dokladnie jak iskry ognia (FireSparkProjectile) - z tym,
+// ze W TRAKCIE LOTU stopniowo ROSNIE (a razem z nia jej kolizja, bo obie sa tym
+// samym obiektem - Collider2D skaluje sie automatycznie razem z transformem) i
+// BLAKNIE (traci alpha), az calkiem zniknie. Zasieg rozdzki (ItemData.spellRange)
+// dziala tak samo jak przy iskrach - okresla, jak dlugo chmura zyje/leci.
+//
+// Kazdego, kogo dotknie, ZATRUWA (StatusEffectController.ApplyPoison) zamiast
+// zadawac obrazenia od razu - a poniewaz to ten sam mechanizm "wejscie/wyjscie z
+// kolizji" co Wir Powietrza Mnicha, cel stojacy w rosnacej chmurze przez dluzszy
+// czas moze zostac zatruty ponownie, jesli zdazy wyjsc i wrocic.
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class PoisonCloudSpell : WandSpell
 {
-    [Header("Chmura")]
-    [Tooltip("Jak dlugo chmura wisi w powietrzu, zanim zniknie.")]
-    public float cloudDuration = 4f;
+    [Header("Lot")]
+    public float speed = 3f;
 
-    [Tooltip("Co ile sekund chmura zadaje obrazenia kazdemu, kto w niej stoi.")]
-    public float tickInterval = 0.5f;
+    [Header("Rozrost (kolizja rosnie RAZEM z grafika - to ten sam obiekt)")]
+    [Tooltip("Skala chmury na starcie lotu.")]
+    public float startScale = 0.4f;
+    [Tooltip("Skala chmury pod koniec zycia.")]
+    public float endScale = 2.5f;
+    [Tooltip("Krzywa wzrostu w czasie (0 = start lotu, 1 = koniec zycia). " +
+             "Zostaw domyslna (liniowa), jesli nie chcesz nic stroic.")]
+    public AnimationCurve growthCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
-    [Tooltip("Promien chmury. Ustawiany TU, a nie recznie na CircleCollider2D - " +
-             "Start() nadpisze Radius kolidera ta wartoscia.")]
-    public float cloudRadius = 1.5f;
+    [Header("Blaknienie")]
+    [Range(0f, 1f)] public float startAlpha = 1f;
+    [Tooltip("Od ktorego % zycia chmura zaczyna sie robic przezroczysta (0.6 = od 60% czasu).")]
+    [Range(0f, 1f)] public float fadeStartAt = 0.5f;
 
-    [Header("Wyglad")]
-    [Tooltip("Obrot WLASNEJ grafiki, jesli chmura nie jest symetryczna/okragla. 0 = bez obrotu.")]
-    public float spriteAngleOffset = 0f;
+    [Header("Zatrucie")]
+    public float poisonTickInterval = 0.5f;
+    public float poisonDuration = 3f;
 
     [Header("Dzwieki (opcjonalne)")]
-    public AudioClip[] tickSounds;
+    public AudioClip[] hitSounds;
     [Range(0f, 1f)] public float soundVolume = 0.5f;
 
     [Header("Efekty (opcjonalne)")]
     [Tooltip("Np. wizualny puf/rozwianie gazu przy zniknieciu chmury.")]
     public GameObject dissipateEffectPrefab;
 
-    private int damagePerTick;
-    private float tickTimer;
+    private Rigidbody2D rb;
+    private SpriteRenderer sprite;
+    private int poisonTickDamage;
+    private float lifeTime;
+    private float age;
 
-    private readonly List<Creature> creaturesInside = new List<Creature>();
+    // NOWE: kto rzucil te chmure - zeby jej NIE zatruwac (patrz WandSpell.SetCaster,
+    // wywolywane przez PlayerCombat.PerformWandAttack zaraz po Setup()).
+    private Transform caster;
+
+    // Ten sam patent co Wir Powietrza - "wyjscie z kolizji" pozwala ponownie
+    // zatruc ten sam kolider, jesli nadal stoi w rosnacej chmurze.
+    private readonly HashSet<Collider2D> currentlyTouching = new HashSet<Collider2D>();
 
     public override void Setup(int damage, float maxRange, float aimAngleDegrees)
     {
-        damagePerTick = Mathf.Max(1, damage);
+        // "damage" z WandSpell.Setup (Inteligencja gracza + bonus rozdzki) staje sie
+        // obrazeniami NA TIK zatrucia - rosnie ze statystykami/ekwipunkiem gracza.
+        poisonTickDamage = Mathf.Max(1, damage);
 
-        // Chmura "emituje sie" NA KONCU zasiegu rzutu, nie pod nogami gracza.
+        rb = GetComponent<Rigidbody2D>();
         float rad = aimAngleDegrees * Mathf.Deg2Rad;
-        Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
-        transform.position += (Vector3)(direction * maxRange);
+        Vector2 flyDirection = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
+        rb.linearVelocity = flyDirection * speed;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, aimAngleDegrees + spriteAngleOffset);
+        // Tak samo jak iskry ognia: Zasieg rozdzki okresla dlugosc lotu/zycia,
+        // a nie sztywna liczba sekund wpisana w Inspektorze.
+        lifeTime = maxRange > 0f ? maxRange / Mathf.Max(0.01f, speed) : 4f;
+        Destroy(gameObject, lifeTime);
+    }
+
+    public override void SetCaster(Transform casterTransform)
+    {
+        caster = casterTransform;
     }
 
     void Start()
     {
-        CircleCollider2D col = GetComponent<CircleCollider2D>();
-        col.isTrigger = true;
-        col.radius = cloudRadius;
+        GetComponent<CircleCollider2D>().isTrigger = true;
 
-        Destroy(gameObject, cloudDuration);
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        transform.localScale = Vector3.one * startScale;
+        SetAlpha(startAlpha);
+    }
+
+    void Update()
+    {
+        age += Time.deltaTime;
+        float t = Mathf.Clamp01(age / Mathf.Max(0.01f, lifeTime));
+
+        float scale = Mathf.Lerp(startScale, endScale, growthCurve.Evaluate(t));
+        transform.localScale = Vector3.one * scale;
+
+        if (t >= fadeStartAt)
+        {
+            float fadeT = Mathf.InverseLerp(fadeStartAt, 1f, t);
+            SetAlpha(Mathf.Lerp(startAlpha, 0f, fadeT));
+        }
+    }
+
+    private void SetAlpha(float alpha)
+    {
+        if (sprite == null) return;
+        Color c = sprite.color;
+        c.a = alpha;
+        sprite.color = c;
     }
 
     void OnDestroy()
@@ -66,48 +120,37 @@ public class PoisonCloudSpell : WandSpell
             Instantiate(dissipateEffectPrefab, transform.position, Quaternion.identity);
     }
 
-    void Update()
-    {
-        tickTimer -= Time.deltaTime;
-        if (tickTimer <= 0f)
-        {
-            tickTimer = Mathf.Max(0.05f, tickInterval);
-            ApplyTick();
-        }
-    }
-
-    private void ApplyTick()
-    {
-        creaturesInside.RemoveAll(c => c == null || c.IsDead);
-        if (creaturesInside.Count == 0) return;
-
-        bool hitAnything = false;
-        foreach (Creature creature in creaturesInside)
-        {
-            // Obrazenia "od trucizny" - bez szansy na trafienie krytyczne, to nie jest cios.
-            creature.TakeDamage(damagePerTick, false, Vector2.zero);
-            hitAnything = true;
-        }
-
-        if (hitAnything) SoundManager.Play(tickSounds, soundVolume);
-    }
-
+    // Celowo BRAK Creature-specific checkow poza "wlasne przyzwanie" - szukamy
+    // od razu StatusEffectController, wiec to samo dziala i na wrogach, i na
+    // graczu, jesli sam wejdzie we wlasna chmure (a obiekty bez tego komponentu,
+    // np. sciany/przeszkody, po prostu nigdy go nie znajda i sa ignorowane).
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (currentlyTouching.Contains(collision)) return;
+
+        // NOWE: nigdy nie zatruwamy WLASNEGO rzucajacego (np. gracza, ktory rzucil
+        // chmure tuz przed sobą i sam w niej stoi). IsChildOf zwraca true tez dla
+        // DOKLADNIE TEGO SAMEGO transformu, wiec dziala niezaleznie od tego, czy
+        // collider gracza siedzi na glownym obiekcie, czy na jego dziecku.
+        if (caster != null && collision.transform.IsChildOf(caster)) return;
+
         Creature creature = collision.GetComponentInParent<Creature>();
-
-        // Wlasne przyzwane stworzenia (Szkielety) sa odporne na wlasna trucizne gracza.
-        bool isFriendlySummon = creature != null && creature.GetComponent<SummonedCreature>() != null;
-
-        if (creature != null && !creature.IsDead && !isFriendlySummon && !creaturesInside.Contains(creature))
+        if (creature != null)
         {
-            creaturesInside.Add(creature);
+            if (creature.IsDead) return;
+            if (creature.GetComponent<SummonedCreature>() != null) return; // wlasne przyzwania odporne
         }
+
+        StatusEffectController target = collision.GetComponentInParent<StatusEffectController>();
+        if (target == null) return;
+
+        currentlyTouching.Add(collision);
+        target.ApplyPoison(poisonTickDamage, poisonTickInterval, poisonDuration);
+        SoundManager.Play(hitSounds, soundVolume);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Creature creature = collision.GetComponentInParent<Creature>();
-        if (creature != null) creaturesInside.Remove(creature);
+        currentlyTouching.Remove(collision);
     }
 }

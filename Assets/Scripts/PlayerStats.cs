@@ -15,7 +15,9 @@ public enum CharacterClass
     Hunter
 }
 
-public class PlayerStats : MonoBehaviour
+// IDamageable: pozwala StatusEffectController (tiki zatrucia/podpalenia/krwawienia)
+// zadawac obrazenia graczowi identycznie jak kazdemu stworzeniu - patrz IDamageable.cs.
+public class PlayerStats : MonoBehaviour, IDamageable
 {
     public static PlayerStats instance;
 
@@ -122,6 +124,12 @@ public class PlayerStats : MonoBehaviour
     public float invincibilityTime = 1f;
     private float invincibilityTimer;
 
+    // NOWE: miganie przy trafieniu (kolor zalezny od typu obrazen) - dodaj obok
+    // komponent Hit Flash Controller (Add Component -> Hit Flash Controller) i
+    // przypisz mu material. Gracz wczesniej w ogole nie migal przy trafieniu -
+    // to ten sam mechanizm, ktorego juz uzywaja przeciwnicy (patrz Creature.cs).
+    private HitFlashController hitFlash;
+
     public delegate void OnStatsChanged();
     public OnStatsChanged onStatsChangedCallback;
 
@@ -146,6 +154,7 @@ public class PlayerStats : MonoBehaviour
     void Awake()
     {
         instance = this;
+        hitFlash = GetComponent<HitFlashController>();
     }
 
     void Start()
@@ -248,7 +257,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     // --- WALKA ---
-    public void TakeDamage(int damage, bool isCrit, Vector2 hitDirection)
+    public void TakeDamage(int damage, bool isCrit, Vector2 hitDirection, HitFlashColor flashColor = HitFlashColor.Normal)
     {
         if (IsDead) return;              // trup nie obrywa drugi raz
         if (invincibilityTimer > 0f) return;
@@ -259,6 +268,8 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth -= finalDamage;
         invincibilityTimer = invincibilityTime;
+
+        if (hitFlash != null) hitFlash.Play(flashColor);
 
         if (damagePopupPrefab != null)
         {

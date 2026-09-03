@@ -4,22 +4,26 @@ using UnityEngine;
 [RequireComponent(typeof(Creature))]
 public class CreatureAI : MonoBehaviour
 {
-    [Header("Ruch i Wêdrowanie")]
+    [Header("Ruch i Wedrowanie")]
     public float walkSpeed = 2f;
     public float minWanderTime = 1f;
     public float maxWanderTime = 3f;
     public float minIdleTime = 2f;
     public float maxIdleTime = 5f;
 
-    [Header("Walka (Szar¿a)")]
-    public float runSpeed = 6f;       // Prêdkoœæ biegu
-    public float prepTime = 0.5f;     // Czas "³adowania" ataku
-    public int attackDamage = 15;     // Obra¿enia z szar¿y
+    [Header("Walka (Szarza)")]
+    public float runSpeed = 6f;       // Predkosc biegu
+    public float prepTime = 0.5f;     // Czas "ladowania" ataku
+    public int attackDamage = 15;     // Obrazenia z szarzy
 
     private Rigidbody2D rb;
     private Animator anim;
     private Creature creature;
     private Transform player;
+
+    // NOWE: statusy (Slow/Stun) - opcjonalne, moze nie byc podpiete na starszych
+    // prefabach. Ogluszenie zamraza cala logike ponizej, spowolnienie mnozy predkosc.
+    private StatusEffectController statusEffects;
 
     private enum State { Idle, Wander, PrepCharge, Charging }
     private State currentState;
@@ -27,15 +31,16 @@ public class CreatureAI : MonoBehaviour
     private float stateTimer;
     private Vector2 moveDirection;
     private Vector2 chargeTarget;
-    private Vector2 lastFacingDirection = Vector2.down; // Domyœlnie patrzy w dó³
+    private Vector2 lastFacingDirection = Vector2.down; // Domyslnie patrzy w dol
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         creature = GetComponent<Creature>();
+        statusEffects = GetComponent<StatusEffectController>();
 
-        // Szukamy gracza na mapie (Upewnij siê, ¿e Twój gracz ma Tag "Player"!)
+        // Szukamy gracza na mapie (Upewnij sie, ze Twoj gracz ma Tag "Player"!)
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
 
@@ -44,9 +49,13 @@ public class CreatureAI : MonoBehaviour
 
     void Update()
     {
-        if (creature.currentHealth <= 0) return; // Jeœli nie ¿yje, zatrzymujemy logikê
+        if (creature.currentHealth <= 0) return; // Jesli nie zyje, zatrzymujemy logike
 
-        // Jeœli dosta³ cios (sta³ siê agresywny), a sobie tylko spacerowa³ -> zaczyna atak!
+        // Ogluszony - zamrazamy CALA logike (w tym timery), zeby po ockniciu
+        // sie stworzenie doladowalo dokladnie tam, gdzie je przerwano.
+        if (statusEffects != null && statusEffects.IsStunned) return;
+
+        // Jesli dostal cios (stal sie agresywny), a sobie tylko spacerowal -> zaczyna atak!
         if (creature.disposition == Disposition.Aggressive &&
            (currentState == State.Idle || currentState == State.Wander))
         {
@@ -64,17 +73,17 @@ public class CreatureAI : MonoBehaviour
                 if (stateTimer <= 0) SetIdle();
                 break;
             case State.PrepCharge:
-                // W trakcie ³adowania odwraca siê w stronê gracza
+                // W trakcie ladowania odwraca sie w strone gracza
                 UpdateFacingDirection(player.position - transform.position);
                 if (stateTimer <= 0) StartCharge();
                 break;
             case State.Charging:
-                // Koñczy szar¿ê, gdy dobiegnie do celu LUB jeœli minie czas zabezpieczaj¹cy (np. zablokuje siê o drzewo)
+                // Konczy szarze, gdy dobiegnie do celu LUB jesli minie czas zabezpieczajacy (np. zablokuje sie o drzewo)
                 if (Vector2.Distance(transform.position, chargeTarget) < 0.2f || stateTimer <= 0)
                 {
                     anim.SetTrigger("Attack"); // Animacja ataku w powietrze
                     SetIdle();
-                    stateTimer = 1.5f; // Chwila oddechu przed kolejn¹ szar¿¹
+                    stateTimer = 1.5f; // Chwila oddechu przed kolejna szarza
                 }
                 break;
         }
@@ -84,14 +93,18 @@ public class CreatureAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (statusEffects != null && statusEffects.IsStunned) return;
+
+        float slowMul = statusEffects != null ? statusEffects.MoveSpeedMultiplier : 1f;
+
         if (currentState == State.Wander)
         {
-            rb.MovePosition(rb.position + moveDirection * walkSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + moveDirection * walkSpeed * slowMul * Time.fixedDeltaTime);
         }
         else if (currentState == State.Charging)
         {
             Vector2 chargeDir = (chargeTarget - rb.position).normalized;
-            rb.MovePosition(rb.position + chargeDir * runSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + chargeDir * runSpeed * slowMul * Time.fixedDeltaTime);
         }
     }
 
@@ -113,16 +126,16 @@ public class CreatureAI : MonoBehaviour
     void StartPrepCharge()
     {
         currentState = State.PrepCharge;
-        moveDirection = Vector2.zero; // Zatrzymuje siê w miejscu
-        stateTimer = prepTime; // £aduje siê 0.5s
+        moveDirection = Vector2.zero; // Zatrzymuje sie w miejscu
+        stateTimer = prepTime; // laduje sie 0.5s
     }
 
     void StartCharge()
     {
         currentState = State.Charging;
-        chargeTarget = player.position; // Zapisuje OSTATNI¥ pozycjê gracza!
+        chargeTarget = player.position; // Zapisuje OSTATNIA pozycje gracza!
         UpdateFacingDirection(chargeTarget - (Vector2)transform.position);
-        stateTimer = 2f; // Zabezpieczenie: przerywa szar¿ê po 2 sek., jeœli w coœ utknie
+        stateTimer = 2f; // Zabezpieczenie: przerywa szarze po 2 sek., jesli w cos utknie
     }
 
     void UpdateFacingDirection(Vector2 dir)
@@ -141,7 +154,7 @@ public class CreatureAI : MonoBehaviour
             anim.SetFloat("MoveX", lastFacingDirection.x);
             anim.SetFloat("MoveY", lastFacingDirection.y);
 
-            // Przekazujemy stan (0 = stoi, 1 = idzie, 2 = biegnie/szar¿uje)
+            // Przekazujemy stan (0 = stoi, 1 = idzie, 2 = biegnie/szarzuje)
             float speedParam = 0f;
             if (currentState == State.Wander) speedParam = 1f;
             if (currentState == State.Charging) speedParam = 2f;
@@ -150,20 +163,20 @@ public class CreatureAI : MonoBehaviour
         }
     }
 
-    // Zadawanie obra¿eñ przy fizycznym zderzeniu!
-    // 1. Zadzia³a, jeœli dzik dobiegnie do Ciebie z dystansu
+    // Zadawanie obrazen przy fizycznym zderzeniu!
+    // 1. Zadziala, jesli dzik dobiegnie do Ciebie z dystansu
     private void OnCollisionEnter2D(Collision2D collision)
     {
         HitPlayer(collision);
     }
 
-    // 2. Zadzia³a, jeœli wpadniesz na dzika podczas jego szar¿y, LUB jeœli ju¿ siê stykaliœcie
+    // 2. Zadziala, jesli wpadniesz na dzika podczas jego szarzy, LUB jesli juz sie stykaliscie
     private void OnCollisionStay2D(Collision2D collision)
     {
         HitPlayer(collision);
     }
 
-    // Pomocnicza funkcja z logik¹ uderzenia, ¿eby nie pisaæ kodu dwa razy
+    // Pomocnicza funkcja z logika uderzenia, zeby nie pisac kodu dwa razy
     private void HitPlayer(Collision2D collision)
     {
         if (currentState == State.Charging && collision.gameObject.CompareTag("Player"))
@@ -171,12 +184,17 @@ public class CreatureAI : MonoBehaviour
             // Kierunek od Dzika do Gracza
             Vector2 hitDir = (collision.transform.position - transform.position).normalized;
 
-            // Dziki nie uderzaj¹ krytycznie, wiêc isCrit = false
+            // Dziki nie uderzaja krytycznie, wiec isCrit = false
             PlayerStats.instance.TakeDamage(attackDamage, false, hitDir);
+
+            // NOWE: szarza moze dodatkowo nalozyc status na gracza - bazowo 0%,
+            // podnies na tym prefabie (Creature.onHitStatus), zeby zrobic np.
+            // "specjalnego" dzika, ktory czasem oglusza przy trafieniu.
+            creature.onHitStatus.TryProc(PlayerStats.instance.GetComponent<StatusEffectController>());
 
             if (anim != null) anim.SetTrigger("Attack");
             SetIdle();
             stateTimer = 1.5f;
         }
-    }   
+    }
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 // CIECIE BRONIA PRZECIWNIKA.
 // To lustrzane odbicie PlayerMeleeAttack - ta sama mechanika luku i hitboxa,
@@ -256,6 +256,14 @@ public class EnemyMeleeAttack : MonoBehaviour
 
         Vector2 hitDir = ((Vector2)collision.transform.position - (Vector2)transform.position).normalized;
         ps.TakeDamage(damage, false, hitDir);
+
+        // NOWE: zwykle ciecie przeciwnika moze dodatkowo nalozyc status na gracza -
+        // bazowo 0%, podnies na TEJ konkretnej broni (ItemData.onHitStatus), zeby
+        // zrobic np. "zatruty sztylet" bandyty.
+        if (weaponData != null)
+        {
+            weaponData.onHitStatus.TryProc(ps.GetComponent<StatusEffectController>());
+        }
 
         if (weaponData != null) SoundManager.Play(weaponData.hitSounds, weaponData.soundVolume);
 

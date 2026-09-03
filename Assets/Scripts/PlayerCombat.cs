@@ -18,10 +18,15 @@ public class PlayerCombat : MonoBehaviour
     private PlayerStats stats;
     private Camera mainCam;
 
+    // NOWE: ogluszenie blokuje atak - opcjonalne, dziala nawet bez podpietego
+    // StatusEffectController (po prostu nigdy nie bedzie IsStunned).
+    private StatusEffectController statusEffects;
+
     void Start()
     {
         stats = GetComponent<PlayerStats>();
         equipment = GetComponent<PlayerEquipment>();
+        statusEffects = GetComponent<StatusEffectController>();
         mainCam = Camera.main;
     }
 
@@ -31,6 +36,7 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime)
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (statusEffects != null && statusEffects.IsStunned) return;
 
             TryAttack();
         }
@@ -93,7 +99,14 @@ public class PlayerCombat : MonoBehaviour
         // Wczesniej brala je ze sztywnego pola w prefabie, wiec ani Zrecznosc,
         // ani statystyki luku nie mialy zadnego wplywu na sile strzalu.
         Projectile projectile = arrow.GetComponent<Projectile>();
-        if (projectile != null) projectile.SetDamage(CalculateArrowDamage(bow, ammo));
+        if (projectile != null)
+        {
+            projectile.SetDamage(CalculateArrowDamage(bow, ammo));
+
+            // NOWE: przekazujemy ewentualne efekty dodatkowe zalozonego luku i strzaly.
+            projectile.SetOnHitStatuses(bow != null ? bow.onHitStatus : null,
+                                         ammo != null ? ammo.onHitStatus : null);
+        }
     }
 
     // Zrecznosc + bonus z luku + bonus z samej strzaly, razy mnoznik klasy
@@ -161,6 +174,10 @@ public class PlayerCombat : MonoBehaviour
         }
 
         spell.Setup(CalculateSpellDamage(wand), wand.spellRange, angle);
+
+        // NOWE: zaklecie wie teraz, KTO je rzucil - PoisonCloudSpell korzysta z tego,
+        // zeby nie zatruwac wlasnego rzucajacego (patrz WandSpell.SetCaster).
+        spell.SetCaster(transform);
 
         // Odglos rzucenia - bierzemy z tych samych pol co swist broni bialej/napiecie luku.
         SoundManager.Play(wand.swingSounds, wand.soundVolume);

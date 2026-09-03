@@ -38,6 +38,12 @@ public class EnemyProjectile : MonoBehaviour
     private Vector2 flyDirection = Vector2.right;
     private bool wasSetUp;
 
+    // NOWE: efekt dodatkowy przy trafieniu - lucznik/strzelec podaje go OSOBNO
+    // przez SetOnHitStatus() (patrz ArcherAI.FireArrow), bo Setup() ponizej
+    // sluzy tylko do lotu/obrazen i nie chcemy zmieniac jego sygnatury.
+    // Bazowo 0% (patrz ItemData.onHitStatus / OnHitStatusData.cs).
+    private OnHitStatusData onHitStatus;
+
     // Wywolywane przez lucznika zaraz po Instantiate
     public void Setup(Vector2 direction, int dmg, float projectileSpeed = -1f)
     {
@@ -54,6 +60,13 @@ public class EnemyProjectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle + spriteAngleOffset);
 
         ApplyVelocity();
+    }
+
+    // NOWE: opcjonalne - strzelec (ArcherAI itp.) woła to zaraz po Setup(),
+    // przekazujac onHitStatus swojego luku/broni dystansowej.
+    public void SetOnHitStatus(OnHitStatusData data)
+    {
+        onHitStatus = data;
     }
 
     void Start()
@@ -112,6 +125,10 @@ public class EnemyProjectile : MonoBehaviour
         }
 
         ps.TakeDamage(damage, false, flyDirection);
+
+        // NOWE: strzala przeciwnika moze dodatkowo nalozyc status - bazowo 0%,
+        // podnies na luku strzelca (ItemData.onHitStatus).
+        if (onHitStatus != null) onHitStatus.TryProc(ps.GetComponent<StatusEffectController>());
 
         SoundManager.Play(hitSounds, soundVolume);
         SpawnEffect();

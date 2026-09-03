@@ -248,6 +248,14 @@ public class ItemData : ScriptableObject
     [Tooltip("Kazdy wpis dolosowuje wartosc do wybranej statystyki, PONAD wartosc bazowa powyzej.")]
     public RandomizableBonus[] randomBonuses;
 
+    // ===============================================================
+    // NOWE: EFEKT DODATKOWY PRZY TRAFIENIU (zwykly atak, nie umiejetnosc)
+    // Bazowo 0% dla kazdej broni - podnies chancePercent w Inspektorze,
+    // zeby zrobic np. "zatruty sztylet" albo "mrozacy luk". Patrz OnHitStatusData.cs.
+    // ===============================================================
+    [Header("Efekt Dodatkowy przy Trafieniu (0% = brak)")]
+    public OnHitStatusData onHitStatus = new OnHitStatusData();
+
     // --- Znaczniki kopii dzialajacej w pamieci ---
     [System.NonSerialized] public bool isRuntimeInstance;
     [System.NonSerialized] public ItemData sourceTemplate;

@@ -384,6 +384,11 @@ public class ArcherAI : MonoBehaviour
         // obsluzy i slabego rekruta, i mistrza lucznictwa.
         projectile.Setup(direction, CalculateArrowDamage(), arrowSpeed);
 
+        // NOWE: strzal moze dodatkowo nalozyc status - bazowo 0%, podnies
+        // na luku tego lucznika (ItemData.onHitStatus), zeby zrobic np.
+        // "mrozacego" lucznika-elite.
+        if (bow != null) projectile.SetOnHitStatus(bow.onHitStatus);
+
         if (bow != null) SoundManager.Play(bow.swingSounds, bow.soundVolume);
     }
 

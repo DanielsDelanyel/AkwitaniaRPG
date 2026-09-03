@@ -25,12 +25,26 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    // NOWE: efekt dodatkowy przy trafieniu - MOZE pochodzic i z luku, i z zalozonej
+    // strzaly (np. zwykly luk + "zatruta strzala" z kolczanu), wiec trzymamy oba
+    // i przy trafieniu probujemy nalozyc KAZDY z osobna (dwie niezalezne szanse).
+    private OnHitStatusData bowOnHitStatus;
+    private OnHitStatusData ammoOnHitStatus;
+
     // Wywolywane przez PlayerCombat - przekazuje obrazenia policzone
     // ze Zrecznosci gracza i statystyk luku.
     // Gdy nikt tego nie wywola, zostaje wartosc z prefabu.
     public void SetDamage(int dmg)
     {
         damage = Mathf.Max(1, dmg);
+    }
+
+    // NOWE: wywolywane przez PlayerCombat razem z SetDamage() - przekazuje
+    // ewentualne efekty dodatkowe zalozonego luku i strzaly.
+    public void SetOnHitStatuses(OnHitStatusData bowStatus, OnHitStatusData ammoStatus)
+    {
+        bowOnHitStatus = bowStatus;
+        ammoOnHitStatus = ammoStatus;
     }
 
     void Start()
@@ -65,6 +79,12 @@ public class Projectile : MonoBehaviour
             Vector2 hitDir = (collision.transform.position - transform.position).normalized;
 
             creature.TakeDamage(finalDmg, isCrit, hitDir);
+
+            // NOWE: strzala moze dodatkowo nalozyc status - osobna szansa z luku
+            // i osobna z konkretnej strzaly, obie bazowo 0% (patrz OnHitStatusData.cs).
+            StatusEffectController targetStatuses = creature.GetComponent<StatusEffectController>();
+            if (bowOnHitStatus != null) bowOnHitStatus.TryProc(targetStatuses);
+            if (ammoOnHitStatus != null) ammoOnHitStatus.TryProc(targetStatuses);
 
             SoundManager.Play(hitSounds, soundVolume);
             SpawnEffect();

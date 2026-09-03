@@ -41,6 +41,13 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 facingDirection = Vector2.down; // pamiec, w ktora strone patrzymy
 
+    // NOWE: statusy (Slow/Stun) - opcjonalny, moze nie byc podpiety, jesli jeszcze
+    // nie dodales StatusEffectController na graczu. Ogluszenie zamraza caly ruch
+    // (i przerywa trwajacy dash), spowolnienie mnozy predkosc zwyklego chodzenia -
+    // CELOWO nie dotyka predkosci dasha, zeby spowolnienie nie odbieralo jedynego
+    // sposobu na ucieczke.
+    private StatusEffectController statusEffects;
+
     private bool isDashing;
     private float dashTimeLeft;
     private float dashCooldownLeft;
@@ -57,6 +64,7 @@ public class TopDownMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        statusEffects = GetComponent<StatusEffectController>();
     }
 
     void OnDisable()
@@ -69,6 +77,18 @@ public class TopDownMovement : MonoBehaviour
 
     void Update()
     {
+        // Ogluszony - zero ruchu, zero wejscia, i przerywamy dash w trakcie (gracz
+        // nie powinien "przelecieć" ogluszony przez pol mapy dzieki wczesniej
+        // zaczetemu skokowi).
+        if (statusEffects != null && statusEffects.IsStunned)
+        {
+            if (isDashing) isDashing = false;
+            moveInput = Vector2.zero;
+            if (dashCooldownLeft > 0f) dashCooldownLeft -= Time.deltaTime;
+            if (anim != null) anim.SetFloat("Speed", 0f);
+            return;
+        }
+
         // 1. Odczyt klawiszy
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -102,6 +122,9 @@ public class TopDownMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Ogluszony - kompletny brak ruchu, niezaleznie od tego, co bylo w toku.
+        if (statusEffects != null && statusEffects.IsStunned) return;
+
         // DASH ma pierwszenstwo przed zwyklym chodzeniem
         if (isDashing)
         {
@@ -114,6 +137,7 @@ public class TopDownMovement : MonoBehaviour
 
         float currentSpeed = moveSpeed;
         if (PlayerStats.instance != null) currentSpeed *= PlayerStats.instance.moveSpeedMultiplier;
+        if (statusEffects != null) currentSpeed *= statusEffects.MoveSpeedMultiplier; // NOWE: spowolnienie
 
         rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
     }

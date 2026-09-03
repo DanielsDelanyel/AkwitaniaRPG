@@ -176,11 +176,6 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         Creature creature = collision.GetComponentInParent<Creature>();
         if (creature == null || creature.IsDead) return;
-
-        // NOWE: wlasne przyzwane stworzenia (np. Szkielety) sa niewrazliwe
-        // na uderzenia swojego wlasciciela.
-        if (creature.GetComponent<SummonedCreature>() != null) return;
-
         if (alreadyHit.Contains(creature)) return;
 
         alreadyHit.Add(creature);
@@ -192,6 +187,14 @@ public class PlayerMeleeAttack : MonoBehaviour
 
         Vector2 hitDir = (creature.transform.position - transform.position).normalized;
         creature.TakeDamage(finalDmg, isCrit, hitDir);
+
+        // NOWE: zwykle machniecie moze dodatkowo nalozyc status (zatrucie/podpalenie/
+        // krwawienie/spowolnienie/ogluszenie) - szansa bazowo 0%, ustawiana per-bron
+        // w ItemData.onHitStatus (patrz OnHitStatusData.cs).
+        if (weaponData != null)
+        {
+            weaponData.onHitStatus.TryProc(creature.GetComponent<StatusEffectController>());
+        }
 
         // --- ODGLOS TRAFIENIA ---
         if (weaponData != null && (!hitSoundOncePerSwing || !playedHitSound))
