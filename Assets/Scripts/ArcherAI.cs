@@ -314,9 +314,23 @@ public class ArcherAI : MonoBehaviour
         switch (newState)
         {
             case State.Idle:
+                stateTimer = 0f;
+                // Wrocil do domu i uspokoil sie - koniec "walki" dla CombatTracker
+                // (patrz komentarz w BanditAI.SetState - dokladnie ten sam patent).
+                CombatTracker.Unregister(this);
+                break;
+
             case State.Reposition:
+                stateTimer = 0f;
+                // Aktywnie zajety graczem - zglasza sie do CombatTracker, zeby np.
+                // LocationEntrance zablokowalo wejscie do budynkow do konca walki.
+                CombatTracker.Register(this);
+                break;
+
             case State.Returning:
                 stateTimer = 0f;
+                // Gracz uciekl za deaggroRange - lucznik daje sobie spokoj.
+                CombatTracker.Unregister(this);
                 break;
 
             case State.Aim:
@@ -490,6 +504,14 @@ public class ArcherAI : MonoBehaviour
 
         bool lookingRight = facingDirection.x > 0f;
         spriteRenderer.flipX = spriteFacesRight ? !lookingRight : lookingRight;
+    }
+
+    // Siatka bezpieczenstwa: jesli lucznik ginie/znika w trakcie pogoni,
+    // upewniamy sie, ze nie zostaje na zawsze zarejestrowany w CombatTracker
+    // (co blokowaloby wejscia do lokacji w nieskonczonosc).
+    void OnDestroy()
+    {
+        CombatTracker.Unregister(this);
     }
 
     void OnDrawGizmosSelected()

@@ -210,7 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6805112628514739914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17414b358512bfa47a031833f388ad7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 99f6d4438775a4c4eb93f5f825830115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SummonedCreature
 --- !u!114 &7383856001791724231
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6805112628514739914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba66399805c56240bbcca415a0e971f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b023206e05dce046ba5c26e322197d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SummonedCreatureAI
   owner: {fileID: 0}

@@ -21,6 +21,26 @@ public class ItemPickup : MonoBehaviour
         get { return uniqueId != null ? "pickup_" + uniqueId.Id : null; }
     }
 
+    // Klawisz interakcji jest teraz PRZEMAPOWYWALNY w ekranie Opcji (GameSettings,
+    // akcja "Interact") zamiast sztywnego KeyCode.E - patrz interactKeyCached ponizej.
+    private KeyCode interactKeyCached;
+
+    void Awake()
+    {
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
+    }
+
+    void OnDestroy()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
+    }
+
+    public void RefreshKeyBindings()
+    {
+        interactKeyCached = GameSettings.GetKey("Interact");
+    }
+
     void Start()
     {
         uniqueId = GetComponent<UniqueId>();
@@ -40,7 +60,7 @@ public class ItemPickup : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerClose && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerClose && Input.GetKeyDown(interactKeyCached))
         {
             PickUp();
         }

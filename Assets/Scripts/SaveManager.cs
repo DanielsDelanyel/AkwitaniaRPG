@@ -144,6 +144,12 @@ public static class SaveManager
             data.skills.unlockedSkillIds = PlayerSkills.instance.GetUnlockedForSave();
         }
 
+        // --- HOTBAR (przypisania umiejetnosci pod klawisze) ---
+        if (SkillBarUI.instance != null)
+        {
+            data.skills.hotbarSkillIds = SkillBarUI.instance.GetHotbarForSave();
+        }
+
         return data;
     }
 
@@ -261,6 +267,14 @@ public static class SaveManager
         if (PlayerSkills.instance != null)
         {
             PlayerSkills.instance.LoadFrom(data.skills.skillPoints, data.skills.unlockedSkillIds);
+        }
+
+        // Hotbar odtwarzamy PO odblokowaniu umiejetnosci (wyzej) - inaczej
+        // SkillDatabase.Find() znalazlby umiejetnosc, ale gracz jeszcze by jej
+        // formalnie nie mial jako "odblokowanej".
+        if (SkillBarUI.instance != null)
+        {
+            SkillBarUI.instance.LoadHotbarFrom(data.skills.hotbarSkillIds);
         }
 
         // Statystyki koncowe przeliczamy DOPIERO po zalozeniu ekwipunku,

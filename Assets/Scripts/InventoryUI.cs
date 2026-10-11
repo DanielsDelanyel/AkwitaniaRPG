@@ -46,7 +46,26 @@ public class InventoryUI : MonoBehaviour
 
     public TextMeshProUGUI statsText;
 
-    void Awake() { instance = this; }
+    // Klawisz otwierania ekwipunku jest teraz PRZEMAPOWYWALNY w ekranie Opcji
+    // (GameSettings, akcja "ToggleInventory") zamiast sztywnego KeyCode.I.
+    private KeyCode toggleInventoryKeyCached;
+
+    void Awake()
+    {
+        instance = this;
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
+    }
+
+    void OnDestroy()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
+    }
+
+    public void RefreshKeyBindings()
+    {
+        toggleInventoryKeyCached = GameSettings.GetKey("ToggleInventory");
+    }
 
     void Start()
     {
@@ -72,7 +91,7 @@ public class InventoryUI : MonoBehaviour
     {
         // UWAGA: Escape NIE jest tu obslugiwany. Zajmuje sie nim UIEscapeHandler,
         // zeby jedno nacisniecie nie zamykalo jednego okna i nie otwieralo drugiego.
-        if (Input.GetKeyDown(KeyCode.I)) TryToggleInventory();
+        if (Input.GetKeyDown(toggleInventoryKeyCached)) TryToggleInventory();
 
         if (draggedItem != null && dragImage != null)
         {

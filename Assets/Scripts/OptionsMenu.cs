@@ -25,8 +25,19 @@ public class OptionsMenu : MonoBehaviour
     [Header("Przyciski")]
     public Button resetButton;
 
+    [Header("Klawisze")]
+    [Tooltip("Zostaw puste - wypelni sie samo wszystkimi KeyRebindButton znalezionymi " +
+             "wsrod dzieci TEGO obiektu (czyli obiektu, na ktorym wisi ten skrypt).")]
+    public KeyRebindButton[] keyRebindButtons;
+
     private Resolution[] resolutions;
     private bool isInitializing;
+
+    void Awake()
+    {
+        if (keyRebindButtons == null || keyRebindButtons.Length == 0)
+            keyRebindButtons = GetComponentsInChildren<KeyRebindButton>(true);
+    }
 
     void OnEnable()
     {
@@ -125,6 +136,16 @@ public class OptionsMenu : MonoBehaviour
         if (vsyncToggle != null) vsyncToggle.isOn = GameSettings.VSync;
 
         UpdateLabels();
+
+        // Przyciski przemapowania klawiszy nie sluchaja isInitializing (nie odpalaja
+        // zadnego zdarzenia GameSettings same z siebie) - po prostu odswiezamy im napis.
+        if (keyRebindButtons != null)
+        {
+            foreach (KeyRebindButton b in keyRebindButtons)
+            {
+                if (b != null) b.RefreshLabel();
+            }
+        }
 
         isInitializing = false;
     }

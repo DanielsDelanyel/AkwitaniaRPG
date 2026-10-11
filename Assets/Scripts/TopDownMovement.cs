@@ -11,7 +11,8 @@ public class TopDownMovement : MonoBehaviour
     // Zrecznosc -> PREDKOSC skoku i KROTSZY cooldown (jak czesto)
     // ===============================================================
     [Header("Dash - Sterowanie")]
-    public KeyCode dashKey = KeyCode.Space;
+    // Klawisz dasha jest teraz PRZEMAPOWYWALNY w ekranie Opcji (GameSettings,
+    // akcja "Dash") zamiast sztywnego pola tutaj - patrz dashKeyCached ponizej.
     public bool allowDashWhileStanding = true; // dash w strone, w ktora patrzysz, gdy stoisz
 
     [Header("Dash - Dystans (Sila)")]
@@ -41,6 +42,10 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 facingDirection = Vector2.down; // pamiec, w ktora strone patrzymy
 
+    // Cache klawisza dasha - odczytany raz z GameSettings, a nie co klatke z PlayerPrefs.
+    // Odswieza sie sam, gdy gracz przemapuje klawisz w Opcjach (patrz OnKeyBindingsChanged).
+    private KeyCode dashKeyCached;
+
     // NOWE: statusy (Slow/Stun) - opcjonalny, moze nie byc podpiety, jesli jeszcze
     // nie dodales StatusEffectController na graczu. Ogluszenie zamraza caly ruch
     // (i przerywa trwajacy dash), spowolnienie mnozy predkosc zwyklego chodzenia -
@@ -59,6 +64,23 @@ public class TopDownMovement : MonoBehaviour
     public bool IsDashing { get { return isDashing; } }
     public float DashCooldownLeft { get { return dashCooldownLeft; } }
     public float DashCooldownTotal { get { return Mathf.Max(0.01f, dashCooldownTotal); } }
+
+    void Awake()
+    {
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
+    }
+
+    void OnDestroy()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
+    }
+
+    // Wolane raz w Awake i za kazdym razem, gdy gracz przemapuje klawisz dasha w Opcjach.
+    public void RefreshKeyBindings()
+    {
+        dashKeyCached = GameSettings.GetKey("Dash");
+    }
 
     void Start()
     {
@@ -100,7 +122,7 @@ public class TopDownMovement : MonoBehaviour
         if (dashCooldownLeft > 0f) dashCooldownLeft -= Time.deltaTime;
 
         // 3. Proba dasha
-        if (Input.GetKeyDown(dashKey)) TryDash();
+        if (Input.GetKeyDown(dashKeyCached)) TryDash();
 
         // 4. Animator
         if (anim != null)
@@ -178,6 +200,10 @@ public class TopDownMovement : MonoBehaviour
         dashCooldownLeft = dashCooldownTotal;
         isDashing = true;
         facingDirection = direction;
+
+        // Odglos dasha - PlayerAudio odnajduje sie sam (statyczny skrot), zero
+        // referencji do trzymania tutaj.
+        PlayerAudio.TryPlayDash();
 
         // Klatki nietykalnosci na czas skoku (unik przed ciosem)
         if (invincibleDuringDash && st != null) st.GrantInvincibility(dashTimeLeft + 0.05f);

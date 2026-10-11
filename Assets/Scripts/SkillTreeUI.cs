@@ -30,8 +30,9 @@ public class SkillTreeUI : MonoBehaviour
     [Header("Okno")]
     public GameObject skillTreeWindow;
 
-    [Header("Sterowanie")]
-    public KeyCode toggleKey = KeyCode.G;
+    // Klawisz otwierajacy/zamykajacy drzewko jest teraz PRZEMAPOWYWALNY w ekranie
+    // Opcji (GameSettings, akcja "ToggleSkillTree") zamiast sztywnego pola tutaj.
+    private KeyCode toggleKeyCached;
 
     [Header("Uklad Drzewka")]
     [Tooltip("Obiekt trzymajacy awatar, wszystkie wezly i strzalki - to na nim wisi PanZoomContent.")]
@@ -66,6 +67,8 @@ public class SkillTreeUI : MonoBehaviour
     void Awake()
     {
         instance = this;
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
     }
 
     void OnEnable()
@@ -78,6 +81,16 @@ public class SkillTreeUI : MonoBehaviour
         if (PlayerSkills.instance != null) PlayerSkills.instance.onSkillsChanged -= RefreshAllNodes;
     }
 
+    void OnDestroy()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
+    }
+
+    public void RefreshKeyBindings()
+    {
+        toggleKeyCached = GameSettings.GetKey("ToggleSkillTree");
+    }
+
     void Start()
     {
         if (skillTreeWindow != null) skillTreeWindow.SetActive(false);
@@ -85,7 +98,7 @@ public class SkillTreeUI : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetKeyDown(toggleKey)) return;
+        if (!Input.GetKeyDown(toggleKeyCached)) return;
 
         if (IsOpen)
         {

@@ -23,10 +23,10 @@ public class SoundManager : MonoBehaviour
     [Tooltip("Zakres losowej wysokosci tonu. 1 = bez zmian.")]
     public Vector2 pitchRange = new Vector2(0.92f, 1.08f);
 
-    [Header("Podnoszenie Przedmiotow")]
-    [Tooltip("Dzwiek uzywany, gdy dany ItemData NIE MA wlasnego 'Pickup Sounds' ustawionego. " +
-             "Wrzuc kilka wariantow - patrz PlayPickupSound() ponizej.")]
+    [Header("Domyslny dzwiek podniesienia")]
+    [Tooltip("Uzywany przez ItemPickup, gdy dany ItemData nie ma wlasnego Pickup Sounds.")]
     public AudioClip[] defaultPickupSounds;
+    [Range(0f, 1f)] public float defaultPickupVolume = 0.6f;
 
     private AudioSource[] pool;
     private int nextIndex;
@@ -39,6 +39,10 @@ public class SoundManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        // Ten sam patent co w MusicPlayer: DontDestroyOnLoad dziala tylko na
+        // obiektach najwyzszego poziomu, wiec odczepiamy sie od rodzica najpierw.
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
 
         pool = new AudioSource[Mathf.Max(1, poolSize)];
@@ -68,18 +72,20 @@ public class SoundManager : MonoBehaviour
         Play(clip, volume);
     }
 
-    // NOWE: dzwiek podniesienia przedmiotu z ziemi. Jesli przedmiot ma wlasny
-    // ItemData.pickupSounds (np. specjalny "cling!" dla klejnotow), uzywamy go -
-    // w przeciwnym razie spada na uniwersalny Default Pickup Sounds powyzej.
+    // Dzwiek podniesienia przedmiotu z ziemi - wlasny (ItemData.pickupSounds), a w
+    // razie jego braku domyslny ustawiony tutaj (Default Pickup Sounds).
     public static void PlayPickupSound(ItemData item)
     {
-        if (instance == null) return;
+        if (item != null && item.pickupSounds != null && item.pickupSounds.Length > 0)
+        {
+            Play(item.pickupSounds, item.soundVolume);
+            return;
+        }
 
-        AudioClip[] clips = (item != null && item.pickupSounds != null && item.pickupSounds.Length > 0)
-            ? item.pickupSounds
-            : instance.defaultPickupSounds;
-
-        Play(clips);
+        if (instance != null)
+        {
+            Play(instance.defaultPickupSounds, instance.defaultPickupVolume);
+        }
     }
 
     // --- WLASCIWE ODTWARZANIE ---

@@ -45,6 +45,11 @@ public class MusicPlayer : MonoBehaviour
             return;
         }
         instance = this;
+
+        // DontDestroyOnLoad dziala TYLKO na obiektach najwyzszego poziomu (bez rodzica).
+        // Jesli ten obiekt siedzi gdzies zagniezdzony w Hierarchy, odczepiamy go najpierw -
+        // stad ten warning w konsoli, ktory nie ma nic wspolnego z reszta kodu ponizej.
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
 
         source = GetComponent<AudioSource>();

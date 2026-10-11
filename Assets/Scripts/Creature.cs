@@ -76,6 +76,12 @@ public class Creature : MonoBehaviour, IDamageable
     // Przydaje sie paskowi zycia bossa
     public System.Action<Creature> onHealthChanged;
 
+    // NOWE: wolane w chwili, gdy NEUTRALNE stworzenie zostaje sprowokowane
+    // (pierwszy cios przelacza Neutral -> Aggressive). Tylko RAZ na prowokacje -
+    // kolejne ciosy w juz wsciekle stworzenie tego nie wywoluja.
+    // Podpina sie tu np. NPCInteraction (kara do sympatii dla Enta).
+    public System.Action<Creature> onProvoked;
+
     void Start()
     {
         if (maxHealth <= 0) maxHealth = baseWIT * healthPerVitality;
@@ -110,7 +116,11 @@ public class Creature : MonoBehaviour, IDamageable
         }
         else
         {
-            if (disposition == Disposition.Neutral) disposition = Disposition.Aggressive;
+            if (disposition == Disposition.Neutral)
+            {
+                disposition = Disposition.Aggressive;
+                if (onProvoked != null) onProvoked.Invoke(this);
+            }
         }
     }
 

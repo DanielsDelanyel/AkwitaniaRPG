@@ -40,11 +40,9 @@ public class QuestLogUI : MonoBehaviour
     [Header("Okno")]
     public GameObject questLogWindow;
 
-    [Header("Sterowanie")]
-    [Tooltip("Klawisz otwierajacy/zamykajacy dziennik. Jesli masz juz wlasny " +
-             "przycisk HUD albo menedzer wejscia, olej to pole i wywoluj " +
-             "OpenQuestLog()/CloseQuestLog() stamtad.")]
-    public KeyCode toggleKey = KeyCode.L;
+    // Klawisz otwierajacy/zamykajacy dziennik jest teraz PRZEMAPOWYWALNY w ekranie
+    // Opcji (GameSettings, akcja "ToggleQuestLog") zamiast sztywnego pola tutaj.
+    private KeyCode toggleKeyCached;
 
     [Header("Zakladki")]
     public CategoryTab[] tabs;
@@ -73,6 +71,18 @@ public class QuestLogUI : MonoBehaviour
     void Awake()
     {
         instance = this;
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
+    }
+
+    void OnDestroy()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
+    }
+
+    public void RefreshKeyBindings()
+    {
+        toggleKeyCached = GameSettings.GetKey("ToggleQuestLog");
     }
 
     void OnEnable()
@@ -107,7 +117,7 @@ public class QuestLogUI : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetKeyDown(toggleKey)) return;
+        if (!Input.GetKeyDown(toggleKeyCached)) return;
 
         if (IsOpen)
         {

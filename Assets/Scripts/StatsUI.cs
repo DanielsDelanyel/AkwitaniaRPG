@@ -9,7 +9,26 @@ public class StatsUI : MonoBehaviour
 
     public bool IsOpen { get { return statsWindow != null && statsWindow.activeSelf; } }
 
-    void Awake() { instance = this; }
+    // Klawisz otwierania okna statystyk jest teraz PRZEMAPOWYWALNY w ekranie
+    // Opcji (GameSettings, akcja "ToggleStats") zamiast sztywnego KeyCode.V.
+    private KeyCode toggleStatsKeyCached;
+
+    void Awake()
+    {
+        instance = this;
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
+    }
+
+    void OnDestroy()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
+    }
+
+    public void RefreshKeyBindings()
+    {
+        toggleStatsKeyCached = GameSettings.GetKey("ToggleStats");
+    }
 
     [Header("Zarz�dzanie Oknem")]
     public GameObject statsWindow; // <--- Referencja do graficznego okna
@@ -53,7 +72,7 @@ public class StatsUI : MonoBehaviour
     void Update()
     {
         // UWAGA: Escape NIE jest tu obslugiwany - zajmuje sie nim UIEscapeHandler.
-        if (Input.GetKeyDown(KeyCode.V)) TryToggleStatsWindow();
+        if (Input.GetKeyDown(toggleStatsKeyCached)) TryToggleStatsWindow();
 
         //Tooltip pod��a za myszk�
         if (professionTooltipWindow != null && professionTooltipWindow.activeSelf)

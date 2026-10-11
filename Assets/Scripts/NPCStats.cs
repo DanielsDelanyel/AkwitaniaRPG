@@ -176,6 +176,21 @@ public class NPCStats : MonoBehaviour
         affinity = Mathf.Clamp(affinity, -100, 100);
 
         UpdateRelationshipStatus();
+
+        // NOWE: od razu odnotowujemy sympatie w WorldState. Wczesniej trafiala
+        // tam dopiero przy zapisie gry (SaveManager.CollectActiveNpcs), wiec
+        // po wyjsciu z lokacji i powrocie NPC "zapominal" prezenty i urazy
+        // sprzed ostatniego zapisu.
+        StoreAffinityToWorld();
+    }
+
+    private void StoreAffinityToWorld()
+    {
+        if (uniqueId == null) uniqueId = GetComponent<UniqueId>();
+        if (uniqueId == null) return;
+
+        SavedNpc data = WorldState.GetOrCreateNpc(SaveId);
+        if (data != null) data.affinity = affinity;
     }
 
 public int ReceiveGift(ItemData gift)

@@ -90,6 +90,10 @@ public class SavedSkills
 
     [Tooltip("ID umiejetnosci (SkillData.GetId()), ktore gracz ma juz odblokowane.")]
     public List<string> unlockedSkillIds = new List<string>();
+
+    [Tooltip("ID umiejetnosci przypisanych do slotow hotbara, W KOLEJNOSCI slotow " +
+             "(SkillBarUI.HotbarSlots). Pusty string = slot bez przypisania.")]
+    public List<string> hotbarSkillIds = new List<string>();
 }
 
 [Serializable]

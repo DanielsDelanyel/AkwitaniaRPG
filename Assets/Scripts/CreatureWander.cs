@@ -10,6 +10,14 @@ public class CreatureWander : MonoBehaviour
     public float minIdleTime = 2f;
     public float maxIdleTime = 5f;
 
+    [Header("Odwracanie Grafiki")]
+    [Tooltip("Zostaw puste - skrypt znajdzie SpriteRenderer sam (na tym obiekcie albo w dziecku).")]
+    public SpriteRenderer spriteRenderer;
+    [Tooltip("Zaznacz, jesli postac w pliku graficznym patrzy w PRAWO.")]
+    public bool spriteFacesRight = true;
+    [Tooltip("Ponizej tej wartosci na osi X nie zmieniamy kierunku - zapobiega migotaniu przy ruchu prawie pionowym.")]
+    public float flipDeadzone = 0.05f;
+
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -17,13 +25,13 @@ public class CreatureWander : MonoBehaviour
     private bool isWandering = false;
     private float stateTimer;
 
-    private Vector3 originalScale; // Zapamiêtuje oryginalny rozmiar, ¿eby go nie sp³aszczyæ
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        originalScale = transform.localScale;
+
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         SetIdleState(); // Zaczynamy od stania w miejscu
     }
@@ -39,25 +47,25 @@ public class CreatureWander : MonoBehaviour
             else SetWanderState();
         }
 
-        // 1. Wysy³anie danych do Animatora
+        // 1. Wysylanie danych do Animatora
         if (anim != null)
         {
             anim.SetFloat("Speed", isWandering ? 1f : 0f);
         }
 
-        // 2. MAGICZNE OBRACANIE (FLIP)
-        if (isWandering)
+        // 2. ODWRACANIE GRAFIKI (FLIP)
+        //
+        // WAZNE: odwracamy TYLKO SpriteRenderer (flipX), a NIE cala skale obiektu
+        // (transform.localScale). Kiedy odwracalismy cala skale, kazde dziecko tego
+        // obiektu tez dostawalo ujemna skale - a takim dzieckiem jest np. dymek z nazwa
+        // i paskiem zdrowia (CreatureHoverInfo.infoRoot) albo ikonki statusow
+        // (CreatureStatusIndicator) - stad tekst i pasek wychodzily lustrzane/odwrocone
+        // przy ruchu w lewo. flipX odwraca WYLACZNIE rysowanie tego jednego SpriteRenderera,
+        // wiec dzieci zostaja nietkniete. Ten sam patent jest juz w BanditAI/ArcherAI.
+        if (isWandering && spriteRenderer != null && Mathf.Abs(moveDirection.x) > flipDeadzone)
         {
-            if (moveDirection.x > 0)
-            {
-                // Idzie w prawo -> Oryginalna skala
-                transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-            }
-            else if (moveDirection.x < 0)
-            {
-                // Idzie w lewo -> Lustrzane odbicie na osi X
-                transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-            }
+            bool lookingRight = moveDirection.x > 0f;
+            spriteRenderer.flipX = spriteFacesRight ? !lookingRight : lookingRight;
         }
     }
 
@@ -80,7 +88,7 @@ public class CreatureWander : MonoBehaviour
     void SetWanderState()
     {
         isWandering = true;
-        // Losuje kierunek (np. skos w dó³-lewo) i go normalizuje (¿eby nie przyspiesza³ na skosach)
+        // Losuje kierunek (np. skos w dol-lewo) i go normalizuje (zeby nie przyspieszal na skosach)
         moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         stateTimer = Random.Range(minWanderTime, maxWanderTime);
     }

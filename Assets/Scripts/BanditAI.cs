@@ -6,6 +6,10 @@ using UnityEngine;
 //   Czeka -> (gracz w AggroRange) -> Podbiega -> Zamach -> CIECIE -> CZEKA
 //         -> Odskok do tylu -> Krazenie wokol gracza -> znowu Podbiega
 //
+// NOWE: "Wymaga Prowokacji" - ten sam skrypt obsluguje tez NEUTRALNE stworzenia
+// (np. Enta), ktore nie atakuja same z siebie, tylko po uderzeniu. Po zgubieniu
+// agro taki stwor sie uspokaja (wraca do Neutral) - patrz sekcja "Prowokacja".
+//
 // Bron to zwykly ItemData. Dwoch bandytow z roznymi mieczami bedzie mialo
 // inne obrazenia, zasieg, szybkosc ciosu i dzwieki - bez zmian w kodzie.
 [RequireComponent(typeof(Rigidbody2D))]
@@ -38,6 +42,19 @@ public class BanditAI : MonoBehaviour
     public float aggroRange = 8f;
     [Tooltip("Gdy gracz oddali sie bardziej, bandyta rezygnuje i wraca na miejsce.")]
     public float deaggroRange = 14f;
+
+    [Tooltip("Ile sekund gracz musi byc poza Deaggro Range, zeby przeciwnik odpuscil. " +
+             "0 = od razu (dotychczasowe zachowanie bandyty).")]
+    public float loseAggroTime = 0f;
+
+    [Header("Prowokacja (np. Ent)")]
+    [Tooltip("Zaznacz dla NEUTRALNYCH stworzen (Creature.disposition = Neutral). Nie atakuja " +
+             "gracza w Aggro Range - dopiero po uderzeniu (wtedy ruszaja z dowolnej odleglosci).")]
+    public bool requireProvocation = false;
+
+    [Tooltip("Po zgubieniu agro sprowokowane stworzenie sie uspokaja (wraca do Neutral) - " +
+             "znow mozna z nim rozmawiac i znow mozna je sprowokowac.")]
+    public bool forgiveAfterLosingAggro = true;
 
     [Header("Ruch")]
     public float chaseSpeed = 3.2f;
@@ -101,6 +118,7 @@ public class BanditAI : MonoBehaviour
     private float stateTimer;
     private float nextAttackTime;
     private float circleSign = 1f;   // 1 = w prawo wokol gracza, -1 = w lewo
+    private float outOfRangeTimer;   // Jak dlugo gracz jest juz poza deaggroRange
 
     private readonly System.Collections.Generic.HashSet<string> animParams
         = new System.Collections.Generic.HashSet<string>();
@@ -156,13 +174,13 @@ public class BanditAI : MonoBehaviour
         switch (currentState)
         {
             case State.Idle:
-                if (distance <= aggroRange) SetState(State.Chase);
+                if (ShouldAggro(distance)) SetState(State.Chase);
                 break;
 
             case State.Chase:
                 LookAt(player.position);
 
-                if (distance > deaggroRange) { SetState(State.Returning); break; }
+                if (PlayerEscaped(distance)) { SetState(State.Returning); break; }
 
                 // Dosc blisko i cios sie odnowil - zamach!
                 if (distance <= attackRange && Time.time >= nextAttackTime)
@@ -195,12 +213,12 @@ public class BanditAI : MonoBehaviour
             case State.Circle:
                 LookAt(player.position);
 
-                if (distance > deaggroRange) { SetState(State.Returning); break; }
+                if (PlayerEscaped(distance)) { SetState(State.Returning); break; }
                 if (stateTimer <= 0f) SetState(State.Chase);
                 break;
 
             case State.Returning:
-                if (distance <= aggroRange) { SetState(State.Chase); break; }
+                if (ShouldAggro(distance)) { SetState(State.Chase); break; }
                 if (Vector2.Distance(transform.position, homePosition) < 0.3f) SetState(State.Idle);
                 break;
         }
@@ -264,9 +282,36 @@ public class BanditAI : MonoBehaviour
         switch (newState)
         {
             case State.Idle:
+                stateTimer = 0f;
+                // Wrocil do domu i uspokoil sie - koniec "walki" dla CombatTracker.
+                CombatTracker.Unregister(this);
+                break;
+
             case State.Chase:
+                stateTimer = 0f;
+                outOfRangeTimer = 0f;
+                // Aktywnie zajety graczem - zglasza sie do CombatTracker (patrz
+                // ten skrypt), zeby np. LocationEntrance zablokowalo wejscie do
+                // budynkow, dopoki bandyta nie zginie albo nie da sobie spokoju.
+                // HashSet w CombatTracker sprawia, ze wielokrotny Register przy
+                // powrotach Circle->Chase jest bezpieczny (nie dubluje wpisu).
+                CombatTracker.Register(this);
+                break;
+
             case State.Returning:
                 stateTimer = 0f;
+                // Gracz uciekl za deaggroRange - bandyta daje sobie spokoj.
+                CombatTracker.Unregister(this);
+
+                // Sprowokowany Neutral (np. Ent) sie uspokaja - znow mozna z nim
+                // pogadac (NPCInteraction), a kolejny cios znow go rozwscieczy.
+                // Kare do sympatii nalicza NPCInteraction juz w chwili prowokacji.
+                if (requireProvocation && forgiveAfterLosingAggro
+                    && creature.disposition == Disposition.Aggressive)
+                {
+                    creature.disposition = Disposition.Neutral;
+                    Debug.Log($"{creature.creatureName} uspokaja sie.");
+                }
                 break;
 
             case State.WindUp:
@@ -359,6 +404,33 @@ public class BanditAI : MonoBehaviour
     }
 
     // ===============================================================
+    // AGRO
+    // ===============================================================
+
+    // Czy ma teraz ruszyc na gracza?
+    private bool ShouldAggro(float distance)
+    {
+        // Zwykly bandyta: wystarczy, ze gracz podejdzie
+        if (!requireProvocation) return distance <= aggroRange;
+
+        // Stworzenie neutralne: tylko po uderzeniu - wtedy z dowolnej odleglosci
+        return creature.disposition == Disposition.Aggressive;
+    }
+
+    // Czy gracz uciekl wystarczajaco daleko i wystarczajaco dlugo?
+    private bool PlayerEscaped(float distance)
+    {
+        if (distance <= deaggroRange)
+        {
+            outOfRangeTimer = 0f;
+            return false;
+        }
+
+        outOfRangeTimer += Time.deltaTime;
+        return outOfRangeTimer >= loseAggroTime;
+    }
+
+    // ===============================================================
     // POMOCNICZE
     // ===============================================================
     private void LookAt(Vector3 target)
@@ -403,6 +475,14 @@ public class BanditAI : MonoBehaviour
 
         bool lookingRight = facingDirection.x > 0f;
         spriteRenderer.flipX = spriteFacesRight ? !lookingRight : lookingRight;
+    }
+
+    // Siatka bezpieczenstwa: jesli bandyta ginie/znika w trakcie pogoni,
+    // upewniamy sie, ze nie zostaje na zawsze zarejestrowany w CombatTracker
+    // (co blokowaloby wejscia do lokacji w nieskonczonosc).
+    void OnDestroy()
+    {
+        CombatTracker.Unregister(this);
     }
 
     void OnDrawGizmosSelected()

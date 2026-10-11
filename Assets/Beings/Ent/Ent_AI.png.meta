@@ -1,0 +1,6721 @@
+fileFormatVersion: 2
+guid: c9efb771cfdc62c45a1b9aaa86afd290
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1031743111847116953
+    second: Ent_AI_0
+  - first:
+      213: 5366718860606743427
+    second: Ent_AI_1
+  - first:
+      213: -6288590348172121121
+    second: Ent_AI_2
+  - first:
+      213: 6034258533060657188
+    second: Ent_AI_3
+  - first:
+      213: 1036245303183027948
+    second: Ent_AI_4
+  - first:
+      213: 7246323100940004473
+    second: Ent_AI_5
+  - first:
+      213: -457944105664279286
+    second: Ent_AI_6
+  - first:
+      213: -3589691756395543409
+    second: Ent_AI_7
+  - first:
+      213: 3078079562633312307
+    second: Ent_AI_8
+  - first:
+      213: -8034963104829112478
+    second: Ent_AI_9
+  - first:
+      213: 8031200943104837317
+    second: Ent_AI_10
+  - first:
+      213: -1376604763145196683
+    second: Ent_AI_11
+  - first:
+      213: -7090225947937134245
+    second: Ent_AI_12
+  - first:
+      213: -7198891485964604311
+    second: Ent_AI_13
+  - first:
+      213: -6588700349926157802
+    second: Ent_AI_14
+  - first:
+      213: 6266206337993659838
+    second: Ent_AI_15
+  - first:
+      213: -2932126590635676311
+    second: Ent_AI_16
+  - first:
+      213: 93724881666968690
+    second: Ent_AI_17
+  - first:
+      213: -3682766444294482507
+    second: Ent_AI_18
+  - first:
+      213: -8619251822258690252
+    second: Ent_AI_19
+  - first:
+      213: 6742900665217937982
+    second: Ent_AI_20
+  - first:
+      213: -415917655278240918
+    second: Ent_AI_21
+  - first:
+      213: 6488449452818566579
+    second: Ent_AI_22
+  - first:
+      213: -2788427659411147108
+    second: Ent_AI_23
+  - first:
+      213: 9181216012100991749
+    second: Ent_AI_24
+  - first:
+      213: -4045292943617349872
+    second: Ent_AI_25
+  - first:
+      213: -7147882411475700632
+    second: Ent_AI_26
+  - first:
+      213: 6907301493153271613
+    second: Ent_AI_27
+  - first:
+      213: 2523530084756638555
+    second: Ent_AI_28
+  - first:
+      213: 8558486732064304533
+    second: Ent_AI_29
+  - first:
+      213: 1198516566987698440
+    second: Ent_AI_30
+  - first:
+      213: -809518673467300936
+    second: Ent_AI_31
+  - first:
+      213: 1519675261277782809
+    second: Ent_AI_32
+  - first:
+      213: -1271809678420273354
+    second: Ent_AI_33
+  - first:
+      213: 32000937757884877
+    second: Ent_AI_34
+  - first:
+      213: -7877159639693822064
+    second: Ent_AI_35
+  - first:
+      213: 1027602492292101689
+    second: Ent_AI_36
+  - first:
+      213: -2584719430679710369
+    second: Ent_AI_37
+  - first:
+      213: -3457002641323963344
+    second: Ent_AI_38
+  - first:
+      213: 7459458250200510431
+    second: Ent_AI_39
+  - first:
+      213: -9194488968047605413
+    second: Ent_AI_40
+  - first:
+      213: 7207373205166970234
+    second: Ent_AI_41
+  - first:
+      213: -4451413514737137248
+    second: Ent_AI_42
+  - first:
+      213: -4933596224348587910
+    second: Ent_AI_43
+  - first:
+      213: -7690638593281897373
+    second: Ent_AI_44
+  - first:
+      213: -7395068725635343105
+    second: Ent_AI_45
+  - first:
+      213: -7494489337138433452
+    second: Ent_AI_46
+  - first:
+      213: -5664323944658708763
+    second: Ent_AI_47
+  - first:
+      213: -7336546478894055401
+    second: Ent_AI_48
+  - first:
+      213: 2303841057284654271
+    second: Ent_AI_49
+  - first:
+      213: 1552165228042641707
+    second: Ent_AI_50
+  - first:
+      213: -1637984606796049611
+    second: Ent_AI_51
+  - first:
+      213: 6864500128354219655
+    second: Ent_AI_52
+  - first:
+      213: -8052884715532813271
+    second: Ent_AI_53
+  - first:
+      213: 2870039824965729507
+    second: Ent_AI_54
+  - first:
+      213: 6210934131606464754
+    second: Ent_AI_55
+  - first:
+      213: -4415482926171312546
+    second: Ent_AI_56
+  - first:
+      213: -7659196858665129772
+    second: Ent_AI_57
+  - first:
+      213: 8053627645880387102
+    second: Ent_AI_58
+  - first:
+      213: -3939656882331119266
+    second: Ent_AI_59
+  - first:
+      213: 274439419328528293
+    second: Ent_AI_60
+  - first:
+      213: -4985091021602438269
+    second: Ent_AI_61
+  - first:
+      213: -589366255349510385
+    second: Ent_AI_62
+  - first:
+      213: 4727542893897922005
+    second: Ent_AI_63
+  - first:
+      213: 6552108773874787007
+    second: Ent_AI_64
+  - first:
+      213: 8766774964207496342
+    second: Ent_AI_65
+  - first:
+      213: 6443743932974084990
+    second: Ent_AI_66
+  - first:
+      213: 5675005223456720996
+    second: Ent_AI_67
+  - first:
+      213: -6962402466365896572
+    second: Ent_AI_68
+  - first:
+      213: 8995623564594536108
+    second: Ent_AI_69
+  - first:
+      213: -167992922783331037
+    second: Ent_AI_70
+  - first:
+      213: -5203902582079370155
+    second: Ent_AI_71
+  - first:
+      213: 7636132103400008480
+    second: Ent_AI_72
+  - first:
+      213: -7034821988898237786
+    second: Ent_AI_73
+  - first:
+      213: 2047393392280501897
+    second: Ent_AI_74
+  - first:
+      213: -6760603987127369931
+    second: Ent_AI_75
+  - first:
+      213: -5826825661673678139
+    second: Ent_AI_76
+  - first:
+      213: -390693286039207895
+    second: Ent_AI_77
+  - first:
+      213: 3329531874796399214
+    second: Ent_AI_78
+  - first:
+      213: 5304498668464039791
+    second: Ent_AI_79
+  - first:
+      213: -7133524289899591552
+    second: Ent_AI_80
+  - first:
+      213: 8376049362995650672
+    second: Ent_AI_81
+  - first:
+      213: 3225562285050434253
+    second: Ent_AI_82
+  - first:
+      213: -7289369353006023969
+    second: Ent_AI_83
+  - first:
+      213: -2459866991898153186
+    second: Ent_AI_84
+  - first:
+      213: 3909273448864885021
+    second: Ent_AI_85
+  - first:
+      213: -7986832591687299385
+    second: Ent_AI_86
+  - first:
+      213: -3251248582134102593
+    second: Ent_AI_87
+  - first:
+      213: 4365545407406726178
+    second: Ent_AI_88
+  - first:
+      213: -8054983375176198665
+    second: Ent_AI_89
+  - first:
+      213: -8525751981813334139
+    second: Ent_AI_90
+  - first:
+      213: -7521544689294266510
+    second: Ent_AI_91
+  - first:
+      213: 161993583013830328
+    second: Ent_AI_92
+  - first:
+      213: 5064308941518765886
+    second: Ent_AI_93
+  - first:
+      213: 8507253143473446277
+    second: Ent_AI_94
+  - first:
+      213: -389773614641642234
+    second: Ent_AI_95
+  - first:
+      213: 7334015686618004094
+    second: Ent_AI_96
+  - first:
+      213: 1737175230151782867
+    second: Ent_AI_97
+  - first:
+      213: 7302195561443438228
+    second: Ent_AI_98
+  - first:
+      213: -2680199246627436280
+    second: Ent_AI_99
+  - first:
+      213: 4140998228946874192
+    second: Ent_AI_100
+  - first:
+      213: 8959764243675182701
+    second: Ent_AI_101
+  - first:
+      213: -5603090361471947074
+    second: Ent_AI_102
+  - first:
+      213: 9009339823036692576
+    second: Ent_AI_103
+  - first:
+      213: -4545561936691415094
+    second: Ent_AI_104
+  - first:
+      213: 7122520664702195884
+    second: Ent_AI_105
+  - first:
+      213: 1785884614531792111
+    second: Ent_AI_106
+  - first:
+      213: -811518786548171208
+    second: Ent_AI_107
+  - first:
+      213: -960327292947613607
+    second: Ent_AI_108
+  - first:
+      213: -2133432915206970544
+    second: Ent_AI_109
+  - first:
+      213: 7966691154070393086
+    second: Ent_AI_110
+  - first:
+      213: 1145071416968476798
+    second: Ent_AI_111
+  - first:
+      213: -2784647604842703673
+    second: Ent_AI_112
+  - first:
+      213: 5520772052430600460
+    second: Ent_AI_113
+  - first:
+      213: -4701475679605214209
+    second: Ent_AI_114
+  - first:
+      213: 8425581516994039908
+    second: Ent_AI_115
+  - first:
+      213: 444673772347381104
+    second: Ent_AI_116
+  - first:
+      213: 4100851758330842487
+    second: Ent_AI_117
+  - first:
+      213: 2724372528738431621
+    second: Ent_AI_118
+  - first:
+      213: 6836615194126438105
+    second: Ent_AI_119
+  - first:
+      213: -448422969080136225
+    second: Ent_AI_120
+  - first:
+      213: -4020369702103821005
+    second: Ent_AI_121
+  - first:
+      213: -6938456817592315549
+    second: Ent_AI_122
+  - first:
+      213: -4808665880023038617
+    second: Ent_AI_123
+  - first:
+      213: 775593299879756628
+    second: Ent_AI_124
+  - first:
+      213: -5983553397034189844
+    second: Ent_AI_125
+  - first:
+      213: 1337315324360524127
+    second: Ent_AI_126
+  - first:
+      213: -8352114538392853826
+    second: Ent_AI_127
+  - first:
+      213: -6065214705126992127
+    second: Ent_AI_128
+  - first:
+      213: -9072166077694655293
+    second: Ent_AI_129
+  - first:
+      213: -4308541033343353691
+    second: Ent_AI_130
+  - first:
+      213: 2247706716954493297
+    second: Ent_AI_131
+  - first:
+      213: -7212231370308283266
+    second: Ent_AI_132
+  - first:
+      213: 2782151666587946181
+    second: Ent_AI_133
+  - first:
+      213: -8856018740069448790
+    second: Ent_AI_134
+  - first:
+      213: 2560994360266462668
+    second: Ent_AI_135
+  - first:
+      213: 877919561773890523
+    second: Ent_AI_136
+  - first:
+      213: -6093121834433878287
+    second: Ent_AI_137
+  - first:
+      213: -3611015437960871563
+    second: Ent_AI_138
+  - first:
+      213: 1484614322042946368
+    second: Ent_AI_139
+  - first:
+      213: -3500026138998529971
+    second: Ent_AI_140
+  - first:
+      213: 8994399988593029345
+    second: Ent_AI_141
+  - first:
+      213: 6930279352211482761
+    second: Ent_AI_142
+  - first:
+      213: -3273414421780468908
+    second: Ent_AI_143
+  - first:
+      213: 4936647637166470322
+    second: Ent_AI_144
+  - first:
+      213: -973787033734947338
+    second: Ent_AI_145
+  - first:
+      213: 4719520136770082698
+    second: Ent_AI_146
+  - first:
+      213: 1595156215925526161
+    second: Ent_AI_147
+  - first:
+      213: -4907539410026348217
+    second: Ent_AI_148
+  - first:
+      213: -6434832659218525600
+    second: Ent_AI_149
+  - first:
+      213: -8033344263636952212
+    second: Ent_AI_150
+  - first:
+      213: -1156430484888274767
+    second: Ent_AI_151
+  - first:
+      213: -8835426559237169799
+    second: Ent_AI_152
+  - first:
+      213: -4974748141577554850
+    second: Ent_AI_153
+  - first:
+      213: 916029798405798255
+    second: Ent_AI_154
+  - first:
+      213: 1723814518861533174
+    second: Ent_AI_155
+  - first:
+      213: 1334986910225135903
+    second: Ent_AI_156
+  - first:
+      213: 8064439289209954044
+    second: Ent_AI_157
+  - first:
+      213: -4459964804989548599
+    second: Ent_AI_158
+  - first:
+      213: 1803817144590594130
+    second: Ent_AI_159
+  - first:
+      213: -7063836349028117621
+    second: Ent_AI_160
+  - first:
+      213: 3251588496404654807
+    second: Ent_AI_161
+  - first:
+      213: -7822371581760826662
+    second: Ent_AI_162
+  - first:
+      213: -5663556714710001553
+    second: Ent_AI_163
+  - first:
+      213: -2367945562831553126
+    second: Ent_AI_164
+  - first:
+      213: -8772381560962744852
+    second: Ent_AI_165
+  - first:
+      213: -3601119814186556870
+    second: Ent_AI_166
+  - first:
+      213: -8128047584410295045
+    second: Ent_AI_167
+  - first:
+      213: -6827090820187713402
+    second: Ent_AI_168
+  - first:
+      213: -1430222160397741872
+    second: Ent_AI_169
+  - first:
+      213: 5582324315076069859
+    second: Ent_AI_170
+  - first:
+      213: -5455031093930352885
+    second: Ent_AI_171
+  - first:
+      213: 2046989728519560083
+    second: Ent_AI_172
+  - first:
+      213: -5738886616886538190
+    second: Ent_AI_173
+  - first:
+      213: -1987546352551193466
+    second: Ent_AI_174
+  - first:
+      213: -2391943812643236912
+    second: Ent_AI_175
+  - first:
+      213: 6081199250553779719
+    second: Ent_AI_176
+  - first:
+      213: -4041735238531467967
+    second: Ent_AI_177
+  - first:
+      213: 1228394843108002080
+    second: Ent_AI_178
+  - first:
+      213: -6709412867267479337
+    second: Ent_AI_179
+  - first:
+      213: -1362034497268816427
+    second: Ent_AI_180
+  - first:
+      213: -1609822949410441738
+    second: Ent_AI_181
+  - first:
+      213: 596669237020107498
+    second: Ent_AI_182
+  - first:
+      213: -1971273230005920487
+    second: Ent_AI_183
+  - first:
+      213: -7130314803945789121
+    second: Ent_AI_184
+  - first:
+      213: -1664956695524039640
+    second: Ent_AI_185
+  - first:
+      213: -4314570444225168131
+    second: Ent_AI_186
+  - first:
+      213: 652861269982432102
+    second: Ent_AI_187
+  - first:
+      213: -7714325702559863860
+    second: Ent_AI_188
+  - first:
+      213: 3184615553778590178
+    second: Ent_AI_189
+  - first:
+      213: -5538533323818099352
+    second: Ent_AI_190
+  - first:
+      213: 4978266471864059038
+    second: Ent_AI_191
+  - first:
+      213: -1002467515676409354
+    second: Ent_AI_192
+  - first:
+      213: 1022770351798074085
+    second: Ent_AI_193
+  - first:
+      213: -2455928974948055829
+    second: Ent_AI_194
+  - first:
+      213: 8229603843554396382
+    second: Ent_AI_195
+  - first:
+      213: 5177262116213109192
+    second: Ent_AI_196
+  - first:
+      213: -4042370966934692329
+    second: Ent_AI_197
+  - first:
+      213: 476887755636171599
+    second: Ent_AI_198
+  - first:
+      213: -7957737801174745703
+    second: Ent_AI_199
+  - first:
+      213: 1984644879857920362
+    second: Ent_AI_200
+  - first:
+      213: -163948997421909670
+    second: Ent_AI_201
+  - first:
+      213: 1220487971439119425
+    second: Ent_AI_202
+  - first:
+      213: 4210102917552862976
+    second: Ent_AI_203
+  - first:
+      213: 2818254546782145530
+    second: Ent_AI_204
+  - first:
+      213: 2458389169235029294
+    second: Ent_AI_205
+  - first:
+      213: -3014189836022303861
+    second: Ent_AI_206
+  - first:
+      213: -8796838989294004242
+    second: Ent_AI_207
+  - first:
+      213: 3982458524798197888
+    second: Ent_AI_208
+  - first:
+      213: -3774072324058696439
+    second: Ent_AI_209
+  - first:
+      213: -2797945962550232895
+    second: Ent_AI_210
+  - first:
+      213: 5605124239057071140
+    second: Ent_AI_211
+  - first:
+      213: 1888366320457456257
+    second: Ent_AI_212
+  - first:
+      213: -6028588189749407456
+    second: Ent_AI_213
+  - first:
+      213: 6477156298191896143
+    second: Ent_AI_214
+  - first:
+      213: 863887512916617980
+    second: Ent_AI_215
+  - first:
+      213: 7244533979002490807
+    second: Ent_AI_216
+  - first:
+      213: 5167878078595004670
+    second: Ent_AI_217
+  - first:
+      213: 4091663231838725816
+    second: Ent_AI_218
+  - first:
+      213: 5656454320413648041
+    second: Ent_AI_219
+  - first:
+      213: 5293177787407579620
+    second: Ent_AI_220
+  - first:
+      213: -7433765169118100556
+    second: Ent_AI_221
+  - first:
+      213: 612720923830995656
+    second: Ent_AI_222
+  - first:
+      213: -1996838809526087301
+    second: Ent_AI_223
+  - first:
+      213: 4630149291588854067
+    second: Ent_AI_224
+  - first:
+      213: -8640923487156571630
+    second: Ent_AI_225
+  - first:
+      213: -7069166397259074009
+    second: Ent_AI_226
+  - first:
+      213: -3070012492831775031
+    second: Ent_AI_227
+  - first:
+      213: -7858301273550012064
+    second: Ent_AI_228
+  - first:
+      213: -5066953702974180188
+    second: Ent_AI_229
+  - first:
+      213: -1422882037993326692
+    second: Ent_AI_230
+  - first:
+      213: -5372514319272503238
+    second: Ent_AI_231
+  - first:
+      213: -1105712649202702086
+    second: Ent_AI_232
+  - first:
+      213: -3975156340367950179
+    second: Ent_AI_233
+  - first:
+      213: 4640841515605115320
+    second: Ent_AI_234
+  - first:
+      213: -8061432081637927049
+    second: Ent_AI_235
+  - first:
+      213: -2736174381717555653
+    second: Ent_AI_236
+  - first:
+      213: -8874317023078722076
+    second: Ent_AI_237
+  - first:
+      213: 4308138312272785314
+    second: Ent_AI_238
+  - first:
+      213: -854080593870067282
+    second: Ent_AI_239
+  - first:
+      213: -5990822446452180345
+    second: Ent_AI_240
+  - first:
+      213: 5824980185426406854
+    second: Ent_AI_241
+  - first:
+      213: 1697596497725269899
+    second: Ent_AI_242
+  - first:
+      213: 2427593155874596157
+    second: Ent_AI_243
+  - first:
+      213: 2679745900685983473
+    second: Ent_AI_244
+  - first:
+      213: -8623319525098316194
+    second: Ent_AI_245
+  - first:
+      213: 2691924842062282970
+    second: Ent_AI_246
+  - first:
+      213: 2976399528793167071
+    second: Ent_AI_247
+  - first:
+      213: -3867287996390455831
+    second: Ent_AI_248
+  - first:
+      213: 3966339134484327741
+    second: Ent_AI_249
+  - first:
+      213: -893790780755818903
+    second: Ent_AI_250
+  - first:
+      213: -5026401900085688870
+    second: Ent_AI_251
+  - first:
+      213: -8732424688708702109
+    second: Ent_AI_252
+  - first:
+      213: -3104272971288695836
+    second: Ent_AI_253
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 190
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ent_AI_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1515
+        width: 463
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76f75ee2b138ea1f0800000000000000
+      internalID: -1031743111847116953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_1
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 1893
+        width: 22
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 383aadf9e5a6a7a40800000000000000
+      internalID: 5366718860606743427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_2
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 1501
+        width: 444
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdb204f85607ab8a0800000000000000
+      internalID: -6288590348172121121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_3
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 968
+        width: 577
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42043f93a2efdb350800000000000000
+      internalID: 6034258533060657188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_4
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 2017
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee246cec9b716e00800000000000000
+      internalID: 1036245303183027948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_5
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 2030
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c6c37b77c109460800000000000000
+      internalID: 7246323100940004473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_6
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1924
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0d85ee134e05a9f0800000000000000
+      internalID: -457944105664279286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_7
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1478
+        width: 461
+        height: 551
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8445e6dd5ade2ec0800000000000000
+      internalID: -3589691756395543409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_8
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 1905
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 338f529cd0987ba20800000000000000
+      internalID: 3078079562633312307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_9
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1893
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f7a4190a31e7090800000000000000
+      internalID: -8034963104829112478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1893
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c6cb85e4be847f60800000000000000
+      internalID: 8031200943104837317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_11
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 1862
+        width: 77
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57bae90f24155ece0800000000000000
+      internalID: -1376604763145196683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_12
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 1877
+        width: 21
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5923f3e0157a9d90800000000000000
+      internalID: -7090225947937134245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_13
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 1881
+        width: 50
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96cee7ab556681c90800000000000000
+      internalID: -7198891485964604311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_14
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 1881
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 612d82fa0fb3094a0800000000000000
+      internalID: -6588700349926157802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_15
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1870
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb5d961f67906f650800000000000000
+      internalID: 6266206337993659838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_16
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1855
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96deea0a66efe47d0800000000000000
+      internalID: -2932126590635676311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_17
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 1837
+        width: 7
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c0066884afc4100800000000000000
+      internalID: 93724881666968690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_18
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 1852
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b559195e6f24ecc0800000000000000
+      internalID: -3682766444294482507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_19
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 1851
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 437e1a86224426880800000000000000
+      internalID: -8619251822258690252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_20
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 1860
+        width: 32
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e327f0afd68939d50800000000000000
+      internalID: 6742900665217937982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_21
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1857
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6bb35d981d5a3af0800000000000000
+      internalID: -415917655278240918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_22
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 1848
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bd045a666a9b0a50800000000000000
+      internalID: 6488449452818566579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_23
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1828
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c96bce641d38d49d0800000000000000
+      internalID: -2788427659411147108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_24
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1813
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b786f915b3a6f70800000000000000
+      internalID: 9181216012100991749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_25
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1819
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0172b4b208b3cd7c0800000000000000
+      internalID: -4045292943617349872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_26
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1809
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8647abf51de9dcc90800000000000000
+      internalID: -7147882411475700632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_27
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 1755
+        width: 18
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f0def8c1aabdf50800000000000000
+      internalID: 6907301493153271613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_28
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 1799
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b4ee9ed31650320800000000000000
+      internalID: 2523530084756638555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_29
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1763
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59d2697865ad5c670800000000000000
+      internalID: 8558486732064304533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_30
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1762
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 801f8b8b77cf1a010800000000000000
+      internalID: 1198516566987698440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_31
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 1770
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b3afe43e0304c4f0800000000000000
+      internalID: -809518673467300936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_32
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 1755
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 913496a3998f61510800000000000000
+      internalID: 1519675261277782809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_33
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1733
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6371bd7f5df995ee0800000000000000
+      internalID: -1271809678420273354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_34
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1737
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1c98feea0b17000800000000000000
+      internalID: 32000937757884877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_35
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1725
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097710dea05bea290800000000000000
+      internalID: -7877159639693822064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_36
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1723
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9367063b507c24e00800000000000000
+      internalID: 1027602492292101689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_37
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 1707
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f55394a4f5b312cd0800000000000000
+      internalID: -2584719430679710369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_38
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1715
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c4c48e9624600d0800000000000000
+      internalID: -3457002641323963344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_39
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1690
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdfee04b1c1558760800000000000000
+      internalID: 7459458250200510431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_40
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1689
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5946408ffc966080800000000000000
+      internalID: -9194488968047605413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_41
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1665
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7555a96ebbb50460800000000000000
+      internalID: 7207373205166970234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_42
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1617
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a948b13ef66932c0800000000000000
+      internalID: -4451413514737137248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_43
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1585
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a787e7e8f58588bb0800000000000000
+      internalID: -4933596224348587910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_44
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 1592
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36cc58732fc554590800000000000000
+      internalID: -7690638593281897373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_45
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1584
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffc97eebc207f5990800000000000000
+      internalID: -7395068725635343105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_46
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1577
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45239e6c7a93ef790800000000000000
+      internalID: -7494489337138433452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_47
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 1582
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6d0e912674461b0800000000000000
+      internalID: -5664323944658708763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_48
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 1576
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 710806f19d95f2a90800000000000000
+      internalID: -7336546478894055401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_49
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1573
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb4896e3c33e8ff10800000000000000
+      internalID: 2303841057284654271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_50
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1568
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b21e13a1d066a8510800000000000000
+      internalID: 1552165228042641707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_51
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 1560
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5331d54bda5b449e0800000000000000
+      internalID: -1637984606796049611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_52
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 1529
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7863d2f3f7a934f50800000000000000
+      internalID: 6864500128354219655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_53
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1560
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92c7e7964086e3090800000000000000
+      internalID: -8052884715532813271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_54
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1548
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec7e42c30e64d720800000000000000
+      internalID: 2870039824965729507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_55
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1484
+        width: 147
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f8a0cd8faba13650800000000000000
+      internalID: 6210934131606464754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_56
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1549
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5ea1c14cad09b2c0800000000000000
+      internalID: -4415482926171312546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_57
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1549
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d82a76890115b590800000000000000
+      internalID: -7659196858665129772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_58
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 1525
+        width: 42
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1647f98cab34cf60800000000000000
+      internalID: 8053627645880387102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_59
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1529
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e511bbf40f68359c0800000000000000
+      internalID: -3939656882331119266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_60
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1540
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aff075a2310fc300800000000000000
+      internalID: 274439419328528293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_61
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1540
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 383c564c02661dab0800000000000000
+      internalID: -4985091021602438269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_62
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 1539
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f4a4b638622d7f0800000000000000
+      internalID: -589366255349510385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_63
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1534
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d53533e63b9b9140800000000000000
+      internalID: 4727542893897922005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_64
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1523
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2e68c1734cdea50800000000000000
+      internalID: 6552108773874787007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_65
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1523
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69c206fa167d9a970800000000000000
+      internalID: 8766774964207496342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_66
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1529
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e73bf7477f6cc6950800000000000000
+      internalID: 6443743932974084990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_67
+      rect:
+        serializedVersion: 2
+        x: 1741
+        y: 1520
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 468cf9aee2ba1ce40800000000000000
+      internalID: 5675005223456720996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_68
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 727
+        width: 487
+        height: 788
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48805f068d3906f90800000000000000
+      internalID: -6962402466365896572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_69
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1515
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae5acc98ffd6dc70800000000000000
+      internalID: 8995623564594536108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_70
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1509
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d48b8a35b2badf0800000000000000
+      internalID: -167992922783331037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_71
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1505
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ccb6d4c2608c7b0800000000000000
+      internalID: -5203902582079370155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_72
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1511
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b2d19a0bdf8f960800000000000000
+      internalID: 7636132103400008480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_73
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 1512
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a21d955caa4f5e90800000000000000
+      internalID: -7034821988898237786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_74
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 1488
+        width: 107
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98e7c56517dc96c10800000000000000
+      internalID: 2047393392280501897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_75
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 1513
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53ffe203e728d22a0800000000000000
+      internalID: -6760603987127369931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_76
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1507
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca5fcbbee4f22fa0800000000000000
+      internalID: -5826825661673678139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_77
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1505
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920c08db68af39af0800000000000000
+      internalID: -390693286039207895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_78
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1503
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a6499799fd43e20800000000000000
+      internalID: 3329531874796399214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_79
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1501
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67e45d3f6d5d9940800000000000000
+      internalID: 5304498668464039791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_80
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1504
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0880aef0471a00d90800000000000000
+      internalID: -7133524289899591552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_81
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1502
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0702e767484bd3470800000000000000
+      internalID: 8376049362995650672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_82
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 1456
+        width: 46
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc21459fecf73cc20800000000000000
+      internalID: 3225562285050434253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_83
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 973
+        width: 391
+        height: 518
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdaf475b135f6da90800000000000000
+      internalID: -7289369353006023969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_84
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 997
+        width: 419
+        height: 504
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1fa339f00cccddd0800000000000000
+      internalID: -2459866991898153186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_85
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 1080
+        width: 391
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1925715d77804630800000000000000
+      internalID: 3909273448864885021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_86
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1165
+        width: 72
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce47fbe212192190800000000000000
+      internalID: -7986832591687299385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_87
+      rect:
+        serializedVersion: 2
+        x: 1992
+        y: 1405
+        width: 21
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb58761f3ae31e2d0800000000000000
+      internalID: -3251248582134102593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_88
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1323
+        width: 24
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cd05b1b68859c30800000000000000
+      internalID: 4365545407406726178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_89
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1302
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f512f22c43f63090800000000000000
+      internalID: -8054983375176198665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_90
+      rect:
+        serializedVersion: 2
+        x: 2001
+        y: 1324
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58ffee07eb17ea980800000000000000
+      internalID: -8525751981813334139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_91
+      rect:
+        serializedVersion: 2
+        x: 2041
+        y: 1317
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27fa368b4fa1e9790800000000000000
+      internalID: -7521544689294266510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_92
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1225
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8be9e633e448f3200800000000000000
+      internalID: 161993583013830328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_93
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1260
+        width: 19
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f7f04862a084640800000000000000
+      internalID: 5064308941518765886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_94
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 1261
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d5f0f19a5df0670800000000000000
+      internalID: 8507253143473446277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_95
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 1269
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 605077c66fe379af0800000000000000
+      internalID: -389773614641642234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_96
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 545
+        width: 100
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a3202e868a7c560800000000000000
+      internalID: 7334015686618004094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_97
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1211
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d1fdc9faafab1810800000000000000
+      internalID: 1737175230151782867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_98
+      rect:
+        serializedVersion: 2
+        x: 1966
+        y: 1219
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49e2548ac2c965560800000000000000
+      internalID: 7302195561443438228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_99
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1213
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80980894cf40ecad0800000000000000
+      internalID: -2680199246627436280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_100
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 1201
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f66e303f7c77930800000000000000
+      internalID: 4140998228946874192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_101
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1179
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d667187db1a775c70800000000000000
+      internalID: 8959764243675182701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_102
+      rect:
+        serializedVersion: 2
+        x: 1983
+        y: 1196
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebeac00b003dd32b0800000000000000
+      internalID: -5603090361471947074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_103
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 1181
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068f1e4e5da970d70800000000000000
+      internalID: 9009339823036692576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_104
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1170
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac7b8f2808beae0c0800000000000000
+      internalID: -4545561936691415094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_105
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 1187
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca814fccec648d260800000000000000
+      internalID: 7122520664702195884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_106
+      rect:
+        serializedVersion: 2
+        x: 1989
+        y: 1176
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fecb00b489cb8c810800000000000000
+      internalID: 1785884614531792111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_107
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 1171
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83e7d3796f7ecb4f0800000000000000
+      internalID: -811518786548171208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_108
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1143
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 958beb34a6b3ca2f0800000000000000
+      internalID: -960327292947613607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_109
+      rect:
+        serializedVersion: 2
+        x: 2001
+        y: 1152
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05366f821168462e0800000000000000
+      internalID: -2133432915206970544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_110
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 1009
+        width: 36
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef0dc91356f5f8e60800000000000000
+      internalID: 7966691154070393086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_111
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1153
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78fbda036c14ef00800000000000000
+      internalID: 1145071416968476798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_112
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1147
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c455b0d1c1fa59d0800000000000000
+      internalID: -2784647604842703673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_113
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1133
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c09b70f6ee8bd9c40800000000000000
+      internalID: 5520772052430600460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_114
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1145
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff33ef467c001ceb0800000000000000
+      internalID: -4701475679605214209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_115
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1140
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 460d682cfbdade470800000000000000
+      internalID: 8425581516994039908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_116
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1137
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 075d2b1a07ccb2600800000000000000
+      internalID: 444673772347381104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_117
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1105
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77d88db62f629e830800000000000000
+      internalID: 4100851758330842487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_118
+      rect:
+        serializedVersion: 2
+        x: 2026
+        y: 1116
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 582794b616aeec520800000000000000
+      internalID: 2724372528738431621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_119
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 1097
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dec1ff0c4980ee50800000000000000
+      internalID: 6836615194126438105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_120
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1073
+        width: 42
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd3ada7fa1e6c9f0800000000000000
+      internalID: -448422969080136225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_121
+      rect:
+        serializedVersion: 2
+        x: 2038
+        y: 1097
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335db588e07c438c0800000000000000
+      internalID: -4020369702103821005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_122
+      rect:
+        serializedVersion: 2
+        x: 2042
+        y: 1085
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 361d5023946a5bf90800000000000000
+      internalID: -6938456817592315549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_123
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1075
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7658fa90cdf244db0800000000000000
+      internalID: -4808665880023038617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_124
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1081
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45381893ff573ca00800000000000000
+      internalID: 775593299879756628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_125
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1069
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cebf13b33e526fca0800000000000000
+      internalID: -5983553397034189844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_126
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 1077
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f51023db3391f8210800000000000000
+      internalID: 1337315324360524127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_127
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1063
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb2e7b72414571c80800000000000000
+      internalID: -8352114538392853826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_128
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1064
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1071e6e4c5704dba0800000000000000
+      internalID: -6065214705126992127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_129
+      rect:
+        serializedVersion: 2
+        x: 1847
+        y: 1067
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c449abc401391280800000000000000
+      internalID: -9072166077694655293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_130
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 1072
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5acff5ff1ccf434c0800000000000000
+      internalID: -4308541033343353691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_131
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1059
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1710557a955713f10800000000000000
+      internalID: 2247706716954493297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_132
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1055
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7498ded7c109eb90800000000000000
+      internalID: -7212231370308283266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_133
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 1043
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc4c3643303c9620800000000000000
+      internalID: 2782151666587946181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_134
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1039
+        width: 57
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa345f980e9191580800000000000000
+      internalID: -8856018740069448790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_135
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 1047
+        width: 33
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc5167b4dca7a8320800000000000000
+      internalID: 2560994360266462668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_136
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 1055
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb36e4a03ffe2c00800000000000000
+      internalID: 877919561773890523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_137
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 1055
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f6646d69f1e07ba0800000000000000
+      internalID: -6093121834433878287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_138
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 1062
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57104e5579813edc0800000000000000
+      internalID: -3611015437960871563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_139
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1051
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043c3dd2cd86a9410800000000000000
+      internalID: 1484614322042946368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_140
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 1046
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40296045c86d6fc0800000000000000
+      internalID: -3500026138998529971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_141
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 1041
+        width: 30
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e07ddf922782dc70800000000000000
+      internalID: 8994399988593029345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_142
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1033
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9882ac64a5c4d2060800000000000000
+      internalID: 6930279352211482761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_143
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 1025
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b622b3dee7292d0800000000000000
+      internalID: -3273414421780468908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_144
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 1020
+        width: 83
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4349adede728440800000000000000
+      internalID: 4936647637166470322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_145
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 1031
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fdd8572ad96c72f0800000000000000
+      internalID: -973787033734947338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_146
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 1037
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a87db7e2f8a1f7140800000000000000
+      internalID: 4719520136770082698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_147
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 1032
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e4f7b7022232610800000000000000
+      internalID: 1595156215925526161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_148
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 1033
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741462868eae4ebb0800000000000000
+      internalID: -4907539410026348217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_149
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 1025
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06292362ac1e2b6a0800000000000000
+      internalID: -6434832659218525600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_150
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 1023
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6b5f7764f3d38090800000000000000
+      internalID: -8033344263636952212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_151
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1019
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b83dccd99883ffe0800000000000000
+      internalID: -1156430484888274767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_152
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 1025
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97ddd914b52426580800000000000000
+      internalID: -8835426559237169799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_153
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1001
+        width: 67
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e543c3e2ce426fab0800000000000000
+      internalID: -4974748141577554850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_154
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 1019
+        width: 35
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6976a19f3466bc00800000000000000
+      internalID: 916029798405798255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_155
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1019
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff0767fb283ce710800000000000000
+      internalID: 1723814518861533174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_156
+      rect:
+        serializedVersion: 2
+        x: 1746
+        y: 1024
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f19f3c39583d68210800000000000000
+      internalID: 1334986910225135903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_157
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1009
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe101a6ec4aaef60800000000000000
+      internalID: 8064439289209954044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_158
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1009
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c78ad7c3a50b12c0800000000000000
+      internalID: -4459964804989548599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_159
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 1011
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250f41fc222780910800000000000000
+      internalID: 1803817144590594130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_160
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 980
+        width: 113
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b83dfa0344638fd90800000000000000
+      internalID: -7063836349028117621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_161
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 1014
+        width: 29
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da22f38286ff1d20800000000000000
+      internalID: 3251588496404654807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_162
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 1014
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad21908bd7a517390800000000000000
+      internalID: -7822371581760826662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_163
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1005
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f689e6ebc210761b0800000000000000
+      internalID: -5663556714710001553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_164
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 997
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9d76f77e0e532fd0800000000000000
+      internalID: -2367945562831553126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_165
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 1001
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cedf0a8c27d324680800000000000000
+      internalID: -8772381560962744852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_166
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 989
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a322ac9cb90460ec0800000000000000
+      internalID: -3601119814186556870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_167
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 430
+        width: 455
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4a0c549cf533f80800000000000000
+      internalID: -8128047584410295045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_168
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 995
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680916d021d4141a0800000000000000
+      internalID: -6827090820187713402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_169
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 995
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d0d993d584d62ce0800000000000000
+      internalID: -1430222160397741872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_170
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 502
+        width: 561
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e9822d5366687d40800000000000000
+      internalID: 5582324315076069859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_171
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 510
+        width: 460
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f129f3f16db44b0800000000000000
+      internalID: -5455031093930352885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_172
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 475
+        width: 475
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b184b005e586c10800000000000000
+      internalID: 2046989728519560083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_173
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 983
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2301c3227016b50b0800000000000000
+      internalID: -5738886616886538190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_174
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 969
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68410917f11da64e0800000000000000
+      internalID: -1987546352551193466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_175
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 945
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d3d4b486cb1eced0800000000000000
+      internalID: -2391943812643236912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_176
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 937
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70631a1bf72c46450800000000000000
+      internalID: 6081199250553779719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_177
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 881
+        width: 6
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 145372fe63fd8e7c0800000000000000
+      internalID: -4041735238531467967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_178
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 901
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 029cf5bf9922c0110800000000000000
+      internalID: 1228394843108002080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_179
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 895
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d836139b8063e2a0800000000000000
+      internalID: -6709412867267479337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_180
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 893
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d5e67257d4191de0800000000000000
+      internalID: -1362034497268816427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_181
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 889
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f57e158e82c8a9e0800000000000000
+      internalID: -1609822949410441738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_182
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 869
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae2acf0828bc74800800000000000000
+      internalID: 596669237020107498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_183
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 839
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d924a0171a4a4e0800000000000000
+      internalID: -1971273230005920487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_184
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 807
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f392a1eb6780c0d90800000000000000
+      internalID: -7130314803945789121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_185
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 809
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824a1ece4b2e4e8e0800000000000000
+      internalID: -1664956695524039640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_186
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 744
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfc3f816a019f14c0800000000000000
+      internalID: -4314570444225168131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_187
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 719
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66bc9e4bddd6f0900800000000000000
+      internalID: 652861269982432102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_188
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 747
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccbe04155a531f490800000000000000
+      internalID: -7714325702559863860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_189
+      rect:
+        serializedVersion: 2
+        x: 2031
+        y: 743
+        width: 17
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e1282d29f6023c20800000000000000
+      internalID: 3184615553778590178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_190
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 731
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86d9821594d2323b0800000000000000
+      internalID: -5538533323818099352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_191
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 723
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e94c1bceafa561540800000000000000
+      internalID: 4978266471864059038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_192
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 697
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f14d351b158612f0800000000000000
+      internalID: -1002467515676409354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_193
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 707
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eab9b1573c913e00800000000000000
+      internalID: 1022770351798074085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_194
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 657
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4c1aefb99caedd0800000000000000
+      internalID: -2455928974948055829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_195
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 645
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed8cf39e71d653270800000000000000
+      internalID: 8229603843554396382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_196
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 609
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c138f1e67459d740800000000000000
+      internalID: 5177262116213109192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_197
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 567
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e5181e50d96e7c0800000000000000
+      internalID: -4042370966934692329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_198
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 575
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f436d6813ee3e9600800000000000000
+      internalID: 476887755636171599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_199
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 561
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99df749b1af609190800000000000000
+      internalID: -7957737801174745703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_200
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 559
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69aa3dc000ea8b10800000000000000
+      internalID: 1984644879857920362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_201
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 555
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a59b267614989bdf0800000000000000
+      internalID: -163948997421909670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_202
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 549
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c0446f75b00f010800000000000000
+      internalID: 1220487971439119425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_203
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 568
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007f2942c4a4d6a30800000000000000
+      internalID: 4210102917552862976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_204
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 541
+        width: 9
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afb449b14937c1720800000000000000
+      internalID: 2818254546782145530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_205
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 546
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2debef9ce3fd1220800000000000000
+      internalID: 2458389169235029294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_206
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 551
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b833c4260527b26d0800000000000000
+      internalID: -3014189836022303861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_207
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 543
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee713d00c895be580800000000000000
+      internalID: -8796838989294004242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_208
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 547
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 080a257ade8844730800000000000000
+      internalID: 3982458524798197888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_209
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 540
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90539d7973dcf9bc0800000000000000
+      internalID: -3774072324058696439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_210
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 526
+        width: 49
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c87471a8f2bb29d0800000000000000
+      internalID: -2797945962550232895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_211
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 520
+        width: 79
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42cade65cc669cd40800000000000000
+      internalID: 5605124239057071140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_212
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 541
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a9da8d923d43a10800000000000000
+      internalID: 1888366320457456257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_213
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 538
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0211fd47bf6265ca0800000000000000
+      internalID: -6028588189749407456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_214
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 525
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e7964f55b73e950800000000000000
+      internalID: 6477156298191896143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_215
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 521
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfa6a4dad152dfb00800000000000000
+      internalID: 863887512916617980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_216
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 531
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bfc0bd4541c98460800000000000000
+      internalID: 7244533979002490807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_217
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 527
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8fe2d5bbdf7b740800000000000000
+      internalID: 5167878078595004670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_218
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 529
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b62642e70288c830800000000000000
+      internalID: 4091663231838725816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_219
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 520
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a4aa783c33cf7e40800000000000000
+      internalID: 5656454320413648041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_220
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 518
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e9ba673725257940800000000000000
+      internalID: 5293177787407579620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_221
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 513
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b34b07e6f5f5d890800000000000000
+      internalID: -7433765169118100556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_222
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 488
+        width: 61
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ca45631f62d08800800000000000000
+      internalID: 612720923830995656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_223
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 508
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b71db74beadc944e0800000000000000
+      internalID: -1996838809526087301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_224
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 505
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3312e26cf38914040800000000000000
+      internalID: 4630149291588854067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_225
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 513
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212f3b8bed5451880800000000000000
+      internalID: -8640923487156571630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_226
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 507
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 726be31ad9645ed90800000000000000
+      internalID: -7069166397259074009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_227
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 503
+        width: 37
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c620c447ef1565d0800000000000000
+      internalID: -3070012492831775031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_228
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 505
+        width: 29
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0614d0470a4b1f290800000000000000
+      internalID: -7858301273550012064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_229
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 396
+        width: 47
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4bfd8f3709ea9b0800000000000000
+      internalID: -5066953702974180188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_230
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 496
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c97bf104358e04ce0800000000000000
+      internalID: -1422882037993326692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_231
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 489
+        width: 95
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38101101bef075b0800000000000000
+      internalID: -5372514319272503238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_232
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 492
+        width: 39
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af8ed903438b7a0f0800000000000000
+      internalID: -1105712649202702086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_233
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 510
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ef9b5ae5865d8c0800000000000000
+      internalID: -3975156340367950179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_234
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 6
+        width: 390
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1478c25c4976040800000000000000
+      internalID: 4640841515605115320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_235
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 0
+        width: 543
+        height: 485
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7779809ab3a002090800000000000000
+      internalID: -8061432081637927049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_236
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 352
+        width: 20
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36733e85e7270ad0800000000000000
+      internalID: -2736174381717555653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_237
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 13
+        width: 441
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e5d0378fa718d480800000000000000
+      internalID: -8874317023078722076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_238
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 301
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2af254238f499cb30800000000000000
+      internalID: 4308138312272785314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_239
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 323
+        width: 10
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9e1d89932b524f0800000000000000
+      internalID: -854080593870067282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_240
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 316
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78af7c6c9b25cdca0800000000000000
+      internalID: -5990822446452180345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_241
+      rect:
+        serializedVersion: 2
+        x: 1608
+        y: 299
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cda708dd9c76d050800000000000000
+      internalID: 5824980185426406854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_242
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 200
+        width: 75
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b87acda35031f8710800000000000000
+      internalID: 1697596497725269899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_243
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 269
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3523130d1b80b120800000000000000
+      internalID: 2427593155874596157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_244
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 287
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fe72b2e2be503520800000000000000
+      internalID: 2679745900685983473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_245
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 229
+        width: 21
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5e13d98490d35880800000000000000
+      internalID: -8623319525098316194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_246
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 163
+        width: 10
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad00c25a163ab5520800000000000000
+      internalID: 2691924842062282970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_247
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 68
+        width: 25
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd45b5f0a9b4e4920800000000000000
+      internalID: 2976399528793167071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_248
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 201
+        width: 12
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5c30b9e02a45ac0800000000000000
+      internalID: -3867287996390455831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_249
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 178
+        width: 30
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d2ba1ad644b0730800000000000000
+      internalID: 3966339134484327741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_250
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 173
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 966c789350e9893f0800000000000000
+      internalID: -893790780755818903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_251
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 105
+        width: 16
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad54b075a12ae3ab0800000000000000
+      internalID: -5026401900085688870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_252
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 33
+        width: 9
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360baa1130230d680800000000000000
+      internalID: -8732424688708702109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ent_AI_253
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 0
+        width: 10
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ebad740e286be4d0800000000000000
+      internalID: -3104272971288695836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ent_AI_0: -1031743111847116953
+      Ent_AI_1: 5366718860606743427
+      Ent_AI_10: 8031200943104837317
+      Ent_AI_100: 4140998228946874192
+      Ent_AI_101: 8959764243675182701
+      Ent_AI_102: -5603090361471947074
+      Ent_AI_103: 9009339823036692576
+      Ent_AI_104: -4545561936691415094
+      Ent_AI_105: 7122520664702195884
+      Ent_AI_106: 1785884614531792111
+      Ent_AI_107: -811518786548171208
+      Ent_AI_108: -960327292947613607
+      Ent_AI_109: -2133432915206970544
+      Ent_AI_11: -1376604763145196683
+      Ent_AI_110: 7966691154070393086
+      Ent_AI_111: 1145071416968476798
+      Ent_AI_112: -2784647604842703673
+      Ent_AI_113: 5520772052430600460
+      Ent_AI_114: -4701475679605214209
+      Ent_AI_115: 8425581516994039908
+      Ent_AI_116: 444673772347381104
+      Ent_AI_117: 4100851758330842487
+      Ent_AI_118: 2724372528738431621
+      Ent_AI_119: 6836615194126438105
+      Ent_AI_12: -7090225947937134245
+      Ent_AI_120: -448422969080136225
+      Ent_AI_121: -4020369702103821005
+      Ent_AI_122: -6938456817592315549
+      Ent_AI_123: -4808665880023038617
+      Ent_AI_124: 775593299879756628
+      Ent_AI_125: -5983553397034189844
+      Ent_AI_126: 1337315324360524127
+      Ent_AI_127: -8352114538392853826
+      Ent_AI_128: -6065214705126992127
+      Ent_AI_129: -9072166077694655293
+      Ent_AI_13: -7198891485964604311
+      Ent_AI_130: -4308541033343353691
+      Ent_AI_131: 2247706716954493297
+      Ent_AI_132: -7212231370308283266
+      Ent_AI_133: 2782151666587946181
+      Ent_AI_134: -8856018740069448790
+      Ent_AI_135: 2560994360266462668
+      Ent_AI_136: 877919561773890523
+      Ent_AI_137: -6093121834433878287
+      Ent_AI_138: -3611015437960871563
+      Ent_AI_139: 1484614322042946368
+      Ent_AI_14: -6588700349926157802
+      Ent_AI_140: -3500026138998529971
+      Ent_AI_141: 8994399988593029345
+      Ent_AI_142: 6930279352211482761
+      Ent_AI_143: -3273414421780468908
+      Ent_AI_144: 4936647637166470322
+      Ent_AI_145: -973787033734947338
+      Ent_AI_146: 4719520136770082698
+      Ent_AI_147: 1595156215925526161
+      Ent_AI_148: -4907539410026348217
+      Ent_AI_149: -6434832659218525600
+      Ent_AI_15: 6266206337993659838
+      Ent_AI_150: -8033344263636952212
+      Ent_AI_151: -1156430484888274767
+      Ent_AI_152: -8835426559237169799
+      Ent_AI_153: -4974748141577554850
+      Ent_AI_154: 916029798405798255
+      Ent_AI_155: 1723814518861533174
+      Ent_AI_156: 1334986910225135903
+      Ent_AI_157: 8064439289209954044
+      Ent_AI_158: -4459964804989548599
+      Ent_AI_159: 1803817144590594130
+      Ent_AI_16: -2932126590635676311
+      Ent_AI_160: -7063836349028117621
+      Ent_AI_161: 3251588496404654807
+      Ent_AI_162: -7822371581760826662
+      Ent_AI_163: -5663556714710001553
+      Ent_AI_164: -2367945562831553126
+      Ent_AI_165: -8772381560962744852
+      Ent_AI_166: -3601119814186556870
+      Ent_AI_167: -8128047584410295045
+      Ent_AI_168: -6827090820187713402
+      Ent_AI_169: -1430222160397741872
+      Ent_AI_17: 93724881666968690
+      Ent_AI_170: 5582324315076069859
+      Ent_AI_171: -5455031093930352885
+      Ent_AI_172: 2046989728519560083
+      Ent_AI_173: -5738886616886538190
+      Ent_AI_174: -1987546352551193466
+      Ent_AI_175: -2391943812643236912
+      Ent_AI_176: 6081199250553779719
+      Ent_AI_177: -4041735238531467967
+      Ent_AI_178: 1228394843108002080
+      Ent_AI_179: -6709412867267479337
+      Ent_AI_18: -3682766444294482507
+      Ent_AI_180: -1362034497268816427
+      Ent_AI_181: -1609822949410441738
+      Ent_AI_182: 596669237020107498
+      Ent_AI_183: -1971273230005920487
+      Ent_AI_184: -7130314803945789121
+      Ent_AI_185: -1664956695524039640
+      Ent_AI_186: -4314570444225168131
+      Ent_AI_187: 652861269982432102
+      Ent_AI_188: -7714325702559863860
+      Ent_AI_189: 3184615553778590178
+      Ent_AI_19: -8619251822258690252
+      Ent_AI_190: -5538533323818099352
+      Ent_AI_191: 4978266471864059038
+      Ent_AI_192: -1002467515676409354
+      Ent_AI_193: 1022770351798074085
+      Ent_AI_194: -2455928974948055829
+      Ent_AI_195: 8229603843554396382
+      Ent_AI_196: 5177262116213109192
+      Ent_AI_197: -4042370966934692329
+      Ent_AI_198: 476887755636171599
+      Ent_AI_199: -7957737801174745703
+      Ent_AI_2: -6288590348172121121
+      Ent_AI_20: 6742900665217937982
+      Ent_AI_200: 1984644879857920362
+      Ent_AI_201: -163948997421909670
+      Ent_AI_202: 1220487971439119425
+      Ent_AI_203: 4210102917552862976
+      Ent_AI_204: 2818254546782145530
+      Ent_AI_205: 2458389169235029294
+      Ent_AI_206: -3014189836022303861
+      Ent_AI_207: -8796838989294004242
+      Ent_AI_208: 3982458524798197888
+      Ent_AI_209: -3774072324058696439
+      Ent_AI_21: -415917655278240918
+      Ent_AI_210: -2797945962550232895
+      Ent_AI_211: 5605124239057071140
+      Ent_AI_212: 1888366320457456257
+      Ent_AI_213: -6028588189749407456
+      Ent_AI_214: 6477156298191896143
+      Ent_AI_215: 863887512916617980
+      Ent_AI_216: 7244533979002490807
+      Ent_AI_217: 5167878078595004670
+      Ent_AI_218: 4091663231838725816
+      Ent_AI_219: 5656454320413648041
+      Ent_AI_22: 6488449452818566579
+      Ent_AI_220: 5293177787407579620
+      Ent_AI_221: -7433765169118100556
+      Ent_AI_222: 612720923830995656
+      Ent_AI_223: -1996838809526087301
+      Ent_AI_224: 4630149291588854067
+      Ent_AI_225: -8640923487156571630
+      Ent_AI_226: -7069166397259074009
+      Ent_AI_227: -3070012492831775031
+      Ent_AI_228: -7858301273550012064
+      Ent_AI_229: -5066953702974180188
+      Ent_AI_23: -2788427659411147108
+      Ent_AI_230: -1422882037993326692
+      Ent_AI_231: -5372514319272503238
+      Ent_AI_232: -1105712649202702086
+      Ent_AI_233: -3975156340367950179
+      Ent_AI_234: 4640841515605115320
+      Ent_AI_235: -8061432081637927049
+      Ent_AI_236: -2736174381717555653
+      Ent_AI_237: -8874317023078722076
+      Ent_AI_238: 4308138312272785314
+      Ent_AI_239: -854080593870067282
+      Ent_AI_24: 9181216012100991749
+      Ent_AI_240: -5990822446452180345
+      Ent_AI_241: 5824980185426406854
+      Ent_AI_242: 1697596497725269899
+      Ent_AI_243: 2427593155874596157
+      Ent_AI_244: 2679745900685983473
+      Ent_AI_245: -8623319525098316194
+      Ent_AI_246: 2691924842062282970
+      Ent_AI_247: 2976399528793167071
+      Ent_AI_248: -3867287996390455831
+      Ent_AI_249: 3966339134484327741
+      Ent_AI_25: -4045292943617349872
+      Ent_AI_250: -893790780755818903
+      Ent_AI_251: -5026401900085688870
+      Ent_AI_252: -8732424688708702109
+      Ent_AI_253: -3104272971288695836
+      Ent_AI_26: -7147882411475700632
+      Ent_AI_27: 6907301493153271613
+      Ent_AI_28: 2523530084756638555
+      Ent_AI_29: 8558486732064304533
+      Ent_AI_3: 6034258533060657188
+      Ent_AI_30: 1198516566987698440
+      Ent_AI_31: -809518673467300936
+      Ent_AI_32: 1519675261277782809
+      Ent_AI_33: -1271809678420273354
+      Ent_AI_34: 32000937757884877
+      Ent_AI_35: -7877159639693822064
+      Ent_AI_36: 1027602492292101689
+      Ent_AI_37: -2584719430679710369
+      Ent_AI_38: -3457002641323963344
+      Ent_AI_39: 7459458250200510431
+      Ent_AI_4: 1036245303183027948
+      Ent_AI_40: -9194488968047605413
+      Ent_AI_41: 7207373205166970234
+      Ent_AI_42: -4451413514737137248
+      Ent_AI_43: -4933596224348587910
+      Ent_AI_44: -7690638593281897373
+      Ent_AI_45: -7395068725635343105
+      Ent_AI_46: -7494489337138433452
+      Ent_AI_47: -5664323944658708763
+      Ent_AI_48: -7336546478894055401
+      Ent_AI_49: 2303841057284654271
+      Ent_AI_5: 7246323100940004473
+      Ent_AI_50: 1552165228042641707
+      Ent_AI_51: -1637984606796049611
+      Ent_AI_52: 6864500128354219655
+      Ent_AI_53: -8052884715532813271
+      Ent_AI_54: 2870039824965729507
+      Ent_AI_55: 6210934131606464754
+      Ent_AI_56: -4415482926171312546
+      Ent_AI_57: -7659196858665129772
+      Ent_AI_58: 8053627645880387102
+      Ent_AI_59: -3939656882331119266
+      Ent_AI_6: -457944105664279286
+      Ent_AI_60: 274439419328528293
+      Ent_AI_61: -4985091021602438269
+      Ent_AI_62: -589366255349510385
+      Ent_AI_63: 4727542893897922005
+      Ent_AI_64: 6552108773874787007
+      Ent_AI_65: 8766774964207496342
+      Ent_AI_66: 6443743932974084990
+      Ent_AI_67: 5675005223456720996
+      Ent_AI_68: -6962402466365896572
+      Ent_AI_69: 8995623564594536108
+      Ent_AI_7: -3589691756395543409
+      Ent_AI_70: -167992922783331037
+      Ent_AI_71: -5203902582079370155
+      Ent_AI_72: 7636132103400008480
+      Ent_AI_73: -7034821988898237786
+      Ent_AI_74: 2047393392280501897
+      Ent_AI_75: -6760603987127369931
+      Ent_AI_76: -5826825661673678139
+      Ent_AI_77: -390693286039207895
+      Ent_AI_78: 3329531874796399214
+      Ent_AI_79: 5304498668464039791
+      Ent_AI_8: 3078079562633312307
+      Ent_AI_80: -7133524289899591552
+      Ent_AI_81: 8376049362995650672
+      Ent_AI_82: 3225562285050434253
+      Ent_AI_83: -7289369353006023969
+      Ent_AI_84: -2459866991898153186
+      Ent_AI_85: 3909273448864885021
+      Ent_AI_86: -7986832591687299385
+      Ent_AI_87: -3251248582134102593
+      Ent_AI_88: 4365545407406726178
+      Ent_AI_89: -8054983375176198665
+      Ent_AI_9: -8034963104829112478
+      Ent_AI_90: -8525751981813334139
+      Ent_AI_91: -7521544689294266510
+      Ent_AI_92: 161993583013830328
+      Ent_AI_93: 5064308941518765886
+      Ent_AI_94: 8507253143473446277
+      Ent_AI_95: -389773614641642234
+      Ent_AI_96: 7334015686618004094
+      Ent_AI_97: 1737175230151782867
+      Ent_AI_98: 7302195561443438228
+      Ent_AI_99: -2680199246627436280
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

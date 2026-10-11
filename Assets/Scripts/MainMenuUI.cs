@@ -84,6 +84,27 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
+        // TU BYL BLAD: gdy gracz kliknal "Wczytaj gre" w MENU PAUZY
+        // (PauseMenuUI.OnLoadGameClicked), ta metoda ustawia
+        // GameSession.IsLoadingSave = true i wraca do sceny MainMenu, licząc
+        // (patrz komentarz w PauseMenuUI.QuitToMainMenu), ze menu "od razu
+        // wystartuje gre z zapisu". Tyle ze nic tego nie robilo - ten skrypt
+        // zawsze po prostu pokazywal menu i czekal na klik, wiec "Load" w
+        // pauzie wygladal identycznie jak "Main Menu" (oba lądowaly na
+        // ekranie menu). Teraz sprawdzamy te flage od razu na starcie.
+        if (GameSession.IsLoadingSave)
+        {
+            // Od razu w czern - bez tego na ulamek sekundy mignelby ekran menu.
+            if (fadeGroup != null)
+            {
+                fadeGroup.alpha = 1f;
+                fadeGroup.blocksRaycasts = true;
+            }
+
+            EnterGame();
+            return;
+        }
+
         ShowMainPanel();
 
         // Brak zapisu = przycisk wyszarzony, a nie klikalny w pustke
@@ -268,8 +289,9 @@ public class MainMenuUI : MonoBehaviour
 
     private IEnumerator EnterGameRoutine()
     {
-        // Muzyka menu ustepuje miejsca muzyce gry
-        if (MusicPlayer.instance != null) MusicPlayer.instance.PlayGameTheme();
+        // Muzyka menu ustepuje miejsca muzyce gry - losowa playlista z World Themes,
+        // a nie pojedynczy staly Game Theme (patrz MusicPlayer.PlayWorldPlaylist()).
+        if (MusicPlayer.instance != null) MusicPlayer.instance.PlayWorldPlaylist();
 
         if (fadeGroup != null)
         {

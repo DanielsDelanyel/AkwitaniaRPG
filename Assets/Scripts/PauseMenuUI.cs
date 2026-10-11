@@ -329,6 +329,12 @@ public class PauseMenuUI : MonoBehaviour
         // 2. Zdejmujemy wszystkie blokady ruchu - nowa sesja zaczyna od zera
         UILock.ClearAll();
 
+        // Siatka bezpieczenstwa: normalnie kazdy przeciwnik wypisuje sie sam
+        // (OnDestroy przy zmianie sceny), ale na wszelki wypadek czyscimy tu
+        // tez recznie - inaczej "zawieszony" wpis blokowalby wejscia do
+        // lokacji w nowej rozgrywce, mimo ze zaden przeciwnik juz nie istnieje.
+        CombatTracker.ClearAll();
+
         // Stan swiata zostaje w pamieci tylko wtedy, gdy zaraz wczytamy zapis.
         // Przy zwyklym wyjsciu do menu czyscimy go, zeby nowa gra nie
         // odziedziczyla otwartych skrzyn po poprzedniej rozgrywce.

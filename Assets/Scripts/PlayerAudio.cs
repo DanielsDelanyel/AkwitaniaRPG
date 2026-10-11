@@ -40,12 +40,14 @@ public class PlayerAudio : MonoBehaviour
     [Range(0f, 1f)] public float actionVolume = 0.8f;
 
     private Rigidbody2D rb;
+    private TopDownMovement movement; // opcjonalny - jesli jest, wyciszamy kroki w trakcie dasha
     private float stepTimer;
 
     void Awake()
     {
         instance = this;
         rb = GetComponent<Rigidbody2D>();
+        movement = GetComponent<TopDownMovement>();
     }
 
     void Update()
@@ -56,6 +58,14 @@ public class PlayerAudio : MonoBehaviour
     private void HandleFootsteps()
     {
         if (footstepSounds == null || footstepSounds.Length == 0 || rb == null) return;
+
+        // Dash ma juz WLASNY odglos (PlayDash) - bez tego kroki nakladalyby sie na
+        // niego, bo w trakcie dasha Rigidbody porusza sie duzo szybciej niz referenceSpeed.
+        if (movement != null && movement.IsDashing)
+        {
+            stepTimer = 0f;
+            return;
+        }
 
         float speed = rb.linearVelocity.magnitude;
         if (speed < minSpeedForFootsteps)

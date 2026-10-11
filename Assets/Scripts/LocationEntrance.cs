@@ -36,6 +36,19 @@ public class LocationEntrance : MonoBehaviour
     public bool consumeKey = false;
     public string lockedMessage = "Drzwi sa zamkniete.";
 
+    // ===============================================================
+    // NOWE: BLOKADA WEJSCIA PODCZAS AKTYWNEJ WALKI
+    // Gracz nie moze uciec do budynku/innej lokacji, dopoki jakis przeciwnik
+    // go aktywnie goni/atakuje (patrz CombatTracker.cs oraz BanditAI/ArcherAI,
+    // ktore sie tam zglaszaja przy pogoni i wypisuja po utracie agra/smierci).
+    // ===============================================================
+    [Header("Blokada Walki")]
+    [Tooltip("Jesli zaznaczone, wejscie jest niemozliwe, dopoki gracz jest goniony " +
+             "(CombatTracker.IsPlayerInCombat). Odznacz dla wejsc, ktore maja byc " +
+             "zawsze dostepne (np. bezpieczna kryjowka na questa).")]
+    public bool blockDuringCombat = true;
+    public string combatBlockedMessage = "Nie mozesz teraz tam wejsc - najpierw zgub albo pokonaj przeciwnika!";
+
     private Transform playerTransform;
     private bool isPlayerClose;
 
@@ -113,6 +126,16 @@ public class LocationEntrance : MonoBehaviour
         }
 
         if (LocationManager.instance.IsTransitioning) return;
+
+        // NOWE: gracz jest w trakcie aktywnej walki (jakis przeciwnik go goni/atakuje)
+        // - nie pozwalamy mu uciec do srodka, dopoki nie pokona przeciwnika albo
+        // nie ucieknie na tyle daleko, zeby ten dal sobie spokoj (deaggro).
+        if (blockDuringCombat && CombatTracker.IsPlayerInCombat)
+        {
+            Debug.Log(combatBlockedMessage);
+            PlayerNotice.Show(combatBlockedMessage);
+            return;
+        }
 
         // Blokada na klucz
         if (isLocked)

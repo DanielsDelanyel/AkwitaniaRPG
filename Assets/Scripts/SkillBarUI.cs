@@ -21,10 +21,8 @@ public class SkillBarUI : MonoBehaviour
     [Header("Panel")]
     public GameObject skillBarWindow;
 
-    [Tooltip("Klawisz otwierajacy/zamykajacy ten panel. W przyszlosci, przy opcjach " +
-             "sterowania, bedzie mozna to przemapowac z poziomu UI - na razie zmieniaj " +
-             "recznie tutaj.")]
-    public KeyCode togglePanelKey = KeyCode.H;
+    // Klawisz otwierajacy/zamykajacy ten panel jest teraz PRZEMAPOWYWALNY w ekranie
+    // Opcji (GameSettings, akcja "ToggleSkillBar") zamiast sztywnego pola tutaj.
 
     [Header("Paleta - WSZYSTKIE odblokowane umiejetnosci (prawa strona)")]
     [Tooltip("Rodzic zawierajacy statyczne sloty palety (SkillBarSlot z Is Palette Slot = true).")]
@@ -53,6 +51,9 @@ public class SkillBarUI : MonoBehaviour
 
     private SkillBarSlot[] paletteSlots;
     private SkillBarSlot[] hotbarSlots;
+
+    // Cache klawisza otwierania panelu - patrz komentarz przy dawnym polu togglePanelKey wyzej.
+    private KeyCode togglePanelKeyCached;
 
     // Odczytywane przez SkillHUD (pasek widoczny podczas rozgrywki) - ten panel
     // przypisywania pozostaje jedynym zrodlem prawdy o tym, co jest pod jakim klawiszem.
@@ -86,6 +87,28 @@ public class SkillBarUI : MonoBehaviour
         hotbarSlots = hotbarArea != null
             ? hotbarArea.GetComponentsInChildren<SkillBarSlot>(true)
             : new SkillBarSlot[0];
+
+        RefreshKeyBindings();
+        GameSettings.OnKeyBindingsChanged += RefreshKeyBindings;
+    }
+
+    // Wolane raz w Awake i za kazdym razem, gdy gracz przemapuje jakikolwiek klawisz
+    // w Opcjach - oprocz klawisza panelu, synchronizuje TEZ Bound Key kazdego slotu
+    // hotbara ("Hotbar1".."Hotbar8" w GameSettings) i od razu odswieza jego podpis
+    // ("4" itp.) przez SkillBarSlot.UpdateKeyLabel().
+    public void RefreshKeyBindings()
+    {
+        togglePanelKeyCached = GameSettings.GetKey("ToggleSkillBar");
+
+        if (hotbarSlots == null) return;
+
+        for (int i = 0; i < hotbarSlots.Length && i < 8; i++)
+        {
+            if (hotbarSlots[i] == null) continue;
+
+            hotbarSlots[i].boundKey = GameSettings.GetKey($"Hotbar{i + 1}");
+            hotbarSlots[i].UpdateKeyLabel();
+        }
     }
 
     void Start()
@@ -106,13 +129,14 @@ public class SkillBarUI : MonoBehaviour
     void OnDestroy()
     {
         if (PlayerSkills.instance != null) PlayerSkills.instance.onSkillsChanged -= RefreshPalette;
+        GameSettings.OnKeyBindingsChanged -= RefreshKeyBindings;
     }
 
     public bool IsOpen { get { return skillBarWindow != null && skillBarWindow.activeSelf; } }
 
     void Update()
     {
-        if (Input.GetKeyDown(togglePanelKey)) TryTogglePanel();
+        if (Input.GetKeyDown(togglePanelKeyCached)) TryTogglePanel();
 
         if (draggedSkill != null && dragImage != null)
         {
@@ -287,5 +311,45 @@ public class SkillBarUI : MonoBehaviour
     public void ClearDraggedSkill()
     {
         SetDraggedSkill(null);
+    }
+
+    // ===============================================================
+    // ZAPIS / WCZYTYWANIE HOTBARA (SaveManager)
+    // ===============================================================
+
+    // Zwraca ID umiejetnosci przypisanych do kazdego slotu hotbara, W TEJ SAMEJ
+    // KOLEJNOSCI co hotbarSlots - pusty string dla slotu bez przypisania.
+    public List<string> GetHotbarForSave()
+    {
+        List<string> result = new List<string>();
+        if (hotbarSlots == null) return result;
+
+        foreach (SkillBarSlot slot in hotbarSlots)
+        {
+            result.Add(slot != null && slot.skill != null ? slot.skill.GetId() : "");
+        }
+        return result;
+    }
+
+    // Odtwarza przypisania hotbara z zapisu - wywolywane przez SaveManager PO
+    // PlayerSkills.LoadFrom(), zeby odblokowane umiejetnosci juz istnialy.
+    public void LoadHotbarFrom(List<string> savedIds)
+    {
+        if (hotbarSlots == null) return;
+
+        SkillDatabase db = SkillDatabase.Instance;
+
+        for (int i = 0; i < hotbarSlots.Length; i++)
+        {
+            if (hotbarSlots[i] == null) continue;
+
+            string id = (savedIds != null && i < savedIds.Count) ? savedIds[i] : "";
+            SkillData skill = (db != null && !string.IsNullOrEmpty(id)) ? db.Find(id) : null;
+
+            hotbarSlots[i].AssignSkill(skill);
+        }
+
+        // SkillHUD (pasek widoczny podczas gry) ma sie odswiezyc razem z panelem.
+        NotifyHotbarChanged();
     }
 }

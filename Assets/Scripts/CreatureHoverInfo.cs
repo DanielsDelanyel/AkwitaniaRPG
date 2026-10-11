@@ -57,6 +57,7 @@ public class CreatureHoverInfo : MonoBehaviour
             healthFillBar.localScale = scale;
         }
     }
+    
 
     // Wymaga Collider2D na tym obiekcie i Camera gdziekolwiek w scenie - Unity samo
     // wysyla te zdarzenia, bez pisania wlasnego Raycasta.
