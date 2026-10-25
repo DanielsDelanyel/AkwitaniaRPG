@@ -55,6 +55,12 @@ public class InventoryTooltip : MonoBehaviour
     [Tooltip("Zaznacz, jesli okno ma Vertical Layout Group + Content Size Fitter.")]
     public bool autoResize = false;
 
+    [Tooltip("Minimalny odstep (w pikselach ekranu) miedzy oknem a krawedzia ekranu.")]
+    public float screenMargin = 4f;
+
+    // Bufor na rogi okna - zeby nie tworzyc nowej tablicy co klatke
+    private readonly Vector3[] corners = new Vector3[4];
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
@@ -103,6 +109,48 @@ public class InventoryTooltip : MonoBehaviour
         float currentOffsetY = pivotY == 1f ? -Mathf.Abs(offsetY) : Mathf.Abs(offsetY);
 
         transform.position = mousePos + new Vector2(currentOffsetX, currentOffsetY);
+
+        // Okno podaza za myszka, ale zatrzymuje sie na krawedzi ekranu
+        KeepOnScreen();
+    }
+
+    // ===============================================================
+    // NOWE: TRZYMANIE OKNA W GRANICACH EKRANU
+    // Sprawdzamy, gdzie FAKTYCZNIE leza rogi okna (juz po przeskalowaniu
+    // przez Canvas Scaler), i jesli ktorys wystaje za ekran - przesuwamy
+    // cale okno z powrotem. Dziala niezaleznie od rozdzielczosci, pivotu
+    // i tego, jak duze jest okno w danej chwili (np. dlugi opis).
+    // Canvas jest w trybie Screen Space - Overlay, wiec rogi w "world space"
+    // to po prostu piksele ekranu.
+    // ===============================================================
+    private void KeepOnScreen()
+    {
+        rectTransform.GetWorldCorners(corners); // [0] = lewy dol, [2] = prawy gora
+
+        float left = corners[0].x;
+        float bottom = corners[0].y;
+        float right = corners[2].x;
+        float top = corners[2].y;
+
+        float minX = screenMargin;
+        float maxX = Screen.width - screenMargin;
+        float minY = screenMargin;
+        float maxY = Screen.height - screenMargin;
+
+        Vector3 shift = Vector3.zero;
+
+        // Poziomo: jesli okno jest szersze niz ekran, przyklejamy je do lewej krawedzi
+        if (right - left > maxX - minX) shift.x = minX - left;
+        else if (left < minX) shift.x = minX - left;
+        else if (right > maxX) shift.x = maxX - right;
+
+        // Pionowo: jesli okno jest wyzsze niz ekran, przyklejamy je do gornej krawedzi
+        // (tam jest nazwa przedmiotu - najwazniejsza czesc)
+        if (top - bottom > maxY - minY) shift.y = maxY - top;
+        else if (top > maxY) shift.y = maxY - top;
+        else if (bottom < minY) shift.y = minY - bottom;
+
+        if (shift != Vector3.zero) transform.position += shift;
     }
 
     // Chowanie przez przezroczystosc, NIE przez SetActive - obiekt musi zyc,
@@ -131,15 +179,11 @@ public class InventoryTooltip : MonoBehaviour
 
         isPinned = true;
         rectTransform.pivot = new Vector2(0f, 1f);
-        transform.position = ClampToScreen(screenPosition);
-    }
+        transform.position = screenPosition;
 
-    private Vector3 ClampToScreen(Vector2 pos)
-    {
-        Vector2 size = rectTransform.sizeDelta;
-        float x = Mathf.Clamp(pos.x, 0f, Mathf.Max(0f, Screen.width - size.x));
-        float y = Mathf.Clamp(pos.y, Mathf.Min(size.y, Screen.height), Screen.height);
-        return new Vector3(x, y, 0f);
+        // Stary ClampToScreen liczyl rozmiar w jednostkach Canvasu (sizeDelta),
+        // a nie w pikselach ekranu - przy skalowanym Canvasie okno i tak wystawalo.
+        KeepOnScreen();
     }
 
     private void Fill(ItemData item)

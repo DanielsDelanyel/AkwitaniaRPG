@@ -1,0 +1,140 @@
+﻿Kategoria;Plik;Szerokość px;Wysokość px;Rozmiar KB;Ścieżka w projekcie;Używane w
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Tezcatlipoca_spritesheet.png;1408;384;55;Assets/Animations/Aztekowiec/Tezcatlipoca_spritesheet.png;AztecAnim
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/tezcatlipoca.gif;128;128;101;Assets/Beings/Aztec/tezcatlipoca.gif;Aztekowiec
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Bandit1SouthIdle.png;36;33;1;Assets/Beings/Bandit1/Bandit1SouthIdle.png;BanditMeele1, BanditRange2
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Boar_Attack_with_shadow.png;160;128;7;Assets/Beings/Boar/Boar_Attack_with_shadow.png;AttackBoar, AttackBoarE, AttackBoarN, AttackBoarW
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Boar_Death_with_shadow.png;192;128;8;Assets/Beings/Boar/Boar_Death_with_shadow.png;DeadBoar, DeadBoarE, DeadBoarN, DeadBoarW
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Boar_Hurt_with_shadow.png;128;128;6;Assets/Beings/Boar/Boar_Hurt_with_shadow.png;HurtBoar, HurtBoarE, HurtBoarN, HurtBoarW
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Boar_Idle_with_shadow.png;128;128;3;Assets/Beings/Boar/Boar_Idle_with_shadow.png;Boar, IdleBoar, IdleBoarE, IdleBoarN, IdleBoarW
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Boar_Run_with_shadow.png;160;128;6;Assets/Beings/Boar/Boar_Run_with_shadow.png;RunBoar, RunBoarE, RunBoarN, RunBoarW
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Boar_Walk_with_shadow.png;192;128;6;Assets/Beings/Boar/Boar_Walk_with_shadow.png;WalkBoar, WalkBoarE, WalkBoarN, WalkBoarW
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/EntPortrait_AI.jpg;2048;2048;2240;Assets/Beings/Ent/EntPortrait_AI.jpg;Elder_Ent
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Ent_AI.png;2048;2048;4083;Assets/Beings/Ent/Ent_AI.png;Elder_Ent
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Ents_hand.png;52;45;1;Assets/Beings/Ent/Ents_hand.png;Ents_hand, Ents_hand_Data
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Icon7.png;64;64;6;Assets/Beings/Lassi/Icon7.png;Bootstrap, Lassi
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Idle_South_0.png;24;32;1;Assets/Beings/Lassi/Type 1/Idle/Idle_South_0.png;Lassi, idle
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Idle_South_1.png;24;32;1;Assets/Beings/Lassi/Type 1/Idle/Idle_South_1.png;idle
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Idle_South_2.png;24;32;1;Assets/Beings/Lassi/Type 1/Idle/Idle_South_2.png;idle
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Idle_South_3.png;24;32;1;Assets/Beings/Lassi/Type 1/Idle/Idle_South_3.png;idle
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Skeleton.png;37;49;1;Assets/Beings/Skeleton/Skeleton.png;Skeleton_0
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/Training Dummy Sprite Sheet (1).png;256;96;53;Assets/Beings/Training Dummy Sprite Sheet (1).png;World
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/sheep_ai.png;128;104;23;Assets/Beings/sheep/sheep_ai.png;Sheep, idlee
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/sheep_ai_walk1.png;163;117;32;Assets/Beings/sheep/sheep_ai_walk1.png;walke
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/sheep_ai_walk3.png;163;126;32;Assets/Beings/sheep/sheep_ai_walk3.png;walke
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/sheep_ai_walk4.png;162;128;30;Assets/Beings/sheep/sheep_ai_walk4.png;walke
+Postacie, NPC i wrogowie;02_Postacie_NPC_wrogowie/sheep_ai_walk5.png;163;128;31;Assets/Beings/sheep/sheep_ai_walk5.png;walke
+Efekty umiejętności;08_Efekty/PoisonousCloud.png;128;128;3;Assets/Effects/PoisonousCloud.png;PoisonousCloud_0
+Efekty umiejętności;08_Efekty/sparksWave.png;46;96;1;Assets/Effects/sparksWave.png;sparksWave
+Efekty umiejętności;08_Efekty/swing.png;128;128;2;Assets/Effects/swing.png;Shockwave
+Efekty umiejętności;08_Efekty/tornado.png;64;96;2;Assets/Effects/tornado.png;tornado
+Świat i otoczenie;03_Swiat_otoczenie/Bush_simple1_1.png;32;32;2;Assets/Environment/Assets_shadow/Bush_simple1_1.png;World
+Świat i otoczenie;03_Swiat_otoczenie/Bush_simple2_1.png;32;32;2;Assets/Environment/Assets_shadow/Bush_simple2_1.png;World
+Świat i otoczenie;03_Swiat_otoczenie/BanditsTent.png;56;48;1;Assets/Environment/BanditsTent.png;World
+Świat i otoczenie;03_Swiat_otoczenie/Cave Entrance 3.png;128;128;2;Assets/Environment/Cave Entrance 3.png;Sample Cave Entrance
+Świat i otoczenie;03_Swiat_otoczenie/15_Ready_to_use_Treasure_Chests_Spritesheet.png;1008;568;43;Assets/Environment/Chest/15_Ready_to_use_Treasure_Chests_Spritesheet.png;CommonChest, EpicChest
+Świat i otoczenie;03_Swiat_otoczenie/ChestRay2.png;32;32;1;Assets/Environment/Chest/ChestRay2.png;ChestRay
+Świat i otoczenie;03_Swiat_otoczenie/RockPile.png;64;64;2;Assets/Environment/RockPile.png;RockPile_0, World
+Świat i otoczenie;03_Swiat_otoczenie/Rocks_source.png;256;304;36;Assets/Environment/Rocks_source.png;Rock
+Świat i otoczenie;03_Swiat_otoczenie/Trees_shadow_source.png;800;192;93;Assets/Environment/Trees_shadow_source.png;Trees_shadow_source_0, World
+Świat i otoczenie;03_Swiat_otoczenie/banditscampfire.png;32;32;1;Assets/Environment/banditscampfire.png;World
+Świat i otoczenie;03_Swiat_otoczenie/shop.png;2208;1946;2661;Assets/Environment/shop.png;ShopKeeper
+Świat i otoczenie;03_Swiat_otoczenie/waterfall.png;64;64;3;Assets/Environment/waterfall.png;waterfall_0
+Broń i ekwipunek;06_Bron_ekwipunek/Icon21_no_effect.png;32;32;3;Assets/Equipment/Icon21_no_effect.png;HunterBow, HunterBow_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_01.png;32;32;1;Assets/Equipment/Iicon_32_01.png;Iron Sword, IronSword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_04.png;32;32;1;Assets/Equipment/Iicon_32_04.png;Syrius's Sword, Syrius's Sword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_17.png;32;32;1;Assets/Equipment/Iicon_32_17.png;GodsSword, GodsSword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_21.png;32;32;1;Assets/Equipment/Iicon_32_21.png;Exorcist's Sword, Exorcist's Sword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_25.png;32;32;1;Assets/Equipment/Iicon_32_25.png;Richard's Sword, Richard's Sword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_28.png;32;32;1;Assets/Equipment/Iicon_32_28.png;Templar's Sword, Templar's Sword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_32.png;32;32;1;Assets/Equipment/Iicon_32_32.png;Steel Sword, SteelSword_Data 1
+Broń i ekwipunek;06_Bron_ekwipunek/Iicon_32_35.png;32;32;1;Assets/Equipment/Iicon_32_35.png;Fencer's Sword, Fencer's Sword_Data
+Broń i ekwipunek;06_Bron_ekwipunek/QuaterStaff.png;64;64;1;Assets/Equipment/QuaterStaff.png;QuaterStaff, QuaterStaff_Data
+Broń i ekwipunek;06_Bron_ekwipunek/WukongsStaff.png;64;64;1;Assets/Equipment/WukongsStaff.png;Wukong'sStaff, WukongsStaff_Data
+Broń i ekwipunek;06_Bron_ekwipunek/archer_projectile_.png;64;64;1;Assets/Equipment/archer_projectile_.png;Arrow(s), Arrow_Data, EnemyFlyingArrow, FlyingArrow
+Broń i ekwipunek;06_Bron_ekwipunek/fc1573.png;64;64;1;Assets/Equipment/fc1573.png;Adept's_Strange_Wand, Adept's_Strange_Wand ItemData
+Broń i ekwipunek;06_Bron_ekwipunek/fc1782.png;64;64;1;Assets/Equipment/fc1782.png;Novice's_Fire_Wand, Novice's_Fire_Wand_Data
+Broń i ekwipunek;06_Bron_ekwipunek/fc2154.png;64;64;1;Assets/Equipment/fc2154.png;FlyingMysticArrow, FlyingMysticArrow_Data, MysticArrow(s), MysticArrow_Data
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_boots.png;64;64;1;Assets/Equipment/transparent_boots.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_chestplate.png;64;64;1;Assets/Equipment/transparent_chestplate.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_helmet.png;64;64;1;Assets/Equipment/transparent_helmet.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_mainhand.png;64;64;1;Assets/Equipment/transparent_mainhand.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_necklace.png;64;64;1;Assets/Equipment/transparent_necklace.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_offhand.png;64;64;1;Assets/Equipment/transparent_offhand.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_pants.png;64;64;1;Assets/Equipment/transparent_pants.png;Bootstrap
+Broń i ekwipunek;06_Bron_ekwipunek/transparent_ring.png;64;64;1;Assets/Equipment/transparent_ring.png;Bootstrap
+Wnętrza i meble;05_Wnetrza/furniture1.png;24;24;1;Assets/Interior/Furniture Pack/furniture1.png;VillageHouse_Interior
+Wnętrza i meble;05_Wnetrza/furniture14.png;24;24;1;Assets/Interior/Furniture Pack/furniture14.png;VillageHouse_Interior
+Wnętrza i meble;05_Wnetrza/furniture6.png;24;24;1;Assets/Interior/Furniture Pack/furniture6.png;VillageHouse_Interior
+Wnętrza i meble;05_Wnetrza/furniture7.png;24;24;1;Assets/Interior/Furniture Pack/furniture7.png;VillageHouse_Interior
+Wnętrza i meble;05_Wnetrza/furniture9.png;24;24;1;Assets/Interior/Furniture Pack/furniture9.png;VillageHouse_Interior
+Wnętrza i meble;05_Wnetrza/beds_BR.png;231;256;5;Assets/Interior/pixelinterior_BR_v1.1/beds_BR.png;VillageHouse_Interior
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1814.png;64;64;1;Assets/Items/fc1814.png;Fine Coat_itemData, Fine Hood_itemData, Scroll_of_death, Scroll_of_death_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1815.png;64;64;1;Assets/Items/fc1815.png;Ifrit's heart, Ifrit's heart_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1816.png;64;64;1;Assets/Items/fc1816.png;Life essence, Life essence_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1826.png;64;64;1;Assets/Items/fc1826.png;Fine Coat
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1841.png;64;64;1;Assets/Items/fc1841.png;Wizard's hat, Wizard's hat_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1842.png;64;64;1;Assets/Items/fc1842.png;Worn Wizard's hat, Worn Wizard's hat_itemData 1
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1845.png;64;64;1;Assets/Items/fc1845.png;Golden_Ring_with_Ruby, Golden_Ring_with_Ruby_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc1861.png;64;64;1;Assets/Items/fc1861.png;Poor Duckin foottrooper's padded armor, Poor Duckin foottrooper's padded armor_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc2015.png;64;64;1;Assets/Items/fc2015.png;Simple Hood, Simple Hood_itemData 1
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc2016.png;64;64;1;Assets/Items/fc2016.png;Fine Hood
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc2123.png;64;64;1;Assets/Items/fc2123.png;Viking's shield, Viking's_shield_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc2124.png;64;64;1;Assets/Items/fc2124.png;Viking's chief shield, Viking's chief shield_itemData 1
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc2189.png;64;64;1;Assets/Items/fc2189.png;Golden_Ring_with_Saphires, Golden_Ring_with_Saphires_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc275.png;64;64;1;Assets/Items/fc275.png;SmallHealPotion, SmallHealPotion_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc280.png;64;64;1;Assets/Items/fc280.png;HealPotion, HealPotion_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc283.png;64;64;1;Assets/Items/fc283.png;BigHealPotion, BigHealPotion_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc284.png;64;64;1;Assets/Items/fc284.png;LargeHealPotion, LargeHealPotion_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc433.png;64;64;1;Assets/Items/fc433.png;Strawberry, Strawberry(gift)_itemData, Strawberry_itemData, Strawberrygift
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc504.png;64;64;1;Assets/Items/fc504.png;Beer, Beer_itemData
+Przedmioty (mikstury, jedzenie, pancerze);07_Przedmioty/fc517.png;64;64;1;Assets/Items/fc517.png;Cookie, Cookie_itemData 1
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/CoastTiles1.png;96;96;6;Assets/Tiles/CoastTiles1.png;CoastTiles1_0, CoastTiles1_1, CoastTiles1_2, CoastTiles1_3, CoastTiles1_4, CoastTiles1_5, CoastTiles1_6, CoastTiles1_7, CoastTiles1_8, World
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/CoastTiles2.png;64;64;2;Assets/Tiles/CoastTiles2.png;CoastTiles2_0, CoastTiles2_1, CoastTiles2_2, CoastTiles2_3, World
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/Sprite-0001.png;64;64;1;Assets/Tiles/Sprite-0001.png;Sprite-0001, Sprite-0001_0, Sprite-0001_1, Sprite-0001_2, Sprite-0001_3, World
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/Walls_street.png;336;288;20;Assets/Tiles/Walls_street.png;Walls_street_23, Walls_street_36, Walls_street_37, World
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/basewall.png;32;32;1;Assets/Tiles/basewall.png;SampleCave, VillageHouse_Interior, basewall
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/planks1.png;32;32;1;Assets/Tiles/planks1.png;VillageHouse_Interior, planks1
+Tilesety (podłoże, ściany, wybrzeże);04_Tilesety/tileset_kraina_druga.png;447;384;141;Assets/Tiles/tileset_kraina_druga.png;SampleCave, tileset_kraina_druga_0, tileset_kraina_druga_1, tileset_kraina_druga_102, tileset_kraina_druga_104, tileset_kraina_druga_106, tileset_kraina_druga_11, tileset_kraina_druga_12, tileset_kraina_druga_13, tileset_kraina_druga_2, tileset_kraina_druga_24, tileset_kraina_druga_25, tileset_kraina_druga_26, tileset_kraina_druga_27, tileset_kraina_druga_3, tileset_kraina_druga_43, tileset_kraina_druga_44, tileset_kraina_druga_45, tileset_kraina_druga_94, tileset_kraina_druga_96
+Interfejs (UI, menu, ikony);09_Interfejs_UI/0.jpg;692;396;28;Assets/UI/0.jpg;Bootstrap, ShopKeeper
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Action_panel.png;192;96;2;Assets/UI/Action_panel.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Border All 1.png;640;512;195;Assets/UI/Border All 1.png;Bootstrap, InventorySlot, ShopItemSlot, SkillBarSlot, SkillHUD Slot, SkillNode
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Border All 4.png;640;512;212;Assets/UI/Border All 4.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Common_rarity_icon2.png;64;64;1;Assets/UI/Common_rarity_icon2.png;Bootstrap, SkillHUD Slot
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Dialogue cloud.png;32;32;1;Assets/UI/Dialogue cloud.png;Elder_Ent, Lassi, ShopKeeper
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Epic_rarity_icon.png;1445;1498;1889;Assets/UI/Epic_rarity_icon.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Gemini_Generated_Image_dqgth1dqgth1dqgt-export.png;1408;736;857;Assets/UI/Gemini_Generated_Image_dqgth1dqgth1dqgt-export.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/blue-E.png;32;32;1;Assets/UI/Individual Icons/blue-E.png;Prompt_E
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Legendary_rarity_icon.png;1448;1609;2301;Assets/UI/Legendary_rarity_icon.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/LoadGameButton.png;62;30;1;Assets/UI/LoadGameButton.png;MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/LoadGameButtonpressed.png;62;30;1;Assets/UI/LoadGameButtonpressed.png;MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/LogosBackground-removebg-preview.png;500;500;269;Assets/UI/LogosBackground-removebg-preview.png;Bootstrap, MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/NewGameButton.png;62;30;1;Assets/UI/NewGameButton.png;MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/NewGameButtonpressed.png;62;30;1;Assets/UI/NewGameButtonpressed.png;MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Pixel UI pack 1.png;960;480;52;Assets/UI/Pixel UI pack 1.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Pixel UI pack 1_(2).png;960;480;52;Assets/UI/Pixel UI pack 1/Pixel UI pack 1.png;Bootstrap, MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Rare_rarity_icon2.png;64;64;1;Assets/UI/Rare_rarity_icon2.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/arrow_sack.png;64;64;1;Assets/UI/arrow_sack.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/character_panel.png;192;160;5;Assets/UI/craftpix-net-255216-free-basic-pixel-art-ui-for-rpg/PNG/character_panel.png;Bootstrap, InfoRoot, MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/dialog template.jpg;1383;381;66;Assets/UI/dialog template.jpg;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc1075.png;64;64;1;Assets/UI/fc1075.png;StatusIcons
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc1093.png;64;64;1;Assets/UI/fc1093.png;StatusIcons
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc1095.png;64;64;1;Assets/UI/fc1095.png;StatusIcons
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc1241.png;64;64;1;Assets/UI/fc1241.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc131.png;64;64;1;Assets/UI/fc131.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc695.png;64;64;1;Assets/UI/fc695.png;StatusIcons
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc719.png;64;64;1;Assets/UI/fc719.png;StatusIcons
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc742.png;64;64;1;Assets/UI/fc742.png;fc742
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc785.png;64;64;1;Assets/UI/fc785.png;WindMill
+Interfejs (UI, menu, ikony);09_Interfejs_UI/fc850.png;64;64;1;Assets/UI/fc850.png;RaiseOfSkeletons
+Interfejs (UI, menu, ikony);09_Interfejs_UI/gift_icon.png;64;64;10;Assets/UI/gift_icon.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/logo-removebg-preview.png;697;358;217;Assets/UI/logo-removebg-preview.png;Bootstrap, MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/main_menu_v2.jpg;2752;1536;2242;Assets/UI/main_menu_v2.jpg;MainMenu
+Interfejs (UI, menu, ikony);09_Interfejs_UI/pasek.png;64;8;1;Assets/UI/pasek.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/pasekfill.png;64;8;1;Assets/UI/pasekfill.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/shop_icon.png;60;60;9;Assets/UI/shop_icon.png;Bootstrap
+Interfejs (UI, menu, ikony);09_Interfejs_UI/tempArrow.png;32;32;1;Assets/UI/tempArrow.png;SkillArrow
+Interfejs (UI, menu, ikony);09_Interfejs_UI/Gemini_Generated_Image_d4uygtd4uygtd4uy.png;1408;736;1275;Assets/UI_graphics/Gemini_Generated_Image_d4uygtd4uygtd4uy.png;Bootstrap, MainMenu
+Postać gracza;01_Gracz/Unarmed_Idle_with_shadow.png;768;256;6;Assets/herochar sprites/Unarmed_Idle_with_shadow.png;Bootstrap
+Postać gracza;01_Gracz/Unarmed_Idle_with_shadow_(2).png;768;256;6;Assets/herochar sprites/craftpix-net-555940-free-base-4-direction-male-character-pixel-art/PNG/Unarmed/With_shadow/Unarmed_Idle_with_shadow.png;player_idle, player_idle_e, player_idle_n, player_idle_se, player_idle_sw, player_idle_w
+Postać gracza;01_Gracz/Unarmed_Walk_with_shadow.png;384;256;7;Assets/herochar sprites/craftpix-net-555940-free-base-4-direction-male-character-pixel-art/PNG/Unarmed/With_shadow/Unarmed_Walk_with_shadow.png;player_walk_e, player_walk_n, player_walk_s, player_walk_w
+Świat i otoczenie;03_Swiat_otoczenie/house3.png;64;69;2;Assets/pixel_houses/house3.png;SampleVillageHouse

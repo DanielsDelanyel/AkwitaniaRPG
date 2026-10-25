@@ -406,10 +406,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteraction
   startingNode: {fileID: 11400000, guid: 414189ff5f1d52a40a877431853e3da6, type: 2}
+  startingNodeIfFlag: {fileID: 11400000, guid: 223cc8a8ec5b3c348b4079b441022f13, type: 2}
+  startingNodeFlag: Lassi_przedstawiony
   dialogueBubble: {fileID: 5623083751145475145}
   bubbleSpriteRenderer: {fileID: 3411207190650844474}
   bubbleHeight: 0.15
   bubbleOffset: 0.12
+  affinityPenaltyOnProvoke: 15
 --- !u!114 &964639224927940176
 MonoBehaviour:
   m_ObjectHideFlags: 0

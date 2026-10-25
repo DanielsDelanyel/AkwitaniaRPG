@@ -30,9 +30,31 @@ public class DialogueOption
 
     public QuestState requiredState = QuestState.Active;
 
+    // ===============================================================
+    // NOWE: PAMIEC ROZMOWY (znaczniki w WorldState)
+    // Znaczniki to zwykle napisy, np. "Lassi_przedstawiony". Trafiaja do
+    // zapisu gry razem z otwartymi skrzyniami, wiec postac pamieta je
+    // takze po zmianie lokacji i po wczytaniu gry.
+    // ===============================================================
+    [Header("Pamiec (znaczniki swiata)")]
+    [Tooltip("Wybranie tej opcji USTAWIA ten znacznik, np. 'Lassi_przedstawiony'. " +
+             "Zostaw puste, jesli opcja nie ma niczego zapamietywac.")]
+    public string setFlag;
+
+    [Tooltip("Opcja ZNIKA, gdy ten znacznik jest ustawiony. Wpisz tu ten sam znacznik " +
+             "co w 'Set Flag', zeby opcja byla jednorazowa (np. przedstawienie sie).")]
+    public string hideIfFlag;
+
+    [Tooltip("Opcja pojawia sie TYLKO, gdy ten znacznik jest ustawiony " +
+             "(np. 'Pamietasz mnie?' dopiero po przedstawieniu sie).")]
+    public string showOnlyIfFlag;
+
     // Czy ta opcja ma sie teraz pokazac graczowi?
     public bool IsVisible()
     {
+        if (!string.IsNullOrEmpty(hideIfFlag) && WorldState.HasFlag(hideIfFlag)) return false;
+        if (!string.IsNullOrEmpty(showOnlyIfFlag) && !WorldState.HasFlag(showOnlyIfFlag)) return false;
+
         if (requiredQuest == null) return true;
 
         return QuestManager.GetState(requiredQuest) == requiredState;

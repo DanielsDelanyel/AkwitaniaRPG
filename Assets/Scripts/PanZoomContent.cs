@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 // wszystkie wezly/strzalki drzewka (SkillTreeUI.treeContent).
 //
 // WAZNE: zeby przeciaganie/scrollowanie dzialalo w KAZDYM miejscu okna (nie
-// tylko nad samymi ikonkami), rodzic tego obiektu (samo okno drzewka) musi miec
-// Image (moze byc niemal przezroczysty, np. alpha 0.01) z "Raycast Target"
-// zaznaczonym - inaczej klikniecie/scroll w puste miejsce nie trafi w nic i
-// UI go zignoruje. Nie dodawaj wbudowanego ScrollRect na ten sam obiekt -
+// tylko nad samymi ikonkami), rodzic tego obiektu (Viewport) musi miec
+// Image z zaznaczonym "Raycast Target". Przekazywanie zdarzen z tla do tego
+// skryptu zalatwia automatycznie PanZoomInputArea (doklejany w Awake).
+// Nie dodawaj wbudowanego ScrollRect na ten sam obiekt -
 // ten skrypt robi to samo recznie, zeby latwiej bylo trzymac awatar dokladnie
 // na srodku i swobodnie ustawic zakres zoomu.
 [RequireComponent(typeof(RectTransform))]
@@ -35,6 +35,17 @@ public class PanZoomContent : MonoBehaviour, IDragHandler, IScrollHandler
         rt = GetComponent<RectTransform>();
         parentCanvas = GetComponentInParent<Canvas>();
         homePosition = rt.anchoredPosition;
+
+        // NOWE: przeciaganie za PUSTE tlo. Zdarzenia z tla trafiaja w rodzica
+        // (Viewport) i nie schodza w dol do tego obiektu - dlatego doklejamy
+        // rodzicowi "lapacza", ktory przekazuje je tutaj (patrz PanZoomInputArea.cs).
+        // Rodzic musi miec Image z zaznaczonym Raycast Target - Viewport juz go ma.
+        if (rt.parent != null)
+        {
+            PanZoomInputArea area = rt.parent.GetComponent<PanZoomInputArea>();
+            if (area == null) area = rt.parent.gameObject.AddComponent<PanZoomInputArea>();
+            area.target = this;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

@@ -17,3 +17,20 @@ MonoBehaviour:
   - text: "Zmie\u0144my temat..."
     nextNode: {fileID: 11400000, guid: 414189ff5f1d52a40a877431853e3da6, type: 2}
     affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1
+    setFlag: 
+    hideIfFlag: Lassi_przedstawiony
+    showOnlyIfFlag: 
+  - text: "Zmie\u0144my temat..."
+    nextNode: {fileID: 11400000, guid: 223cc8a8ec5b3c348b4079b441022f13, type: 2}
+    affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 1
+    setFlag: 
+    hideIfFlag: 
+    showOnlyIfFlag: Lassi_przedstawiony

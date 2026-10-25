@@ -5,6 +5,27 @@ public class NPCInteraction : MonoBehaviour
     [Header("System Dialogowy")]
     public DialogueNode startingNode;
 
+    // NOWE: inny poczatek rozmowy, gdy postac juz cos o graczu wie.
+    // Np. po przedstawieniu sie Lassi nie mowi juz "Witaj, podrozniku",
+    // tylko wita gracza jak znajomego.
+    [Tooltip("Opcjonalnie: wezel startowy uzywany ZAMIAST 'Starting Node', gdy " +
+             "znacznik ponizej jest ustawiony. Zostaw puste = zawsze 'Starting Node'.")]
+    public DialogueNode startingNodeIfFlag;
+
+    [Tooltip("Znacznik, ktory przelacza poczatek rozmowy, np. 'Lassi_przedstawiony'.")]
+    public string startingNodeFlag;
+
+    private DialogueNode GetStartingNode()
+    {
+        if (startingNodeIfFlag != null
+            && !string.IsNullOrEmpty(startingNodeFlag)
+            && WorldState.HasFlag(startingNodeFlag))
+        {
+            return startingNodeIfFlag;
+        }
+        return startingNode;
+    }
+
     [Header("Elementy Dialogowe")]
     public GameObject dialogueBubble; // Nasz dymek
     public SpriteRenderer bubbleSpriteRenderer; // �eby odwraca� ogonek dymku
@@ -167,9 +188,11 @@ public class NPCInteraction : MonoBehaviour
         NPCStats stats = GetComponent<NPCStats>();
         bool isMerchant = stats != null && (stats.profession == "Kupiec" || stats.profession == "Kowal");
 
-        if (startingNode != null)
+        DialogueNode start = GetStartingNode();
+
+        if (start != null)
         {
-            DialogueManager.instance.StartDialogue(stats, startingNode, isMerchant);
+            DialogueManager.instance.StartDialogue(stats, start, isMerchant);
         }
         else
         {

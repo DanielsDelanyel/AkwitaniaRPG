@@ -15,15 +15,13 @@ MonoBehaviour:
   npcText: "Mi\u0142o ci\u0119 pozna\u0107! jestem druidk\u0105 Lassi, znana r\xF3wnie\u017C
     jako Mangolassi."
   options:
-  - text: "Jeste\u015B pi\u0119kna..."
-    nextNode: {fileID: 11400000, guid: c191cdbfd7159ed4f80dd5691f5c89eb, type: 2}
-    affinityChange: -10
-  - text: Co to za miejsce...?
-    nextNode: {fileID: 11400000, guid: d98b31cb324c5b745890038d909dd6b7, type: 2}
+  - text: "*bohater kiwa g\u0142ow\u0105, na znak zrozumienia*"
+    nextNode: {fileID: 11400000, guid: 223cc8a8ec5b3c348b4079b441022f13, type: 2}
     affinityChange: 0
-  - text: "Gdzie mog\u0119 znale\u017A\u0107..."
-    nextNode: {fileID: 11400000, guid: b2ab736b13d0d7f44abc7fd9bf936661, type: 2}
-    affinityChange: 0
-  - text: "Odchodz\u0119..."
-    nextNode: {fileID: 11400000, guid: 468e50de61df2f04c80ecf1a339df434, type: 2}
-    affinityChange: 0
+    questToStart: {fileID: 0}
+    questToComplete: {fileID: 0}
+    requiredQuest: {fileID: 0}
+    requiredState: 0
+    setFlag: 
+    hideIfFlag: 
+    showOnlyIfFlag: 

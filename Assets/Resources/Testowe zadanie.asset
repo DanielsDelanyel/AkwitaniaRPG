@@ -34,4 +34,4 @@ MonoBehaviour:
   consumeQuestItems: 1
   requiredQuests: []
   requiredLevel: 0
-  isMainQuest: 0
+  category: 1

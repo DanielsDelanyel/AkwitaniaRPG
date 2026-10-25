@@ -137,6 +137,15 @@ public class DialogueManager : MonoBehaviour
 
         DialogueOption selectedOption = currentNode.options[optionIndex];
 
+        // --- PAMIEC ROZMOWY ---
+        // Ustawiamy znacznik PRZED przejsciem do nastepnego wezla, zeby ten
+        // wezel juz "wiedzial", ze np. gracz sie przedstawil.
+        if (!string.IsNullOrEmpty(selectedOption.setFlag))
+        {
+            WorldState.SetFlag(selectedOption.setFlag);
+            Debug.Log($"Dialog: zapamietano znacznik '{selectedOption.setFlag}'.");
+        }
+
         // --- ZADANIA ---
         if (selectedOption.questToStart != null)
             QuestManager.StartQuest(selectedOption.questToStart);
