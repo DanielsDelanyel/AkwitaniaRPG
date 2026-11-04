@@ -1,0 +1,29 @@
+{
+  "questId": "tomasz_stolarz_oboz_bandytow",
+  "title": "Tomasz stolarz i obóz bandytów",
+  "giverNpc": "Tomasz Stolarz",
+  "objectives": [
+    {
+      "step": 1,
+      "type": "locate",
+      "target": "bandit_camp_forest"
+    },
+    {
+      "step": 2,
+      "type": "defeat",
+      "target": "forest_bandit_raider",
+      "count": 5
+    },
+    {
+      "step": 3,
+      "type": "retrieve",
+      "item": "stolen_carpenter_tools",
+      "count": 1
+    }
+  ],
+  "rewards": {
+    "gold": 180,
+    "xp": 450,
+    "item": "reinforced_oak_shield"
+  }
+}
