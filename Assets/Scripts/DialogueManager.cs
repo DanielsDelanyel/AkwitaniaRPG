@@ -70,6 +70,11 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        // NOWE: jesli widocznych opcji jest wiecej niz przyciskow w scenie,
+        // dorabiamy brakujace przyciski (kopie ostatniego). Wczesniej nadmiarowe
+        // opcje po cichu znikaly - np. "Odchodze..." u Lassi przy 6 opcjach i 5 przyciskach.
+        EnsureButtonCount(visibleOptions.Count);
+
         // 2. Rozdajemy je po przyciskach
         for (int b = 0; b < optionButtons.Length; b++)
         {
@@ -83,6 +88,44 @@ public class DialogueManager : MonoBehaviour
                 optionButtons[b].SetActive(false);
             }
         }
+    }
+
+    // Dorabia przyciski opcji, gdy jest ich za malo. Kopia ostatniego przycisku
+    // trafia do tego samego rodzica (OptionsArea), wiec Vertical Layout Group
+    // sam ustawi ja pod pozostalymi.
+    private void EnsureButtonCount(int needed)
+    {
+        if (optionButtons == null || optionButtons.Length == 0) return;
+        if (needed <= optionButtons.Length) return;
+
+        GameObject template = optionButtons[optionButtons.Length - 1];
+        if (template == null) return;
+
+        int oldCount = optionButtons.Length;
+        System.Array.Resize(ref optionButtons, needed);
+        System.Array.Resize(ref optionTexts, needed);
+
+        for (int i = oldCount; i < needed; i++)
+        {
+            GameObject clone = Instantiate(template, template.transform.parent);
+            clone.name = "OptionButton_" + (i + 1);
+
+            optionButtons[i] = clone;
+            optionTexts[i] = clone.GetComponentInChildren<TextMeshProUGUI>(true);
+
+            // Kopia dziedziczy klikniecie ustawione w Inspektorze (z numerem
+            // ostatniego przycisku) - zastepujemy je wlasnym, z wlasciwym numerem.
+            Button btn = clone.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.onClick = new Button.ButtonClickedEvent();
+                int index = i;
+                btn.onClick.AddListener(() => OnOptionClicked(index));
+            }
+        }
+
+        Debug.Log($"DialogueManager: dorobiono przyciski opcji do {needed} " +
+                  "(warto dodac je na stale w scenie, patrz OptionsArea).");
     }
 
     public void StartDialogue(NPCStats npc, DialogueNode startNode, bool canTrade)

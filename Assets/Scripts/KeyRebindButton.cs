@@ -42,6 +42,21 @@ public class KeyRebindButton : MonoBehaviour
         RefreshLabel();
     }
 
+    // NOWE: kazdy przycisk sam slucha zmian przypisan (np. "Reset" albo zmiana
+    // tego samego klawisza gdzie indziej) i sam odswieza swoj napis. Dzieki temu
+    // nie zalezy od recznie wypelnionej listy w OptionsMenu - a ta lista byla
+    // niekompletna, wiec po resecie wiekszosc przyciskow pokazywala stare klawisze.
+    void OnEnable()
+    {
+        GameSettings.OnKeyBindingsChanged += RefreshLabel;
+        RefreshLabel(); // np. po przelaczeniu na zakladke Controls
+    }
+
+    void OnDisable()
+    {
+        GameSettings.OnKeyBindingsChanged -= RefreshLabel;
+    }
+
     private void BeginRebind()
     {
         if (KeyRebindPopup.instance == null)

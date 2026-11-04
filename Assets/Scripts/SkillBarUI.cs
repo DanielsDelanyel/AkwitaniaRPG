@@ -109,6 +109,11 @@ public class SkillBarUI : MonoBehaviour
             hotbarSlots[i].boundKey = GameSettings.GetKey($"Hotbar{i + 1}");
             hotbarSlots[i].UpdateKeyLabel();
         }
+
+        // NOWE: pasek na dole ekranu (SkillHUD) kopiuje klawisze z tych slotow
+        // tylko przy zdarzeniu onHotbarChanged - bez tego po przemapowaniu w Opcjach
+        // HUD dalej pokazywal stary klawisz (np. "1" zamiast "K").
+        NotifyHotbarChanged();
     }
 
     void Start()

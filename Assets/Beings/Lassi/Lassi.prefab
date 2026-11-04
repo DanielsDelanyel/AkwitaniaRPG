@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 5623083751145475145}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.152, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 0.46, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8402399514851212795}
@@ -78,9 +78,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1079774721
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: -17269987
+  m_SortingLayer: 4
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 227628529506a6c47ba4d49872189a58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,8 +171,8 @@ Transform:
   m_GameObject: {fileID: 7639447589204126795}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -3.217, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1692718894193478943}
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a54e7ba8dda8ac94490786077184ff32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34ad7e1547ceb694e8fa9092d5ce4bf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -245,7 +245,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7639447589204126795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 73264ca4d67768d469956af28e312aef, type: 2}
   m_CullingMode: 0
@@ -293,8 +293,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.03}
-  m_Radius: 0.27
+  m_Offset: {x: -0.1, y: 0}
+  m_Radius: 1.22
 --- !u!70 &9073043621960637555
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -329,8 +329,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.09284775}
-  m_Size: {x: 0.11213628, y: 0.11213628}
+  m_Offset: {x: -0.127, y: -0.27849996}
+  m_Size: {x: 0.49, y: 0.49}
   m_Direction: 0
 --- !u!50 &926621889092889679
 Rigidbody2D:
@@ -340,7 +340,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7639447589204126795}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCStats
   npcName: Lassi
-  portrait: {fileID: -4520775617678411216, guid: 907f95435a4e41842b312203c0091b59, type: 3}
+  portrait: {fileID: 21300000, guid: ad5d5064517b0594ab582e364ce5d9b9, type: 3}
   profession: Druid
   level: 1
   money: 50
@@ -410,8 +410,8 @@ MonoBehaviour:
   startingNodeFlag: Lassi_przedstawiony
   dialogueBubble: {fileID: 5623083751145475145}
   bubbleSpriteRenderer: {fileID: 3411207190650844474}
-  bubbleHeight: 0.15
-  bubbleOffset: 0.12
+  bubbleHeight: 0.9
+  bubbleOffset: 0.15
   affinityPenaltyOnProvoke: 15
 --- !u!114 &964639224927940176
 MonoBehaviour:
@@ -425,4 +425,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f624c665e937d4e83c47658fc0b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UniqueId
-  id: 447b466646ea4058
+  id: 8ebe6bddcfc7481c

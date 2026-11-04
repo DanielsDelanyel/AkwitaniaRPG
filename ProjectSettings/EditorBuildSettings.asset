@@ -23,6 +23,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SampleCave.unity
     guid: c5f751787bf356c43ac37e19a1373da7
+  - enabled: 1
+    path: Assets/Scenes/Main_Village.unity
+    guid: 8563ebcc10019ef428da290071f878f1
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: 66f898d17daa77d4ab7e4fa8e7eb1f88
+  - enabled: 1
+    path: Assets/Scenes/Castle_and_area.unity
+    guid: 70e15af988ef94747953b7ca298a9ec9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
