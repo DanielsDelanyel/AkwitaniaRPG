@@ -1,0 +1,29 @@
+{
+  "questId": "prosba_lassi",
+  "title": "Prośba Lassi",
+  "giverNpc": "Lassi",
+  "rewardSet": {
+    "setId": "mystic_hunter_set",
+    "name": "Zestaw Mistycznego Łowcy",
+    "items": [
+      {
+        "id": "mh_hood",
+        "name": "Kaptur Mistycznego Łowcy",
+        "agility": 14,
+        "critChancePct": 4
+      },
+      {
+        "id": "mh_tunic",
+        "name": "Tunika Mistycznego Łowcy",
+        "armor": 45,
+        "agility": 20
+      },
+      {
+        "id": "mh_bow",
+        "name": "Łuk Mistycznego Łowcy",
+        "damageMin": 38,
+        "damageMax": 56
+      }
+    ]
+  }
+}
