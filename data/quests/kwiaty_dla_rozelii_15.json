@@ -1,0 +1,23 @@
+{
+  "questId": "kwiaty_dla_rozelii",
+  "title": "Kwiaty dla Rozelii",
+  "giverNpc": "Rozelia",
+  "objectives": [
+    {
+      "step": 1,
+      "type": "collect",
+      "item": "wild_meadow_lily",
+      "count": 5
+    },
+    {
+      "step": 2,
+      "type": "deliver",
+      "npc": "Rozelia"
+    }
+  ],
+  "rewards": {
+    "gold": 95,
+    "xp": 220,
+    "item": "herbal_healing_tonic"
+  }
+}
